@@ -30,6 +30,9 @@ Do not point canonical/OG at `.app` for this site.
 | File | Role |
 |------|------|
 | `index.html` | Title, meta, OG/Twitter, JSON-LD (WebSite, Product, SoftwareApplication, FAQPage) |
+| `scripts/og-constants.mjs` | OG copy, colors, layout — keep `og:image:alt` in sync |
+| `scripts/generate-og.mjs` | Cache-bust patch + copy `og_2.png` → `.github/social-preview.png` |
+| `public/og_2.png` | Hand-maintained site OG (1600×900) |
 | `public/robots.txt` | Allow legitimate search + AI crawlers; Disallow `/src/`, `/node_modules/` |
 | `public/sitemap.xml` | Canonical URLs; `lastmod` from `scripts/generate-llms.mjs` |
 | `public/llms.txt` | Curated AI-readable site map (hand-maintained) |
@@ -41,10 +44,16 @@ Do not point canonical/OG at `.app` for this site.
 ## Build commands
 
 ```bash
-npm run generate:og    # public/og-image.png
+npm run generate:og    # patch og_2.png ?v= hash + copy to .github/social-preview.png
 npm run generate:llms  # public/llms-full.txt + sitemap lastmod
 npm run build          # prebuild runs both generators
 ```
+
+## OG assets
+
+- **Site OG:** `public/og_2.png` at 1600×900 — referenced by `og:image`, `twitter:image`, JSON-LD.
+- **GitHub repo card:** `.github/social-preview.png` — copy of `og_2.png`; upload via GitHub Settings (see [DEPLOY.md](../../DEPLOY.md) §5).
+- **Cache bust:** `generate-og.mjs` patches `og_2.png?v=<sha256-prefix>` in `index.html` on each build when PNG bytes change.
 
 ## Crawler policy (MVP)
 

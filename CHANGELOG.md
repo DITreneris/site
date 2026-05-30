@@ -9,11 +9,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Dual OG export: `scripts/og-constants.mjs` and refactored `scripts/generate-og.mjs` now write `public/og-image.png` (1200×630) and `.github/social-preview.png` (1280×640) via Satori + resvg, with PNG size guard (warn >300 KB, fail >1 MB).
+- Build-time cache bust: `generate-og.mjs` patches `og-image.png?v=<hash>` in `index.html` for `og:image`, `twitter:image`, and JSON-LD `Product`/`SoftwareApplication` image fields.
 - `MOBILE_UX_AUDIT.md` — mobile UX audit findings and fix status; prompt template in `mobile.txt`; indexed in `DOCS_INDEX.md`.
 - Vercel Web Analytics: `@vercel/analytics` dependency and `<Analytics />` in `src/main.tsx`; enable Web Analytics in the Vercel project dashboard after deploy — data appears once production traffic hits the site.
 - `DOCS_INDEX.md` — central document map with task router, tiered file registry, agent roster, and skills catalog for humans and coding agents.
 - `seo-specialist` agent and `seo-crawler` skill — SEO/GEO/AIO and crawler work wired to `seo.txt`, `public/`, and `index.html`.
 - Agent–skill assignments documented in `AGENTS.md` and each `.cursor/agents/*.md` file.
+
+### Changed
+
+- Site OG image switched to hand-maintained `public/og_2.png` (1600×900); `generate-og.mjs` now cache-busts and copies to `.github/social-preview.png` instead of Satori generation.
+- `index.html`: OG/Twitter/schema image URLs, dimensions, and alt text updated for `og_2.png`.
+- `DEPLOY.md` §5 — GitHub repo social preview upload checklist; LinkedIn Post Inspector link in §4.
+- `DOCS_INDEX.md`, `deploy-vercel.mdc`, and `seo-crawler` skill document dual OG assets and cache-bust behavior.
 
 ### Fixed
 

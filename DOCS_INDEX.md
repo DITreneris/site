@@ -64,7 +64,8 @@ Use this table to pick the right agent, skill, and documents.
 
 | ID | Path | Generated | Notes |
 |----|------|-----------|-------|
-| `og-image` | [public/og-image.png](public/og-image.png) | Yes — `npm run generate:og` | 1200×630; Satori + resvg |
+| `og-image` | [public/og_2.png](public/og_2.png) | Hand-maintained | 1600×900; cache-bust `?v=` patched in `index.html` at prebuild |
+| `github-social` | [.github/social-preview.png](.github/social-preview.png) | Yes — copy from `og_2.png` via `npm run generate:og` | Upload manually to GitHub Settings → Social preview |
 | `llms` | [public/llms.txt](public/llms.txt) | Hand-maintained | AI crawler site map |
 | `llms-full` | [public/llms-full.txt](public/llms-full.txt) | Yes — `npm run generate:llms` | Extended reference from data files |
 | `sitemap` | [public/sitemap.xml](public/sitemap.xml) | Yes — `generate-llms.mjs` | Canonical `.site` URLs |
@@ -137,7 +138,7 @@ src/
   utils/                 tabNavigation (hash deep links)
   index.css              token + utility source of truth
 scripts/
-  generate-og.mjs        OG PNG prebuild
+  generate-og.mjs        OG cache bust + GitHub copy from public/og_2.png
   generate-llms.mjs      llms-full.txt + sitemap lastmod
   viewport-qa.mjs        Playwright overflow check
 ```

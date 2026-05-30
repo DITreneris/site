@@ -32,7 +32,7 @@ npm install
 npm run dev          # http://localhost:5173
 npm run build        # runs generate:og prebuild, then tsc + vite
 npm run preview      # serve dist locally
-npm run generate:og  # regenerate public/og-image.png
+npm run generate:og  # patch og_2.png cache bust + GitHub social copy
 npm run qa:viewport  # Playwright overflow check (preview must be running)
 ```
 
@@ -47,7 +47,7 @@ src/
     maturity/     MaturityQuiz
   data/           domains, quiz, anatomy presets, ecosystemTheme, siteContact
   index.css       design tokens (@theme + @utility) — token source of truth
-public/           favicon, robots.txt, sitemap.xml, og-image.png, creator-janitor.png
+public/           favicon, robots.txt, sitemap.xml, og_2.png, creator-janitor.png
 scripts/          generate-og.mjs, viewport-qa.mjs
 ```
 
@@ -73,7 +73,7 @@ scripts/          generate-og.mjs, viewport-qa.mjs
 2. Import repo in [Vercel](https://vercel.com) → Framework: **Vite**
 3. Build command: `npm run build` · Output directory: `dist`
 4. Add custom domain `promptanatomy.site` in Vercel → apply DNS records at Porkbun
-5. Verify: HTTPS, `/og-image.png`, `/creator-janitor.png`, canonical tag
+5. Verify: HTTPS, `/og_2.png`, `/creator-janitor.png`, canonical tag
 
 See [DEPLOY.md](DEPLOY.md) for the full cold-deploy checklist (Vercel import + Porkbun DNS).
 

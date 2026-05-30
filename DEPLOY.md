@@ -49,7 +49,7 @@ Step-by-step for connecting [github.com/DITreneris/site](https://github.com/DITr
 
 - [ ] https://promptanatomy.site/ loads over HTTPS
 - [ ] View source: `<link rel="canonical" href="https://promptanatomy.site/" />`
-- [ ] https://promptanatomy.site/og-image.png returns 200
+- [ ] https://promptanatomy.site/og_2.png returns 200
 - [ ] https://promptanatomy.site/creator-janitor.png returns 200
 - [ ] https://promptanatomy.site/robots.txt references `.site` sitemap and AI crawler Allow rules
 - [ ] https://promptanatomy.site/llms.txt returns 200
@@ -57,14 +57,28 @@ Step-by-step for connecting [github.com/DITreneris/site](https://github.com/DITr
 - [ ] Deep links work: `/#anatomizer`, `/#maturity`, `/#ecosystem`
 - [ ] Platform CTAs still open https://promptanatomy.app
 - [ ] Test social preview: https://www.opengraph.xyz/url/https://promptanatomy.site
+- [ ] LinkedIn cache check: [Post Inspector](https://www.linkedin.com/post-inspector/) with `https://promptanatomy.site/`
 - [ ] Validate structured data: [Google Rich Results Test](https://search.google.com/test/rich-results?url=https://promptanatomy.site/)
+- [ ] View source: `og:image` and JSON-LD `Product.image` include `og_2.png?v=<hash>` (patched by `generate-og.mjs` at prebuild)
 
-## 5. Search indexing follow-up
+## 5. GitHub repo social preview (manual)
+
+After `npm run generate:og` or deploy, upload the GitHub card (not read from site OG tags):
+
+1. Repo → **Settings → General → Social preview** → upload [`.github/social-preview.png`](.github/social-preview.png) (1280×640, <1 MB).
+2. Set **Website** to `https://promptanatomy.site`.
+3. Set **About description** (≤350 chars), e.g. *Marketing site for Prompt Anatomy — 8-domain AI OS for teams. React/Vite SPA with Anatomizer, maturity quiz, and AI-crawler docs. Live at promptanatomy.site*.
+4. Add **Topics**: `ai`, `prompt-engineering`, `react`, `vite`, `typescript`, `tailwindcss`, `seo`, `vercel`, `marketing-site`.
+5. Share `https://github.com/DITreneris/site` in Slack/Discord to confirm the repo card.
+
+Re-upload after OG rebrand changes (when `.github/social-preview.png` changes).
+
+## 6. Search indexing follow-up
 
 - [ ] Submit `https://promptanatomy.site/sitemap.xml` in Google Search Console
 - [ ] Submit sitemap in Bing Webmaster Tools
 
-## 6. Optional follow-up
+## 7. Optional follow-up
 
 - Google Search Console property for `promptanatomy.site`
 - Bing Webmaster Tools
