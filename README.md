@@ -74,7 +74,7 @@ scripts/          generate-og.mjs, viewport-qa.mjs
 4. Add custom domain `promptanatomy.site` in Vercel → apply DNS records at Porkbun
 5. Verify: HTTPS, `/og-image.png`, `/creator-janitor.png`, canonical tag
 
-See `.cursor/skills/deploy-vercel/SKILL.md` for the full cold-deploy checklist.
+See [DEPLOY.md](DEPLOY.md) for the full cold-deploy checklist (Vercel import + Porkbun DNS).
 
 ## Contact
 
