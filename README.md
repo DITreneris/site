@@ -55,9 +55,10 @@ scripts/          generate-og.mjs, viewport-qa.mjs
 
 | File | Purpose |
 |------|---------|
+| `DOCS_INDEX.md` | **Document map** — task router, agents, skills, file registry |
 | `primal_concept.txt` | Brand narrative, domain roles, audience |
 | `DESIGN_SYSTEM.md` | Design system v1.5 pre-release, tokens, QA, agent guardrails |
-| `AGENTS.md` | Cursor agent guide |
+| `AGENTS.md` | Cursor agent guide and workflow |
 | `CHANGELOG.md` | Release history (Keep a Changelog) |
 | `snippet.txt` | Legacy prototype — palette regression guard only |
 

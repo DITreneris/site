@@ -1,0 +1,70 @@
+---
+name: seo-crawler
+description: SEO, GEO, AIO, and crawler strategy for promptanatomy.site. Use when editing metadata, robots.txt, sitemap, llms.txt, JSON-LD, or hash deep links — without redesigning visible UI.
+---
+
+# SEO & Crawler Skill
+
+## When to use
+
+- Auditing or improving search and AI crawler visibility
+- Editing `index.html` head, `public/robots.txt`, `public/sitemap.xml`, `public/llms.txt`
+- Updating FAQ or Product JSON-LD via `src/data/seoFaq.ts`
+- Regenerating `public/llms-full.txt` or OG assets
+
+## Full audit template
+
+For a comprehensive audit plan, read [seo.txt](../../seo.txt) at repo root. It defines executive summary, crawlability, AI crawler policy, metadata, schema, and implementation phases.
+
+## URL policy (non-negotiable)
+
+| Purpose | Domain |
+|---------|--------|
+| Canonical, OG, sitemap, WebSite schema | `https://promptanatomy.site` |
+| Organization HQ, platform CTAs | `https://promptanatomy.app` |
+
+Do not point canonical/OG at `.app` for this site.
+
+## Key files
+
+| File | Role |
+|------|------|
+| `index.html` | Title, meta, OG/Twitter, JSON-LD (WebSite, Product, SoftwareApplication, FAQPage) |
+| `public/robots.txt` | Allow legitimate search + AI crawlers; Disallow `/src/`, `/node_modules/` |
+| `public/sitemap.xml` | Canonical URLs; `lastmod` from `scripts/generate-llms.mjs` |
+| `public/llms.txt` | Curated AI-readable site map (hand-maintained) |
+| `public/llms-full.txt` | Extended reference — generated from `domains.ts`, `anatomyBuilder.ts` |
+| `src/data/seoFaq.ts` | FAQ JSON-LD source (not rendered in visible UI) |
+| `src/utils/tabNavigation.ts` | Hash deep links: `/#ecosystem`, `/#anatomizer`, `/#maturity` |
+| `App.tsx` | All tab panels mounted (`hidden`) for crawler DOM access |
+
+## Build commands
+
+```bash
+npm run generate:og    # public/og-image.png
+npm run generate:llms  # public/llms-full.txt + sitemap lastmod
+npm run build          # prebuild runs both generators
+```
+
+## Crawler policy (MVP)
+
+- **Allow:** Googlebot, Bingbot, DuckDuckBot, Applebot, GPTBot, ClaudeBot, PerplexityBot, Google-Extended, and peers listed in `robots.txt`
+- **Block:** `/src/`, `/node_modules/`, staging/preview URLs (not production)
+- **Strategy:** Open for discovery; closed for source/build paths
+
+## Constraints
+
+- Do not redesign frontend or change visible copy unless required for SEO clarity
+- Do not break hash routing or tab navigation
+- Do not expose admin, API, or internal routes
+- Static OG only — no runtime OG API routes for MVP
+
+## Post-change verification
+
+See [DEPLOY.md](../../DEPLOY.md) §4: HTTPS, canonical, `/llms.txt`, Rich Results Test, sitemap submission.
+
+## Delegate
+
+- Visible UI/layout regressions → `ui-builder` agent
+- Domain marketing copy → `content-editor` + `ecosystem-content` skill
+- Release notes → `changelog-keeper` agent

@@ -51,11 +51,20 @@ Step-by-step for connecting [github.com/DITreneris/site](https://github.com/DITr
 - [ ] View source: `<link rel="canonical" href="https://promptanatomy.site/" />`
 - [ ] https://promptanatomy.site/og-image.png returns 200
 - [ ] https://promptanatomy.site/creator-janitor.png returns 200
-- [ ] https://promptanatomy.site/robots.txt references `.site` sitemap
+- [ ] https://promptanatomy.site/robots.txt references `.site` sitemap and AI crawler Allow rules
+- [ ] https://promptanatomy.site/llms.txt returns 200
+- [ ] https://promptanatomy.site/llms-full.txt returns 200
+- [ ] Deep links work: `/#anatomizer`, `/#maturity`, `/#ecosystem`
 - [ ] Platform CTAs still open https://promptanatomy.app
 - [ ] Test social preview: https://www.opengraph.xyz/url/https://promptanatomy.site
+- [ ] Validate structured data: [Google Rich Results Test](https://search.google.com/test/rich-results?url=https://promptanatomy.site/)
 
-## 5. Optional follow-up
+## 5. Search indexing follow-up
+
+- [ ] Submit `https://promptanatomy.site/sitemap.xml` in Google Search Console
+- [ ] Submit sitemap in Bing Webmaster Tools
+
+## 6. Optional follow-up
 
 - Google Search Console property for `promptanatomy.site`
 - Bing Webmaster Tools

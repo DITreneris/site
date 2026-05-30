@@ -12,7 +12,7 @@ export default function Hero({ onStartAssessment }: HeroProps) {
           Random chat &rarr; repeatable systems
         </span>
 
-        <h1 className="mt-6 text-4xl font-black leading-[1.08] tracking-[-0.02em] text-brand-dark sm:text-5xl">
+        <h1 className="mt-6 text-3xl font-black leading-[1.08] tracking-[-0.02em] text-brand-dark sm:text-4xl lg:text-5xl">
           Turn AI from a chat tool into a{' '}
           <span className="bg-accent-gradient-strong bg-clip-text text-transparent">
             structured operating system

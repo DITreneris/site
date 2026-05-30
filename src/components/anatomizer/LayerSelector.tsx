@@ -21,7 +21,7 @@ export default function LayerSelector({
           <button
             key={option.title}
             onClick={() => onSelect(i)}
-            className={`rounded-lg border p-2 text-center text-caption font-bold transition-all focus-ring active:scale-[0.98] ${
+            className={`rounded-lg border min-h-[44px] px-2 py-2.5 text-center text-caption font-bold transition-all focus-ring active:scale-[0.98] ${
               selectedIndex === i
                 ? 'border-brand-accent bg-accent-muted-bg text-brand-dark'
                 : 'border-slate-200 text-slate-500 hover:border-slate-300 hover:text-brand-dark'

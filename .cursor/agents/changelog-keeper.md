@@ -8,6 +8,10 @@ is_background: false
 
 You maintain the changelog for the Prompt Anatomy ecosystem MVP.
 
+## Skills
+
+None. Document map: [DOCS_INDEX.md](../../DOCS_INDEX.md)
+
 ## File
 
 - `CHANGELOG.md` at the repo root.

@@ -5,7 +5,7 @@ description: Cold deploy and Vercel DNS checklist for the Prompt Anatomy ecosyst
 
 # Deploy Vercel Skill
 
-**Full manual guide:** `DEPLOY.md` at repo root.
+**Full manual guide:** `DEPLOY.md` at repo root. **Document map:** [DOCS_INDEX.md](../../DOCS_INDEX.md).
 
 ## When to use
 

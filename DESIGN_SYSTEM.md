@@ -440,8 +440,8 @@ Use this order when executing the roadmap (coding agent).
 
 | Breakpoint | Min width | MVP usage |
 |------------|-----------|-----------|
-| (default) | 0 | Mobile-first; stacked CTAs; hamburger nav; `SequencePath` 2-col stage grid |
-| `sm` | 640px | CTA row horizontal; `card-light-lg` extra padding; layer selector 2-col |
+| (default) | 0 | Mobile-first; stacked CTAs; hamburger nav; `SequencePath` 1-col stage grid |
+| `sm` | 640px | CTA row horizontal; `card-light-lg` extra padding; layer selector 2-col; SequencePath 2-col stages |
 | `md` | 768px | Header tab bar visible; footer 2-col link grid |
 | `lg` | 1024px | Ecosystem phase row horizontal; Anatomizer 12-col split; decorative hub connector |
 | `xl` / `2xl` | 1280px / 1536px | Unused explicitly — containers cap at `max-w-7xl` |
@@ -450,15 +450,18 @@ Use this order when executing the roadmap (coding agent).
 
 | Rule | Standard | Evidence |
 |------|----------|----------|
-| Touch targets | ≥ 44px height on primary interactives | `min-h-[44px]` on `btn-*`, `link-footer` |
+| Touch targets | ≥ 44px height on **all** interactives | `min-h-[44px]` on `btn-*`, `link-footer`, `link-inline`, `btn-tertiary-sm`, LayerSelector options, Header tabs |
+| Nested interactive grids | Single-col below `sm`, 2-col at `sm+`, revert at `lg` where applicable | `SequencePath`: `grid-cols-1 sm:grid-cols-2 lg:grid-cols-1` |
+| Mono domain labels | Wrap safely in narrow cards | `break-all` on subdomain strings in `SequencePath` |
 | Section padding | `section-default` everywhere | `py-16 md:py-24 px-4 sm:px-6 md:px-8` |
 | CTA layout | Stack full-width, then row | `w-full sm:w-auto` on Hero, ClosingCta, quiz CTAs |
 | Horizontal overflow | None on core page | `overflow-x: clip` on `html`/`body`; `npm run qa:viewport` |
-| Header (mobile) | Hamburger → full-width tab buttons | `Header.tsx` `md:hidden` menu |
-| Header (desktop) | Inline tablist at `md+` | Scroll-adaptive light/dark glass |
+| Header (mobile) | Hamburger → full-width tab buttons; eyebrow hidden below 360px | `Header.tsx` `md:hidden` menu; `hidden min-[360px]:block` on tagline |
+| Header (desktop) | Inline tablist at `md+`, tabs ≥ 44px | Scroll-adaptive light/dark glass |
 | Cards | Light: `card-light`; dark: `card-glass` | Single recipe each |
 | Ecosystem path | Vertical stack → horizontal phases at `lg` | `SequencePath.tsx` |
-| Hero | Centered single column | `container-hero`, stacked CTAs |
+| Hero | Centered single column; H1 `text-3xl sm:text-4xl lg:text-5xl` | `container-hero`, stacked CTAs |
+| Stats strip | 2×2 grid; numbers `text-5xl sm:text-stat` | `StatsStrip.tsx` |
 | Footer | 1-col → 2-col → 3-col link grids | `Footer.tsx` grid |
 | Images | `max-w-*`, `rounded-2xl`, no fixed widths | `ProblemSolution` figure |
 
@@ -466,11 +469,12 @@ Use this order when executing the roadmap (coding agent).
 
 Run before any UI release or after layout changes.
 
-- [x] No horizontal scroll on core page at 320 / 768 / 1280 (`npm run qa:viewport`)
+- [x] No horizontal scroll on core page at 320 / 360 / 390 / 430 / 768 / 1280 (`npm run qa:viewport`)
 - [x] Header usable on mobile (menu opens, tabs switch panels, closes on select)
-- [x] Buttons meet touch target requirements (`min-h-[44px]`)
+- [x] All interactives meet touch target requirements (`min-h-[44px]` — buttons, footer links, inline links, tertiary actions, LayerSelector, Header tabs)
+- [x] SequencePath uses single-col stage grid below `sm` (not 2-col at 320px)
 - [x] Cards stack cleanly (quiz, problem/solution, layer selectors, ecosystem phases)
-- [x] Typography remains readable (no micro type below `text-micro` / `text-caption` tokens)
+- [x] Typography remains readable (Hero H1 and stats scaled at narrow widths; micro type tokenized only)
 - [x] CTAs remain visible and usable when stacked
 - [x] Footer does not collapse awkwardly (legal bar wraps with `flex-wrap`)
 - [x] Images scale safely (`creator-janitor.png` in constrained figure)
@@ -702,6 +706,7 @@ This file follows the upgrade target structure. Section map:
 | 19 | Release checklist | §17 |
 | 20 | Roadmap | §5, §15 |
 | 21 | Changelog | `CHANGELOG.md` |
+| 22 | Document index (repo-wide) | `DOCS_INDEX.md` |
 
 ---
 

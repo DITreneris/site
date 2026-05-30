@@ -8,6 +8,13 @@ is_background: false
 
 You edit content for the Prompt Anatomy ecosystem site.
 
+## Skills
+
+- `ecosystem-content` — [.cursor/skills/ecosystem-content/SKILL.md](../skills/ecosystem-content/SKILL.md)
+- `anatomizer-prompt` — [.cursor/skills/anatomizer-prompt/SKILL.md](../skills/anatomizer-prompt/SKILL.md) (Anatomizer presets only)
+
+Document map: [DOCS_INDEX.md](../../DOCS_INDEX.md)
+
 ## Source of truth
 
 - `primal_concept.txt` — canonical domain narratives and ecosystem logic

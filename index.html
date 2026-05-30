@@ -1,96 +1,176 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0b1320" />
-    <meta
-      name="description"
-      content="Prompt Anatomy is an AI Operating System for modern teams. Explore the 8-domain ecosystem, build structured prompts, and assess your team's AI maturity."
-    />
-    <link rel="canonical" href="https://promptanatomy.site/" />
-    <title>Prompt Anatomy — AI Operating System for Teams</title>
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Prompt Anatomy" />
-    <meta property="og:url" content="https://promptanatomy.site/" />
-    <meta property="og:title" content="Prompt Anatomy — AI Operating System for Teams" />
-    <meta
-      property="og:description"
-      content="Less random prompting. More structured execution. Explore the 8-domain ecosystem, build structured prompts, and assess your team's AI maturity."
-    />
-    <meta property="og:image" content="https://promptanatomy.site/og-image.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Prompt Anatomy — AI Operating System for Teams" />
-    <meta
-      name="twitter:description"
-      content="Less random prompting. More structured execution. The AI operating system that turns chat into repeatable team workflows."
-    />
-    <meta name="twitter:image" content="https://promptanatomy.site/og-image.png" />
-    <meta name="twitter:site" content="@TStaniulis_NFT" />
-    <meta name="twitter:creator" content="@TStaniulis_NFT" />
-
-    <!-- Structured data for search and AI crawlers (keep in sync with src/data/siteContact.ts) -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "Organization",
-            "@id": "https://promptanatomy.app/#organization",
-            "name": "Prompt Anatomy",
-            "url": "https://promptanatomy.app/",
-            "logo": "https://promptanatomy.app/favicon.svg",
-            "description": "An AI Operating System for modern teams: structured templates, workflows, and frameworks that turn ad-hoc prompting into repeatable execution.",
-            "email": "info@promptanatomy.app",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "1311 Park St, Unit #654",
-              "addressLocality": "Alameda",
-              "addressRegion": "CA",
-              "postalCode": "94501",
-              "addressCountry": "US"
-            },
-            "sameAs": [
-              "https://www.linkedin.com/in/staniulis",
-              "https://x.com/TStaniulis_NFT",
-              "https://t.me/prompt_anatomy",
-              "https://promptanatomy.app/",
-              "https://promptanatomy.site/"
-            ]
-          },
-          {
-            "@type": "WebSite",
-            "@id": "https://promptanatomy.site/#website",
-            "url": "https://promptanatomy.site/",
-            "name": "Prompt Anatomy",
-            "publisher": { "@id": "https://promptanatomy.app/#organization" }
-          },
-          {
-            "@type": "Product",
-            "name": "Prompt Anatomy AI Operating System",
-            "brand": { "@id": "https://promptanatomy.app/#organization" },
-            "description": "An 8-domain ecosystem covering onboarding, daily automation, marketing, HR, leadership, scaling, and knowledge — built around a central AI operating system for teams.",
-            "category": "Business Software"
-          }
-        ]
-      }
-    </script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM site map" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b1320" />
+    <meta name="robots" content="index, follow" />
+    <meta
+      name="description"
+      content="Prompt Anatomy is an AI Operating System for modern teams. Explore the 8-domain ecosystem, build structured prompts, and assess your team's AI maturity."
+    />
+    <link rel="canonical" href="https://promptanatomy.site/" />
+    <title>Prompt Anatomy — AI Operating System for Teams</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Prompt Anatomy" />
+    <meta property="og:url" content="https://promptanatomy.site/" />
+    <meta property="og:title" content="Prompt Anatomy — AI Operating System for Teams" />
+    <meta
+      property="og:description"
+      content="Less random prompting. More structured execution. Explore the 8-domain ecosystem, build structured prompts, and assess your team's AI maturity."
+    />
+    <meta property="og:image" content="https://promptanatomy.site/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Prompt Anatomy — Structured AI for repeatable teams. promptanatomy.site"
+    />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Prompt Anatomy — AI Operating System for Teams" />
+    <meta
+      name="twitter:description"
+      content="Less random prompting. More structured execution. Explore the 8-domain ecosystem, build structured prompts, and assess your team's AI maturity."
+    />
+    <meta name="twitter:image" content="https://promptanatomy.site/og-image.png" />
+    <meta name="twitter:site" content="@TStaniulis_NFT" />
+    <meta name="twitter:creator" content="@TStaniulis_NFT" />
+
+    <!-- Structured data for search and AI crawlers (keep in sync with src/data/siteContact.ts and src/data/seoFaq.ts) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://promptanatomy.app/#organization",
+            "name": "Prompt Anatomy",
+            "url": "https://promptanatomy.app/",
+            "logo": "https://promptanatomy.app/favicon.svg",
+            "description": "An AI Operating System for modern teams: structured templates, workflows, and frameworks that turn ad-hoc prompting into repeatable execution.",
+            "email": "info@promptanatomy.app",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "1311 Park St, Unit #654",
+              "addressLocality": "Alameda",
+              "addressRegion": "CA",
+              "postalCode": "94501",
+              "addressCountry": "US"
+            },
+            "sameAs": [
+              "https://www.linkedin.com/in/staniulis",
+              "https://x.com/TStaniulis_NFT",
+              "https://t.me/prompt_anatomy",
+              "https://promptanatomy.app/",
+              "https://promptanatomy.site/"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://promptanatomy.site/#website",
+            "url": "https://promptanatomy.site/",
+            "name": "Prompt Anatomy",
+            "publisher": { "@id": "https://promptanatomy.app/#organization" }
+          },
+          {
+            "@type": "Product",
+            "@id": "https://promptanatomy.app/#product",
+            "name": "Prompt Anatomy AI Operating System",
+            "url": "https://promptanatomy.app/",
+            "image": "https://promptanatomy.site/og-image.png",
+            "brand": { "@id": "https://promptanatomy.app/#organization" },
+            "description": "An 8-domain ecosystem covering onboarding, daily automation, marketing, HR, leadership, scaling, and knowledge — built around a central AI operating system for teams.",
+            "category": "Business Software"
+          },
+          {
+            "@type": "SoftwareApplication",
+            "name": "Prompt Anatomy",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Web",
+            "url": "https://promptanatomy.app/",
+            "description": "AI Operating System for modern teams: structured templates, workflows, and frameworks that turn ad-hoc prompting into repeatable execution.",
+            "image": "https://promptanatomy.site/og-image.png",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD",
+              "description": "Free ecosystem demo and team assessment at promptanatomy.site"
+            },
+            "publisher": { "@id": "https://promptanatomy.app/#organization" }
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is Prompt Anatomy?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Prompt Anatomy is an AI Operating System for modern teams. It helps organizations move from random prompting to structured, repeatable AI workflows across learning, daily work, automation, marketing, HR, operations, and executive decision-making."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Who is Prompt Anatomy for?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Prompt Anatomy is built for CEOs, COOs, IT leaders, managers, and operational teams who want to implement AI in a structured way — from onboarding beginners to executives scaling enterprise workflows."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is the 8-domain ecosystem?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The ecosystem spans eight domains in order: Enter (promptanatomy.cloud), Use (promptanatomy.info), Upgrade (promptanatomy.space), Recruit (promptanatomy.help), Manage (promptanatomy.ceo), Decide (promptanatomy.pro), and Learn (promptanatomy.blog), with the central platform at promptanatomy.app."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is structured prompting and the Anatomizer?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Structured prompting uses five layers: System Role, Business Context, Dynamic Variables, Instructions, and Output Constraints. The Anatomizer on promptanatomy.site lets teams assemble prompts layer by layer for repeatable, cost-efficient execution."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What does the Team Assessment measure?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The 60-second Team Assessment scores AI operational maturity across three tiers: Unstructured Ad-Hoc (Tier 1), Fragmented Adoption (Tier 2), and Structured AI OS Ready (Tier 3), with a recommended ecosystem domain for your next step."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Where is the main platform?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The central AI operating system lives at https://promptanatomy.app/, with structured templates, workflows, and frameworks. The marketing and demo site at https://promptanatomy.site/ showcases the ecosystem, Anatomizer, and maturity assessment."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

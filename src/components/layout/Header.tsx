@@ -43,7 +43,7 @@ export default function Header({ activeTab, onTabChange, onLogoClick }: HeaderPr
       <div className="container-wide flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         <button
           onClick={onLogoClick}
-          className="flex items-center gap-3 focus-ring rounded-lg"
+          className="flex min-h-[44px] items-center gap-3 focus-ring rounded-lg"
           aria-label="Prompt Anatomy home"
         >
           <span
@@ -62,7 +62,7 @@ export default function Header({ activeTab, onTabChange, onLogoClick }: HeaderPr
               Prompt Anatomy
             </span>
             <span
-              className={`block text-label-upper transition-colors duration-300 ${
+              className={`hidden min-[360px]:block text-label-upper transition-colors duration-300 ${
                 dark ? 'text-slate-400' : 'text-slate-500'
               }`}
             >
@@ -81,7 +81,7 @@ export default function Header({ activeTab, onTabChange, onLogoClick }: HeaderPr
                 aria-selected={active}
                 aria-controls={`panel-${tab.id}`}
                 onClick={() => handleTab(tab.id)}
-                className={`text-nav-link rounded-lg px-4 py-2 transition-colors duration-300 focus-ring ${
+                className={`inline-flex min-h-[44px] items-center text-nav-link rounded-lg px-4 py-2 transition-colors duration-300 focus-ring ${
                   active
                     ? scrolled
                       ? 'bg-white/10 text-white'

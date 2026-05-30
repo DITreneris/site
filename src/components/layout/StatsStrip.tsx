@@ -96,7 +96,7 @@ export default function StatsStrip() {
         <div className="mt-10 grid grid-cols-2 gap-y-10 lg:grid-cols-4 lg:gap-y-0 lg:divide-x lg:divide-white/10">
           {STATS.map((stat) => (
             <div key={stat.label} className="px-4 text-center">
-              <div className="bg-accent-gradient bg-clip-text text-[length:var(--text-stat)] font-black leading-[var(--text-stat--line-height)] tracking-[-0.02em] text-transparent">
+              <div className="bg-accent-gradient bg-clip-text text-5xl font-black leading-[var(--text-stat--line-height)] tracking-[-0.02em] text-transparent sm:text-[length:var(--text-stat)]">
                 <Counter {...stat} start={inView} />
               </div>
               <div className="mx-auto mt-3 max-w-[14rem] text-xs leading-relaxed text-slate-400">

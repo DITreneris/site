@@ -1,0 +1,572 @@
+Bottom line: mobile audit must not become “make mobile prettier.” It should detect **breakpoints, overflow, tap targets, hierarchy collapse, spacing drift, and conversion friction**.
+
+Use this prompt:
+
+META:
+You are a senior Mobile UX Auditor, Frontend QA Lead, and SaaS Design Systems Specialist with 10+ years of experience auditing responsive SaaS websites before production release.
+
+Your goal is to deeply audit the mobile experience of the existing repository and create a practical improvement plan that preserves the current design system and product structure.
+
+The audience is the product owner, frontend developer, UI/UX designer, and coding agent who need clear, safe, implementation-ready recommendations.
+
+Current context:
+
+* Product has an existing design system, currently around `v0.7`.
+* The goal is to improve mobile quality without redesign.
+* The audit should support future design system maturity toward `v1.0+`.
+* Focus on real mobile usability, not subjective visual taste.
+
+INPUT:
+Analyze the full repository and mobile rendering behavior across key pages and components.
+
+Review:
+
+* Layout files
+* Page templates
+* Global CSS
+* Tailwind configuration
+* Design system documentation
+* Header / navigation
+* Hero sections
+* CTA sections
+* Cards
+* Feature grids
+* Pricing sections
+* Forms
+* Blog/content pages
+* Footer
+* Images and illustrations
+* Icons
+* Buttons and links
+* Tables or comparison blocks
+* Legal/success/error pages if present
+
+Test or reason across these viewport widths:
+
+* 320px — small mobile
+* 360px — common Android
+* 390px — iPhone modern baseline
+* 430px — large phone
+* 768px — tablet portrait
+
+Constraints:
+
+* Do not redesign the product.
+* Do not rewrite content.
+* Do not change the brand identity.
+* Do not introduce new components unless necessary.
+* Do not add decorative complexity.
+* Preserve existing design system direction.
+* Prioritize safe, low-risk fixes.
+* All recommendations must be actionable.
+* Identify exact files/components likely affected where possible.
+* Separate true mobile defects from optional polish.
+
+OUTPUT:
+Create a detailed Markdown audit titled:
+
+# Deep Mobile UX/UI Audit
+
+The document must include:
+
+---
+
+## 1. Executive Summary
+
+Include:
+
+* Overall mobile readiness score from 1–10
+* Current mobile maturity level
+* Biggest mobile risk
+* Top 5 mobile issues
+* Fastest safe path to improvement
+* Whether mobile is ready for production: Yes / No / Almost
+
+Use this format:
+
+| Category               | Score | Status | Notes |
+| ---------------------- | ----: | ------ | ----- |
+| Layout stability       |   /10 |        |       |
+| Readability            |   /10 |        |       |
+| Touch usability        |   /10 |        |       |
+| Navigation             |   /10 |        |       |
+| CTA visibility         |   /10 |        |       |
+| Performance perception |   /10 |        |       |
+| Accessibility          |   /10 |        |       |
+| Conversion clarity     |   /10 |        |       |
+
+---
+
+## 2. Device and Breakpoint Audit
+
+Audit behavior at:
+
+| Viewport | Expected Behavior | Actual Behavior | Issues Found | Priority |
+|---|---|---|---|
+| 320px | Small phone safe layout | | | |
+| 360px | Standard compact phone layout | | | |
+| 390px | Modern iPhone baseline | | | |
+| 430px | Large phone layout | | | |
+| 768px | Tablet portrait layout | | | |
+
+Check:
+
+* Horizontal overflow
+* Text wrapping
+* Button wrapping
+* Card stacking
+* Grid collapse
+* Header behavior
+* Hero compression
+* CTA visibility
+* Footer structure
+* Image scaling
+* Section spacing
+* Content density
+
+---
+
+## 3. Page-Level Mobile Audit
+
+Audit each key page type:
+
+* Homepage
+* Product / landing pages
+* Pricing page
+* Blog index
+* Blog article page
+* About page
+* Contact / form page
+* Success / checkout page
+* Legal pages
+* 404 / error pages
+
+For each page, provide:
+
+| Page | Mobile Score /10 | Main Problems | Evidence | Recommended Fix | Priority |
+| ---- | ---------------: | ------------- | -------- | --------------- | -------- |
+
+Also include:
+
+* What works
+* What breaks first
+* What feels overloaded
+* What hurts conversion
+* What is safe to leave unchanged
+
+---
+
+## 4. Component-Level Mobile Audit
+
+Audit these components:
+
+* Header
+* Mobile menu
+* Hero
+* Section shell
+* Button
+* CTA block
+* Card
+* Feature card
+* Pricing card
+* Blog card
+* Form input
+* Select / textarea
+* Badge / pill
+* Icon block
+* FAQ block
+* Testimonial block
+* Footer
+* Tables / comparison blocks
+* Image blocks
+* Alert / notice blocks
+
+Use this table:
+
+| Component | Mobile State | Problem | Risk | Recommended Fix | Priority |
+| --------- | ------------ | ------- | ---- | --------------- | -------- |
+
+Check for:
+
+* Tap target size
+* Content overflow
+* Visual density
+* Spacing consistency
+* Text hierarchy
+* Alignment
+* Icon readability
+* CTA clarity
+* Reusable pattern consistency
+* Design system drift
+
+---
+
+## 5. Mobile Layout Stability Audit
+
+Check for:
+
+* Horizontal scroll
+* Clipped text
+* Overlapping elements
+* Broken grids
+* Unstable card heights
+* Excessive whitespace
+* Too-tight spacing
+* Sticky header issues
+* Footer collapse
+* Image overflow
+* Table overflow
+* Long words / URLs breaking layout
+
+Create:
+
+| Issue | Location | Cause | Fix | Priority |
+| ----- | -------- | ----- | --- | -------- |
+
+Acceptance criteria:
+
+* No horizontal scroll on 320px+
+* No clipped content
+* No overlapping UI
+* No broken card/grid behavior
+* No uncontrolled image overflow
+* Long text wraps safely
+
+---
+
+## 6. Mobile Readability Audit
+
+Evaluate:
+
+* H1 size
+* H2 size
+* Body text size
+* Line height
+* Paragraph width
+* Text contrast
+* Label readability
+* Button text readability
+* Badge readability
+* Footer text readability
+* Long headline wrapping
+* Content hierarchy after stacking
+
+Use:
+
+| Text Element | Current Mobile State | Problem | Required Fix | Priority |
+| ------------ | -------------------- | ------- | ------------ | -------- |
+
+Acceptance criteria:
+
+* Headlines remain readable without dominating the screen
+* Body text is comfortable to read
+* Line height is not cramped
+* Long headings wrap cleanly
+* Text contrast remains accessible
+* Footer and legal text remain legible
+
+---
+
+## 7. Touch Target and Interaction Audit
+
+Check:
+
+* Buttons
+* Links
+* Nav items
+* Mobile menu trigger
+* Form fields
+* Checkbox/radio inputs
+* Pricing CTAs
+* Footer links
+* Close icons
+* Accordion/FAQ triggers
+
+Use:
+
+| Element | Current Target Size | Problem | Fix | Priority |
+| ------- | ------------------- | ------- | --- | -------- |
+
+Acceptance criteria:
+
+* Primary touch targets should be at least 44px high
+* Links should not be too close together
+* Buttons should be easy to tap with one thumb
+* Form fields should be comfortable on mobile
+* FAQ/accordion triggers should have sufficient tap area
+
+---
+
+## 8. Mobile Navigation Audit
+
+Evaluate:
+
+* Header height
+* Logo size
+* Menu trigger visibility
+* Mobile menu usability
+* Link grouping
+* CTA visibility
+* Sticky/fixed behavior
+* Scroll behavior
+* Menu close behavior
+* Active state clarity
+
+Use:
+
+| Navigation Area | Current State | Problem | Recommended Fix | Priority |
+| --------------- | ------------- | ------- | --------------- | -------- |
+
+Check specifically:
+
+* Does the user understand where they are?
+* Can the user reach the main CTA quickly?
+* Does the mobile menu feel too crowded?
+* Are links logically grouped?
+* Is the header taking too much vertical space?
+* Does sticky behavior help or hurt?
+
+---
+
+## 9. Mobile CTA and Conversion Audit
+
+Evaluate conversion paths:
+
+* Hero CTA
+* Mid-page CTA
+* Pricing CTA
+* Footer CTA
+* Form submission
+* Newsletter / lead capture if present
+* Checkout / success flow if present
+
+Use:
+
+| CTA Location | Visibility | Clarity | Tap Usability | Conversion Risk | Fix |
+| ------------ | ---------- | ------- | ------------- | --------------- | --- |
+
+Check:
+
+* Is the primary CTA visible early enough?
+* Are secondary CTAs confusing?
+* Do buttons stack cleanly?
+* Is CTA copy readable?
+* Is there enough spacing around CTA buttons?
+* Are CTAs repeated at useful moments?
+* Is mobile conversion path obvious?
+
+---
+
+## 10. Mobile Forms Audit
+
+If forms exist, audit:
+
+* Input height
+* Label clarity
+* Placeholder usage
+* Error message behavior
+* Focus state
+* Keyboard behavior
+* Field spacing
+* Submit button placement
+* Required fields
+* Mobile autofill behavior
+* Validation clarity
+
+Use:
+
+| Form Area | Current State | Issue | Fix | Priority |
+| --------- | ------------- | ----- | --- | -------- |
+
+Acceptance criteria:
+
+* Inputs are easy to tap
+* Labels remain visible
+* Errors are clear and close to the field
+* Submit button is easy to find
+* Form does not feel cramped
+* Mobile keyboard does not break layout
+
+---
+
+## 11. Mobile Accessibility Audit
+
+Check:
+
+* Color contrast
+* Focus states
+* Semantic HTML
+* Heading order
+* Button vs link usage
+* Form labels
+* Alt text
+* Keyboard navigation
+* Reduced motion
+* Screen reader basics
+* ARIA overuse or misuse
+
+Use:
+
+| Accessibility Area | Mobile Risk | Problem | Required Fix | Priority |
+| ------------------ | ----------- | ------- | ------------ | -------- |
+
+---
+
+## 12. Mobile Performance Perception Audit
+
+Do not run a full performance audit unless tools are available, but inspect likely mobile perception issues:
+
+* Heavy images
+* Oversized visuals
+* Too many shadows/effects
+* Layout shift
+* Font loading
+* Long initial page
+* Excessive animations
+* Slow perceived hero load
+* Third-party scripts
+* Large unused assets
+
+Use:
+
+| Area | Possible Issue | User Impact | Suggested Fix | Priority |
+| ---- | -------------- | ----------- | ------------- | -------- |
+
+---
+
+## 13. KISS / Mary / Kill Mobile Analysis
+
+Provide a practical prioritization:
+
+### KISS — Keep It Simple
+
+List mobile areas that should be simplified.
+
+### MARRY — Keep and standardize
+
+List patterns that work well and should become official design system rules.
+
+### KILL — Remove or avoid
+
+List mobile patterns that hurt clarity, usability, or maintainability.
+
+For each item include:
+
+* Location
+* Reason
+* Action
+
+---
+
+## 14. Priority Fixes
+
+Group all recommendations into:
+
+### P0 — Must Fix
+
+Critical mobile problems that block production quality.
+
+### P1 — Should Fix
+
+Important improvements that materially improve usability.
+
+### P2 — Nice to Improve
+
+Polish and lower-risk refinements.
+
+For each item include:
+
+| Priority | Issue | Location | Fix | Effort | Risk | Acceptance Criteria |
+| -------- | ----- | -------- | --- | ------ | ---- | ------------------- |
+
+---
+
+## 15. Mobile Design System Rules
+
+Define mobile rules that should be added to `DESIGN_SYSTEM.md`.
+
+Include:
+
+* Mobile spacing rules
+* Mobile typography rules
+* Mobile grid rules
+* Mobile card stacking rules
+* Mobile button rules
+* Mobile CTA rules
+* Mobile form rules
+* Mobile image rules
+* Mobile footer rules
+* Mobile accessibility rules
+* Mobile QA checklist
+
+---
+
+## 16. Coding Agent Implementation Plan
+
+Create a safe step-by-step implementation plan.
+
+Rules:
+
+* Start with audit only.
+* Do not change code before documenting issues.
+* Fix P0 first.
+* Make one category of changes per commit.
+* Avoid broad refactors.
+* Keep visual identity unchanged.
+* Update `DESIGN_SYSTEM.md` after defining new rules.
+* Test at 320px, 360px, 390px, 430px, and 768px.
+* Document before/after risks.
+
+Implementation table:
+
+| Step | Task | Files Likely Affected | Risk | Validation |
+| ---- | ---- | --------------------- | ---- | ---------- |
+
+---
+
+## 17. Final Recommendation
+
+End with:
+
+* Mobile readiness score
+* Whether the site is ready for mobile users
+* First 10 fixes to implement
+* Biggest mobile risk
+* Fastest safe improvement path
+* What should not be changed
+
+REASONING:
+
+1. Inspect repository structure and identify mobile-relevant components and pages.
+2. Audit responsive behavior across key viewport widths.
+3. Separate layout bugs from subjective design polish.
+4. Identify conversion, readability, navigation, and accessibility risks.
+5. Prioritize fixes by impact, effort, and implementation risk.
+6. Produce a practical roadmap that improves mobile quality without redesign.
+
+QUALITY:
+✓ Be specific and evidence-based.
+✓ Do not recommend a redesign.
+✓ Do not rewrite content.
+✓ Prioritize true mobile defects over cosmetic taste.
+✓ Every issue must include a fix and acceptance criteria.
+✓ Use exact file/component references where possible.
+✓ Protect the existing design system direction.
+✓ Make the output useful for a coding agent.
+
+ADVANCED:
+Temperature: 0.2
+Reasoning: extended
+Max tokens: 6000–9000
+Top-p: 0.7
+Frequency penalty: 0.3
+Presence penalty: 0.1
+Language: EN
+Format: Markdown audit document
+Target output: `MOBILE_UX_AUDIT.md`
+
+Top 3 things this prompt should catch:
+
+1. **Horizontal overflow at 320–390px**
+2. **Buttons/cards that look fine on desktop but collapse badly on mobile**
+3. **Hero + CTA hierarchy losing clarity after stacking**

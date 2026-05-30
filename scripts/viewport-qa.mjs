@@ -7,6 +7,9 @@ import { chromium } from 'playwright';
 const BASE = process.env.PREVIEW_URL ?? 'http://127.0.0.1:4173';
 const VIEWPORTS = [
   { width: 320, height: 800, label: '320px' },
+  { width: 360, height: 800, label: '360px' },
+  { width: 390, height: 844, label: '390px' },
+  { width: 430, height: 932, label: '430px' },
   { width: 768, height: 1024, label: '768px' },
   { width: 1280, height: 900, label: '1280px' },
 ];
@@ -92,7 +95,7 @@ async function main() {
     process.exit(1);
   }
 
-  console.log('VIEWPORT QA PASSED: no horizontal overflow at 320 / 768 / 1280 on all tabs + footer.');
+  console.log('VIEWPORT QA PASSED: no horizontal overflow at 320 / 360 / 390 / 430 / 768 / 1280 on all tabs + footer.');
 }
 
 main().catch((err) => {

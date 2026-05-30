@@ -1,4 +1,53 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://promptanatomy.site/sitemap.xml
+# Prompt Anatomy ecosystem site — promptanatomy.site
+# Marketing/demo SPA; single public indexable URL
+
+User-agent: *
+Allow: /
+Disallow: /src/
+Disallow: /node_modules/
+
+# Search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# AI crawlers and answer engines
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://promptanatomy.site/sitemap.xml

@@ -7,6 +7,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- `MOBILE_UX_AUDIT.md` — mobile UX audit findings and fix status; prompt template in `mobile.txt`; indexed in `DOCS_INDEX.md`.
+- Vercel Web Analytics: `@vercel/analytics` dependency and `<Analytics />` in `src/main.tsx`; enable Web Analytics in the Vercel project dashboard after deploy — data appears once production traffic hits the site.
+- `DOCS_INDEX.md` — central document map with task router, tiered file registry, agent roster, and skills catalog for humans and coding agents.
+- `seo-specialist` agent and `seo-crawler` skill — SEO/GEO/AIO and crawler work wired to `seo.txt`, `public/`, and `index.html`.
+- Agent–skill assignments documented in `AGENTS.md` and each `.cursor/agents/*.md` file.
+
+### Fixed
+
+- Mobile: `SequencePath` uses single-column stage grid below `sm` and `break-all` on mono domain labels — reduces crowding at 320px.
+- Mobile: 44px touch targets on LayerSelector options, Header logo/desktop tabs, Anatomizer copy button (`btn-tertiary-sm`), inline links (`link-inline`), and DomainDetail external link.
+- Mobile: Hero H1 scales `text-3xl sm:text-4xl lg:text-5xl`; StatsStrip numbers use `text-5xl sm:text-stat`; header tagline hidden below 360px.
+- Mobile QA: `scripts/viewport-qa.mjs` extended to 360 / 390 / 430px widths; `DESIGN_SYSTEM.md` §13 updated.
+
+## [1.1.0] - 2026-05-30
+
+SEO, GEO, AIO, and crawler discoverability — no visible UI redesign.
+
+### Added
+
+- AI-aware `public/robots.txt`: explicit Allow rules for search engines (Googlebot, Bingbot, DuckDuckBot, Applebot) and LLM/answer-engine crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, and others); defensive Disallow for `/src/` and `/node_modules/`.
+- `public/llms.txt` — curated site map for AI crawlers (canonical URLs, ecosystem domains, contact/trust, hash section links, ignore list).
+- Build-time LLM reference: `scripts/generate-llms.mjs` writes `public/llms-full.txt` from `domains.ts` and `anatomyBuilder.ts`; stamps `lastmod` on `public/sitemap.xml`. Wired into `prebuild` alongside OG generation; `npm run generate:llms` for local runs.
+- `src/data/seoFaq.ts` — six FAQ entries as source of truth for JSON-LD (not rendered in visible UI).
+- Hash-based tab deep links: `/#ecosystem`, `/#anatomizer`, `/#maturity` via `src/utils/tabNavigation.ts` and `navigateToTab` in `App.tsx` (hash sync on load, tab change, and browser back/forward).
+
+### Changed
+
+- `index.html` head: `robots` meta, `og:locale`, `og:image:alt`, `llms.txt` alternate link; Twitter description aligned with Open Graph; JSON-LD extended with `Product` url/image, `SoftwareApplication`, and `FAQPage`.
+- `App.tsx`: all three tab panels always mounted (`hidden` attribute) so ecosystem, Anatomizer, and maturity content stay in the DOM for crawlers; tab-switch scroll-into-view unchanged.
+- `DEPLOY.md`: post-deploy checklist for `/llms.txt`, `/llms-full.txt`, hash deep links, Rich Results Test, and sitemap submission to GSC/Bing.
+
 ## [1.0.0] - 2026-05-30
 
 First public production deploy at [promptanatomy.site](https://promptanatomy.site) via [github.com/DITreneris/site](https://github.com/DITreneris/site) and Vercel.
@@ -89,6 +122,7 @@ First public production deploy at [promptanatomy.site](https://promptanatomy.sit
 
 - Applied KISS-Marry-Kill cuts from the prototype: the duplicate System Directory grid, the right-hand sidebar, per-domain stats blocks, fake footer trust links, the duplicate "Diagnose Maturity" header button, dead imports, and the partial 2-domain Anatomizer prefill.
 
-[Unreleased]: https://github.com/DITreneris/site/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/DITreneris/site/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/DITreneris/site/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/DITreneris/site/releases/tag/v1.0.0
 [0.1.0]: https://github.com/DITreneris/site/releases/tag/v0.1.0

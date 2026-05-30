@@ -1,0 +1,96 @@
+# Prompt Anatomy — Extended LLM Reference
+# Generated: 2026-05-30
+# Canonical site: https://promptanatomy.site/
+
+## Summary
+
+Prompt Anatomy is an AI Operating System for modern teams.
+It helps organizations move from random prompting to structured, repeatable AI workflows.
+Less random prompting. More structured execution.
+
+## Primary cite URLs
+
+- https://promptanatomy.site/
+- https://promptanatomy.site/#ecosystem — 8-domain ecosystem map and domain detail panel
+- https://promptanatomy.site/#anatomizer — 5-layer structured prompt builder (Anatomizer)
+- https://promptanatomy.site/#maturity — Team AI maturity diagnostic (3 questions, 3 tiers)
+- https://promptanatomy.app/ — central platform hub
+
+## Ecosystem domains
+
+### Main Platform — promptanatomy.app
+Role: Central AI Operating System
+URL: https://promptanatomy.app/
+The core control hub bringing together structured learning materials, professional workflows, vetted tools, and reusable frameworks for modern leadership teams.
+
+### 1. Enter — promptanatomy.cloud
+Role: Onboarding & Core Basics
+URL: https://promptanatomy.cloud/
+The standard entry point for teams beginning their systemic AI journey. Instills foundational concepts, terminology, and healthy structural habits.
+
+### 2. Use — promptanatomy.info
+Role: Daily Automation Library
+URL: https://promptanatomy.info/
+Ready-made cognitive recipes built to directly offload repetitive manual tasks and accelerate routine administrative execution.
+
+### 3. Upgrade — promptanatomy.space
+Role: Marketing & PR OS
+URL: https://promptanatomy.space/
+Transform random, low-performing conversational marketing outputs into unified, high-impact narrative expansions based on strict guidelines.
+
+### 4. Recruit — promptanatomy.help
+Role: HR & People Operations
+URL: https://promptanatomy.help/
+Engineered search and alignment templates to automate sourcing, streamline onboarding pipelines, and craft professional review schedules.
+
+### 5. Manage — promptanatomy.ceo
+Role: Strategic Leadership Hub
+URL: https://promptanatomy.ceo/
+Designed exclusively for executives who prioritize crisp operational control, logical synchronization, and strategic translation.
+
+### 6. Decide — promptanatomy.pro
+Role: Enterprise Scaling Engine
+URL: https://promptanatomy.pro/
+Advanced logical layering designed to migrate local ad-hoc workflows into automated enterprise systems and custom API operations.
+
+### 7. Learn — promptanatomy.blog
+Role: Systems Thinker Knowledge Hub
+URL: https://promptanatomy.blog/
+Deep-dive analytical essays, step-by-step logic diagrams, and print-ready canvases designed for modern AI practitioners.
+
+## Structured prompting (Anatomizer)
+
+The Anatomizer assembles prompts from five layers in order. End assembled prompts with: ### BEGIN RESPONSE ACCORDING TO SYSTEM RULES
+
+- Layer A: System Role / Persona → [SYSTEM ROLE]
+- Layer B: Business Context → [BUSINESS CONTEXT]
+- Layer C: Dynamic Variables → [DYNAMIC VARIABLES]
+- Layer D: Instructions & Goals → [INSTRUCTIONS]
+- Layer E: Output Constraints → [OUTPUT CONSTRAINTS]
+
+## Team AI maturity assessment
+
+Three questions; max score 12. Tiers and recommended domains:
+
+### Unstructured Ad-Hoc (Tier 1) (score 3–5)
+Recommended: promptanatomy.cloud (Enter)
+AI is used as an isolated conversational playground — high cognitive variance, security hazards, and zero repeatable leverage.
+
+### Fragmented Adoption (Tier 2) (score 6–9)
+Recommended: promptanatomy.info (Use)
+Standardized prompt concepts exist but templates are localized and uncentralized; some speed gains but workflows remain disconnected.
+
+### Structured AI OS Ready (Tier 3) (score 10–12)
+Recommended: promptanatomy.pro (Decide)
+Strict parameters beat casual chat; prepared for fully scaled enterprise configurations and strategic frameworks.
+
+## Contact and trust
+
+- Email: info@promptanatomy.app
+- Founder: Tomas Staniulis — https://www.linkedin.com/in/staniulis
+- Privacy: https://www.promptanatomy.blog/privacy/
+
+## Pages to ignore
+
+- /src/, /node_modules/, build artifacts
+- Staging or preview deployment URLs

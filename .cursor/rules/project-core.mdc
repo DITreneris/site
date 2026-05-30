@@ -1,41 +1,84 @@
----
-description: Core project context for Prompt Anatomy ecosystem MVP site
-alwaysApply: true
----
-
-# Prompt Anatomy MVP — Core Rules
-
-## Project identity
-
-Building the **Prompt Anatomy ecosystem site** — a static React MVP deployed at **https://promptanatomy.site** (repo: **github.com/DITreneris/site**, host: **Vercel**). Showcases 8 domains, an interactive Anatomizer, and a team AI maturity quiz.
-
-## Non-negotiables
-
-- **Content source:** `primal_concept.txt` defines domain names, roles, audiences, and messaging. Do not rename domains or invent new ecosystem stages.
-- **UI source of truth:** `src/index.css` (`@theme` + `@utility`) and `DESIGN_SYSTEM.md` §14. `snippet.txt` is legacy only — do not reintroduce its slate-950/indigo/rainbow palette.
-- **URL model:** canonical/OG/sitemap → `promptanatomy.site`; Organization/platform CTAs → `promptanatomy.app`.
-- **Ecosystem order:** Enter → Use → Upgrade → Recruit → Manage → Decide → Learn (plus core hub at promptanatomy.app).
-
-## Scope discipline
-
-MVP = marketing/demo site only. No auth, CMS, backend, or payment flows unless explicitly requested.
-
-## Code style
-
-- TypeScript + React functional components
-- Extract data to `src/data/`, UI to `src/components/`
-- Tailwind utility classes; avoid custom CSS unless necessary
-- Minimize diff size; no drive-by refactors
-
-## Brand voice
-
-Professional, direct, systems-oriented. Avoid casual AI hype ("game-changing", "delighted", filler pleasantries). Emphasize structure, repeatability, and operational clarity.
-
-## Before finishing any task
-
-- Verify changes work in dev (`npm run dev`)
-- Ensure `npm run build` passes (includes `generate:og` prebuild)
-- After layout changes, run `npm run qa:viewport`
-- Ensure mobile responsiveness is not regressed
-- Keep external domain links correct (`promptanatomy.app` for platform CTAs, etc.)
-- Record user-visible changes in `CHANGELOG.md` under `## [Unreleased]` (Keep a Changelog format). Delegate to the `changelog-keeper` agent, or update it directly for small changes. Skip only for no-op/internal-only edits.
+---
+
+description: Core project context for Prompt Anatomy ecosystem MVP site
+
+alwaysApply: true
+
+---
+
+
+
+# Prompt Anatomy MVP — Core Rules
+
+
+
+## Project identity
+
+
+
+Building the **Prompt Anatomy ecosystem site** — a static React MVP deployed at **https://promptanatomy.site** (repo: **github.com/DITreneris/site**, host: **Vercel**). Showcases 8 domains, an interactive Anatomizer, and a team AI maturity quiz.
+
+
+
+## Non-negotiables
+
+
+
+- **Document map:** `DOCS_INDEX.md` — task router, agent roster, skills catalog, file registry. Update it when adding docs, agents, or skills.
+
+- **Content source:** `primal_concept.txt` defines domain names, roles, audiences, and messaging. Do not rename domains or invent new ecosystem stages.
+
+- **UI source of truth:** `src/index.css` (`@theme` + `@utility`) and `DESIGN_SYSTEM.md` §14. `snippet.txt` is legacy only — do not reintroduce its slate-950/indigo/rainbow palette.
+
+- **URL model:** canonical/OG/sitemap → `promptanatomy.site`; Organization/platform CTAs → `promptanatomy.app`.
+
+- **Ecosystem order:** Enter → Use → Upgrade → Recruit → Manage → Decide → Learn (plus core hub at promptanatomy.app).
+
+
+
+## Scope discipline
+
+
+
+MVP = marketing/demo site only. No auth, CMS, backend, or payment flows unless explicitly requested.
+
+
+
+## Code style
+
+
+
+- TypeScript + React functional components
+
+- Extract data to `src/data/`, UI to `src/components/`
+
+- Tailwind utility classes; avoid custom CSS unless necessary
+
+- Minimize diff size; no drive-by refactors
+
+
+
+## Brand voice
+
+
+
+Professional, direct, systems-oriented. Avoid casual AI hype ("game-changing", "delighted", filler pleasantries). Emphasize structure, repeatability, and operational clarity.
+
+
+
+## Before finishing any task
+
+
+
+- Verify changes work in dev (`npm run dev`)
+
+- Ensure `npm run build` passes (includes `generate:og` prebuild)
+
+- After layout changes, run `npm run qa:viewport`
+
+- Ensure mobile responsiveness is not regressed
+
+- Keep external domain links correct (`promptanatomy.app` for platform CTAs, etc.)
+
+- Record user-visible changes in `CHANGELOG.md` under `## [Unreleased]` (Keep a Changelog format). Delegate to the `changelog-keeper` agent, or update it directly for small changes. Skip only for no-op/internal-only edits.
+

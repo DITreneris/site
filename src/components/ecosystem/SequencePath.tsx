@@ -91,7 +91,7 @@ export default function SequencePath({ selectedDomain, onSelectDomain }: Sequenc
                         <span className="mt-1 block text-caption leading-snug text-slate-400">
                           {item.role}
                         </span>
-                        <span className="mt-1.5 block font-mono text-micro tracking-tight text-slate-500">
+                        <span className="mt-1.5 block break-all font-mono text-micro tracking-tight text-slate-500">
                           {item.domain}
                         </span>
                       </button>
