@@ -43,7 +43,7 @@ All colors, type sizes, gradients, and shadows live in the `@theme` block of
 - Ecosystem accents: `ecosystem-1..4` mapped per domain in `src/data/ecosystemTheme.ts` (8 domains → 4 colors); do NOT reintroduce 8 unique rainbow gradients
 - Surfaces: light page (`bg-white`, `bg-slate-50`, `bg-hero-bg`) with a dark ecosystem band (`section-dark` + `card-glass`)
 - Eyebrows: light sections → `text-eyebrow-light` or `text-label-upper text-amber-700`; dark sections → `text-label-upper text-brand-accent`
-- Utilities: `btn-primary`/`btn-secondary`/`btn-secondary-dark` (+ `-md` variants), `btn-tertiary-sm`, `section-default`/`section-dark`, `section-heading`, `card-glass`, `card-light`, `card-light-lg`, `badge-accent`, `focus-ring`, `text-label-upper`, `text-nav-link`, `text-micro`, `text-caption`, `link-footer`, `link-inline`, `container-hero`/`container-narrow`/`container-default`/`container-promo`/`container-wide`, `icon-sm/md/lg`, `shadow-tier-1/2/3`
+- Utilities: `btn-primary`/`btn-secondary`/`btn-secondary-dark` (+ `-md` variants), `btn-tertiary-sm`, `section-default`/`section-dark`, `section-heading`, `card-glass`, `card-light`, `card-light-lg`, `badge-accent`, `focus-ring`, `text-label-upper`, `text-nav-link`, `text-micro`, `text-caption`, `link-footer`, `link-footer-meta`, `footer-shell`, `footer-accent-band`, `link-inline`, `container-hero`/`container-narrow`/`container-default`/`container-promo`/`container-wide`, `icon-sm/md/lg`, `shadow-tier-1/2/3`
 - Icons: `lucide-react` only, sized with `icon-sm/md/lg`
 
 ## Patterns to preserve
@@ -51,7 +51,7 @@ All colors, type sizes, gradients, and shadows live in the `@theme` block of
 - Sticky header with 3-tab nav (UI labels): Ecosystem | Prompt Builder | Team Assessment (with mobile menu); internal tab ids stay `ecosystem` | `anatomizer` | `maturity`
 - Domain selection drives the detail panel; quiz result pivots to the recommended domain
 - Anatomizer assembles the prompt from 5 layer selectors via one reusable `LayerSelector`; the preview equals the copy string
-- Footer: gold lightning + wordmark + 8-domain link columns + contact/legal/address from `src/data/siteContact.ts` (no fake trust chrome)
+- Footer: `footer-shell` + navy/gold accent band, wordmark, 8-domain link columns, two-row legal strip from `src/data/siteContact.ts` (`link-footer` nav / `link-footer-meta` legal); no fake trust chrome
 
 ## Accessibility
 

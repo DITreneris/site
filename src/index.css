@@ -43,6 +43,8 @@
   --color-border-glass: rgb(255 255 255 / 0.08);
   --color-border-glass-hover: rgb(255 200 0 / 0.5);
   --color-grid-line: rgb(255 255 255 / 0.06);
+  --color-surface-footer: #f6f8fc;
+  --color-border-footer: #e2e8f0;
 
   /* Gradients */
   --background-image-accent-gradient: linear-gradient(135deg, #cfa73a 0%, #e8b93c 100%);
@@ -216,7 +218,19 @@
 }
 
 @utility link-footer {
-  @apply inline-flex min-h-[44px] items-center text-sm font-medium text-slate-600 transition-colors duration-200 hover:text-brand-accent focus-ring rounded-sm;
+  @apply block w-fit min-h-[44px] py-2 text-sm font-medium leading-snug text-slate-600 underline-offset-2 transition-colors duration-200 hover:text-brand-dark hover:underline focus-ring rounded-sm;
+}
+
+@utility link-footer-meta {
+  @apply inline rounded-sm py-1 text-xs font-medium text-slate-500 underline-offset-2 transition-colors duration-200 hover:text-brand-accent hover:underline focus-ring;
+}
+
+@utility footer-shell {
+  @apply border-t border-border-footer bg-surface-footer;
+}
+
+@utility footer-accent-band {
+  @apply relative h-1 w-full bg-brand-dark;
 }
 
 /* Layout containers */

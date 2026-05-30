@@ -80,8 +80,8 @@ Not a visual redesign. The design system is **documented, testable, and agent-re
 
 ### Footer
 
-- **Works:** Three link columns, legal bar, address, `src/data/siteContact.ts`; `linkClass` constant.
-- **Gap:** Same link styling repeated in `FooterLegalBar` and `FooterFounder`.
+- **Works:** Navy/gold accent band, tinted `footer-shell`, three link columns, two-row legal strip, `src/data/siteContact.ts`; `link-footer` (nav) + `link-footer-meta` (legal).
+- **Gap:** None critical — shell and link split utilities documented in appendix.
 
 ### Icon usage
 
@@ -137,7 +137,7 @@ Not a visual redesign. The design system is **documented, testable, and agent-re
 | Card system | `card-glass` + inline light | 3 | Three light variants | `card-light` |
 | Form elements | Button-only selectors | 4 | N/A for MVP | Document “no native inputs” |
 | Navigation | Header + tabs a11y | 4 | Tab classes duplicated | Optional `nav-tab` utility |
-| Footer | Complete trust block | 4 | Link class duplication | `link-footer` utility |
+| Footer | Complete trust block | 5 | — | `footer-shell`, `link-footer` / `link-footer-meta` |
 | Icon usage | lucide + size utilities | 5 | — | Keep as-is |
 | Shadows/elevation | Tiers + glows | 4 | Not mapped to card types in doc | Document tier → component map |
 | Borders/radius | Visually consistent | 4 | Implicit only | Radius map in doc |
@@ -156,7 +156,7 @@ Not a visual redesign. The design system is **documented, testable, and agent-re
 #### What already works
 
 - **Token source of truth:** `src/index.css` `@theme` (brand, ecosystem, surfaces, gradients, shadows, motion).
-- **Closed utility set:** `btn-primary` / `btn-secondary` / `btn-secondary-dark` (+ `-md`), `btn-tertiary-sm`, `card-light` / `card-light-lg`, `card-glass`, `link-footer`, `link-inline`, containers, `text-micro` / `text-caption`, section shells, focus/hover/motion utilities.
+- **Closed utility set:** `btn-primary` / `btn-secondary` / `btn-secondary-dark` (+ `-md`), `btn-tertiary-sm`, `card-light` / `card-light-lg`, `card-glass`, `footer-shell` / `footer-accent-band`, `link-footer` / `link-footer-meta`, `link-inline`, containers, `text-micro` / `text-caption`, section shells, focus/hover/motion utilities.
 - **Semantic color API:** `src/data/ecosystemTheme.ts` (`accentFor`, `PHASE_ACCENT`, gold hub-only).
 - **Layout shell:** `App.tsx` wires Header, Hero, ProblemSolution, StatsStrip, three tab panels, ClosingCta, Footer.
 - **A11y baseline:** skip link, tab roles, quiz `aria-live`, external links `rel="noreferrer"`, reduced motion, documented contrast matrix (§13).
@@ -365,7 +365,7 @@ All milestones below are **done** as of design system v1.0. Kept for history.
 
 1. **Visual consistency** across Hero → ProblemSolution → StatsStrip → three tab panels → ClosingCta → Footer using documented containers and section utilities.
 2. **Stable token system** — colors, type sizes, gradients, shadows live in `src/index.css` `@theme`; no new hex/rgba in TSX.
-3. **Reusable patterns** — closed set: `btn-primary-md`, `btn-secondary-md`, `btn-secondary-dark`, `card-glass`, `card-light`, `badge-accent`, `link-footer`, `section-default`, `section-dark`, `section-heading`.
+3. **Reusable patterns** — closed set: `btn-primary-md`, `btn-secondary-md`, `btn-secondary-dark`, `card-glass`, `card-light`, `badge-accent`, `footer-shell`, `link-footer`, `link-footer-meta`, `section-default`, `section-dark`, `section-heading`.
 4. **Mobile-safe** — no horizontal overflow at 320px; touch targets ≥ 44px; CTAs stack `w-full sm:w-auto`.
 5. **Accessible contrast** — documented text/background pairs pass WCAG AA (spot-checked).
 6. **Button hierarchy** — one gold primary per CTA group; one secondary per surface (light vs dark); tertiary text links only where specified.
@@ -450,7 +450,7 @@ Use this order when executing the roadmap (coding agent).
 
 | Rule | Standard | Evidence |
 |------|----------|----------|
-| Touch targets | ≥ 44px height on **all** interactives | `min-h-[44px]` on `btn-*`, `link-footer`, `link-inline`, `btn-tertiary-sm`, LayerSelector options, Header tabs |
+| Touch targets | ≥ 44px height on nav interactives | `min-h-[44px]` on `btn-*`, `link-footer`, `link-inline`, `btn-tertiary-sm`, LayerSelector options, Header tabs; legal row uses `link-footer-meta` |
 | Nested interactive grids | Single-col below `sm`, 2-col at `sm+`, revert at `lg` where applicable | `SequencePath`: `grid-cols-1 sm:grid-cols-2 lg:grid-cols-1` |
 | Mono domain labels | Wrap safely in narrow cards | `break-all` on subdomain strings in `SequencePath` |
 | Section padding | `section-default` everywhere | `py-16 md:py-24 px-4 sm:px-6 md:px-8` |
@@ -809,7 +809,8 @@ Inner `max-w-2xl` / `max-w-3xl` sub-constraints remain for intros and figures.
 | `btn-tertiary-sm` | Small accent action (e.g. copy prompt) |
 | `btn-ghost` | Transparent (unused in TSX today) |
 | `card-light`, `card-light-lg` | Light section cards |
-| `link-footer`, `link-inline` | Footer and text-style links |
+| `link-footer`, `link-footer-meta`, `link-inline` | Footer nav links, legal/meta links, text-style links |
+| `footer-shell`, `footer-accent-band` | Footer tinted shell and navy/gold top accent |
 | `text-micro`, `text-caption`, `text-eyebrow-light` | Micro typography |
 | `container-hero` … `container-wide` | Section max-width |
 | `section-default`, `section-dark` | Section padding + dark bg |
