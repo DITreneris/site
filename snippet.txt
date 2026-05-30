@@ -1,0 +1,1034 @@
+import React, { useState, useMemo } from 'react';
+import { 
+  Layers, Cpu, BookOpen, Terminal, Users, Target, LineChart, 
+  Sparkles, Check, Zap, ChevronRight, Play, Info, BarChart2, 
+  Award, ExternalLink, Search, RefreshCw, HelpCircle, 
+  ShieldCheck, AlertTriangle, ArrowRight, Clipboard, Copy
+} from 'lucide-react';
+
+const DOMAINS = [
+  {
+    id: 'app',
+    domain: 'promptanatomy.app',
+    title: 'Main Platform',
+    role: 'Central AI Operating System',
+    description: 'The core control hub bringing together structured learning materials, professional workflows, vetted tools, and reusable frameworks for modern leadership teams.',
+    audience: 'CEOs, COOs, IT Leaders, Managers & Teams',
+    stats: { templates: '600+', tools: '60+', terms: '100+' },
+    color: 'from-indigo-500 to-violet-600',
+    borderCol: 'border-indigo-500/30',
+    bgCol: 'bg-indigo-950/20',
+    icon: Layers,
+    isCore: true,
+    features: [
+      '600+ vetted operational templates & workflows',
+      '60 top-tier evaluated business AI tools',
+      '100-term structured AI & Machine Learning glossary',
+      'AI System OS framework implementation guides'
+    ]
+  },
+  {
+    id: 'cloud',
+    domain: 'promptanatomy.cloud',
+    title: '1. Enter',
+    role: 'Onboarding & Core Basics',
+    description: 'The standard entry point for teams beginning their systemic AI journey. Instills foundational concepts, terminology, and healthy structural habits.',
+    audience: 'All Staff, AI Beginners, & Onboarding Cohorts',
+    stats: { lessons: 'Free Intro', step: 'Stage 1', speed: 'Fast-track' },
+    color: 'from-cyan-400 to-blue-500',
+    borderCol: 'border-cyan-500/30',
+    bgCol: 'bg-cyan-950/20',
+    icon: Zap,
+    isCore: false,
+    features: [
+      'Interactive first lesson at zero cost',
+      'Foundation training for non-technical employees',
+      'Friction-free onboarding templates',
+      'Core prompting rules & playground setups'
+    ]
+  },
+  {
+    id: 'info',
+    domain: 'promptanatomy.info',
+    title: '2. Use',
+    role: 'Daily Automation Library',
+    description: 'Ready-made cognitive recipes built to directly offload repetitive manual tasks and accelerate routine administrative execution.',
+    audience: 'Operational Teams, Project Managers, & All Staff',
+    stats: { savings: '30-50%', daily: '2.5 hrs saved', list: '150+ Prompts' },
+    color: 'from-emerald-400 to-teal-500',
+    borderCol: 'border-emerald-500/30',
+    bgCol: 'bg-emerald-950/20',
+    icon: Play,
+    isCore: false,
+    features: [
+      'Eliminate 30% to 50% of routine team work',
+      'Ready-made workflows for daily emails & reports',
+      'Cognitive offloading checklist generators',
+      'Instant structure mapping for unstructured data'
+    ]
+  },
+  {
+    id: 'space',
+    domain: 'promptanatomy.space',
+    title: '3. Upgrade',
+    role: 'Marketing & PR OS',
+    description: 'Transform random, low-performing conversational marketing outputs into unified, high-octane narrative expansions based on strict guidelines.',
+    audience: 'Marketing, PR, Communication, & Content Teams',
+    stats: { prompts: 'Top 10 High Impact', speedup: '4x Faster', setup: 'Ready Templates' },
+    color: 'from-pink-500 to-rose-500',
+    borderCol: 'border-rose-500/30',
+    bgCol: 'bg-rose-950/20',
+    icon: Target,
+    isCore: false,
+    features: [
+      'Top 10 highest-impact performance marketing prompts',
+      'Structured content calendar & mapping guides',
+      'PR communication templates & brand-voice guardrails',
+      'Daily content scale workflow pipelines'
+    ]
+  },
+  {
+    id: 'help',
+    domain: 'promptanatomy.help',
+    title: '4. Recruit',
+    role: 'HR & People Operations',
+    description: 'Engineered search and alignment templates to automate sourcing, streamline onboarding pipelines, and craft professional review schedules.',
+    audience: 'HR Teams, Recruiters, & Personnel Leads',
+    stats: { pipeline: '8-step build', accuracy: '+40% Sourcing', templates: '30+ HR Files' },
+    color: 'from-purple-500 to-fuchsia-500',
+    borderCol: 'border-fuchsia-500/30',
+    bgCol: 'bg-fuchsia-950/20',
+    icon: Users,
+    isCore: false,
+    features: [
+      'Sourcing prompts for target candidate pools',
+      'Structured, objective job descriptions',
+      'Custom technical interview & feedback metrics',
+      'Constructive evaluation & performance review patterns'
+    ]
+  },
+  {
+    id: 'ceo',
+    domain: 'promptanatomy.ceo',
+    title: '5. Manage',
+    role: 'Strategic Leadership Hub',
+    description: 'Designed exclusively for executives who prioritize crisp operational control, logical synchronization, and strategic translation.',
+    audience: 'CEOs, COOs, Founders, & Senior Executives',
+    stats: { focus: 'Zero Noise', decisions: '12 Blueprints', sync: 'Elite Align' },
+    color: 'from-amber-500 to-orange-500',
+    borderCol: 'border-amber-500/30',
+    bgCol: 'bg-amber-950/20',
+    icon: LineChart,
+    isCore: false,
+    features: [
+      'Strategic SWOT & business roadmap structures',
+      'Tactical delegation tracking models',
+      'Frameworks for high-stakes executive decisions',
+      'Internal team alignment dashboards & playbooks'
+    ]
+  },
+  {
+    id: 'pro',
+    domain: 'promptanatomy.pro',
+    title: '6. Decide',
+    role: 'Enterprise Scaling Engine',
+    description: 'Advanced logical layering designed to migrate local ad-hoc workflows into automated enterprise systems and custom API operations.',
+    audience: 'Consultants, Business Owners, & Growth Leaders',
+    stats: { integration: 'API Ready', scale: 'Multi-Agent', roi: '10x leverage' },
+    color: 'from-violet-500 to-purple-600',
+    borderCol: 'border-purple-500/30',
+    bgCol: 'bg-purple-950/20',
+    icon: Cpu,
+    isCore: false,
+    features: [
+      'System-wide prompt chaining structures',
+      'Multi-agent role simulations and stress tests',
+      'Scalable workflow mapping blueprints',
+      'Professional team-wide deployment audits'
+    ]
+  },
+  {
+    id: 'blog',
+    domain: 'promptanatomy.blog',
+    title: '7. Learn',
+    role: 'Systems Thinker Knowledge Hub',
+    description: 'Deep-dive analytical essays, step-by-step logic diagrams, and print-ready canvases designed for modern AI practitioners.',
+    audience: 'AI Specialists, Trainers, & Systems Architects',
+    stats: { resources: 'Canvases', updates: 'Weekly Deep', insights: 'Pro Level' },
+    color: 'from-sky-500 to-cyan-500',
+    borderCol: 'border-sky-500/30',
+    bgCol: 'bg-sky-950/20',
+    icon: BookOpen,
+    isCore: false,
+    features: [
+      'Deep dives into prompt engineering parameters',
+      'Reusable business discovery canvases & guides',
+      'Visual process workflow diagrams',
+      'Cutting-edge ML system architecture papers'
+    ]
+  }
+];
+
+const ANATOMY_BUILDER_ITEMS = {
+  persona: [
+    { title: "Operations Auditor", content: "You are a senior operations architect specializing in system efficiency and bottlenecks. Your style is analytical, direct, and completely free of boilerplate jargon." },
+    { title: "Elite PR Strategist", content: "You are a crisis communication advisor and brand messaging architect. You focus on brevity, impact, high-integrity logic, and clear narratives." },
+    { title: "HR Sourcing Expert", content: "You are a technical recruiting lead specializing in assessing deep technical expertise, culture-add, and long-term professional growth." }
+  ],
+  context: [
+    { title: "Quarterly Team Lag", content: "Our customer success group is experiencing an 18% delay in milestone sign-offs, causing operational friction during critical customer handoffs." },
+    { title: "High-Stakes Feature Rollout", content: "We are introducing a complex automated reporting engine. Customers express anxiety about losing manual operational granular controls." },
+    { title: "Senior Developer Sourcing", content: "We must recruit a Lead DevOps Engineer to manage multi-region cloud infrastructures under tight data-governance guidelines." }
+  ],
+  variable: [
+    { title: "Operational Metrics", content: "Bottleneck: Step 4 (Data Handshake), Target Speed: under 2 hours, Current Lag: 14 hours average." },
+    { title: "Product Specifics", content: "Feature Name: Auto-Insights, Security: SOC2 certified, Target audience: Enterprise Risk Directors." },
+    { title: "Role Guidelines", content: "Stack: Kubernetes, AWS, Terraform. Standard: Zero-downtime blue/green deployments." }
+  ],
+  instruction: [
+    { title: "Action Plan Checklist", content: "Draft a clear, chronological 14-day tactical roadmap in a clean markdown table showing immediate remediation steps, assignees, and output formats." },
+    { title: "Messaging Architecture", content: "Generate 3 distinct brand positioning statements addressing trust concerns. Compare manual safety check steps side-by-side with automated compliance." },
+    { title: "Architectural Screen Questions", content: "Develop 3 complex behavioral scenario questions containing precise grading checklists for candidate evaluations." }
+  ],
+  constraint: [
+    { title: "No Jargon, Under 300 Words", content: "Strictly avoid conversational filler, introductory pleasantries, and terms like 'moreover', 'game-changing', or 'delighted'. Keep under 300 words total." },
+    { title: "JSON Schema Output Only", content: "Structure the final response strictly in structured JSON, avoiding any preceding conversational text, preamble, or conversational warnings." },
+    { title: "Tabular Matrix Only", content: "The entire response must live inside a clean Markdown grid with clearly designated columns for Objective, Priority, and Metric." }
+  ]
+};
+
+const MATURITY_QUIZ = [
+  {
+    question: "How does your team currently utilize generative AI models?",
+    options: [
+      { text: "Ad-hoc basis: Random individuals write single-sentence conversational prompts.", score: 1 },
+      { text: "Scattered libraries: A few copy-paste prompt documents live locally in text files.", score: 2 },
+      { text: "Basic custom tools: Some departments share custom bots, but workflows are unstandardized.", score: 3 },
+      { text: "Unified Ecosystem: Standard system roles, templates, and API integrations guide operations.", score: 4 }
+    ]
+  },
+  {
+    question: "How are prompt parameters and instructions managed for daily tasks?",
+    options: [
+      { text: "No system guidelines: Staff asks models questions as they would ask a coworker.", score: 1 },
+      { text: "Implicit guidelines: Basic instructions are typed manually, frequently requiring re-writes.", score: 2 },
+      { text: "Anatomical standard: Prompts explicitly define Role, Context, Variables, and Constraints.", score: 3 },
+      { text: "Fully automated pipeline: Prompts are managed as code elements, tested, and tracked.", score: 4 }
+    ]
+  },
+  {
+    question: "What does AI training and onboarding look like inside your organization?",
+    options: [
+      { text: "None: Employees are entirely self-taught.", score: 1 },
+      { text: "Passive assets: A basic instruction sheet or recorded video tutorial is provided.", score: 2 },
+      { text: "Active onboarding: Structured courses are assigned relative to specific roles.", score: 3 },
+      { text: "Continuous excellence: Standard structured playbooks are updated and certified weekly.", score: 4 }
+    ]
+  }
+];
+
+export default function App() {
+  const [activeTab, setActiveTab] = useState('ecosystem'); // ecosystem | anatomizer | maturity
+  const [selectedDomain, setSelectedDomain] = useState('app');
+  
+  // Search state
+  const [searchQuery, setSearchQuery] = useState('');
+
+  // Anatomizer States
+  const [builderPersona, setBuilderPersona] = useState(0);
+  const [builderContext, setBuilderContext] = useState(0);
+  const [builderVariable, setBuilderVariable] = useState(0);
+  const [builderInstruction, setBuilderInstruction] = useState(0);
+  const [builderConstraint, setBuilderConstraint] = useState(0);
+  const [copiedPrompt, setCopiedPrompt] = useState(false);
+
+  // Quiz States
+  const [quizAnswers, setQuizAnswers] = useState({});
+  const [quizStep, setQuizStep] = useState(0);
+  const [quizResult, setQuizResult] = useState(null);
+
+  // Active domain lookup
+  const activeDomainData = useMemo(() => {
+    return DOMAINS.find(d => d.id === selectedDomain) || DOMAINS[0];
+  }, [selectedDomain]);
+
+  // Filtered domains based on query
+  const filteredDomains = useMemo(() => {
+    if (!searchQuery.trim()) return DOMAINS;
+    return DOMAINS.filter(d => 
+      d.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      d.domain.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      d.role.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }, [searchQuery]);
+
+  // Assembling structured prompt
+  const assembledPromptText = useMemo(() => {
+    return `[SYSTEM ROLE]
+${ANATOMY_BUILDER_ITEMS.persona[builderPersona].content}
+
+[BUSINESS CONTEXT]
+${ANATOMY_BUILDER_ITEMS.context[builderContext].content}
+
+[DYNAMIC VARIABLES]
+${ANATOMY_BUILDER_ITEMS.variable[builderVariable].content}
+
+[INSTRUCTIONS]
+${ANATOMY_BUILDER_ITEMS.instruction[builderInstruction].content}
+
+[OUTPUT CONSTRAINTS]
+${ANATOMY_BUILDER_ITEMS.constraint[builderConstraint].content}
+
+### BEGIN RESPONSE ACCORDING TO SYSTEM RULES`;
+  }, [builderPersona, builderContext, builderVariable, builderInstruction, builderConstraint]);
+
+  const handleCopyPrompt = () => {
+    navigator.clipboard.writeText(assembledPromptText);
+    setCopiedPrompt(true);
+    setTimeout(() => setCopiedPrompt(false), 2000);
+  };
+
+  const handleQuizOption = (score) => {
+    const updated = { ...quizAnswers, [quizStep]: score };
+    setQuizAnswers(updated);
+
+    if (quizStep < MATURITY_QUIZ.length - 1) {
+      setQuizStep(prev => prev + 1);
+    } else {
+      const totalScore = Object.values(updated).reduce((acc, curr) => acc + curr, 0);
+      calculateQuizResult(totalScore);
+    }
+  };
+
+  const calculateQuizResult = (score) => {
+    let title = '';
+    let description = '';
+    let recommendedId = 'cloud';
+
+    if (score <= 5) {
+      title = 'Unstructured Ad-Hoc (Tier 1)';
+      description = 'Your organization uses AI primarily as an isolated conversational playground. This leads to high cognitive variance, security hazards, and zero repeatable leverage.';
+      recommendedId = 'cloud';
+    } else if (score <= 9) {
+      title = 'Fragmented Adoption (Tier 2)';
+      description = 'Standardized prompt concepts exist, but templates are localized and uncentralized. Some speed gains occur but standard workflows remain disconnected.';
+      recommendedId = 'info';
+    } else {
+      title = 'Structured AI OS Ready (Tier 3)';
+      description = 'You understand that strict parameters beat casual chat boxes. You are prepared to integrate fully scaled enterprise configurations and strategic frameworks.';
+      recommendedId = 'pro';
+    }
+
+    setQuizResult({
+      score,
+      maxScore: MATURITY_QUIZ.length * 4,
+      title,
+      description,
+      recommendedId
+    });
+  };
+
+  const resetQuiz = () => {
+    setQuizAnswers({});
+    setQuizStep(0);
+    setQuizResult(null);
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans antialiased relative selection:bg-indigo-500 selection:text-white">
+      
+      {/* Decorative premium header border */}
+      <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-cyan-500 via-indigo-500 to-rose-500 z-50" />
+
+      {/* Hero background grid decor */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(148,163,184,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+      
+      {/* Radial soft lighting */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[400px] bg-gradient-to-b from-indigo-500/10 via-transparent to-transparent blur-3xl pointer-events-none" />
+
+      {}
+      <header className="border-b border-slate-900 bg-slate-950/80 backdrop-blur sticky top-0 z-40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+          
+          {/* Logo & Brand */}
+          <div 
+            onClick={() => { setActiveTab('ecosystem'); setSelectedDomain('app'); }}
+            className="flex items-center space-x-3 cursor-pointer"
+          >
+            <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg shadow-indigo-500/20">
+              <Cpu className="w-5 h-5 text-white" />
+            </div>
+            <div>
+              <div className="flex items-center space-x-2">
+                <span className="font-extrabold text-base tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">PROMPT ANATOMY</span>
+                <span className="px-1.5 py-0.5 text-[8px] font-bold bg-indigo-500/15 text-indigo-400 rounded-full border border-indigo-500/30">AI OS</span>
+              </div>
+              <p className="text-[10px] text-slate-400 tracking-wider uppercase font-semibold">Structured Work Systems</p>
+            </div>
+          </div>
+
+          {/* Navigation Controls */}
+          <nav className="hidden md:flex items-center space-x-1">
+            <button 
+              onClick={() => setActiveTab('ecosystem')}
+              className={`px-4 py-2 rounded-lg text-xs font-bold tracking-wide transition-colors ${activeTab === 'ecosystem' ? 'bg-slate-900 text-indigo-400' : 'text-slate-400 hover:text-white'}`}
+            >
+              Ecosystem Map
+            </button>
+            <button 
+              onClick={() => setActiveTab('anatomizer')}
+              className={`px-4 py-2 rounded-lg text-xs font-bold tracking-wide transition-colors ${activeTab === 'anatomizer' ? 'bg-slate-900 text-indigo-400' : 'text-slate-400 hover:text-white'}`}
+            >
+              Anatomizer Builder
+            </button>
+            <button 
+              onClick={() => setActiveTab('maturity')}
+              className={`px-4 py-2 rounded-lg text-xs font-bold tracking-wide transition-colors ${activeTab === 'maturity' ? 'bg-slate-900 text-indigo-400' : 'text-slate-400 hover:text-white'}`}
+            >
+              Team AI Assessment
+            </button>
+          </nav>
+
+          {/* Call to Action Trigger */}
+          <div className="flex items-center space-x-3">
+            <button 
+              onClick={() => setActiveTab('maturity')}
+              className="bg-indigo-600/10 hover:bg-indigo-600/20 text-indigo-400 border border-indigo-500/30 px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center space-x-1.5"
+            >
+              <BarChart2 className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Diagnose Maturity</span>
+            </button>
+          </div>
+
+        </div>
+      </header>
+
+      {}
+      <section className="relative pt-12 pb-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
+        <div className="inline-flex items-center space-x-2 bg-slate-900 border border-slate-800 px-3.5 py-1.5 rounded-full text-xs text-slate-400 mb-6">
+          <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
+          <span>Transition teams from random chat threads to repeatable systems</span>
+        </div>
+        
+        <h1 className="text-3xl sm:text-5xl font-black tracking-tight leading-tight max-w-4xl mx-auto">
+          Turn AI From a <span className="text-indigo-400 border-b border-indigo-500/40">Chat Tool</span> Into a <span className="bg-gradient-to-r from-cyan-400 via-indigo-400 to-rose-400 bg-clip-text text-transparent">Structured Operating System</span>
+        </h1>
+        
+        <p className="mt-4 text-sm sm:text-base text-slate-400 max-w-2xl mx-auto leading-relaxed">
+          Prompt Anatomy provides standard workflows, structured templates, and executive alignment frameworks to guarantee consistent enterprise results with zero conversational clutter.
+        </p>
+      </section>
+
+      {}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+        
+        {/* TAB 1: ECOSYSTEM MAP */}
+        {activeTab === 'ecosystem' && (
+          <div className="space-y-12">
+            
+            {/* Interactive Sequence Track */}
+            <div className="bg-slate-900/50 p-6 rounded-2xl border border-slate-900">
+              <div className="flex flex-col md:flex-row md:items-center justify-between pb-4 border-b border-slate-900 mb-6">
+                <div>
+                  <h3 className="text-xs font-extrabold uppercase tracking-widest text-slate-300">
+                    Deployment Sequence Path
+                  </h3>
+                  <p className="text-[11px] text-slate-500 mt-1">Select any module block to view target audiences, specific features, and domain information.</p>
+                </div>
+                <div className="mt-2 md:mt-0 text-[10px] text-indigo-400 font-bold bg-indigo-500/10 px-2.5 py-1 rounded border border-indigo-500/20">
+                  SYSTEM CORE: promptanatomy.app
+                </div>
+              </div>
+
+              {/* Visual linear track containing only non-core pipeline steps */}
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3">
+                {DOMAINS.filter(d => !d.isCore).map((item, idx) => {
+                  const isSelected = selectedDomain === item.id;
+                  const Icon = item.icon;
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => setSelectedDomain(item.id)}
+                      className={`relative group text-left p-4 rounded-xl border transition-all duration-200 h-full flex flex-col justify-between ${
+                        isSelected 
+                          ? 'bg-slate-900 border-indigo-500/80 shadow-md shadow-indigo-500/5 scale-[1.02]' 
+                          : 'bg-slate-950 border-slate-900 hover:border-slate-800'
+                      }`}
+                    >
+                      <div>
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-[9px] text-slate-500 font-bold tracking-widest uppercase">Stage 0{idx + 1}</span>
+                          <Icon className={`w-4 h-4 ${isSelected ? 'text-indigo-400' : 'text-slate-400'}`} />
+                        </div>
+                        <h4 className="font-bold text-xs text-slate-100">{item.title}</h4>
+                        <span className="text-[9px] text-slate-500 font-mono tracking-tight block mt-0.5">{item.domain}</span>
+                      </div>
+                      <div className="mt-3 pt-2 border-t border-slate-900 flex items-center justify-between">
+                        <span className="text-[9px] text-slate-400 capitalize">{item.id}</span>
+                        <div className={`w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-indigo-400' : 'bg-slate-800'}`} />
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Central App coordinate bridge */}
+              <div className="mt-4 p-4 bg-slate-950/80 border border-slate-900 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="flex items-center space-x-3">
+                  <div className="p-2 rounded bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">
+                    <Layers className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-sm text-slate-200 flex items-center">
+                      promptanatomy.app
+                      <span className="ml-2 text-[9px] uppercase tracking-wider font-extrabold px-1.5 py-0.5 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded">Central Brain</span>
+                    </h4>
+                    <p className="text-[11px] text-slate-400">Integrates all templates, glossary units, and workflow rules under a unified system hierarchy.</p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setSelectedDomain('app')}
+                  className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${
+                    selectedDomain === 'app'
+                      ? 'bg-indigo-600 text-white'
+                      : 'bg-slate-900 text-slate-300 hover:text-white border border-slate-800'
+                  }`}
+                >
+                  Inspect Main OS Hub
+                </button>
+              </div>
+            </div>
+
+            {}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+              
+              {/* Left Column: Visual Dashboard Details */}
+              <div className="lg:col-span-7 bg-slate-900/40 border border-slate-900 rounded-2xl p-6 sm:p-8 space-y-6 relative overflow-hidden">
+                <div className={`absolute top-0 right-0 w-32 h-1 bg-gradient-to-r ${activeDomainData.color}`} />
+
+                {/* Main Domain Card Info */}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div className="flex items-center space-x-3.5">
+                    <div className={`p-3 rounded-xl bg-gradient-to-br ${activeDomainData.color} text-white`}>
+                      {React.createElement(activeDomainData.icon, { className: "w-5 h-5" })}
+                    </div>
+                    <div>
+                      <div className="flex items-center space-x-2">
+                        <h2 className="text-xl font-black text-white">{activeDomainData.title}</h2>
+                        <span className="text-[10px] font-mono text-slate-400 bg-slate-950 px-2 py-0.5 rounded border border-slate-900">
+                          {activeDomainData.domain}
+                        </span>
+                      </div>
+                      <p className="text-xs font-semibold text-indigo-400 mt-0.5">{activeDomainData.role}</p>
+                    </div>
+                  </div>
+                  <a 
+                    href={`https://${activeDomainData.domain}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center space-x-1.5 text-xs bg-slate-950 hover:bg-slate-900 text-slate-300 px-3.5 py-2 rounded-xl border border-slate-900 transition"
+                  >
+                    <span>Visit Live Site</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                </div>
+
+                {/* Simple Description */}
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  {activeDomainData.description}
+                </p>
+
+                {/* Best For Audience Box */}
+                <div className="p-3.5 bg-slate-950/80 border border-slate-900 rounded-xl flex items-center space-x-2.5">
+                  <Users className="w-4 h-4 text-indigo-400 flex-shrink-0" />
+                  <div className="text-xs">
+                    <span className="text-slate-500 font-bold uppercase tracking-wider block text-[9px]">Target Alignment</span>
+                    <span className="text-slate-200 font-semibold">{activeDomainData.audience}</span>
+                  </div>
+                </div>
+
+                {/* Key Features Check Grid */}
+                <div className="space-y-3">
+                  <h4 className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Included System Components</h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    {activeDomainData.features.map((feat, i) => (
+                      <div key={i} className="flex items-center space-x-2.5 p-3 rounded-lg bg-slate-950/30 border border-slate-900/60">
+                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0" />
+                        <span className="text-xs text-slate-300">{feat}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Metrics */}
+                <div className="grid grid-cols-3 gap-3 pt-4 border-t border-slate-900">
+                  {Object.entries(activeDomainData.stats).map(([k, v]) => (
+                    <div key={k} className="p-3 bg-slate-950/40 rounded-xl border border-slate-900 text-center">
+                      <span className="block text-sm font-extrabold text-white">{v}</span>
+                      <span className="block text-[8px] text-slate-500 uppercase font-semibold tracking-wider mt-0.5">{k}</span>
+                    </div>
+                  ))}
+                </div>
+
+              </div>
+
+              {/* Right Column: Dynamic Simple Action Box */}
+              <div className="lg:col-span-5 space-y-4">
+                
+                {/* Ecosystem explanation card */}
+                <div className="p-6 bg-slate-900/40 border border-slate-900 rounded-2xl space-y-4">
+                  <div className="flex items-center space-x-2 text-indigo-400">
+                    <Info className="w-4 h-4" />
+                    <h4 className="text-xs font-bold uppercase tracking-wide">Structured Logic Sequence</h4>
+                  </div>
+                  <p className="text-xs text-slate-400 leading-relaxed">
+                    Prompt Anatomy avoids throwing team members into a single, complicated dashboard. By splitting the operational cycle across domain nodes, members interact strictly with the models relevant to their role. 
+                  </p>
+                  
+                  <div className="p-4 bg-slate-950/80 rounded-xl border border-slate-900 text-xs text-slate-300 font-mono space-y-2">
+                    <div className="flex justify-between">
+                      <span className="text-slate-500">1. Enter Basics</span>
+                      <span className="text-cyan-400">cloud</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-slate-500">2. Routine Daily</span>
+                      <span className="text-emerald-400">info</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-slate-500">3. Scale Marketing</span>
+                      <span className="text-pink-400">space</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-slate-500">4. Human Resources</span>
+                      <span className="text-fuchsia-400">help</span>
+                    </div>
+                  </div>
+
+                  <button 
+                    onClick={() => {
+                      // Pre-fill builder based on active domain
+                      if (activeDomainData.id === 'space') {
+                        setBuilderPersona(1); setBuilderContext(1); setBuilderVariable(1); setBuilderInstruction(1); setBuilderConstraint(0);
+                      } else if (activeDomainData.id === 'help') {
+                        setBuilderPersona(2); setBuilderContext(2); setBuilderVariable(2); setBuilderInstruction(2); setBuilderConstraint(2);
+                      } else {
+                        setBuilderPersona(0); setBuilderContext(0); setBuilderVariable(0); setBuilderInstruction(0); setBuilderConstraint(0);
+                      }
+                      setActiveTab('anatomizer');
+                    }}
+                    className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white text-xs font-bold py-2.5 rounded-xl transition duration-150 flex items-center justify-center space-x-1.5 shadow-md shadow-indigo-600/10"
+                  >
+                    <Play className="w-3 h-3" />
+                    <span>Open in Anatomizer</span>
+                  </button>
+                </div>
+
+                {/* Simple summary panel */}
+                <div className="p-6 bg-slate-900/20 border border-slate-900 rounded-2xl">
+                  <h4 className="text-xs font-bold text-slate-300 uppercase tracking-widest mb-2">Core Operating Concept</h4>
+                  <div className="text-xs text-slate-400 space-y-2">
+                    <div className="flex items-start space-x-2">
+                      <span className="text-emerald-400 font-bold">✓</span>
+                      <span><strong>No Blank Screens:</strong> Start from certified system frameworks.</span>
+                    </div>
+                    <div className="flex items-start space-x-2">
+                      <span className="text-emerald-400 font-bold">✓</span>
+                      <span><strong>Unified Glossary:</strong> Ensure everyone shares identical vocabulary definitions.</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+            {}
+            <div className="space-y-4 pt-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <h3 className="text-sm font-bold uppercase tracking-wider text-slate-200">System Directory</h3>
+                  <p className="text-xs text-slate-500">Filter modules to target specific administrative branches.</p>
+                </div>
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-500" />
+                  <input
+                    type="text"
+                    placeholder="Search systems (info, pro, cloud)..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="bg-slate-900 border border-slate-800 rounded-lg pl-9 pr-4 py-2 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500 w-full sm:w-64"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                {filteredDomains.map(d => (
+                  <div
+                    key={d.id}
+                    onClick={() => setSelectedDomain(d.id)}
+                    className={`cursor-pointer p-5 rounded-xl border transition-all ${
+                      selectedDomain === d.id 
+                        ? 'bg-slate-900 border-indigo-500/60' 
+                        : 'bg-slate-950 border-slate-900 hover:border-slate-800'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-[10px] font-mono text-slate-500">{d.domain}</span>
+                      {React.createElement(d.icon, { className: `w-4 h-4 ${selectedDomain === d.id ? 'text-indigo-400' : 'text-slate-500'}` })}
+                    </div>
+                    <h4 className="font-bold text-xs text-slate-200">{d.title}</h4>
+                    <p className="text-[11px] text-slate-400 line-clamp-2 mt-1 leading-relaxed">{d.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        )}
+
+        {/* TAB 2: PROMPT ANATOMIZER */}
+        {activeTab === 'anatomizer' && (
+          <div className="space-y-6">
+            
+            <div className="p-6 bg-slate-900/50 border border-slate-900 rounded-2xl">
+              <h2 className="text-base font-bold text-white uppercase tracking-wider">The Prompt Anatomizer Canvas</h2>
+              <p className="text-xs text-slate-400 mt-1">
+                Rather than treating AI as an ad-hoc conversational bot, Prompt Anatomy breaks commands down into separate operational layers. Change the configurations below to see how structured rules organize output generation.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+              
+              {/* Left Column: Selector Panels */}
+              <div className="lg:col-span-6 space-y-4">
+                
+                {/* Persona Block */}
+                <div className="bg-slate-900/40 border border-slate-900 p-4 rounded-xl space-y-2">
+                  <span className="text-[9px] font-extrabold text-indigo-400 uppercase tracking-widest">LAYER A: SYSTEM ROLE / PERSONA</span>
+                  <div className="grid grid-cols-3 gap-2">
+                    {ANATOMY_BUILDER_ITEMS.persona.map((p, i) => (
+                      <button
+                        key={i}
+                        onClick={() => setBuilderPersona(i)}
+                        className={`text-[10px] font-bold p-2 rounded-lg border text-center transition-all ${
+                          builderPersona === i 
+                            ? 'bg-indigo-500/10 border-indigo-500 text-white' 
+                            : 'bg-slate-950 border-transparent text-slate-500 hover:text-slate-300'
+                        }`}
+                      >
+                        {p.title}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Context Block */}
+                <div className="bg-slate-900/40 border border-slate-900 p-4 rounded-xl space-y-2">
+                  <span className="text-[9px] font-extrabold text-indigo-400 uppercase tracking-widest">LAYER B: BUSINESS CONTEXT</span>
+                  <div className="grid grid-cols-3 gap-2">
+                    {ANATOMY_BUILDER_ITEMS.context.map((c, i) => (
+                      <button
+                        key={i}
+                        onClick={() => setBuilderContext(i)}
+                        className={`text-[10px] font-bold p-2 rounded-lg border text-center transition-all ${
+                          builderContext === i 
+                            ? 'bg-indigo-500/10 border-indigo-500 text-white' 
+                            : 'bg-slate-950 border-transparent text-slate-500 hover:text-slate-300'
+                        }`}
+                      >
+                        {c.title}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Variables Block */}
+                <div className="bg-slate-900/40 border border-slate-900 p-4 rounded-xl space-y-2">
+                  <span className="text-[9px] font-extrabold text-indigo-400 uppercase tracking-widest">LAYER C: DYNAMIC VARIABLES</span>
+                  <div className="grid grid-cols-3 gap-2">
+                    {ANATOMY_BUILDER_ITEMS.variable.map((v, i) => (
+                      <button
+                        key={i}
+                        onClick={() => setBuilderVariable(i)}
+                        className={`text-[10px] font-bold p-2 rounded-lg border text-center transition-all ${
+                          builderVariable === i 
+                            ? 'bg-indigo-500/10 border-indigo-500 text-white' 
+                            : 'bg-slate-950 border-transparent text-slate-500 hover:text-slate-300'
+                        }`}
+                      >
+                        {v.title}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Instructions Block */}
+                <div className="bg-slate-900/40 border border-slate-900 p-4 rounded-xl space-y-2">
+                  <span className="text-[9px] font-extrabold text-indigo-400 uppercase tracking-widest">LAYER D: INSTRUCTIONS & GOALS</span>
+                  <div className="grid grid-cols-3 gap-2">
+                    {ANATOMY_BUILDER_ITEMS.instruction.map((inst, i) => (
+                      <button
+                        key={i}
+                        onClick={() => setBuilderInstruction(i)}
+                        className={`text-[10px] font-bold p-2 rounded-lg border text-center transition-all ${
+                          builderInstruction === i 
+                            ? 'bg-indigo-500/10 border-indigo-500 text-white' 
+                            : 'bg-slate-950 border-transparent text-slate-500 hover:text-slate-300'
+                        }`}
+                      >
+                        {inst.title}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Constraints Block */}
+                <div className="bg-slate-900/40 border border-slate-900 p-4 rounded-xl space-y-2">
+                  <span className="text-[9px] font-extrabold text-indigo-400 uppercase tracking-widest">LAYER E: BEHAVIORAL CONSTRAINTS</span>
+                  <div className="grid grid-cols-3 gap-2">
+                    {ANATOMY_BUILDER_ITEMS.constraint.map((cons, i) => (
+                      <button
+                        key={i}
+                        onClick={() => setBuilderConstraint(i)}
+                        className={`text-[10px] font-bold p-2 rounded-lg border text-center transition-all ${
+                          builderConstraint === i 
+                            ? 'bg-indigo-500/10 border-indigo-500 text-white' 
+                            : 'bg-slate-950 border-transparent text-slate-500 hover:text-slate-300'
+                        }`}
+                      >
+                        {cons.title}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+              </div>
+
+              {}
+              <div className="lg:col-span-6 space-y-4">
+                <div className="bg-slate-900 border border-slate-900 rounded-2xl overflow-hidden flex flex-col h-full shadow-lg">
+                  <div className="bg-slate-950 px-5 py-3 border-b border-slate-900 flex items-center justify-between">
+                    <div className="flex items-center space-x-2">
+                      <Terminal className="w-4 h-4 text-indigo-400" />
+                      <span className="text-[11px] font-mono font-bold text-slate-300">anatomy_template.md</span>
+                    </div>
+                    <button 
+                      onClick={handleCopyPrompt}
+                      className="bg-indigo-500/10 text-indigo-400 border border-indigo-500/25 hover:bg-indigo-500/20 transition-all px-3 py-1 rounded-lg text-[10px] font-bold flex items-center space-x-1"
+                    >
+                      {copiedPrompt ? (
+                        <>
+                          <Check className="w-3 h-3 text-emerald-400" />
+                          <span className="text-emerald-400">Copied!</span>
+                        </>
+                      ) : (
+                        <>
+                          <Copy className="w-3 h-3" />
+                          <span>Copy Setup</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
+
+                  <div className="p-5 bg-slate-950/80 font-mono text-[11px] text-slate-300 space-y-4 leading-relaxed overflow-y-auto max-h-[480px]">
+                    <div>
+                      <span className="text-slate-600 block"># LAYER A: ROLE</span>
+                      <p className="text-indigo-300 pl-3 border-l border-indigo-500/30 mt-1">{ANATOMY_BUILDER_ITEMS.persona[builderPersona].content}</p>
+                    </div>
+
+                    <div>
+                      <span className="text-slate-600 block"># LAYER B: CONTEXT</span>
+                      <p className="text-cyan-300 pl-3 border-l border-cyan-500/30 mt-1">{ANATOMY_BUILDER_ITEMS.context[builderContext].content}</p>
+                    </div>
+
+                    <div>
+                      <span className="text-slate-600 block"># LAYER C: DYNAMIC INPUTS</span>
+                      <p className="text-emerald-300 pl-3 border-l border-emerald-500/30 mt-1">{ANATOMY_BUILDER_ITEMS.variable[builderVariable].content}</p>
+                    </div>
+
+                    <div>
+                      <span className="text-slate-600 block"># LAYER D: INSTRUCTIONS</span>
+                      <p className="text-amber-300 pl-3 border-l border-amber-500/30 mt-1">{ANATOMY_BUILDER_ITEMS.instruction[builderInstruction].content}</p>
+                    </div>
+
+                    <div>
+                      <span className="text-slate-600 block"># LAYER E: FORMAT RULES & CONSTRAINTS</span>
+                      <p className="text-rose-300 pl-3 border-l border-rose-500/30 mt-1">{ANATOMY_BUILDER_ITEMS.constraint[builderConstraint].content}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-indigo-950/20 border border-indigo-500/20 rounded-xl p-4 flex items-start space-x-3">
+                  <ShieldCheck className="w-4 h-4 text-indigo-400 mt-0.5 flex-shrink-0" />
+                  <p className="text-[11px] text-slate-400 leading-relaxed">
+                    By explicitly establishing these structural divisions, you prevent models from generating conversational filler, keeping instructions structured, repeatable, and highly cost-efficient.
+                  </p>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        )}
+
+        {/* TAB 3: MATURITY ASSESSMENT */}
+        {activeTab === 'maturity' && (
+          <div className="max-w-3xl mx-auto space-y-6">
+            
+            <div className="p-6 bg-slate-900/50 border border-slate-900 rounded-2xl text-center">
+              <h2 className="text-base font-bold text-white uppercase tracking-wider">AI Operational Maturity Diagnostic</h2>
+              <p className="text-xs text-slate-400 mt-1">
+                Evaluate how consistently your organization manages prompts, instructions, and workflows. Discover your team readiness score in seconds.
+              </p>
+            </div>
+
+            {/* Assessment State Router */}
+            {!quizResult ? (
+              <div className="bg-slate-900/40 border border-slate-900 rounded-2xl p-6 sm:p-8 space-y-6">
+                
+                {/* Step indicator */}
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-extrabold text-indigo-400 uppercase tracking-widest">
+                    Question {quizStep + 1} of {MATURITY_QUIZ.length}
+                  </span>
+                  <div className="flex space-x-1.5">
+                    {MATURITY_QUIZ.map((_, i) => (
+                      <div 
+                        key={i} 
+                        className={`w-6 h-1 rounded ${
+                          i === quizStep ? 'bg-indigo-500' : i < quizStep ? 'bg-indigo-950 border border-indigo-500/30' : 'bg-slate-800'
+                        }`} 
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                {/* Question title */}
+                <h3 className="text-base sm:text-lg font-bold text-slate-200">
+                  {MATURITY_QUIZ[quizStep].question}
+                </h3>
+
+                {/* Multiple Options list */}
+                <div className="space-y-2.5">
+                  {MATURITY_QUIZ[quizStep].options.map((opt, i) => (
+                    <button
+                      key={i}
+                      onClick={() => handleQuizOption(opt.score)}
+                      className="w-full text-left p-4 rounded-xl bg-slate-950/60 border border-slate-900 hover:border-slate-800 hover:bg-slate-900/50 transition-all flex items-center justify-between group"
+                    >
+                      <span className="text-xs text-slate-300 group-hover:text-slate-100">{opt.text}</span>
+                      <ChevronRight className="w-4 h-4 text-slate-600 group-hover:text-indigo-400" />
+                    </button>
+                  ))}
+                </div>
+
+              </div>
+            ) : (
+              <div className="bg-slate-900/40 border border-slate-900 rounded-2xl p-6 sm:p-8 space-y-6">
+                
+                <div className="text-center space-y-2">
+                  <span className="px-2.5 py-0.5 bg-indigo-500/10 border border-indigo-500/25 rounded-full text-[10px] font-bold text-indigo-400 uppercase tracking-wider">
+                    Diagnostic Outcome
+                  </span>
+                  <h3 className="text-lg font-extrabold text-white">{quizResult.title}</h3>
+                  <p className="text-xs text-slate-500">
+                    Maturity Score: <strong className="text-slate-200">{quizResult.score}</strong> / {quizResult.maxScore} points
+                  </p>
+                </div>
+
+                {/* Risk and recommended card */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  
+                  <div className="p-4 bg-slate-950/80 border border-slate-900 rounded-xl space-y-1.5">
+                    <div className="flex items-center space-x-2 text-amber-500">
+                      <AlertTriangle className="w-4 h-4" />
+                      <h4 className="text-[10px] font-bold uppercase tracking-wider">Operational Risk</h4>
+                    </div>
+                    <p className="text-xs text-slate-400 leading-relaxed">
+                      {quizResult.description}
+                    </p>
+                  </div>
+
+                  <div className="p-4 bg-indigo-950/20 border border-indigo-500/10 rounded-xl space-y-1.5 flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-center space-x-2 text-indigo-400">
+                        <Award className="w-4 h-4" />
+                        <h4 className="text-[10px] font-bold uppercase tracking-wider">Recommended Pivot Path</h4>
+                      </div>
+                      <p className="text-xs text-slate-400 leading-relaxed mt-1">
+                        Implement foundational standards and deployment techniques relative to Stage:
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => {
+                        setSelectedDomain(quizResult.recommendedId);
+                        setActiveTab('ecosystem');
+                      }}
+                      className="mt-3 w-full bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold py-2 rounded-lg transition duration-150 flex items-center justify-center space-x-1"
+                    >
+                      <span>Explore Stage Solution</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+
+                </div>
+
+                <div className="flex justify-center pt-4 border-t border-slate-900">
+                  <button 
+                    onClick={resetQuiz}
+                    className="bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 text-xs font-bold px-4 py-2 rounded-xl transition flex items-center space-x-1.5"
+                  >
+                    <RefreshCw className="w-3.5 h-3.5" />
+                    <span>Re-evaluate Team</span>
+                  </button>
+                </div>
+
+              </div>
+            )}
+
+          </div>
+        )}
+
+      </main>
+
+      {}
+      <footer className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24 pb-12">
+        <div className="bg-slate-900/40 border border-slate-900 p-8 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden">
+          
+          <div className="space-y-1 text-center md:text-left">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-white">Systemic AI Leadership Access</h3>
+            <p className="text-xs text-slate-400 max-w-lg">
+              Move your team beyond basic, high-variance tools and integrate the Prompt Anatomy Operating System.
+            </p>
+          </div>
+
+          <div className="flex items-center space-x-3">
+            <a 
+              href="https://promptanatomy.app"
+              target="_blank"
+              rel="noreferrer"
+              className="bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold px-5 py-3 rounded-xl transition shadow-lg shadow-indigo-600/10 flex items-center space-x-1"
+            >
+              <span>Get Enterprise OS Access</span>
+              <ChevronRight className="w-3.5 h-3.5" />
+            </a>
+          </div>
+
+        </div>
+
+        <div className="mt-8 text-center text-[10px] text-slate-600 space-y-1.5">
+          <p>© 2026 Prompt Anatomy Ecosystem Inc. All system rights reserved.</p>
+          <div className="flex justify-center space-x-4">
+            <span className="hover:text-slate-400 cursor-pointer">Security Protocol</span>
+            <span>•</span>
+            <span className="hover:text-slate-400 cursor-pointer">Enterprise SLA</span>
+            <span>•</span>
+            <span className="hover:text-slate-400 cursor-pointer">Data Privacy Guard</span>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+  );
+}

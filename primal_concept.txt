@@ -1,0 +1,194 @@
+# Prompt Anatomy Ecosystem
+
+**Prompt Anatomy is an AI Operating System for modern teams.**
+
+It helps organizations move from random prompting to structured, repeatable AI workflows — across learning, daily work, automation, marketing, HR, operations, and executive decision-making.
+
+The ecosystem is built around one simple idea:
+
+**AI should not be used only as a chat tool. It should become a structured work system.**
+
+---
+
+## 1. Main Platform
+
+### **promptanatomy.app**
+
+**The central AI operating system for teams and leaders.**
+
+This is the main platform of the Prompt Anatomy ecosystem. It brings together structured training material, practical workflows, AI tools, and reusable templates for business teams.
+
+It includes:
+
+* **600+ templates and workflows**
+* **60 best AI tools**
+* **100-term AI glossary**
+* Practical training material
+* AI System OS logic for teams
+
+**Best for:** CEOs, COOs, IT leaders, managers, and teams that want to implement AI in a structured way.
+
+---
+
+## 2. Enter
+
+### **promptanatomy.cloud**
+
+**Start learning AI with the first free lesson.**
+
+This is the entry point for people and teams who are just beginning their AI journey.
+
+It helps staff understand the basics of AI, prompting, and practical everyday use before moving into more advanced workflows.
+
+**Best for:** all staff, beginners, and teams that need a simple first step into AI.
+
+---
+
+## 3. Use
+
+### **promptanatomy.info**
+
+**Ready-made prompts and workflow templates for daily work.**
+
+This is the practical automation library for everyday tasks.
+
+It helps employees use AI to reduce repetitive work, structure their thinking, improve communication, and complete routine tasks faster.
+
+The goal is simple:
+
+**Let AI handle 30–50% of your daily routine.**
+
+**Best for:** all staff, operational teams, managers, and anyone who wants ready-to-use AI workflows.
+
+---
+
+## 4. Upgrade
+
+### **promptanatomy.space**
+
+**AI content system for marketing, PR, and communication teams.**
+
+This part of the ecosystem focuses on content creation and communication automation.
+
+It includes high-impact marketing prompts, content workflows, and reusable templates for daily communication.
+
+It helps teams create better content faster — without starting from zero every time.
+
+Includes:
+
+* TOP 10 marketing content prompts
+* Content planning templates
+* PR and communication workflows
+* Daily marketing automation prompts
+
+**Best for:** marketing, PR, communication, and content teams.
+
+---
+
+## 5. Recruit
+
+### **promptanatomy.help**
+
+**AI workflow system for HR, recruitment, and people teams.**
+
+This module helps HR teams automate and improve search, recruitment, assessment, and internal people processes.
+
+It provides structured prompts and workflows for:
+
+* Candidate search
+* Job description creation
+* Interview preparation
+* Candidate assessment
+* HR communication
+* Internal people operations
+
+**Best for:** HR teams, recruiters, personnel managers, and people operations teams.
+
+---
+
+## 6. Manage
+
+### **promptanatomy.ceo**
+
+**Operations center for leaders.**
+
+This is the management layer of the ecosystem.
+
+It helps leaders structure strategic, tactical, and operational work using AI-powered workflows.
+
+It is designed for leaders who need clarity, speed, and better decision-making — not more random AI outputs.
+
+Includes workflows for:
+
+* Strategy
+* Operations
+* Management decisions
+* Team alignment
+* Business planning
+* Execution control
+
+**Best for:** CEOs, COOs, founders, and senior managers.
+
+---
+
+## 7. Decide
+
+### **promptanatomy.pro**
+
+**Professional tool for scaling business with AI.**
+
+This is the advanced layer for organizations that want to move beyond basic AI usage and build scalable AI workflows.
+
+It focuses on business growth, decision-making, systems, and professional AI implementation.
+
+**Best for:** CEOs, COOs, business owners, consultants, and teams scaling AI across the organization.
+
+---
+
+## 8. Learn
+
+### **promptanatomy.blog**
+
+**Knowledge hub for AI, automation, ML, and systems thinking.**
+
+This is the educational and expert content layer of the ecosystem.
+
+It provides practical articles, diagrams, canvases, templates, and frameworks for people who want to go deeper into AI systems and automation.
+
+Includes:
+
+* AI automation articles
+* Workflow schemes
+* AI canvases
+* Practical templates
+* ML and AI implementation insights
+
+**Best for:** AI specialists, automation experts, consultants, trainers, and advanced users.
+
+---
+
+# The Simple Ecosystem Logic
+
+**Enter → Use → Upgrade → Recruit → Manage → Decide → Learn**
+
+Each part of Prompt Anatomy has a clear role:
+
+* **Enter** — learn the basics
+* **Use** — apply AI in daily work
+* **Upgrade** — improve marketing and communication
+* **Recruit** — automate HR and recruitment
+* **Manage** — run operations with AI
+* **Decide** — scale business decisions
+* **Learn** — go deeper into AI systems and automation
+
+---
+
+# Core Message
+
+**Prompt Anatomy helps organizations turn AI from a random tool into a structured operating system.**
+
+It gives teams the templates, workflows, tools, and thinking structures needed to use AI consistently — across daily work, communication, HR, operations, and leadership.
+
+The result:
+
+**Less random prompting. More structured execution.**

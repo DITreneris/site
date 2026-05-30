@@ -1,0 +1,321 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', Consolas, monospace;
+
+  --text-label: 10px;
+  --text-label--line-height: 1.25;
+  --text-stat: 3.5rem;
+  --text-stat--line-height: 1;
+  --text-price: 2.75rem;
+  --text-price--line-height: 1;
+  --text-nav-link: 0.8125rem;
+  --text-nav-link--line-height: 1.25;
+  --text-micro: 10px;
+  --text-micro--line-height: 1.25;
+  --text-caption: 11px;
+  --text-caption--line-height: 1.45;
+
+  --size-icon-sm: 1rem;
+  --size-icon-md: 1.25rem;
+  --size-icon-lg: 1.5rem;
+
+  /* Brand (mother repo) */
+  --color-brand-dark: #0b1320;
+  --color-brand-accent: #cfa73a;
+  --color-brand-accent-hover: #e8b93c;
+
+  /* Ecosystem accents — 8 domains map onto these 4 */
+  --color-ecosystem-1: #2e9e7e;
+  --color-ecosystem-2: #7c5cff;
+  --color-ecosystem-3: #3f6fff;
+  --color-ecosystem-4: #f38a3f;
+
+  /* Functional materials */
+  --color-accent-muted-bg: rgb(207 167 58 / 0.12);
+  --color-accent-muted-border: rgb(207 167 58 / 0.35);
+  --color-surface-glass: rgb(255 255 255 / 0.04);
+  /* Solid component surfaces — opaque enough to sit ABOVE the grid (figure/ground) */
+  --color-surface-card: rgb(15 23 42 / 0.72);
+  --color-surface-card-hover: rgb(15 23 42 / 0.82);
+  --color-surface-inset: rgb(255 255 255 / 0.03);
+  --color-border-glass: rgb(255 255 255 / 0.08);
+  --color-border-glass-hover: rgb(255 200 0 / 0.5);
+  --color-grid-line: rgb(255 255 255 / 0.06);
+
+  /* Gradients */
+  --background-image-accent-gradient: linear-gradient(135deg, #cfa73a 0%, #e8b93c 100%);
+  /* Darker gold gradient for text on light surfaces (WCAG-legible) */
+  --background-image-accent-gradient-strong: linear-gradient(135deg, #8a610f 0%, #b07d12 100%);
+  --background-image-cta-gradient: linear-gradient(135deg, #ffcc33 0%, #ffb300 100%);
+  --background-image-hero-bg: radial-gradient(
+      circle at 50% 20%,
+      rgba(255, 196, 0, 0.12),
+      transparent 60%
+    ),
+    linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+  --background-image-ecosystem-center-glow: radial-gradient(
+    circle at 50% 10%,
+    rgba(255, 190, 0, 0.18),
+    transparent 60%
+  );
+  --background-image-ecosystem-grid: linear-gradient(var(--color-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-grid-line) 1px, transparent 1px);
+
+  /* Shadows */
+  --shadow-soft: 0 2px 8px -2px rgba(11, 19, 32, 0.08), 0 4px 16px -4px rgba(11, 19, 32, 0.06);
+  --shadow-soft-lg: 0 8px 24px -4px rgba(11, 19, 32, 0.08), 0 16px 48px -8px rgba(11, 19, 32, 0.06);
+  --shadow-cta-shadow: 0 6px 14px rgba(255, 179, 0, 0.3);
+  --shadow-pricing-card: 0 20px 40px rgba(0, 0, 0, 0.06);
+  --shadow-ecosystem-card-rim: 0 0 30px rgba(255, 200, 0, 0.15);
+  --shadow-accent-ring: 0 0 0 4px rgba(207, 167, 58, 0.08);
+
+  /* Per-phase selection glow (matches the four ecosystem accents + brand hub) */
+  --shadow-glow-brand: 0 0 24px rgb(207 167 58 / 0.25);
+  --shadow-glow-1: 0 0 24px rgb(46 158 126 / 0.3);
+  --shadow-glow-2: 0 0 24px rgb(124 92 255 / 0.3);
+  --shadow-glow-3: 0 0 24px rgb(63 111 255 / 0.3);
+  --shadow-glow-4: 0 0 24px rgb(243 138 63 / 0.3);
+
+  --transition-duration-400: 400ms;
+}
+
+/* Tailwind v4 default border color compatibility */
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+  }
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    color: var(--color-brand-dark);
+    background: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+}
+
+/* Buttons */
+@utility focus-ring {
+  @apply focus:outline-hidden focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2;
+}
+
+@utility btn-primary {
+  @apply inline-flex items-center justify-center gap-2 min-h-[44px] font-bold text-brand-dark bg-cta-gradient shadow-cta-shadow border border-white/20 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] focus-ring;
+}
+
+@utility btn-primary-md {
+  @apply btn-primary rounded-xl px-6 py-2.5 text-sm;
+}
+
+@utility btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 min-h-[44px] font-semibold text-brand-dark bg-white border border-slate-200 shadow-soft transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.98] focus-ring;
+}
+
+@utility btn-secondary-md {
+  @apply btn-secondary rounded-xl px-6 py-2.5 text-sm;
+}
+
+@utility btn-ghost {
+  @apply inline-flex items-center justify-center gap-2 min-h-[44px] font-semibold text-slate-600 bg-transparent hover:bg-slate-100 transition-all duration-200 focus-ring;
+}
+
+@utility btn-secondary-dark {
+  @apply inline-flex items-center justify-center gap-2 min-h-[44px] rounded-xl border border-border-glass bg-white/5 px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:border-border-glass-hover focus-ring;
+}
+
+@utility btn-secondary-dark-md {
+  @apply btn-secondary-dark w-full sm:w-auto;
+}
+
+@utility btn-tertiary-sm {
+  @apply inline-flex items-center gap-1 rounded-lg border border-brand-accent/30 bg-brand-accent/10 px-3 py-1 text-micro font-bold text-brand-accent transition-colors hover:bg-brand-accent/20 focus-ring;
+}
+
+/* Sections */
+@utility section-default {
+  @apply py-16 md:py-24 px-4 sm:px-6 md:px-8;
+}
+
+@utility section-dark {
+  @apply section-default bg-brand-dark relative overflow-hidden;
+}
+
+@utility section-heading {
+  @apply text-3xl md:text-4xl font-black text-brand-dark tracking-[-0.02em] leading-[1.1];
+}
+
+/* Materials */
+@utility card-glass {
+  @apply rounded-2xl bg-surface-card border border-border-glass backdrop-blur-md hover:border-border-glass-hover hover:shadow-ecosystem-card-rim transition-all duration-200;
+}
+
+@utility badge-accent {
+  @apply inline-flex items-center gap-2 px-3 py-1 rounded-full text-label-upper text-amber-700 bg-accent-muted-bg border border-accent-muted-border;
+}
+
+@utility card-light {
+  @apply rounded-2xl border border-slate-200 bg-white p-6 shadow-tier-1;
+}
+
+@utility card-light-lg {
+  @apply card-light sm:p-8;
+}
+
+@utility bg-ecosystem-grid {
+  background-image: var(--background-image-ecosystem-grid);
+  background-size: 32px 32px;
+}
+
+/* Shadow tiers */
+@utility shadow-tier-1 {
+  @apply shadow-soft;
+}
+@utility shadow-tier-2 {
+  @apply shadow-soft-lg;
+}
+@utility shadow-tier-3 {
+  @apply shadow-pricing-card;
+}
+
+/* Typography utilities */
+@utility text-label-upper {
+  @apply text-[length:var(--text-label)] sm:text-xs font-bold uppercase tracking-[0.12em] sm:tracking-[0.18em];
+}
+
+@utility text-nav-link {
+  @apply text-[length:var(--text-nav-link)] font-bold tracking-[0.04em];
+}
+
+@utility text-micro {
+  @apply text-[length:var(--text-micro)] leading-[var(--text-micro--line-height)];
+}
+
+@utility text-caption {
+  @apply text-[length:var(--text-caption)] leading-[var(--text-caption--line-height)];
+}
+
+@utility text-eyebrow-light {
+  @apply text-label-upper text-amber-700;
+}
+
+@utility link-inline {
+  @apply inline-flex items-center gap-1.5 rounded-sm text-xs font-semibold text-slate-400 transition-colors hover:text-brand-accent focus-ring;
+}
+
+@utility link-footer {
+  @apply inline-flex min-h-[44px] items-center text-sm font-medium text-slate-600 transition-colors duration-200 hover:text-brand-accent focus-ring rounded-sm;
+}
+
+/* Layout containers */
+@utility container-hero {
+  @apply mx-auto w-full max-w-4xl;
+}
+
+@utility container-narrow {
+  @apply mx-auto w-full max-w-3xl;
+}
+
+@utility container-default {
+  @apply mx-auto w-full max-w-5xl;
+}
+
+@utility container-promo {
+  @apply mx-auto w-full max-w-6xl;
+}
+
+@utility container-wide {
+  @apply mx-auto w-full max-w-7xl;
+}
+
+/* Icon sizes */
+@utility icon-sm {
+  width: var(--size-icon-sm);
+  height: var(--size-icon-sm);
+}
+@utility icon-md {
+  width: var(--size-icon-md);
+  height: var(--size-icon-md);
+}
+@utility icon-lg {
+  width: var(--size-icon-lg);
+  height: var(--size-icon-lg);
+}
+
+/* Motion: shared entrance for tab panels and swapped content */
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@utility animate-panel-in {
+  animation: panel-in 250ms ease-out both;
+}
+
+/* Unified hover lift for interactive cards on light surfaces */
+@utility hover-lift {
+  @apply transition-all duration-200 hover:-translate-y-0.5 hover:shadow-soft active:translate-y-0;
+}
+
+/* Brand text selection */
+::selection {
+  background: rgb(207 167 58 / 0.25);
+  color: var(--color-brand-dark);
+}
+
+/* Keep focus rings legible on dark sections (offset matches the dark surface) */
+@layer base {
+  .section-dark *:focus-visible {
+    --tw-ring-offset-color: var(--color-brand-dark);
+  }
+}
+
+/* Thin, unobtrusive scrollbar for the dark terminal preview */
+@layer base {
+  .scrollbar-thin-dark {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(255 255 255 / 0.15) transparent;
+  }
+  .scrollbar-thin-dark::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .scrollbar-thin-dark::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thin-dark::-webkit-scrollbar-thumb {
+    background-color: rgb(255 255 255 / 0.15);
+    border-radius: 9999px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}

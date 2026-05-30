@@ -1,0 +1,32 @@
+{
+  "name": "prompt-anatomy-ecosystem",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "prebuild": "node scripts/generate-og.mjs",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "generate:og": "node scripts/generate-og.mjs",
+    "qa:viewport": "node scripts/viewport-qa.mjs"
+  },
+  "dependencies": {
+    "lucide-react": "^1.17.0",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.0",
+    "@types/react": "^19.2.15",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.2",
+    "playwright": "^1.52.0",
+    "satori": "^0.12.2",
+    "@resvg/resvg-js": "^2.6.2",
+    "@fontsource/inter": "^5.2.5",
+    "tailwindcss": "^4.3.0",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.14"
+  }
+}

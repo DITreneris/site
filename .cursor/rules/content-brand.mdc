@@ -1,0 +1,50 @@
+---
+description: Brand messaging and ecosystem content guidelines for copy edits
+globs: src/data/**, primal_concept.txt, **/*.md
+alwaysApply: false
+---
+
+# Content & Brand Rules
+
+## Tagline hierarchy
+
+1. **Primary:** AI Operating System for modern teams
+2. **Secondary:** Turn AI from a chat tool into a structured operating system
+3. **Outcome:** Less random prompting. More structured execution.
+
+## Domain copy checklist
+
+Each domain entry must include:
+
+- `domain` — exact subdomain (e.g. promptanatomy.cloud)
+- `title` — stage label (e.g. "1. Enter")
+- `role` — one-line functional role
+- `description` — 1–2 sentences, audience-aware
+- `audience` — target roles
+- `features` — 3–4 bullet capabilities (reference stats from concept doc)
+
+## Anatomizer prompt anatomy
+
+Structured prompts use five blocks in this order:
+
+1. `[SYSTEM ROLE]` — persona
+2. `[BUSINESS CONTEXT]` — situational context
+3. `[DYNAMIC VARIABLES]` — parameters
+4. `[INSTRUCTIONS]` — task directive
+5. `[OUTPUT CONSTRAINTS]` — format and limits
+
+End with: `### BEGIN RESPONSE ACCORDING TO SYSTEM RULES`
+
+## Maturity quiz tiers
+
+| Score range | Tier | Recommended domain |
+|-------------|------|-------------------|
+| ≤ 5 | Unstructured Ad-Hoc (Tier 1) | cloud (Enter) |
+| 6–9 | Fragmented Adoption (Tier 2) | info (Use) |
+| ≥ 10 | Structured AI OS Ready (Tier 3) | pro (Decide) |
+
+## Tone
+
+- Write for executives and operational leaders
+- Prefer concrete outcomes (time saved, structure, alignment) over vague AI benefits
+- Stats in prototype (600+ templates, 30–50% routine reduction) are marketing references — keep consistent across pages

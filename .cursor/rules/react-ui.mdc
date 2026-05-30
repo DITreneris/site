@@ -1,0 +1,68 @@
+---
+description: React and Tailwind UI patterns for Prompt Anatomy site components
+globs: src/**/*.tsx, src/**/*.ts, snippet.txt
+alwaysApply: false
+---
+
+# React UI Rules
+
+## Component structure
+
+```
+src/
+  components/
+    layout/       # Header, Hero, Footer
+    ecosystem/    # EcosystemMap, SequencePath, DomainDetail
+    anatomizer/   # AnatomizerBuilder, LayerSelector
+    maturity/     # MaturityQuiz
+  data/           # DOMAINS, ANATOMY_BUILDER_ITEMS, MATURITY_QUIZ, ecosystemTheme
+  types/          # Shared TypeScript interfaces
+  App.tsx         # Tab routing + shared state only — keep thin
+  main.tsx
+  index.css       # Token source of truth (@theme + @utility)
+```
+
+## Design system doc
+
+Canonical roadmap and inventory: [DESIGN_SYSTEM.md](../../DESIGN_SYSTEM.md) (current maturity **v1.5 pre-release**). Coding-agent guardrails: DESIGN_SYSTEM.md §14.
+
+## Agent guardrails (summary)
+
+Full allowed/forbidden examples: **DESIGN_SYSTEM.md §14**. In short:
+
+- **Do:** use `@utility` classes and tokens from `src/index.css`; follow button/card hierarchy; run `npm run qa:viewport` after layout changes.
+- **Do not:** invent colors in TSX; duplicate card/button recipes; reintroduce snippet palette; redesign without request.
+
+## Design tokens (source of truth: src/index.css @theme)
+
+All colors, type sizes, gradients, and shadows live in the `@theme` block of
+[src/index.css](src/index.css), ported from the mother repo (Tailwind v4 — there is no
+`tailwind.config.js`). Use tokens and `@utility` classes, never raw values.
+
+- Brand: `bg-brand-dark` (`#0b1320`), `text-brand-accent` (`#cfa73a`), gold CTA via `btn-primary`
+- Ecosystem accents: `ecosystem-1..4` mapped per domain in `src/data/ecosystemTheme.ts` (8 domains → 4 colors); do NOT reintroduce 8 unique rainbow gradients
+- Surfaces: light page (`bg-white`, `bg-slate-50`, `bg-hero-bg`) with a dark ecosystem band (`section-dark` + `card-glass`)
+- Eyebrows: light sections → `text-eyebrow-light` or `text-label-upper text-amber-700`; dark sections → `text-label-upper text-brand-accent`
+- Utilities: `btn-primary`/`btn-secondary`/`btn-secondary-dark` (+ `-md` variants), `btn-tertiary-sm`, `section-default`/`section-dark`, `section-heading`, `card-glass`, `card-light`, `card-light-lg`, `badge-accent`, `focus-ring`, `text-label-upper`, `text-nav-link`, `text-micro`, `text-caption`, `link-footer`, `link-inline`, `container-hero`/`container-narrow`/`container-default`/`container-promo`/`container-wide`, `icon-sm/md/lg`, `shadow-tier-1/2/3`
+- Icons: `lucide-react` only, sized with `icon-sm/md/lg`
+
+## Patterns to preserve
+
+- Sticky header with 3-tab nav (UI labels): Ecosystem | Prompt Builder | Team Assessment (with mobile menu); internal tab ids stay `ecosystem` | `anatomizer` | `maturity`
+- Domain selection drives the detail panel; quiz result pivots to the recommended domain
+- Anatomizer assembles the prompt from 5 layer selectors via one reusable `LayerSelector`; the preview equals the copy string
+- Footer: gold lightning + wordmark + 8-domain link columns + contact/legal/address from `src/data/siteContact.ts` (no fake trust chrome)
+
+## Accessibility
+
+- Interactive cards and quiz options must be `<button>` elements
+- External links: `target="_blank"` + `rel="noreferrer"`
+- Maintain visible focus/hover states on all clickable elements
+
+## Do not
+
+- Use raw `rgba(...)` / hex or ad-hoc `text-[NNpx]` sizes in JSX — define tokens in `@theme` and use utilities
+- Reintroduce the snippet's full-page `slate-950` + indigo palette or 8 rainbow domain gradients
+- Introduce CSS-in-JS or component libraries (MUI, Chakra) for MVP
+- Split one domain card into over-abstracted primitives
+- Change icon set away from lucide-react
