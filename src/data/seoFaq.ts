@@ -24,7 +24,7 @@ export const SEO_FAQ: SeoFaqItem[] = [
   {
     question: 'Who founded Prompt Anatomy?',
     answer:
-      'Prompt Anatomy was founded by Tomas Staniulis. He builds structured AI operating systems for modern teams — connecting learning, daily automation, content creation, HR, leadership, scaling, and knowledge across the Prompt Anatomy ecosystem.',
+      'Prompt Anatomy was founded by Tomas Staniulis, a published author on organizational systems and structured workflows. He builds AI operating systems for modern teams — connecting learning, daily automation, content creation, HR, leadership, scaling, and knowledge across the Prompt Anatomy ecosystem. Full founder bio: https://www.promptanatomy.blog/about/',
   },
   {
     question: 'What is structured prompting and the Anatomizer?',

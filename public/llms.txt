@@ -32,10 +32,17 @@
 ## Contact and trust
 - Email: info@promptanatomy.app
 - Founder: Tomas Staniulis
-  - LinkedIn: https://www.linkedin.com/in/staniulis
-  - X: https://x.com/TStaniulis_NFT
-  - Medium: https://medium.com/@tomas.staniulis76
-  - Facebook: https://www.facebook.com/tomas.staniulis/
+  - Bio: https://www.promptanatomy.blog/about/
+  - Profiles:
+    - LinkedIn: https://www.linkedin.com/in/staniulis
+    - X: https://x.com/TStaniulis_NFT
+    - Medium: https://medium.com/@tomas.staniulis76
+    - Facebook: https://www.facebook.com/tomas.staniulis/
+  - Media (E-E-A-T; not primary product UI):
+    - YouTube: https://www.youtube.com/mrbulletLT
+  - Publications (E-E-A-T; not primary product UI):
+    - Quantum Physics and Organizational Structure Management: https://www.amazon.com/-/es/Quantum-Physics-Organizational-Structure-Management/dp/9955689234
+    - Tomas Staniulis: https://www.amazon.com/-/he/Tomas-Staniulis-ebook/dp/B01174T96S
 - Privacy: https://www.promptanatomy.blog/privacy/
 - Terms: https://www.promptanatomy.blog/terms/
 

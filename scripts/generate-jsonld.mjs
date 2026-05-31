@@ -22,6 +22,15 @@ const WEBSITE_ID = `${SITE_URL}/#website`;
 const PRODUCT_ID = `${PLATFORM_URL}/#product`;
 const ECOSYSTEM_ID = `${SITE_URL}/#ecosystem`;
 
+const FREE_DEMO_OFFER = {
+  '@type': 'Offer',
+  price: '0',
+  priceCurrency: 'USD',
+  availability: 'https://schema.org/InStock',
+  url: `${PLATFORM_URL}/`,
+  description: 'Free ecosystem demo and team assessment at promptanatomy.site',
+};
+
 const START_MARKER = '<!-- STRUCTURED_DATA:START -->';
 const END_MARKER = '<!-- STRUCTURED_DATA:END -->';
 
@@ -55,6 +64,34 @@ function parseDomains(source) {
   return domains;
 }
 
+function parseLabeledUrls(source, exportName) {
+  const block = source.match(
+    new RegExp(`export const ${exportName} = \\[([\\s\\S]*?)\\] as const;`),
+  )?.[1];
+  if (!block) return [];
+  const entries = [];
+  const entryRe = /label:\s*'([^']+)'[\s\S]*?url:\s*'(https:\/\/[^']+)'/g;
+  let m;
+  while ((m = entryRe.exec(block)) !== null) {
+    entries.push({ label: m[1], url: m[2] });
+  }
+  return entries;
+}
+
+function parsePublications(source) {
+  const block = source.match(
+    /export const AUTHOR_PUBLICATIONS = \[([\s\S]*?)\] as const;/,
+  )?.[1];
+  if (!block) return [];
+  const entries = [];
+  const entryRe = /title:\s*'([^']+)'[\s\S]*?url:\s*'(https:\/\/[^']+)'/g;
+  let m;
+  while ((m = entryRe.exec(block)) !== null) {
+    entries.push({ title: m[1], url: m[2] });
+  }
+  return entries;
+}
+
 function parseSiteContact(source) {
   const authorName = source.match(/name:\s*'([^']+)',\s*\n\s*title:\s*'Founder/)?.[1];
   const email = source.match(/email:\s*'([^']+)'/)?.[1];
@@ -71,6 +108,9 @@ function parseSiteContact(source) {
 
   const authorSameAs = authorSameAsBlock ? parseStringArray(authorSameAsBlock) : [];
   const orgSameAs = orgSameAsBlock ? parseStringArray(orgSameAsBlock) : [];
+  const authorMedia = parseLabeledUrls(source, 'AUTHOR_MEDIA');
+  const publications = parsePublications(source);
+  const personSameAs = [...authorSameAs, ...authorMedia.map((m) => m.url)];
 
   if (!authorName || !email || !street || !cityStateZip || !country) {
     throw new Error('[generate-jsonld] Failed to parse siteContact.ts');
@@ -81,8 +121,9 @@ function parseSiteContact(source) {
 
   return {
     authorName,
-    authorSameAs,
+    authorSameAs: personSameAs,
     orgSameAs,
+    publications,
     email,
     address: {
       streetAddress: street,
@@ -122,6 +163,16 @@ function extractOgImageUrl(html) {
   return match[0];
 }
 
+function buildBookNodes(publications) {
+  return publications.map((book) => ({
+    '@type': 'Book',
+    '@id': `${book.url}#book`,
+    name: book.title,
+    url: book.url,
+    author: { '@id': FOUNDER_ID },
+  }));
+}
+
 function buildGraph({ domains, contact, faqs, ogImageUrl }) {
   const itemListElement = domains.map((d, index) => ({
     '@type': 'ListItem',
@@ -142,6 +193,7 @@ function buildGraph({ domains, contact, faqs, ogImageUrl }) {
         worksFor: { '@id': ORG_ID },
         sameAs: contact.authorSameAs,
       },
+      ...buildBookNodes(contact.publications),
       {
         '@type': 'Organization',
         '@id': ORG_ID,
@@ -183,6 +235,7 @@ function buildGraph({ domains, contact, faqs, ogImageUrl }) {
           'An 8-domain ecosystem covering onboarding, daily automation, content creation, HR, leadership, scaling, and knowledge — built around a central AI operating system for teams.',
         category: 'AI Operating System',
         hasPart: { '@id': ECOSYSTEM_ID },
+        offers: FREE_DEMO_OFFER,
       },
       {
         '@type': 'SoftwareApplication',
@@ -193,12 +246,7 @@ function buildGraph({ domains, contact, faqs, ogImageUrl }) {
         description:
           'AI Operating System for modern teams: structured templates, workflows, and frameworks that turn ad-hoc prompting into repeatable execution.',
         image: ogImageUrl,
-        offers: {
-          '@type': 'Offer',
-          price: '0',
-          priceCurrency: 'USD',
-          description: 'Free ecosystem demo and team assessment at promptanatomy.site',
-        },
+        offers: FREE_DEMO_OFFER,
         publisher: { '@id': ORG_ID },
       },
       {

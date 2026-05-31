@@ -50,6 +50,7 @@ function parseAnatomyLayers(source) {
 
 function parseAuthorContact(source) {
   const name = source.match(/name:\s*'([^']+)',\s*\n\s*title:\s*'Founder/)?.[1];
+  const aboutUrl = source.match(/aboutUrl:\s*'(https:\/\/[^']+)'/)?.[1];
   const sameAsBlock = source.match(
     /export const AUTHOR = \{[\s\S]*?sameAs:\s*\[([\s\S]*?)\],[\s\S]*?\} as const;/,
   )?.[1];
@@ -61,10 +62,31 @@ function parseAuthorContact(source) {
       sameAs.push(urlMatch[1]);
     }
   }
+
+  const media = [];
+  const mediaBlock = source.match(/export const AUTHOR_MEDIA = \[([\s\S]*?)\] as const;/)?.[1];
+  if (mediaBlock) {
+    const entryRe = /label:\s*'([^']+)'[\s\S]*?url:\s*'(https:\/\/[^']+)'/g;
+    let m;
+    while ((m = entryRe.exec(mediaBlock)) !== null) {
+      media.push({ label: m[1], url: m[2] });
+    }
+  }
+
+  const publications = [];
+  const pubBlock = source.match(/export const AUTHOR_PUBLICATIONS = \[([\s\S]*?)\] as const;/)?.[1];
+  if (pubBlock) {
+    const entryRe = /title:\s*'([^']+)'[\s\S]*?url:\s*'(https:\/\/[^']+)'/g;
+    let m;
+    while ((m = entryRe.exec(pubBlock)) !== null) {
+      publications.push({ title: m[1], url: m[2] });
+    }
+  }
+
   if (!name || sameAs.length === 0) {
     throw new Error('[generate-llms] Failed to parse AUTHOR from siteContact.ts');
   }
-  return { name, sameAs };
+  return { name, aboutUrl, sameAs, media, publications };
 }
 
 function formatFounderLines(contact) {
@@ -75,10 +97,26 @@ function formatFounderLines(contact) {
     'facebook.com': 'Facebook',
   };
   const lines = [`- Founder: ${contact.name}`];
+  if (contact.aboutUrl) {
+    lines.push(`  - Bio: ${contact.aboutUrl}`);
+  }
+  lines.push('  - Profiles:');
   for (const url of contact.sameAs) {
     const host = Object.keys(labels).find((key) => url.includes(key));
     const label = host ? labels[host] : 'Profile';
-    lines.push(`  - ${label}: ${url}`);
+    lines.push(`    - ${label}: ${url}`);
+  }
+  if (contact.media.length > 0) {
+    lines.push('  - Media:');
+    for (const item of contact.media) {
+      lines.push(`    - ${item.label}: ${item.url}`);
+    }
+  }
+  if (contact.publications.length > 0) {
+    lines.push('  - Publications:');
+    for (const book of contact.publications) {
+      lines.push(`    - ${book.title}: ${book.url}`);
+    }
   }
   return lines;
 }

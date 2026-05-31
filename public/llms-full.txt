@@ -88,10 +88,17 @@ Strict parameters beat casual chat; prepared for fully scaled enterprise configu
 
 - Email: info@promptanatomy.app
 - Founder: Tomas Staniulis
-  - LinkedIn: https://www.linkedin.com/in/staniulis
-  - X: https://x.com/TStaniulis_NFT
-  - Medium: https://medium.com/@tomas.staniulis76
-  - Facebook: https://www.facebook.com/tomas.staniulis/
+  - Bio: https://www.promptanatomy.blog/about/
+  - Profiles:
+    - LinkedIn: https://www.linkedin.com/in/staniulis
+    - X: https://x.com/TStaniulis_NFT
+    - Medium: https://medium.com/@tomas.staniulis76
+    - Facebook: https://www.facebook.com/tomas.staniulis/
+  - Media:
+    - YouTube: https://www.youtube.com/mrbulletLT
+  - Publications:
+    - Quantum Physics and Organizational Structure Management: https://www.amazon.com/-/es/Quantum-Physics-Organizational-Structure-Management/dp/9955689234
+    - Tomas Staniulis: https://www.amazon.com/-/he/Tomas-Staniulis-ebook/dp/B01174T96S
 - Privacy: https://www.promptanatomy.blog/privacy/
 
 ## Pages to ignore
