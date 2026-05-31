@@ -56,7 +56,7 @@ A production marketing and demo site for **Prompt Anatomy**, an AI Operating Sys
 
 | `src/index.css` | Token implementation (`@theme` + `@utility`) |
 
-| `DESIGN_SYSTEM.md` | Design system maturity (**v1.5 pre-release**), tokens, QA/a11y (§13), agent guardrails (§14) |
+| `DESIGN_SYSTEM.md` | Design system maturity (**v2.0**), tokens, QA/a11y (§13), agent guardrails (§14) |
 
 | `snippet.txt` | Legacy prototype — do not reintroduce slate-950/indigo/rainbow palette |
 
@@ -110,7 +110,7 @@ Agent files: `.cursor/agents/`. Skills: `.cursor/skills/`. See [DOCS_INDEX.md](D
 
 
 
-`Enter → Use → Upgrade → Recruit → Manage → Decide → Learn`
+`Enter → Use → Create → Hire → Manage → Decide → Learn`
 
 
 
@@ -124,9 +124,9 @@ Agent files: `.cursor/agents/`. Skills: `.cursor/skills/`. See [DOCS_INDEX.md](D
 
 | `info` | promptanatomy.info | 2. Use |
 
-| `space` | promptanatomy.space | 3. Upgrade |
+| `space` | promptanatomy.space | 3. Create |
 
-| `help` | promptanatomy.help | 4. Recruit |
+| `help` | promptanatomy.help | 4. Hire |
 
 | `ceo` | promptanatomy.ceo | 5. Manage |
 

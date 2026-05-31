@@ -44,13 +44,17 @@ Vite, React 19, TypeScript, Tailwind CSS v4, lucide-react.
 
 - `src/index.css` — token source of truth (`@theme` + `@utility`)
 
-- `DESIGN_SYSTEM.md` — design system v1.5 pre-release, §14 guardrails
+- `DESIGN_SYSTEM.md` — design system v2.0, §14 guardrails
 
 - `.cursor/rules/react-ui.mdc` — component patterns
 
 - `AGENTS.md` — project scope and conventions
 
 - `snippet.txt` — legacy prototype only; do not reintroduce slate-950/indigo/rainbow palette
+
+- `second.txt` — DS v1.5 → v2.0 read-only audit prompt
+
+- `DS_V2_RELEASE_AUDIT.md` — audit output (when present)
 
 
 

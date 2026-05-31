@@ -54,7 +54,7 @@ export default function MaturityQuiz({ onPivot }: MaturityQuizProps) {
         </div>
 
         {!result ? (
-          <div className="space-y-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-tier-1 sm:p-8">
+          <div className="card-light-lg space-y-6">
             <div className="flex items-center justify-between">
               <span className="text-label-upper text-amber-700">
                 Question {step + 1} of {MATURITY_QUIZ.length}
@@ -85,7 +85,7 @@ export default function MaturityQuiz({ onPivot }: MaturityQuizProps) {
                   <button
                     key={opt.text}
                     onClick={() => handleOption(opt.score)}
-                    className="hover-lift group flex w-full items-center justify-between rounded-xl border border-slate-200 bg-white p-4 text-left hover:border-brand-accent/50 hover:bg-accent-muted-bg focus-ring"
+                    className="quiz-option group"
                   >
                     <span className="text-xs text-slate-600 group-hover:text-brand-dark">
                       {opt.text}

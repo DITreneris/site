@@ -13,17 +13,18 @@
 
 The site has **migrated from the `snippet.txt` prototype** (full-page `slate-950`, indigo accents, eight rainbow domain gradients) to a **mother-repo-aligned token layer** in `src/index.css` (Tailwind v4 `@theme` + `@utility`). The visual model is a **light marketing shell** (hero, problem/solution, tab panels) with a **dark ecosystem band** (`section-dark`, glass cards, phase accents). Agent guidance exists in `.cursor/rules/react-ui.mdc` and `AGENTS.md`, but until this file there was **no human-facing design-system documentation** and **no `components/ui/` primitive layer**—patterns are repeated as Tailwind class strings across ~15 TSX files.
 
-### Current design system version: **v1.5 pre-release**
+### Current design system version: **v2.0**
 
 | Signal | Evidence |
 |--------|----------|
 | **v1.0 achieved** | Closed utility set; Inter loaded; component refactors; §10 checklist passed; `npm run qa:viewport` |
 | **v1.2 achieved** | §13 responsive rules, mobile QA checklist, WCAG contrast matrix, focus-order audit, accessibility baseline table |
 | **v1.5 pre-release achieved** | §14 coding-agent guardrails (allowed/forbidden examples); §15 staged roadmap; §16 document canon; §17 release checklist |
+| **v2.0 achieved** | Utility drift closed in MVP components; `quiz-option` utility; `btn-ghost` removed; formal verifier pass recorded; §19 declaration criteria met |
 
-### What v1.5 pre-release means here
+### What v2.0 means here
 
-Not a visual redesign. The design system is **documented, testable, and agent-ready**: tokens and utilities are closed, QA gates are written, and coding agents have explicit do/don't rules. Optional follow-up: run verifier agent before public marketing of DS maturity.
+Not a visual redesign. **Implementation maturity** marking public marketing readiness: remaining utility drift in MVP components is closed, agent guardrails are updated with documented exceptions, and a formal verifier pass is recorded. Optional follow-up: `components/ui/` thin wrappers (product-approved only).
 
 ---
 
@@ -62,7 +63,7 @@ Not a visual redesign. The design system is **documented, testable, and agent-re
 ### Button system
 
 - **Works:** `btn-primary`, `btn-primary-md`, `btn-secondary`, `btn-secondary-md`, `focus-ring`.
-- **Gap:** `ClosingCta` dark secondary is inline; `AnatomizerBuilder` copy control is custom; `btn-ghost` defined but unused; `DomainDetail` text link is another pattern.
+- **Gap:** `AnatomizerBuilder` terminal chrome and accent callout documented as allowed exceptions (§14.3); `DomainDetail` compact glass CTA documented as exception.
 
 ### Card system
 
@@ -151,7 +152,7 @@ Not a visual redesign. The design system is **documented, testable, and agent-re
 
 ## 4. Current version declaration
 
-### Current Design System Version: **v1.5 pre-release**
+### Current Design System Version: **v2.0**
 
 #### What already works
 
@@ -402,7 +403,7 @@ All milestones below are **done** as of design system v1.0. Kept for history.
 
 | Problem | Why it matters | Suggested fix | Expected impact |
 |---------|----------------|---------------|-----------------|
-| `btn-ghost` unused | Dead utility | Use or remove | Cleaner CSS |
+| `btn-ghost` unused | Dead utility | Removed in v2.0 | Cleaner CSS — **done** |
 | Optional `nav-tab` utility | Long Header tab classes | Extract if Header grows | Simpler header |
 | `components/ui/` wrappers | TS discoverability | Thin wrappers over utilities | DX for React devs |
 | Phase pill duplication | Markup in `DomainDetail` only | Small `PhaseBadge` component | Minor DRY |
@@ -645,6 +646,47 @@ const accent = accentFor(domain.id);
 // ❌ Forbidden — new purple palette, new button style, new card radius system
 ```
 
+#### Quiz option buttons
+
+```tsx
+// ✅ Allowed — maturity quiz options (`group` required for child group-hover)
+<button className="quiz-option group">…</button>
+
+// ❌ Forbidden — ad-hoc border stack duplicating quiz-option
+<button className="hover-lift rounded-xl border border-slate-200 bg-white p-4 …">…</button>
+```
+
+#### Anatomizer terminal preview (allowed exception)
+
+Dark terminal chrome in `AnatomizerBuilder.tsx` may use inline `brand-dark` border stack — **do not copy to light sections**.
+
+```tsx
+// ✅ Allowed — dark preview shell only (AnatomizerBuilder)
+<div className="overflow-hidden rounded-2xl border border-slate-800 bg-brand-dark shadow-tier-2">…</div>
+```
+
+#### Accent callout box (allowed exception)
+
+Light informational callout in AnatomizerBuilder may use accent-muted border/bg inline — acceptable for single-instance informational panels.
+
+```tsx
+// ✅ Allowed — AnatomizerBuilder info callout
+<div className="rounded-xl border border-accent-muted-border bg-accent-muted-bg p-4">…</div>
+```
+
+#### Domain card external link (allowed exception)
+
+Compact glass CTA on dark `DomainDetail` card differs from `btn-secondary-dark-md` sizing intentionally — do not force-align unless product requests.
+
+```tsx
+// ✅ Allowed — DomainDetail external link
+<a className="inline-flex min-h-[44px] … border border-border-glass bg-white/5 …">Open {domain}</a>
+```
+
+#### Removed utilities
+
+- **`btn-ghost` removed in v2.0** — use `btn-tertiary-sm` for small accent actions (e.g. Anatomizer copy button).
+
 ### 14.4 Contribution rules
 
 1. **Tokens first** — new visual need → add to `@theme` / `@utility` in `index.css`, then use in TSX.
@@ -675,7 +717,8 @@ const accent = accentFor(domain.id);
 | v1.0 | Internal stable DS | Utilities, refactors, §10 checklist | `index.css`, ~6 TSX, docs | Build green; closed utility set | Medium (visual regressions) — **done** |
 | v1.0 → v1.2 | QA + accessibility | Contrast matrix, mobile checklist, focus audit | `DESIGN_SYSTEM.md` §13 | §13 checklists pass; `qa:viewport` green | Low — **done** |
 | v1.2 → v1.5 pre-release | Governance + agent safety | Guardrails, release checklist, contribution rules | `DESIGN_SYSTEM.md` §14–§17, `react-ui.mdc` | §17 checklist complete | Low — **done** |
-| Post v1.5 | Optional scale | `components/ui/` wrappers, `nav-tab` utility, remove `btn-ghost` | TBD | Product-driven only | Low |
+| Post v1.5 → v2.0 | Drift closure + verifier | `quiz-option`, remove `btn-ghost`, quiz card refactor, verifier pass | `index.css`, `MaturityQuiz.tsx`, docs | DS_V2_RELEASE_AUDIT P0/P1 closed | Low — **done** |
+| Post v2.0 | Optional scale | `components/ui/` wrappers, `nav-tab` utility | TBD | Product-driven only | Low |
 
 ---
 
@@ -752,13 +795,24 @@ Complete before declaring **Design System v1.5 pre-release** (documentation and 
 
 ---
 
-## 19. Final recommendation
+## 19. Implementation v2.0 — declaration criteria
 
-| Item | Recommendation |
-|------|----------------|
-| **Current version** | **v1.5 pre-release** |
-| **Previous milestones** | v1.0 (utilities stable), v1.2 (QA + a11y docs) |
-| **Optional next work** | `components/ui/` thin wrappers; remove unused `btn-ghost`; formal verifier agent pass |
+Declare **Design System implementation v2.0** when all of the following are true:
+
+1. **§17 checklist complete** (v1.5 pre-release — declared 2026-05-30)
+2. **P0/P1 utility drift closed** — quiz question shell uses `card-light-lg`; quiz options use `quiz-option`; `btn-ghost` removed from CSS and Appendix D
+3. **Formal verifier pass recorded** — see `DS_V2_RELEASE_AUDIT.md` §10 verifier subsection; P0 findings closed or waived in writing
+4. **Build + viewport QA green** — `npm run build` and `npm run qa:viewport` pass after changes
+5. **Documentation updated** — §14.3 exceptions documented; `CHANGELOG.md` updated
+
+**Declared:** Design System **implementation v2.0** — 2026-05-31.
+
+| Item | Status |
+|------|--------|
+| **Current implementation version** | **v2.0** (declared 2026-05-31) |
+| **Previous milestones** | v1.0 (utilities stable), v1.2 (QA + a11y docs), v1.5 pre-release (governance gate) |
+| **Document version** | 2.0 (roadmap doc structure) — distinct from implementation v2.0 |
+| **Optional next work** | `components/ui/` thin wrappers; sticky tab discovery A/B |
 | **Biggest risk** | Agents bypassing §14 guardrails and copying nearest TSX file |
 | **Safe extension path** | New block → §14.3 FAQ example → utilities only → `qa:viewport` → changelog |
 
@@ -807,7 +861,7 @@ Inner `max-w-2xl` / `max-w-3xl` sub-constraints remain for intros and figures.
 | `btn-secondary`, `btn-secondary-md` | White bordered CTA (light surfaces) |
 | `btn-secondary-dark`, `btn-secondary-dark-md` | Glass bordered CTA (dark surfaces) |
 | `btn-tertiary-sm` | Small accent action (e.g. copy prompt) |
-| `btn-ghost` | Transparent (unused in TSX today) |
+| `quiz-option` | Maturity quiz option button (hover-lift + border) |
 | `card-light`, `card-light-lg` | Light section cards |
 | `link-footer`, `link-footer-meta`, `link-inline` | Footer nav links, legal/meta links, text-style links |
 | `footer-shell`, `footer-accent-band` | Footer tinted shell and navy/gold top accent |
@@ -826,4 +880,4 @@ Inner `max-w-2xl` / `max-w-3xl` sub-constraints remain for intros and figures.
 
 ---
 
-*Document version: 2.0 (roadmap doc). Design system implementation maturity: **v1.5 pre-release** (declared 2026-05-30).*
+*Document version: 2.0 (roadmap doc). Design system implementation maturity: **v2.0** (declared 2026-05-31).*

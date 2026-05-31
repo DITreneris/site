@@ -11,7 +11,7 @@
 |----------|------------|------|
 | **Human developer** | [README.md](README.md) | [AGENTS.md](AGENTS.md) → task row below |
 | **Coding agent** | [AGENTS.md](AGENTS.md) | Matching **agent** + **skill** + **rules** for the task |
-| **Design / UI work** | [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) §14 | [src/index.css](src/index.css), `.cursor/rules/react-ui.mdc` |
+| **Design / UI work** | [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) §14 | [src/index.css](src/index.css), `.cursor/rules/react-ui.mdc`; DS v2 audit → [second.txt](second.txt) |
 | **Copy / domains** | [primal_concept.txt](primal_concept.txt) | `.cursor/skills/ecosystem-content/SKILL.md` |
 | **Deploy / release** | [DEPLOY.md](DEPLOY.md) | `.cursor/skills/deploy-vercel/SKILL.md` |
 | **SEO / crawlers** | [public/llms.txt](public/llms.txt) | `.cursor/skills/seo-crawler/SKILL.md`, [seo.txt](seo.txt) |
@@ -32,6 +32,7 @@ Use this table to pick the right agent, skill, and documents.
 | Vercel deploy, DNS, release check | — (use skill) | `deploy-vercel` | `deploy-vercel.mdc` | `DEPLOY.md`, `CHANGELOG.md` |
 | Post-task QA | `verifier` | — | `project-core.mdc` | `AGENTS.md` workflow, agent checklist |
 | Record shipped changes | `changelog-keeper` | — | — | `CHANGELOG.md` |
+| DS v2 release audit | `ui-builder` (read-only) or main session | — | `react-ui.mdc`, `project-core.mdc` | `second.txt`, `DESIGN_SYSTEM.md` §13–§18, `MOBILE_UX_AUDIT.md` |
 
 **Workflow (all feature work):** change → `npm run build` → layout changes → `npm run qa:viewport` → `changelog-keeper` → `verifier`.
 
@@ -55,7 +56,7 @@ Use this table to pick the right agent, skill, and documents.
 |----|------|----------|-------|
 | `readme` | [README.md](README.md) | Developers | Onboarding, scripts, folder map |
 | `agents` | [AGENTS.md](AGENTS.md) | Agents + leads | Scope, domains, workflow, conventions |
-| `design-system` | [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) | Design + frontend + agents | v1.5 pre-release; §14 = agent guardrails |
+| `design-system` | [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) | Design + frontend + agents | v2.0 implementation; §14 = agent guardrails |
 | `deploy` | [DEPLOY.md](DEPLOY.md) | DevOps / release | Vercel + Porkbun checklist |
 | `changelog` | [CHANGELOG.md](CHANGELOG.md) | Everyone | Keep a Changelog format; `[Unreleased]` |
 | `docs-index` | DOCS_INDEX.md (this file) | Everyone | Document map; update when adding docs/agents/skills |
@@ -71,7 +72,7 @@ Use this table to pick the right agent, skill, and documents.
 | `sitemap` | [public/sitemap.xml](public/sitemap.xml) | Yes — `generate-llms.mjs` | Canonical `.site` URLs |
 | `robots` | [public/robots.txt](public/robots.txt) | Hand-maintained | Crawler allow/disallow policy |
 | `seo-faq-data` | [src/data/seoFaq.ts](src/data/seoFaq.ts) | No | FAQ JSON-LD source; not visible UI |
-| `html-head` | [index.html](index.html) | No | Meta, OG, JSON-LD, canonical |
+| `html-head` | [index.html](index.html) | Partial — JSON-LD generated at prebuild | Meta, OG, canonical; `@graph` from `generate-jsonld.mjs` |
 
 ### Tier 4 — Agent prompt templates (not runtime source of truth)
 
@@ -81,6 +82,8 @@ Use this table to pick the right agent, skill, and documents.
 | `mobile-prompt` | [mobile.txt](mobile.txt) | Full mobile UX/UI audit template | Active — see `MOBILE_UX_AUDIT.md` |
 | `mobile-audit` | [MOBILE_UX_AUDIT.md](MOBILE_UX_AUDIT.md) | Mobile audit findings + fix status | Update after mobile QA passes |
 | `ds-upgrade-prompt` | [upgrade.txt](upgrade.txt) | Design system v0.7 → v1.5 roadmap prompt | **Historical** — v1.5 achieved; reference only |
+| `ds-v2-prompt` | [second.txt](second.txt) | Design system v1.5 → v2.0 release polish audit | Active — produces `DS_V2_RELEASE_AUDIT.md` |
+| `ds-v2-audit` | [DS_V2_RELEASE_AUDIT.md](DS_V2_RELEASE_AUDIT.md) | DS v2 delta audit findings + roadmap | Update after v2 audit pass |
 | `legacy-ui` | [snippet.txt](snippet.txt) | Original single-file prototype | **Do not reuse palette** — regression guard only |
 
 ---
@@ -140,6 +143,7 @@ src/
 scripts/
   generate-og.mjs        OG cache bust + GitHub copy from public/og_2.png
   generate-llms.mjs      llms-full.txt + sitemap lastmod
+  generate-jsonld.mjs    index.html JSON-LD @graph (Person, ItemList, FAQ)
   viewport-qa.mjs        Playwright overflow check
 ```
 

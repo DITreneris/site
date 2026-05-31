@@ -19,7 +19,12 @@ export const SEO_FAQ: SeoFaqItem[] = [
   {
     question: 'What is the 8-domain ecosystem?',
     answer:
-      'The ecosystem spans eight domains in order: Enter (promptanatomy.cloud), Use (promptanatomy.info), Upgrade (promptanatomy.space), Recruit (promptanatomy.help), Manage (promptanatomy.ceo), Decide (promptanatomy.pro), and Learn (promptanatomy.blog), with the central platform at promptanatomy.app.',
+      'The ecosystem spans eight domains in order: Enter (promptanatomy.cloud), Use (promptanatomy.info), Create (promptanatomy.space), Hire (promptanatomy.help), Manage (promptanatomy.ceo), Decide (promptanatomy.pro), and Learn (promptanatomy.blog), with the central platform at promptanatomy.app.',
+  },
+  {
+    question: 'Who founded Prompt Anatomy?',
+    answer:
+      'Prompt Anatomy was founded by Tomas Staniulis. He builds structured AI operating systems for modern teams — connecting learning, daily automation, content creation, HR, leadership, scaling, and knowledge across the Prompt Anatomy ecosystem.',
   },
   {
     question: 'What is structured prompting and the Anatomizer?',

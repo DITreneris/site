@@ -13,7 +13,7 @@ Official marketing and demo site for the **Prompt Anatomy** AI Operating System.
 
 ## What this site does
 
-- Explains the 8-domain ecosystem (Enter → Use → Upgrade → Recruit → Manage → Decide → Learn)
+- Explains the 8-domain ecosystem (Enter → Use → Create → Hire → Manage → Decide → Learn)
 - **Ecosystem** tab — phase-driven journey map with domain detail panel
 - **Prompt Builder** — interactive 5-part Anatomizer (Persona, Context, Variables, Instructions, Constraints)
 - **Team Assessment** — 60-second AI maturity quiz with tier result and domain recommendation

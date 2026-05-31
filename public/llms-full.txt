@@ -1,5 +1,5 @@
 # Prompt Anatomy — Extended LLM Reference
-# Generated: 2026-05-30
+# Generated: 2026-05-31
 # Canonical site: https://promptanatomy.site/
 
 ## Summary
@@ -33,12 +33,12 @@ Role: Daily Automation Library
 URL: https://promptanatomy.info/
 Ready-made cognitive recipes built to directly offload repetitive manual tasks and accelerate routine administrative execution.
 
-### 3. Upgrade — promptanatomy.space
+### 3. Create — promptanatomy.space
 Role: Marketing & PR OS
 URL: https://promptanatomy.space/
 Transform random, low-performing conversational marketing outputs into unified, high-impact narrative expansions based on strict guidelines.
 
-### 4. Recruit — promptanatomy.help
+### 4. Hire — promptanatomy.help
 Role: HR & People Operations
 URL: https://promptanatomy.help/
 Engineered search and alignment templates to automate sourcing, streamline onboarding pipelines, and craft professional review schedules.
@@ -87,7 +87,11 @@ Strict parameters beat casual chat; prepared for fully scaled enterprise configu
 ## Contact and trust
 
 - Email: info@promptanatomy.app
-- Founder: Tomas Staniulis — https://www.linkedin.com/in/staniulis
+- Founder: Tomas Staniulis
+  - LinkedIn: https://www.linkedin.com/in/staniulis
+  - X: https://x.com/TStaniulis_NFT
+  - Medium: https://medium.com/@tomas.staniulis76
+  - Facebook: https://www.facebook.com/tomas.staniulis/
 - Privacy: https://www.promptanatomy.blog/privacy/
 
 ## Pages to ignore

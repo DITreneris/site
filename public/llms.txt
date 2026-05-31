@@ -7,7 +7,7 @@
 
 ## Primary page (cite this)
 - https://promptanatomy.site/
-  - 8-domain ecosystem overview (Enter → Use → Upgrade → Recruit → Manage → Decide → Learn)
+  - 8-domain ecosystem overview (Enter → Use → Create → Hire → Manage → Decide → Learn)
   - Interactive prompt builder (5-layer structured prompts)
   - Team AI maturity assessment (3 tiers)
 
@@ -23,17 +23,19 @@
 - https://promptanatomy.app/ — Main Platform / Central AI Operating System
 - https://promptanatomy.cloud/ — 1. Enter / Onboarding & Core Basics
 - https://promptanatomy.info/ — 2. Use / Daily Automation Library
-- https://promptanatomy.space/ — 3. Upgrade / Marketing & PR OS
-- https://promptanatomy.help/ — 4. Recruit / HR & People Operations
+- https://promptanatomy.space/ — 3. Create / Marketing & PR OS
+- https://promptanatomy.help/ — 4. Hire / HR & People Operations
 - https://promptanatomy.ceo/ — 5. Manage / Strategic Leadership Hub
 - https://promptanatomy.pro/ — 6. Decide / Enterprise Scaling Engine
 - https://promptanatomy.blog/ — 7. Learn / Systems Thinker Knowledge Hub
 
 ## Contact and trust
 - Email: info@promptanatomy.app
-- Founder: Tomas Staniulis — https://www.linkedin.com/in/staniulis
-- X: https://x.com/TStaniulis_NFT
-- Telegram: https://t.me/prompt_anatomy
+- Founder: Tomas Staniulis
+  - LinkedIn: https://www.linkedin.com/in/staniulis
+  - X: https://x.com/TStaniulis_NFT
+  - Medium: https://medium.com/@tomas.staniulis76
+  - Facebook: https://www.facebook.com/tomas.staniulis/
 - Privacy: https://www.promptanatomy.blog/privacy/
 - Terms: https://www.promptanatomy.blog/terms/
 

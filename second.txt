@@ -1,0 +1,401 @@
+---
+prompt_id: ds-v2-audit
+prompt_version: 1.0.0
+status: active
+mode: read-only-audit
+output_artifact: DS_V2_RELEASE_AUDIT.md
+supersedes: upgrade.txt (historical)
+declared_input_maturity: v1.5 pre-release
+---
+
+Bottom line: v2.0 is NOT a redesign and NOT "make it prettier."
+
+v1.5 pre-release = documented, testable, agent-ready (`DESIGN_SYSTEM.md` §17 complete, declared 2026-05-30).
+
+Your biggest risk: re-listing completed §17 items or inventing gaps for out-of-scope MVP components (tables, modals, native forms, pricing, auth/CMS).
+
+The audit must be **delta-only**: cite `file:line` for every finding; skip items already marked complete unless regression evidence exists in TSX/CSS.
+
+Output artifact: `DS_V2_RELEASE_AUDIT.md` (read-only — do not modify source unless user explicitly requests implementation).
+
+Use this prompt:
+
+# Prompt: Design System v1.5 → v2.0 Release Polish Audit
+
+## META
+
+You are a **senior SaaS design systems lead, product designer, UX auditor, and US English content editor** with 10+ years of experience preparing B2B SaaS products for public release.
+
+Your goal is to deeply analyze our current **Design System v1.5 pre-release** and create a practical roadmap to raise it to **Design System v2.0 release quality** for the Prompt Anatomy ecosystem marketing MVP.
+
+The audience is a product/design/development team and coding agents preparing for release. The system already has a strong foundation, so this is **not a redesign task**. Your job is to identify **mini and micro improvements** that increase consistency, readability, trust, conversion, and perceived product quality — **only where not already resolved in §17 or MOBILE_UX_AUDIT.md**.
+
+---
+
+## INPUT
+
+### Product context
+
+* Repository: Prompt Anatomy ecosystem site (`promptanatomy.site`) — static React MVP
+* Design System implementation maturity: **v1.5 pre-release** (governance + QA documented)
+* Goal: recommend and roadmap toward **v2.0 release-ready** (definition to be proposed in audit §1 and §11)
+* Product type: premium SaaS / AI workflow system (marketing + demo shell)
+* Market language: **US English**
+* Architecture: single-page shell — Hero → Problem/Solution → Stats → 3 tab panels (`ecosystem` | `anatomizer` | `maturity`) → Closing CTA → Footer
+
+### Mandatory reads before audit
+
+| Category | Paths |
+| -------- | ----- |
+| Design system | `DESIGN_SYSTEM.md` §6–§18, `src/index.css` |
+| Components | `src/components/layout/`, `src/components/ecosystem/`, `src/components/anatomizer/`, `src/components/maturity/` |
+| Data / copy | `src/data/domains.ts`, `src/data/maturityQuiz.ts`, `src/data/anatomyBuilder.ts`, `primal_concept.txt` |
+| Agent rules | `.cursor/rules/react-ui.mdc`, `.cursor/rules/content-brand.mdc` |
+| Prior audits | `MOBILE_UX_AUDIT.md` |
+| QA | `scripts/viewport-qa.mjs`, `package.json` scripts |
+| Scope / workflow | `AGENTS.md`, `DOCS_INDEX.md` |
+| Legacy guard | `snippet.txt` — palette regression only; do not recommend reintroducing slate-950/indigo/rainbow |
+
+### MVP scope boundary (explicit N/A)
+
+Do not report FAIL for absent features unless code exists in repo:
+
+* Tables, modals, tooltips, native `<input>` / `<textarea>`, pricing pages, auth, CMS, backend, multi-language
+* Anatomizer and Maturity quiz use **button grids**, not native forms — intentional for MVP
+* Three-tab architecture and ecosystem domain order are fixed per `AGENTS.md` and `primal_concept.txt`
+* No `components/ui/` primitive layer yet — note as optional v2.0 candidate only if audit recommends it
+
+### Constraints
+
+* **No full redesign**
+* **Do not change core brand identity** (navy `#0b1320`, gold `#cfa73a`, four phase accents)
+* **Do not rewrite all content** unless a specific line weakens conversion or clarity
+* Prioritize **low-risk, high-impact refinements**
+* **Delta-only audit** — compare against `DESIGN_SYSTEM.md` §17 checklist and `MOBILE_UX_AUDIT.md`
+* Every finding must cite **file:line** or **DESIGN_SYSTEM.md section** when referencing existing work
+* Keep changes practical for developers to implement before release
+
+### Focus areas (delta scan only)
+
+1. Design system maturity gaps vs §16–§17
+2. Visual consistency drift in TSX (utilities vs inline recipes)
+3. Micro UI polish not covered by mobile audit
+4. Micro UX polish on Hero, Header tabs, Anatomizer, quiz, ClosingCta
+5. Content and US English clarity in `src/components/**` and `src/data/**`
+6. Component quality on existing MVP components only
+7. Layout rhythm and spacing drift
+8. Accessibility gaps not in §13.4–§13.6
+9. Release readiness for public marketing
+
+---
+
+## OUTPUT
+
+Prepare a structured business/design audit document in **US English**.
+
+Write to: **`DS_V2_RELEASE_AUDIT.md`**
+
+Format reference for §1: `MOBILE_UX_AUDIT.md` Executive Summary (scored table style).
+
+Use this format:
+
+# Design System v1.5 → v2.0 Release Audit
+
+**Product:** Prompt Anatomy ecosystem site (`promptanatomy.site`)
+**Scope:** Marketing MVP — design system delta audit (read-only)
+**Baseline:** v1.5 pre-release (`DESIGN_SYSTEM.md` §17 complete); mobile baseline (`MOBILE_UX_AUDIT.md`)
+**Method:** Static code review + documentation delta vs §17 / MOBILE_UX_AUDIT
+
+---
+
+## 1. Executive Summary
+
+Required in this section:
+
+* **Proposed v2.0 definition** — one sentence defining what v2.0 means for this repo (e.g. public marketing polish, optional `components/ui/` layer, verifier gate). You must recommend this; do not assume a pre-set definition.
+* **Version clarity table** — how v2.0 differs from: (a) v1.5 pre-release implementation maturity, (b) "Document version 2.0" in `DESIGN_SYSTEM.md` line 829
+* Overall assessment and readiness score (1–10)
+* What already works (reference §17 completed items)
+* What blocks v2.0 quality (delta only — not re-listed §17 items)
+* Biggest release risks
+* Top 5 most valuable improvements
+* Whether v2.0 is achievable before public marketing **without a redesign** (yes/no + timeline: days / weeks / blocked)
+
+## 2. OK / FAIL Analysis
+
+Evaluate the current system by category. Add column **Delta vs §17 / MOBILE_UX_AUDIT**: `New` | `Regression` | `Already resolved`.
+
+| Area | Status | Delta vs §17 / MOBILE_UX_AUDIT | Reason | Priority |
+| ---- | ------ | ------------------------------ | ------ | -------- |
+| Brand consistency | OK / Needs polish / Fail | New / Regression / Already resolved | Explanation with file:line if New or Regression | P0/P1/P2 |
+| Typography | OK / Needs polish / Fail | … | … | P0/P1/P2 |
+| Spacing | OK / Needs polish / Fail | … | … | P0/P1/P2 |
+| Components | OK / Needs polish / Fail | … | … | P0/P1/P2 |
+| Mobile UX | OK / Needs polish / Fail | … | … | P0/P1/P2 |
+| Accessibility | OK / Needs polish / Fail | … | … | P0/P1/P2 |
+| Content clarity | OK / Needs polish / Fail | … | … | P0/P1/P2 |
+| Release readiness | OK / Needs polish / Fail | … | … | P0/P1/P2 |
+
+If an area is **Already resolved**, state the evidence (§17 item or MOBILE_UX_AUDIT finding) — do not recommend duplicate work.
+
+## 3. What Should NOT Change
+
+Clearly identify what must be preserved (align with `DESIGN_SYSTEM.md` §18):
+
+* Brand identity and phase accent mapping (`ecosystemTheme.ts`)
+* Core layout logic (hero → problem → stats → tabs → CTA → footer)
+* Existing strong components and documented utilities
+* Working visual patterns (`card-glass`, `section-dark`, button hierarchy)
+* Successful UX decisions from MOBILE_UX_AUDIT fixes
+* Strong content blocks in `domains.ts` / `primal_concept.txt` unless a specific line fails conversion test
+
+Explain why these should not be touched.
+
+## 4. What Breaks First
+
+Identify weak points most likely to reduce product quality during release — **repo-specific, with file:line**:
+
+* Inconsistent spacing or duplicate card recipes
+* Weak hierarchy on key conversion paths
+* Agent drift (copying nearest TSX instead of utilities — §14 risk)
+* Unclear CTA logic on Hero / ClosingCta / quiz result
+* Weak empty/error/loading states **where they exist in MVP**
+* Mobile issues **not** already fixed in MOBILE_UX_AUDIT
+* Inconsistent US English tone on visible UI strings
+* Documentation gaps vs §16 canon table
+* Accessibility gaps beyond §13 baseline
+
+Be direct and specific. Skip generic SaaS warnings with no repo evidence.
+
+## 5. Micro UI Polish Audit
+
+Analyze and recommend improvements for MVP-present UI only.
+
+### Typography
+
+* Heading scale consistency (`section-heading` vs inline scales)
+* Paragraph width and line-height
+* Font weight consistency
+* Label, eyebrow, `text-micro` / `text-caption` usage
+* Readability on mobile (cross-check MOBILE_UX_AUDIT — delta only)
+
+### Spacing
+
+* Section rhythm (`section-default`, `section-dark`)
+* Card padding (`card-light` vs `card-light-lg` vs inline)
+* Grid gaps in ecosystem / anatomizer / quiz
+* Mobile spacing compression (delta vs mobile audit)
+
+### Color and Contrast
+
+* Primary/accent discipline; gold-on-light pairs per §13.4
+* Background depth on light vs dark bands
+* Border visibility; muted text on `brand-dark`
+* Raw `slate-*` usage outside documented exceptions
+
+### Components (MVP inventory only)
+
+* Buttons (`btn-primary`, `btn-secondary`, `btn-secondary-dark`, `btn-tertiary-sm`, unused `btn-ghost`)
+* Cards (`card-light`, `card-light-lg`, `card-glass`)
+* Badges, navigation (Header tabs, mobile menu), Footer
+* Tabs (tablist pattern in Header)
+* Anatomizer terminal chrome and LayerSelector
+* Quiz option grids and result panel
+* **N/A unless present in repo:** Tables, Modals, Tooltips, native Forms
+* Empty / error / loading states — only where implemented
+
+### Visual Hierarchy
+
+* First thing users see (Hero)
+* CTA priority per section
+* Section scanning through tab panels
+* Icon usefulness; visual noise
+
+For every recommendation provide:
+
+* Problem (with file:line)
+* Why it matters
+* Suggested micro-fix
+* Priority: P0 / P1 / P2
+* Implementation effort: Low / Medium / High
+
+Mark sections with **No delta** if MOBILE_UX_AUDIT and §17 already cover them.
+
+---
+
+## 6. Micro UX Polish Audit
+
+Scope to: **Hero, Header tab navigation, Anatomizer copy flow, Maturity quiz flow and result, ClosingCta, Footer links.**
+
+Analyze:
+
+* CTA clarity and label specificity
+* Navigation confidence (tabs, hash deep links, mobile menu)
+* Scroll flow and section continuity
+* User decision points and confusion points
+* Button grid friction (quiz / LayerSelector — not native forms)
+* Hover, focus, disabled states
+* Copy-to-clipboard feedback (Anatomizer)
+* Mobile tap comfort (delta vs MOBILE_UX_AUDIT)
+* Trust signals and conversion friction
+
+For each issue provide:
+
+* Current risk (file:line)
+* Better UX behavior
+* Suggested copy or interaction (only if needed)
+* Priority
+* Effort
+
+---
+
+## 7. Content and US English Audit
+
+Limit review to visible strings in `src/components/**` and `src/data/**`. Follow tone in `.cursor/rules/content-brand.mdc` and `primal_concept.txt`.
+
+Analyze:
+
+* Clarity, conciseness, credibility, tone, grammar
+* Headline strength (Hero, section headings)
+* CTA wording (Hero, ClosingCta, quiz result, external links)
+* Feature-benefit balance; jargon level; trust language
+
+Do not rewrite everything. Identify:
+
+1. Copy that is strong and should remain
+2. Copy that needs light polishing
+3. Copy that is unclear or too abstract
+4. Copy that sounds non-native or non-US SaaS
+5. Copy that weakens conversion
+
+Provide improved alternatives only where needed:
+
+| Current copy | Issue | Improved US English version | Why better |
+| ------------ | ----- | --------------------------- | ---------- |
+
+Tone target: Clear, practical, premium SaaS, confident — not hype-heavy, academic, or generic AI buzzword language.
+
+---
+
+## 8. Design System Documentation Gaps
+
+Compare against `DESIGN_SYSTEM.md` §16 document canon table. Report **gaps only** — do not re-document what §6–§14 already covers.
+
+Check for missing or weak items:
+
+* Color / typography / spacing tokens not yet in `index.css` or appendix
+* Border radius / shadow rules not documented
+* Component usage rules for new drift patterns found in audit
+* Versioning rules for declaring v2.0 implementation maturity
+* Release checklist items beyond §17
+
+For each gap:
+
+* What is missing
+* Why it matters
+* What should be documented
+* Example rule
+
+---
+
+## 9. v1.5 → v2.0 Roadmap
+
+Create a practical release roadmap based on audit findings only.
+
+### P0 — Must Fix Before Release
+
+Critical issues that hurt trust, usability, accessibility, or conversion.
+
+### P1 — Should Fix Before Release
+
+Important improvements that raise quality but are not blockers.
+
+### P2 — Nice Polish After Release
+
+Useful refinements that can wait (include optional `components/ui/` layer here if recommended).
+
+For every task include:
+
+| Task | Area | Priority | Effort | Owner | Acceptance criteria |
+| ---- | ---- | -------- | ------ | ----- | ------------------- |
+
+Owners: Design | Frontend | Content | Product | QA
+
+Acceptance criteria must be concrete and testable. For layout-affected tasks, reference `npm run build` and/or `npm run qa:viewport` where applicable.
+
+---
+
+## 10. Release Checklist for Design System v2.0
+
+Cross-reference `DESIGN_SYSTEM.md` §17. Include only **unchecked, new, or v2.0-specific** items — do not duplicate the complete §17 list.
+
+Sections:
+
+### Visual QA
+
+### UX QA
+
+### Content QA
+
+### Accessibility QA
+
+### Documentation QA
+
+Mark each item: `[ ]` new gap | `[x]` already satisfied in v1.5
+
+---
+
+## 11. Final Recommendation
+
+End with a direct recommendation:
+
+* Restate **proposed v2.0 definition** (single sentence)
+* Is the design system ready for v2.0?
+* What must be fixed first (P0)?
+* What should be postponed (P2)?
+* What is the safest path to release?
+* What creates the biggest perceived quality improvement with the least effort?
+* Estimated effort: days / weeks / blocked
+
+Be honest. If the system is not ready, say so directly.
+
+---
+
+## REASONING
+
+Follow this process:
+
+0. Read `DESIGN_SYSTEM.md` §17 checklist and `MOBILE_UX_AUDIT.md`; build an **already resolved** inventory before scanning components.
+1. Understand the existing v1.5 system and identify what is already working.
+2. Separate redesign-level issues from release-polish issues.
+3. Grep for drift signals: raw `slate-*` outside exceptions, duplicate card recipes, `text-[10px]`/`text-[11px]`, unused `btn-ghost`, snippet palette regression.
+4. Evaluate visual consistency, UI details, UX flow, content quality, and documentation maturity — **delta only**.
+5. Identify the smallest changes that create the biggest improvement in perceived product quality.
+6. Prioritize issues into P0, P1, and P2 based on release risk and implementation effort.
+7. Propose v2.0 definition and produce a practical roadmap with clear acceptance criteria.
+
+---
+
+## QUALITY
+
+The final audit must meet these criteria:
+
+✓ No full redesign recommendations unless absolutely necessary
+✓ Every recommendation must be practical and implementation-ready
+✓ Focus on mini and micro polish, not abstract design theory
+✓ Prioritize release readiness, trust, clarity, and conversion
+✓ Use clear US English suitable for a premium SaaS product
+✓ Delta-only — no duplicate §17 or MOBILE_UX_AUDIT findings without regression evidence
+✓ Every New/Regression finding cites file:line or doc section
+✓ MVP-scoped — no FAIL rows for tables/modals/auth unless code exists
+
+---
+
+## EXECUTION
+
+* Default mode: **read-only audit** — write `DS_V2_RELEASE_AUDIT.md` only
+* Do not modify TSX, CSS, or data unless user explicitly requests implementation
+* After audit, suggest `verifier` agent pass before any P0 implementation
+* Format reference: `MOBILE_UX_AUDIT.md` §1 Executive Summary table style
+* Language: EN-US
+* Format: Business design audit document (Markdown)

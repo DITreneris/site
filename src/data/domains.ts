@@ -59,7 +59,7 @@ export const DOMAINS: Domain[] = [
     icon: Play,
     isCore: false,
     phase: 'Adopt',
-    transition: 'With daily work flowing, Upgrade marketing and communication.',
+    transition: 'With daily work flowing, Create marketing and communication.',
     maturityTier: 'Maps to Tier 2: Fragmented Adoption',
     features: [
       'Eliminate 30-50% of routine team work',
@@ -70,7 +70,7 @@ export const DOMAINS: Domain[] = [
   {
     id: 'space',
     domain: 'promptanatomy.space',
-    title: '3. Upgrade',
+    title: '3. Create',
     role: 'Marketing & PR OS',
     description:
       'Transform random, low-performing conversational marketing outputs into unified, high-impact narrative expansions based on strict guidelines.',
@@ -78,7 +78,7 @@ export const DOMAINS: Domain[] = [
     icon: Target,
     isCore: false,
     phase: 'Apply',
-    transition: 'Next, systematize hiring and people ops with Recruit.',
+    transition: 'Next, systematize hiring and people ops with Hire.',
     features: [
       'Top 10 highest-impact marketing prompts',
       'Structured content calendar & mapping guides',
@@ -88,7 +88,7 @@ export const DOMAINS: Domain[] = [
   {
     id: 'help',
     domain: 'promptanatomy.help',
-    title: '4. Recruit',
+    title: '4. Hire',
     role: 'HR & People Operations',
     description:
       'Engineered search and alignment templates to automate sourcing, streamline onboarding pipelines, and craft professional review schedules.',

@@ -3,6 +3,10 @@ import SequencePath from './SequencePath';
 import DomainDetail from './DomainDetail';
 import { DOMAINS } from '../../data/domains';
 
+function stageLabel(title: string): string {
+  return title.replace(/^\d+\.\s*/, '');
+}
+
 interface EcosystemMapProps {
   selectedDomain: string;
   onSelectDomain: (id: string) => void;
@@ -19,6 +23,11 @@ export default function EcosystemMap({
     [selectedDomain],
   );
 
+  const pipeline = useMemo(
+    () => DOMAINS.filter((d) => !d.isCore).map((d) => stageLabel(d.title)).join(' → '),
+    [],
+  );
+
   return (
     <section className="section-dark">
       <div className="bg-ecosystem-grid pointer-events-none absolute inset-0 opacity-60" />
@@ -33,8 +42,8 @@ export default function EcosystemMap({
             One platform. Seven workflow modules, one core hub.
           </h2>
           <p className="mt-3 text-sm leading-relaxed text-slate-300">
-            Each stage gives a team the exact models, templates, and workflows for its role around
-            the central hub.
+            {pipeline} — each stage gives a team the exact models, templates, and workflows for its
+            role around the central hub.
           </p>
         </div>
 

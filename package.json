@@ -5,11 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "node scripts/generate-og.mjs && node scripts/generate-llms.mjs",
+    "prebuild": "node scripts/generate-og.mjs && node scripts/generate-llms.mjs && node scripts/generate-jsonld.mjs",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "generate:og": "node scripts/generate-og.mjs",
     "generate:llms": "node scripts/generate-llms.mjs",
+    "generate:jsonld": "node scripts/generate-jsonld.mjs",
     "qa:viewport": "node scripts/viewport-qa.mjs"
   },
   "dependencies": {

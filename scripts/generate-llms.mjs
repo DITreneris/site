@@ -10,6 +10,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
 const DOMAINS_PATH = join(ROOT, 'src', 'data', 'domains.ts');
 const ANATOMY_PATH = join(ROOT, 'src', 'data', 'anatomyBuilder.ts');
+const SITE_CONTACT_PATH = join(ROOT, 'src', 'data', 'siteContact.ts');
 const LLMS_FULL_OUT = join(ROOT, 'public', 'llms-full.txt');
 const SITEMAP_OUT = join(ROOT, 'public', 'sitemap.xml');
 
@@ -47,6 +48,41 @@ function parseAnatomyLayers(source) {
   return layers;
 }
 
+function parseAuthorContact(source) {
+  const name = source.match(/name:\s*'([^']+)',\s*\n\s*title:\s*'Founder/)?.[1];
+  const sameAsBlock = source.match(
+    /export const AUTHOR = \{[\s\S]*?sameAs:\s*\[([\s\S]*?)\],[\s\S]*?\} as const;/,
+  )?.[1];
+  const sameAs = [];
+  if (sameAsBlock) {
+    const urlRe = /'(https:\/\/[^']+)'/g;
+    let urlMatch;
+    while ((urlMatch = urlRe.exec(sameAsBlock)) !== null) {
+      sameAs.push(urlMatch[1]);
+    }
+  }
+  if (!name || sameAs.length === 0) {
+    throw new Error('[generate-llms] Failed to parse AUTHOR from siteContact.ts');
+  }
+  return { name, sameAs };
+}
+
+function formatFounderLines(contact) {
+  const labels = {
+    'linkedin.com': 'LinkedIn',
+    'x.com': 'X',
+    'medium.com': 'Medium',
+    'facebook.com': 'Facebook',
+  };
+  const lines = [`- Founder: ${contact.name}`];
+  for (const url of contact.sameAs) {
+    const host = Object.keys(labels).find((key) => url.includes(key));
+    const label = host ? labels[host] : 'Profile';
+    lines.push(`  - ${label}: ${url}`);
+  }
+  return lines;
+}
+
 const QUIZ_TIERS = [
   {
     title: 'Unstructured Ad-Hoc (Tier 1)',
@@ -77,7 +113,7 @@ const SECTION_HASHES = [
   { hash: 'maturity', label: 'Team AI maturity diagnostic (3 questions, 3 tiers)' },
 ];
 
-function buildLlmsFull(domains, layers) {
+function buildLlmsFull(domains, layers, authorContact) {
   const today = new Date().toISOString().slice(0, 10);
   const lines = [
     '# Prompt Anatomy — Extended LLM Reference',
@@ -137,7 +173,7 @@ function buildLlmsFull(domains, layers) {
   lines.push('## Contact and trust');
   lines.push('');
   lines.push('- Email: info@promptanatomy.app');
-  lines.push('- Founder: Tomas Staniulis — https://www.linkedin.com/in/staniulis');
+  lines.push(...formatFounderLines(authorContact));
   lines.push('- Privacy: https://www.promptanatomy.blog/privacy/');
   lines.push('');
   lines.push('## Pages to ignore');
@@ -162,16 +198,18 @@ function buildSitemap(lastmod) {
 }
 
 async function main() {
-  const [domainsSrc, anatomySrc] = await Promise.all([
+  const [domainsSrc, anatomySrc, contactSrc] = await Promise.all([
     readFile(DOMAINS_PATH, 'utf8'),
     readFile(ANATOMY_PATH, 'utf8'),
+    readFile(SITE_CONTACT_PATH, 'utf8'),
   ]);
 
   const domains = parseDomains(domainsSrc);
   const layers = parseAnatomyLayers(anatomySrc);
+  const authorContact = parseAuthorContact(contactSrc);
   const lastmod = new Date().toISOString().slice(0, 10);
 
-  const llmsFull = buildLlmsFull(domains, layers);
+  const llmsFull = buildLlmsFull(domains, layers, authorContact);
   const sitemap = buildSitemap(lastmod);
 
   await Promise.all([

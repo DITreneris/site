@@ -62,7 +62,7 @@ The goal is simple:
 
 ---
 
-## 4. Upgrade
+## 4. Create
 
 ### **promptanatomy.space**
 
@@ -85,7 +85,7 @@ Includes:
 
 ---
 
-## 5. Recruit
+## 5. Hire
 
 ### **promptanatomy.help**
 
@@ -169,14 +169,14 @@ Includes:
 
 # The Simple Ecosystem Logic
 
-**Enter → Use → Upgrade → Recruit → Manage → Decide → Learn**
+**Enter → Use → Create → Hire → Manage → Decide → Learn**
 
 Each part of Prompt Anatomy has a clear role:
 
 * **Enter** — learn the basics
 * **Use** — apply AI in daily work
-* **Upgrade** — improve marketing and communication
-* **Recruit** — automate HR and recruitment
+* **Create** — improve marketing and communication
+* **Hire** — automate HR and recruitment
 * **Manage** — run operations with AI
 * **Decide** — scale business decisions
 * **Learn** — go deeper into AI systems and automation

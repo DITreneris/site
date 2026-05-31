@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- SEO entity graph: `scripts/generate-jsonld.mjs` builds JSON-LD `@graph` at prebuild from `domains.ts`, `siteContact.ts`, and `seoFaq.ts` — Person (founder), Organization with `founder` link, ItemList (8 ecosystem modules), Product `category: AI Operating System`, FAQPage (7 entries including founder).
+- Founder social profiles in `siteContact.ts` and footer: LinkedIn, X, Medium, Facebook; `ORG_SAME_AS` split from personal profiles.
+- FAQ JSON-LD entry: "Who founded Prompt Anatomy?" `quiz-option` utility for maturity quiz options; §14.3 documented allowed inline exceptions (Anatomizer terminal, accent callout, DomainDetail glass link).
+- Hero "Explore the ecosystem" jump link — navigates to ecosystem tab with existing scroll-into-view behavior.
+- Design system v2.0 audit pipeline: refined repo-grounded prompt in `second.txt` (delta-only, MVP-scoped, read-only); output artifact `DS_V2_RELEASE_AUDIT.md` with proposed v2.0 definition and P0–P2 roadmap; registered in `DOCS_INDEX.md` Tier 4 and task router; `ui-builder` agent references updated.
 - Footer design tokens and utilities in `src/index.css`: `--color-surface-footer`, `--color-border-footer`; `footer-shell`, `footer-accent-band`, and `link-footer-meta` for legal/meta inline links.
 - Dual OG export: `scripts/og-constants.mjs` and refactored `scripts/generate-og.mjs` now write `public/og-image.png` (1200×630) and `.github/social-preview.png` (1280×640) via Satori + resvg, with PNG size guard (warn >300 KB, fail >1 MB).
 - Build-time cache bust: `generate-og.mjs` patches `og-image.png?v=<hash>` in `index.html` for `og:image`, `twitter:image`, and JSON-LD `Product`/`SoftwareApplication` image fields.
@@ -20,14 +25,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Ecosystem stage labels renamed: **Upgrade → Create**, **Recruit → Hire** across `domains.ts`, FAQ, footer, `llms.txt`, `primal_concept.txt`, and agent docs.
+- Hero badge now surfaces brand + category: "Prompt Anatomy · AI Operating System for Teams".
+- Ecosystem intro shows pipeline labels dynamically from `DOMAINS`.
+- `Organization.sameAs` in JSON-LD now lists org URLs only; founder profiles moved to `Person.sameAs`.
+- Design system **implementation v2.0** declared (2026-05-31): quiz question shell uses `card-light-lg`; maturity quiz options use `quiz-option`; dead `btn-ghost` utility removed from `index.css` and Appendix D.
+- Hero primary CTA aligned to **"Open the platform"** (matches ClosingCta and Footer for `promptanatomy.app` links).
+- `DESIGN_SYSTEM.md` §19 expanded with implementation v2.0 declaration criteria; maturity bumped to v2.0 in `AGENTS.md`, `react-ui.mdc`, `DOCS_INDEX.md`, and `ui-builder` agent.
+- `DS_V2_RELEASE_AUDIT.md` §10 checklist completed; formal verifier pass recorded (2026-05-31).
 - Footer premium polish: navy/gold `footer-accent-band` above a tinted `footer-shell` (bridges from dark `ClosingCta`); brand block as three short lines with semibold taglines; tighter nav column spacing; nav `link-footer` refined (compact block links, hover underline, navy hover text); legal row uses `link-footer-meta` without inflated touch height; two-row legal hierarchy — row 1: copyright · email · policies; row 2: founder · mailing address inline on one muted line. `DESIGN_SYSTEM.md` and `react-ui.mdc` document the new footer utilities.
 - Site OG image switched to hand-maintained `public/og_2.png` (1600×900); `generate-og.mjs` now cache-busts and copies to `.github/social-preview.png` instead of Satori generation.
 - `index.html`: OG/Twitter/schema image URLs, dimensions, and alt text updated for `og_2.png`.
 - `DEPLOY.md` §5 — GitHub repo social preview upload checklist; LinkedIn Post Inspector link in §4.
 - `DOCS_INDEX.md`, `deploy-vercel.mdc`, and `seo-crawler` skill document dual OG assets and cache-bust behavior.
 
-### Fixed
+### Removed
 
+- `btn-ghost` utility — unused dead code; use `btn-tertiary-sm` for small accent actions.
+
+### Fixed
 - Mobile: `SequencePath` uses single-column stage grid below `sm` and `break-all` on mono domain labels — reduces crowding at 320px.
 - Mobile: 44px touch targets on LayerSelector options, Header logo/desktop tabs, Anatomizer copy button (`btn-tertiary-sm`), inline links (`link-inline`), and DomainDetail external link.
 - Mobile: Hero H1 scales `text-3xl sm:text-4xl lg:text-5xl`; StatsStrip numbers use `text-5xl sm:text-stat`; header tagline hidden below 360px.

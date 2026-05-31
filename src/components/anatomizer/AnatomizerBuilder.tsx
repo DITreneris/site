@@ -17,6 +17,7 @@ const INITIAL: SelectionState = {
 export default function AnatomizerBuilder() {
   const [selection, setSelection] = useState<SelectionState>(INITIAL);
   const [copied, setCopied] = useState(false);
+  const [copyError, setCopyError] = useState(false);
 
   const assembledPrompt = useMemo(() => {
     const blocks = ANATOMY_LAYERS.map((layer) => {
@@ -29,10 +30,13 @@ export default function AnatomizerBuilder() {
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(assembledPrompt);
+      setCopyError(false);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
       setCopied(false);
+      setCopyError(true);
+      setTimeout(() => setCopyError(false), 2000);
     }
   };
 
@@ -73,8 +77,11 @@ export default function AnatomizerBuilder() {
                 <button
                   onClick={handleCopy}
                   className="btn-tertiary-sm"
+                  aria-live="polite"
                 >
-                  {copied ? (
+                  {copyError ? (
+                    <>Copy failed</>
+                  ) : copied ? (
                     <>
                       <Check className="icon-sm" />
                       Copied
