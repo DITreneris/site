@@ -7,6 +7,7 @@ import {
   LineChart,
   Cpu,
   BookOpen,
+  Gamepad2,
 } from 'lucide-react';
 import type { Domain } from '../types';
 
@@ -132,7 +133,7 @@ export const DOMAINS: Domain[] = [
     icon: Cpu,
     isCore: false,
     phase: 'Scale',
-    transition: 'Deepen mastery and frameworks in the Learn knowledge hub.',
+    transition: 'Deepen frameworks in the knowledge hub, then practice in Play.',
     maturityTier: 'Maps to Tier 3: Structured AI OS Ready',
     features: [
       'System-wide prompt chaining structures',
@@ -143,7 +144,7 @@ export const DOMAINS: Domain[] = [
   {
     id: 'blog',
     domain: 'promptanatomy.blog',
-    title: '7. Learn',
+    title: '7. Deepen',
     role: 'Systems Thinker Knowledge Hub',
     description:
       'Deep-dive analytical essays, step-by-step logic diagrams, and print-ready canvases designed for modern AI practitioners.',
@@ -151,11 +152,30 @@ export const DOMAINS: Domain[] = [
     icon: BookOpen,
     isCore: false,
     phase: 'Knowledge',
-    transition: 'Cross-cutting depth that feeds frameworks back into every stage.',
+    transition: 'Apply what you deepened in structured Play drills.',
     features: [
       'Deep dives into prompt engineering parameters',
       'Reusable business discovery canvases & guides',
       'Visual process workflow diagrams',
+    ],
+  },
+  {
+    id: 'lol',
+    domain: 'promptanatomy.lol',
+    title: '8. Play',
+    role: 'Experiment & Exploration Lab',
+    description:
+      'A structured playground for low-stakes prompt experiments, guided drills, and team warm-ups before production workflows.',
+    audience: 'Teams, Practitioners & Training Facilitators',
+    icon: Gamepad2,
+    isCore: false,
+    phase: 'Knowledge',
+    transition: 'Carry drills into daily Use — or return to the core hub for full templates.',
+    features: [
+      'Guided prompt challenges and micro-scenarios',
+      'Safe sandbox with no production data required',
+      'Replayable exercises that reinforce structured habits',
+      'Team warm-ups before daily automation workflows',
     ],
   },
 ];

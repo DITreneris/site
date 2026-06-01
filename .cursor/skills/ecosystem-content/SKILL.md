@@ -2,7 +2,7 @@
 
 name: ecosystem-content
 
-description: Reference for Prompt Anatomy 8-domain ecosystem structure, IDs, audiences, and messaging. Use when adding or editing domain content, navigation labels, or cross-domain links.
+description: Reference for Prompt Anatomy nine-domain ecosystem structure, IDs, audiences, and messaging. Use when adding or editing domain content, navigation labels, or cross-domain links.
 
 ---
 
@@ -50,7 +50,8 @@ Read `primal_concept.txt` for full narratives. Quick reference:
 
 | `pro` | promptanatomy.pro | 6. Decide | Scale |
 
-| `blog` | promptanatomy.blog | 7. Learn | Knowledge |
+| `blog` | promptanatomy.blog | 7. Deepen | Knowledge |
+| `lol` | promptanatomy.lol | 8. Play | Knowledge |
 
 
 
@@ -60,7 +61,7 @@ Read `primal_concept.txt` for full narratives. Quick reference:
 
 ```
 
-cloud → info → space → help → ceo → pro → blog
+cloud → info → space → help → ceo → pro → blog → lol
 
 ```
 

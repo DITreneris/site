@@ -146,7 +146,7 @@ const QUIZ_TIERS = [
 ];
 
 const SECTION_HASHES = [
-  { hash: 'ecosystem', label: '8-domain ecosystem map and domain detail panel' },
+  { hash: 'ecosystem', label: 'ecosystem map and domain detail panel (nine domains)' },
   { hash: 'anatomizer', label: '5-layer structured prompt builder (Anatomizer)' },
   { hash: 'maturity', label: 'Team AI maturity diagnostic (3 questions, 3 tiers)' },
 ];

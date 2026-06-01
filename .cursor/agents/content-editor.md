@@ -23,7 +23,7 @@ Document map: [DOCS_INDEX.md](../../DOCS_INDEX.md)
 ## Rules
 
 - Never rename domains or change the ecosystem sequence
-- Keep domain IDs stable: app, cloud, info, space, help, ceo, pro, blog
+- Keep domain IDs stable: app, cloud, info, space, help, ceo, pro, blog, lol
 - Anatomizer blocks must follow the 5-part anatomy (Role, Context, Variables, Instructions, Constraints)
 - Match professional, systems-oriented tone — no hype filler
 

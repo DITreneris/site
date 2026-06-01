@@ -17,9 +17,9 @@ export const SEO_FAQ: SeoFaqItem[] = [
       'Prompt Anatomy is built for CEOs, COOs, IT leaders, managers, and operational teams who want to implement AI in a structured way — from onboarding beginners to executives scaling enterprise workflows.',
   },
   {
-    question: 'What is the 8-domain ecosystem?',
+    question: 'What is the Prompt Anatomy ecosystem?',
     answer:
-      'The ecosystem spans eight domains in order: Enter (promptanatomy.cloud), Use (promptanatomy.info), Create (promptanatomy.space), Hire (promptanatomy.help), Manage (promptanatomy.ceo), Decide (promptanatomy.pro), and Learn (promptanatomy.blog), with the central platform at promptanatomy.app.',
+      'Nine interconnected domains: eight pipeline stages — Enter (promptanatomy.cloud), Use (promptanatomy.info), Create (promptanatomy.space), Hire (promptanatomy.help), Manage (promptanatomy.ceo), Decide (promptanatomy.pro), Deepen (promptanatomy.blog), Play (promptanatomy.lol) — plus the central platform at promptanatomy.app.',
   },
   {
     question: 'Who founded Prompt Anatomy?',

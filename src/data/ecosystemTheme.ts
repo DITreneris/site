@@ -24,6 +24,7 @@ export const DOMAIN_PHASE: Record<string, EcosystemPhase> = {
   ceo: 'Scale',
   pro: 'Scale',
   blog: 'Knowledge',
+  lol: 'Knowledge',
 };
 
 export const DOMAIN_ACCENT: Record<string, EcosystemAccent> = Object.fromEntries(

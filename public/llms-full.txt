@@ -1,5 +1,5 @@
 # Prompt Anatomy — Extended LLM Reference
-# Generated: 2026-05-31
+# Generated: 2026-06-01
 # Canonical site: https://promptanatomy.site/
 
 ## Summary
@@ -11,7 +11,7 @@ Less random prompting. More structured execution.
 ## Primary cite URLs
 
 - https://promptanatomy.site/
-- https://promptanatomy.site/#ecosystem — 8-domain ecosystem map and domain detail panel
+- https://promptanatomy.site/#ecosystem — ecosystem map and domain detail panel (nine domains)
 - https://promptanatomy.site/#anatomizer — 5-layer structured prompt builder (Anatomizer)
 - https://promptanatomy.site/#maturity — Team AI maturity diagnostic (3 questions, 3 tiers)
 - https://promptanatomy.app/ — central platform hub
@@ -53,10 +53,15 @@ Role: Enterprise Scaling Engine
 URL: https://promptanatomy.pro/
 Advanced logical layering designed to migrate local ad-hoc workflows into automated enterprise systems and custom API operations.
 
-### 7. Learn — promptanatomy.blog
+### 7. Deepen — promptanatomy.blog
 Role: Systems Thinker Knowledge Hub
 URL: https://promptanatomy.blog/
 Deep-dive analytical essays, step-by-step logic diagrams, and print-ready canvases designed for modern AI practitioners.
+
+### 8. Play — promptanatomy.lol
+Role: Experiment & Exploration Lab
+URL: https://promptanatomy.lol/
+A structured playground for low-stakes prompt experiments, guided drills, and team warm-ups before production workflows.
 
 ## Structured prompting (Anatomizer)
 

@@ -6,7 +6,7 @@
 
 
 
-A production marketing and demo site for **Prompt Anatomy**, an AI Operating System for modern teams. The site explains the 8-domain ecosystem, lets visitors explore modules, build structured prompts (Anatomizer), and run a team AI maturity assessment.
+A production marketing and demo site for **Prompt Anatomy**, an AI Operating System for modern teams. The site explains the nine-domain ecosystem, lets visitors explore modules, build structured prompts (Anatomizer), and run a team AI maturity assessment.
 
 
 
@@ -110,7 +110,7 @@ Agent files: `.cursor/agents/`. Skills: `.cursor/skills/`. See [DOCS_INDEX.md](D
 
 
 
-`Enter → Use → Create → Hire → Manage → Decide → Learn`
+`Enter → Use → Create → Hire → Manage → Decide → Deepen → Play`
 
 
 
@@ -132,7 +132,8 @@ Agent files: `.cursor/agents/`. Skills: `.cursor/skills/`. See [DOCS_INDEX.md](D
 
 | `pro` | promptanatomy.pro | 6. Decide |
 
-| `blog` | promptanatomy.blog | 7. Learn |
+| `blog` | promptanatomy.blog | 7. Deepen |
+| `lol` | promptanatomy.lol | 8. Play |
 
 
 

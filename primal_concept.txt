@@ -145,7 +145,7 @@ It focuses on business growth, decision-making, systems, and professional AI imp
 
 ---
 
-## 8. Learn
+## 8. Deepen
 
 ### **promptanatomy.blog**
 
@@ -167,9 +167,27 @@ Includes:
 
 ---
 
+## 9. Play
+
+### **promptanatomy.lol**
+
+**Structured playground for low-stakes prompt experiments.**
+
+This is the hands-on practice layer — guided drills, challenges, and sandbox scenarios that turn frameworks into muscle memory without touching production systems.
+
+Includes:
+
+* Guided prompt challenges and micro-scenarios
+* Safe sandbox environments for team warm-ups
+* Replayable exercises that reinforce structured habits
+
+**Best for:** teams, practitioners, and training facilitators who want deliberate practice before daily automation.
+
+---
+
 # The Simple Ecosystem Logic
 
-**Enter → Use → Create → Hire → Manage → Decide → Learn**
+**Enter → Use → Create → Hire → Manage → Decide → Deepen → Play**
 
 Each part of Prompt Anatomy has a clear role:
 
@@ -179,7 +197,8 @@ Each part of Prompt Anatomy has a clear role:
 * **Hire** — automate HR and recruitment
 * **Manage** — run operations with AI
 * **Decide** — scale business decisions
-* **Learn** — go deeper into AI systems and automation
+* **Deepen** — go deeper into AI systems, frameworks, and automation
+* **Play** — practice in a structured sandbox before production workflows
 
 ---
 

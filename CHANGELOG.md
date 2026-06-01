@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Ecosystem stage **8. Play** (`promptanatomy.lol`) in the Learn phase column — Experiment & Exploration Lab with guided sandbox copy; fills the second card in `SequencePath` Knowledge phase.
+
+### Changed
+
+- Stage **7** renamed **Learn → Deepen** on `promptanatomy.blog` (domain ID unchanged); pipeline string `Enter → … → Deepen → Play`; footer, FAQ, `llms.txt`, `primal_concept.txt`, and agent docs updated to nine-domain wording.
+
 - SEO entity graph: `scripts/generate-jsonld.mjs` builds JSON-LD `@graph` at prebuild from `domains.ts`, `siteContact.ts`, and `seoFaq.ts` — Person (founder), Organization with `founder` link, ItemList (8 ecosystem modules), Product `category: AI Operating System`, FAQPage (7 entries including founder).
 - Founder social profiles in `siteContact.ts` and footer: LinkedIn, X, Medium, Facebook; `ORG_SAME_AS` split from personal profiles.
 - Founder credentials for SEO/GEO only: `AUTHOR_PUBLICATIONS` (Amazon books → Book JSON-LD) and `AUTHOR_MEDIA` (YouTube → Person.sameAs); not shown in footer or hero. OpenSea omitted from SEO to keep B2B entity focus.
@@ -46,7 +52,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Google Rich Results: `Product` JSON-LD now includes `offers` (required alongside `SoftwareApplication`; fixes Rich Results Test critical error).- Mobile: `SequencePath` uses single-column stage grid below `sm` and `break-all` on mono domain labels — reduces crowding at 320px.
+- Google Rich Results: `Product` JSON-LD now includes `offers` (required alongside `SoftwareApplication`). Verified on production via [Rich Results Test](https://search.google.com/test/rich-results) (2026-05-31) — no critical issues; Product, FAQPage, and entity graph pass.
+- Mobile: `SequencePath` uses single-column stage grid below `sm` and `break-all` on mono domain labels — reduces crowding at 320px.
 - Mobile: 44px touch targets on LayerSelector options, Header logo/desktop tabs, Anatomizer copy button (`btn-tertiary-sm`), inline links (`link-inline`), and DomainDetail external link.
 - Mobile: Hero H1 scales `text-3xl sm:text-4xl lg:text-5xl`; StatsStrip numbers use `text-5xl sm:text-stat`; header tagline hidden below 360px.
 - Mobile QA: `scripts/viewport-qa.mjs` extended to 360 / 390 / 430px widths; `DESIGN_SYSTEM.md` §13 updated.

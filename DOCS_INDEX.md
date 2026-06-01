@@ -155,7 +155,7 @@ scripts/
 |---------|--------|
 | This marketing site — canonical, OG, sitemap, WebSite schema | `promptanatomy.site` |
 | Platform hub — Organization schema, product CTAs | `promptanatomy.app` |
-| Ecosystem modules | `promptanatomy.{cloud,info,space,help,ceo,pro,blog}` |
+| Ecosystem modules | `promptanatomy.{cloud,info,space,help,ceo,pro,blog,lol}` |
 
 ---
 

@@ -48,7 +48,9 @@ const NETWORK_LINKS: FooterLink[] = [
 
   { label: 'Decide — scaling', href: 'https://promptanatomy.pro', external: true },
 
-  { label: 'Learn — knowledge hub', href: 'https://promptanatomy.blog', external: true },
+  { label: 'Deepen — knowledge hub', href: 'https://promptanatomy.blog', external: true },
+
+  { label: 'Play — sandbox', href: 'https://promptanatomy.lol', external: true },
 
 ];
 

@@ -67,7 +67,7 @@ After `npm run generate:og` or deploy, upload the GitHub card (not read from sit
 
 1. Repo → **Settings → General → Social preview** → upload [`.github/social-preview.png`](.github/social-preview.png) (1280×640, <1 MB).
 2. Set **Website** to `https://promptanatomy.site`.
-3. Set **About description** (≤350 chars), e.g. *Marketing site for Prompt Anatomy — 8-domain AI OS for teams. React/Vite SPA with Anatomizer, maturity quiz, and AI-crawler docs. Live at promptanatomy.site*.
+3. Set **About description** (≤350 chars), e.g. *Marketing site for Prompt Anatomy — nine-domain AI OS for teams. React/Vite SPA with Anatomizer, maturity quiz, and AI-crawler docs. Live at promptanatomy.site*.
 4. Add **Topics**: `ai`, `prompt-engineering`, `react`, `vite`, `typescript`, `tailwindcss`, `seo`, `vercel`, `marketing-site`.
 5. Share `https://github.com/DITreneris/site` in Slack/Discord to confirm the repo card.
 

@@ -7,12 +7,12 @@
 
 ## Primary page (cite this)
 - https://promptanatomy.site/
-  - 8-domain ecosystem overview (Enter → Use → Create → Hire → Manage → Decide → Learn)
+  - Nine-domain ecosystem overview (Enter → Use → Create → Hire → Manage → Decide → Deepen → Play)
   - Interactive prompt builder (5-layer structured prompts)
   - Team AI maturity assessment (3 tiers)
 
 ## Site sections (hash deep links)
-- https://promptanatomy.site/#ecosystem — 8-domain ecosystem map and domain detail panel
+- https://promptanatomy.site/#ecosystem — ecosystem map and domain detail panel (nine domains)
 - https://promptanatomy.site/#anatomizer — 5-layer structured prompt builder (Anatomizer)
 - https://promptanatomy.site/#maturity — team AI maturity diagnostic (3 questions, 3 tiers)
 
@@ -27,7 +27,8 @@
 - https://promptanatomy.help/ — 4. Hire / HR & People Operations
 - https://promptanatomy.ceo/ — 5. Manage / Strategic Leadership Hub
 - https://promptanatomy.pro/ — 6. Decide / Enterprise Scaling Engine
-- https://promptanatomy.blog/ — 7. Learn / Systems Thinker Knowledge Hub
+- https://promptanatomy.blog/ — 7. Deepen / Systems Thinker Knowledge Hub
+- https://promptanatomy.lol/ — 8. Play / Experiment & Exploration Lab
 
 ## Contact and trust
 - Email: info@promptanatomy.app

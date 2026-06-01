@@ -232,7 +232,7 @@ function buildGraph({ domains, contact, faqs, ogImageUrl }) {
         image: ogImageUrl,
         brand: { '@id': ORG_ID },
         description:
-          'An 8-domain ecosystem covering onboarding, daily automation, content creation, HR, leadership, scaling, and knowledge — built around a central AI operating system for teams.',
+          'A nine-domain ecosystem covering onboarding, daily automation, content creation, HR, leadership, scaling, knowledge depth, and structured play — built around a central AI operating system for teams.',
         category: 'AI Operating System',
         hasPart: { '@id': ECOSYSTEM_ID },
         offers: FREE_DEMO_OFFER,
