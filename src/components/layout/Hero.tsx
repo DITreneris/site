@@ -10,7 +10,7 @@ export default function Hero({ onStartAssessment, onExploreEcosystem }: HeroProp
     <section className="relative overflow-hidden bg-hero-bg">
       <div className="container-hero px-4 pb-10 pt-14 text-center sm:px-6 lg:px-8">
         <span className="badge-accent mx-auto">
-          Prompt Anatomy &middot; AI Operating System for Teams
+          Prompt Anatomy &middot; AI Operating System
         </span>
 
         <h1 className="mt-6 text-3xl font-black leading-[1.08] tracking-[-0.02em] text-brand-dark sm:text-4xl lg:text-5xl">
@@ -21,8 +21,8 @@ export default function Hero({ onStartAssessment, onExploreEcosystem }: HeroProp
         </h1>
 
         <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-600">
-          Build reusable AI workflows, prompt templates, and team standards &mdash; so everyday AI
-          use becomes a repeatable business process.
+          Build AI workflows, templates, and standards &mdash; repeatable execution, not one-off
+          chats.
         </p>
 
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">

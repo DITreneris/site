@@ -12,8 +12,7 @@ export default function ClosingCta({ onStartAssessment }: ClosingCtaProps) {
           Ready to make AI a repeatable system?
         </h2>
         <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-slate-400">
-          Start with the central platform, or find your exact starting stage with the 60-second
-          team assessment.
+          Start with the platform, or find your starting stage with the 60-second team assessment.
         </p>
         <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a

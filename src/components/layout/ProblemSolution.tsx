@@ -17,10 +17,9 @@ export default function ProblemSolution() {
     <section className="section-default bg-slate-50">
       <div className="container-default">
         <div className="mx-auto max-w-2xl text-center">
-          <span className="text-label-upper text-amber-700">The problem</span>
-          <h2 className="section-heading mt-2">More output is not less work</h2>
+          <h2 className="section-heading">More output is not less work</h2>
           <p className="mt-3 text-sm leading-relaxed text-slate-600">
-            Treating AI like a chat box buries your team in disposable output.
+            Treating AI like a chat box buries teams in disposable output.
           </p>
         </div>
 

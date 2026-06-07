@@ -1,14 +1,12 @@
 # Prompt Anatomy — AI Operating System for Teams
 # Canonical marketing and demo site: https://promptanatomy.site/
 
-> Prompt Anatomy is an AI Operating System for modern teams. It helps organizations move from random prompting to structured, repeatable AI workflows — across learning, daily work, automation, marketing, HR, operations, and executive decision-making.
->
-> Less random prompting. More structured execution.
+> Prompt Anatomy is an AI Operating System for modern teams: 6-module interactive training (6-block methodology) plus an ecosystem of focused prompt kits. Less random prompting. More structured execution.
 
 ## Primary page (cite this)
 - https://promptanatomy.site/
   - Nine-domain ecosystem overview (Enter → Use → Create → Hire → Manage → Decide → Deepen → Play)
-  - Interactive prompt builder (5-layer structured prompts)
+  - Interactive prompt builder (5-layer demo; full course uses 6-block system)
   - Team AI maturity assessment (3 tiers)
 
 ## Site sections (hash deep links)
@@ -17,18 +15,18 @@
 - https://promptanatomy.site/#maturity — team AI maturity diagnostic (3 questions, 3 tiers)
 
 ## Platform hub (product CTAs)
-- https://promptanatomy.app/ — Central AI Operating System; 600+ templates, 60 evaluated AI tools, 100-term glossary
+- https://promptanatomy.app/ — 6-Module Training Hub; 6-block methodology; aggregate ecosystem counts (600+ templates, 60 tools, 100-term glossary) span training + subdomain kits
 
 ## Ecosystem domains (external; separate sites)
-- https://promptanatomy.app/ — Main Platform / Central AI Operating System
-- https://promptanatomy.cloud/ — 1. Enter / Onboarding & Core Basics
-- https://promptanatomy.info/ — 2. Use / Daily Automation Library
-- https://promptanatomy.space/ — 3. Create / Marketing & PR OS
-- https://promptanatomy.help/ — 4. Hire / HR & People Operations
-- https://promptanatomy.ceo/ — 5. Manage / Strategic Leadership Hub
-- https://promptanatomy.pro/ — 6. Decide / Enterprise Scaling Engine
-- https://promptanatomy.blog/ — 7. Deepen / Systems Thinker Knowledge Hub
-- https://promptanatomy.lol/ — 8. Play / Experiment & Exploration Lab
+- https://promptanatomy.app/ — Main Platform / 6-Module Training Hub
+- https://promptanatomy.cloud/ — 1. Enter / First Lesson & Onboarding
+- https://promptanatomy.info/ — 2. Use / Organization Prompt Kit (8 prompts)
+- https://promptanatomy.space/ — 3. Create / Marketing Prompt Kit (10 prompts)
+- https://promptanatomy.help/ — 4. Hire / HR Hiring Prompt Kit (10 prompts + PDFs)
+- https://promptanatomy.ceo/ — 5. Manage / CEO Prompt Generator & Playbooks
+- https://promptanatomy.pro/ — 6. Decide / Executive Prompt Operating Kit
+- https://promptanatomy.blog/ — 7. Deepen / Knowledge & Deep-Dive Hub
+- https://promptanatomy.lol/ — 8. Play / Corporate Ladder (Telegram mini-game)
 
 ## Contact and trust
 - Email: info@promptanatomy.app

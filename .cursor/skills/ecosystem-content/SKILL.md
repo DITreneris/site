@@ -123,9 +123,29 @@ Phase accent colors come from `src/data/ecosystemTheme.ts` — do not add per-do
 
 - Align with `primal_concept.txt`; do not invent new product areas
 
-- Stats (600+ templates, 60 tools, etc.) are marketing references — keep consistent site-wide
+- **Kit, not OS** — static subdomain products are "prompt kit" or "playbook"; reserve "OS" for brand umbrella and hub training only
+
+- **Count what you ship** — feature bullets must map to a product README fact (no API, multi-agent, or enterprise automation unless the repo has it)
+
+- **Hub vs ecosystem** — 6-module training lives on `promptanatomy.app`; focused kits live on subdomains
+
+- Stats (600+ templates, 60 tools, 100-term glossary, 30–50% routine) are **ecosystem-wide aggregates** — always pair with "across the ecosystem" context in UI; not one library on a single URL
 
 - External URLs: `https://{domain}` for each subdomain
 
 - Platform hub CTAs → `promptanatomy.app`; this marketing site → `promptanatomy.site`
+
+### Product truth anchors (GitHub)
+
+| ID | Repo | Ships |
+|----|------|-------|
+| app | inzinerija | 6 modules, 6-block method, 15 prompts, 31 tools |
+| cloud | lead | First interactive lesson |
+| info | automation | 8 org-analysis prompts |
+| space | cmo | 10 marketing prompts |
+| help | personalas | 10 HR prompts + PDFs |
+| ceo | ceo | Prompt generator + 2 PDF playbooks |
+| pro | leader | ~35 executive prompts, static kit |
+| blog | (external) | Articles / knowledge hub |
+| lol | ladder | Corporate Ladder Telegram mini-game |
 

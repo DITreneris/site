@@ -3,10 +3,6 @@ import SequencePath from './SequencePath';
 import DomainDetail from './DomainDetail';
 import { DOMAINS } from '../../data/domains';
 
-function stageLabel(title: string): string {
-  return title.replace(/^\d+\.\s*/, '');
-}
-
 interface EcosystemMapProps {
   selectedDomain: string;
   onSelectDomain: (id: string) => void;
@@ -23,11 +19,6 @@ export default function EcosystemMap({
     [selectedDomain],
   );
 
-  const pipeline = useMemo(
-    () => DOMAINS.filter((d) => !d.isCore).map((d) => stageLabel(d.title)).join(' → '),
-    [],
-  );
-
   return (
     <section className="section-dark">
       <div className="bg-ecosystem-grid pointer-events-none absolute inset-0 opacity-60" />
@@ -39,11 +30,11 @@ export default function EcosystemMap({
         <div className="max-w-2xl">
           <span className="text-label-upper text-brand-accent">The ecosystem</span>
           <h2 className="mt-2 text-3xl font-black leading-tight tracking-[-0.02em] text-white md:text-4xl">
-            One platform. Seven workflow modules, one core hub.
+            Six-module training. Eight focused kits. One core hub.
           </h2>
           <p className="mt-3 text-sm leading-relaxed text-slate-300">
-            {pipeline} — each stage gives a team the exact models, templates, and workflows for its
-            role around the central hub.
+            Interactive 6-block training at the hub; role-specific prompt kits on each subdomain
+            &mdash; from first lesson to executive playbooks.
           </p>
         </div>
 

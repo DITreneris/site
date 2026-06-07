@@ -20,8 +20,7 @@ export default function SequencePath({ selectedDomain, onSelectDomain }: Sequenc
       <div className="mb-5 border-b border-border-glass pb-4">
         <h3 className="text-label-upper text-slate-200">Where to start</h3>
         <p className="mt-1 text-xs text-slate-300">
-          A maturity journey in four phases, plugged into one core hub. Select any stage to view its
-          audience, role, and features.
+          Select any kit to view its audience, role, and features.
         </p>
       </div>
 

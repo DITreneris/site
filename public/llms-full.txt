@@ -1,5 +1,5 @@
 # Prompt Anatomy — Extended LLM Reference
-# Generated: 2026-06-01
+# Generated: 2026-06-07
 # Canonical site: https://promptanatomy.site/
 
 ## Summary
@@ -19,49 +19,49 @@ Less random prompting. More structured execution.
 ## Ecosystem domains
 
 ### Main Platform — promptanatomy.app
-Role: Central AI Operating System
+Role: 6-Module Training Hub
 URL: https://promptanatomy.app/
-The core control hub bringing together structured learning materials, professional workflows, vetted tools, and reusable frameworks for modern leadership teams.
+The core hub for 6-module interactive training on the 6-block prompt methodology — plus checkout and lifetime access to the full course, tool catalog, and certificates.
 
 ### 1. Enter — promptanatomy.cloud
-Role: Onboarding & Core Basics
+Role: First Lesson & Onboarding
 URL: https://promptanatomy.cloud/
-The standard entry point for teams beginning their systemic AI journey. Instills foundational concepts, terminology, and healthy structural habits.
+The free entry point: a single interactive lesson and prompt library that introduces structured prompting before the full training course.
 
 ### 2. Use — promptanatomy.info
-Role: Daily Automation Library
+Role: Organization Prompt Kit
 URL: https://promptanatomy.info/
-Ready-made cognitive recipes built to directly offload repetitive manual tasks and accelerate routine administrative execution.
+Eight copy-ready prompts for organizational analysis — company profile, role clarity, KPIs, processes, and daily workflow structure.
 
 ### 3. Create — promptanatomy.space
-Role: Marketing & PR OS
+Role: Marketing Prompt Kit
 URL: https://promptanatomy.space/
-Transform random, low-performing conversational marketing outputs into unified, high-impact narrative expansions based on strict guidelines.
+Ten copy-ready marketing and communication prompts — content calendars, LinkedIn posts, lead generation, and brand-voice guardrails.
 
 ### 4. Hire — promptanatomy.help
-Role: HR & People Operations
+Role: HR Hiring Prompt Kit
 URL: https://promptanatomy.help/
-Engineered search and alignment templates to automate sourcing, streamline onboarding pipelines, and craft professional review schedules.
+Ten free hiring prompts plus paid PDF guides for sourcing, job descriptions, interviews, and HR communication workflows.
 
 ### 5. Manage — promptanatomy.ceo
-Role: Strategic Leadership Hub
+Role: CEO Prompt Generator & Playbooks
 URL: https://promptanatomy.ceo/
-Designed exclusively for executives who prioritize crisp operational control, logical synchronization, and strategic translation.
+A prompt generator built from your business inputs, plus paid CEO Operations and Strategy PDF playbooks for executive cadence.
 
 ### 6. Decide — promptanatomy.pro
-Role: Enterprise Scaling Engine
+Role: Executive Prompt Operating Kit
 URL: https://promptanatomy.pro/
-Advanced logical layering designed to migrate local ad-hoc workflows into automated enterprise systems and custom API operations.
+A static executive prompt kit with Global Context, six fixed modules, a 35-prompt library, clarity demos, and a printable operating PDF.
 
 ### 7. Deepen — promptanatomy.blog
-Role: Systems Thinker Knowledge Hub
+Role: Knowledge & Deep-Dive Hub
 URL: https://promptanatomy.blog/
-Deep-dive analytical essays, step-by-step logic diagrams, and print-ready canvases designed for modern AI practitioners.
+Articles, logic diagrams, and frameworks for AI practitioners who want to go deeper into prompt engineering and systems thinking.
 
 ### 8. Play — promptanatomy.lol
-Role: Experiment & Exploration Lab
+Role: Corporate Ladder (Play)
 URL: https://promptanatomy.lol/
-A structured playground for low-stakes prompt experiments, guided drills, and team warm-ups before production workflows.
+Corporate Ladder — a satirical Telegram mini-game about climbing the career ladder. Low-stakes team warm-up, not a production prompt sandbox.
 
 ## Structured prompting (Anatomizer)
 

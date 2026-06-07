@@ -48,7 +48,8 @@ export default function AnatomizerBuilder() {
           <h2 className="section-heading mt-2">Build a structured prompt, layer by layer</h2>
           <p className="mt-3 text-sm leading-relaxed text-slate-600">
             Instead of an ad-hoc chat message, assemble five explicit layers. Change any selection
-            and watch the structured prompt rebuild in real time.
+            and watch the structured prompt rebuild in real time. Demo builder uses 5 layers; the
+            full course at promptanatomy.app teaches the complete 6-block system.
           </p>
         </div>
 

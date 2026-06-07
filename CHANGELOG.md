@@ -13,6 +13,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Landing copy tightened (~20 words): hero badge/sub, problem section lead, stats strip label/disclaimer, closing CTA — less repetition, same positioning.
+- Ecosystem marketing copy truth-aligned with GitHub products: hub repositioned as **6-module training**; subdomain entries rewritten as focused **prompt kits**; `.lol` framed as Corporate Ladder game; `.pro` stripped of false API/multi-agent claims; `.info` corrected to 8 org prompts.
+- Ecosystem intro H2: **Six-module training. Eight focused kits. One core hub.** — pipeline arrow chain removed from subtitle.
+- Stats strip: **Across the ecosystem** label and stronger aggregate disclaimer for 600+/60/100 counts.
+- Anatomizer intro clarifies **5-layer demo** vs **6-block course** at `promptanatomy.app`.
+- Footer Play label: **Corporate Ladder** (was sandbox).
+- `seoFaq.ts`, `public/llms.txt`, `primal_concept.txt`, and agent docs (`ecosystem-content`, `content-brand`) synced to new positioning.
+
 - Stage **7** renamed **Learn → Deepen** on `promptanatomy.blog` (domain ID unchanged); pipeline string `Enter → … → Deepen → Play`; footer, FAQ, `llms.txt`, `primal_concept.txt`, and agent docs updated to nine-domain wording.
 
 - SEO entity graph: `scripts/generate-jsonld.mjs` builds JSON-LD `@graph` at prebuild from `domains.ts`, `siteContact.ts`, and `seoFaq.ts` — Person (founder), Organization with `founder` link, ItemList (8 ecosystem modules), Product `category: AI Operating System`, FAQPage (7 entries including founder).

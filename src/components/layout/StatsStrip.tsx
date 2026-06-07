@@ -4,7 +4,7 @@ import { Zap } from 'lucide-react';
 type Stat = { to: number; prefix?: string; suffix?: string; label: string };
 
 const STATS: Stat[] = [
-  { to: 600, suffix: '+', label: 'Operational templates & workflows' },
+  { to: 600, suffix: '+', label: 'Copy-ready templates & workflows' },
   { to: 60, label: 'Evaluated business AI tools' },
   { to: 100, label: 'Term AI & ML glossary' },
   { to: 50, prefix: '30-', suffix: '%', label: 'Target reduction in routine team work' },
@@ -88,9 +88,11 @@ export default function StatsStrip() {
           inView ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
         }`}
       >
-        <div className="flex items-center justify-center gap-2 text-brand-accent">
-          <Zap className="icon-sm" />
-          <span className="text-label-upper">Prompt Anatomy</span>
+        <div className="flex flex-col items-center justify-center gap-1 text-brand-accent">
+          <div className="flex items-center gap-2">
+            <Zap className="icon-sm" />
+            <span className="text-label-upper">Prompt Anatomy</span>
+          </div>
         </div>
 
         <div className="mt-10 grid grid-cols-2 gap-y-10 lg:grid-cols-4 lg:gap-y-0 lg:divide-x lg:divide-white/10">
@@ -107,7 +109,9 @@ export default function StatsStrip() {
         </div>
 
         <p className="mx-auto mt-10 max-w-2xl text-center text-xs leading-relaxed text-slate-500">
-          Target based on workflow standardization, not full task automation.
+          Templates, tool references, and glossary terms span training and subdomain kits &mdash;
+          not one downloadable library on one URL. The 30&ndash;50% target reflects workflow
+          standardization, not full automation.
         </p>
       </div>
     </section>

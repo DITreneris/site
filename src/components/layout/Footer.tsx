@@ -50,7 +50,7 @@ const NETWORK_LINKS: FooterLink[] = [
 
   { label: 'Deepen — knowledge hub', href: 'https://promptanatomy.blog', external: true },
 
-  { label: 'Play — sandbox', href: 'https://promptanatomy.lol', external: true },
+  { label: 'Play — Corporate Ladder', href: 'https://promptanatomy.lol', external: true },
 
 ];
 

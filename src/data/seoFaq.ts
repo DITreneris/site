@@ -9,17 +9,17 @@ export const SEO_FAQ: SeoFaqItem[] = [
   {
     question: 'What is Prompt Anatomy?',
     answer:
-      'Prompt Anatomy is an AI Operating System for modern teams. It helps organizations move from random prompting to structured, repeatable AI workflows across learning, daily work, automation, marketing, HR, operations, and executive decision-making.',
+      'Prompt Anatomy is an AI Operating System for modern teams — 6-module interactive training on the 6-block methodology, plus an ecosystem of focused prompt kits for onboarding, operations, marketing, HR, leadership, and executive workflows.',
   },
   {
     question: 'Who is Prompt Anatomy for?',
     answer:
-      'Prompt Anatomy is built for CEOs, COOs, IT leaders, managers, and operational teams who want to implement AI in a structured way — from onboarding beginners to executives scaling enterprise workflows.',
+      'Prompt Anatomy is built for CEOs, COOs, IT leaders, managers, and operational teams who want structured AI workflows — from a free first lesson through the full training course and role-specific prompt kits.',
   },
   {
     question: 'What is the Prompt Anatomy ecosystem?',
     answer:
-      'Nine interconnected domains: eight pipeline stages — Enter (promptanatomy.cloud), Use (promptanatomy.info), Create (promptanatomy.space), Hire (promptanatomy.help), Manage (promptanatomy.ceo), Decide (promptanatomy.pro), Deepen (promptanatomy.blog), Play (promptanatomy.lol) — plus the central platform at promptanatomy.app.',
+      'Nine interconnected domains: one core hub at promptanatomy.app (6-module training) plus eight focused kits — Enter (promptanatomy.cloud, first lesson), Use (promptanatomy.info, 8 org prompts), Create (promptanatomy.space, 10 marketing prompts), Hire (promptanatomy.help, 10 HR prompts), Manage (promptanatomy.ceo, CEO generator + playbooks), Decide (promptanatomy.pro, executive prompt kit), Deepen (promptanatomy.blog, knowledge hub), Play (promptanatomy.lol, Corporate Ladder game).',
   },
   {
     question: 'Who founded Prompt Anatomy?',
@@ -29,7 +29,7 @@ export const SEO_FAQ: SeoFaqItem[] = [
   {
     question: 'What is structured prompting and the Anatomizer?',
     answer:
-      'Structured prompting uses five layers: System Role, Business Context, Dynamic Variables, Instructions, and Output Constraints. The Anatomizer on promptanatomy.site lets teams assemble prompts layer by layer for repeatable, cost-efficient execution.',
+      'Structured prompting uses five layers in the site demo: System Role, Business Context, Dynamic Variables, Instructions, and Output Constraints. The full course at promptanatomy.app teaches the complete 6-block system. The Anatomizer on promptanatomy.site lets teams assemble prompts layer by layer for repeatable execution.',
   },
   {
     question: 'What does the Team Assessment measure?',
@@ -39,6 +39,6 @@ export const SEO_FAQ: SeoFaqItem[] = [
   {
     question: 'Where is the main platform?',
     answer:
-      'The central AI operating system lives at https://promptanatomy.app/, with structured templates, workflows, and frameworks. The marketing and demo site at https://promptanatomy.site/ showcases the ecosystem, Anatomizer, and maturity assessment.',
+      'The 6-module training hub lives at https://promptanatomy.app/ (6-block methodology, certificates, tool catalog). Aggregate template and tool counts span training plus subdomain kits — not one library on a single URL. The marketing site at https://promptanatomy.site/ showcases the ecosystem, Anatomizer, and maturity assessment.',
   },
 ];

@@ -2,7 +2,7 @@
 
 **Prompt Anatomy is an AI Operating System for modern teams.**
 
-It helps organizations move from random prompting to structured, repeatable AI workflows — across learning, daily work, automation, marketing, HR, operations, and executive decision-making.
+6-module interactive training (6-block methodology) plus an ecosystem of focused prompt kits — from a free first lesson through executive playbooks.
 
 The ecosystem is built around one simple idea:
 
@@ -14,19 +14,20 @@ The ecosystem is built around one simple idea:
 
 ### **promptanatomy.app**
 
-**The central AI operating system for teams and leaders.**
+**6-module training hub for teams and leaders.**
 
-This is the main platform of the Prompt Anatomy ecosystem. It brings together structured training material, practical workflows, AI tools, and reusable templates for business teams.
+The core hub ships interactive training on the 6-block prompt methodology, plus checkout and lifetime access to the full course, tool catalog, and certificates.
 
 It includes:
 
-* **600+ templates and workflows**
-* **60 best AI tools**
-* **100-term AI glossary**
-* Practical training material
-* AI System OS logic for teams
+* **6-module interactive training (6-block methodology)**
+* **15 quick-copy prompts in the training app**
+* **31 evaluated AI tools (training catalog)**
+* **Certificates after modules 3 and 6**
 
-**Best for:** CEOs, COOs, IT leaders, managers, and teams that want to implement AI in a structured way.
+Aggregate ecosystem counts (600+ templates, 60 tools, 100-term glossary) span training plus subdomain kits — not one library on a single URL.
+
+**Best for:** CEOs, COOs, IT leaders, managers, and teams that want structured AI training.
 
 ---
 
@@ -34,11 +35,9 @@ It includes:
 
 ### **promptanatomy.cloud**
 
-**Start learning AI with the first free lesson.**
+**Start with the first free lesson.**
 
-This is the entry point for people and teams who are just beginning their AI journey.
-
-It helps staff understand the basics of AI, prompting, and practical everyday use before moving into more advanced workflows.
+A single interactive lesson and prompt library — the entry point before the full 6-module course.
 
 **Best for:** all staff, beginners, and teams that need a simple first step into AI.
 
@@ -48,17 +47,11 @@ It helps staff understand the basics of AI, prompting, and practical everyday us
 
 ### **promptanatomy.info**
 
-**Ready-made prompts and workflow templates for daily work.**
+**Organization prompt kit — 8 copy-ready prompts.**
 
-This is the practical automation library for everyday tasks.
+Prompts for company profile, role clarity, KPIs, processes, and daily workflow structure.
 
-It helps employees use AI to reduce repetitive work, structure their thinking, improve communication, and complete routine tasks faster.
-
-The goal is simple:
-
-**Let AI handle 30–50% of your daily routine.**
-
-**Best for:** all staff, operational teams, managers, and anyone who wants ready-to-use AI workflows.
+**Best for:** operational teams, project managers, and analysts mapping how AI fits the organization.
 
 ---
 
@@ -66,20 +59,9 @@ The goal is simple:
 
 ### **promptanatomy.space**
 
-**AI content system for marketing, PR, and communication teams.**
+**Marketing prompt kit — 10 copy-ready prompts.**
 
-This part of the ecosystem focuses on content creation and communication automation.
-
-It includes high-impact marketing prompts, content workflows, and reusable templates for daily communication.
-
-It helps teams create better content faster — without starting from zero every time.
-
-Includes:
-
-* TOP 10 marketing content prompts
-* Content planning templates
-* PR and communication workflows
-* Daily marketing automation prompts
+Content calendars, LinkedIn posts, lead generation, PR, and brand-voice structures.
 
 **Best for:** marketing, PR, communication, and content teams.
 
@@ -89,20 +71,11 @@ Includes:
 
 ### **promptanatomy.help**
 
-**AI workflow system for HR, recruitment, and people teams.**
+**HR hiring prompt kit — 10 prompts plus PDF guides.**
 
-This module helps HR teams automate and improve search, recruitment, assessment, and internal people processes.
+Sourcing, job descriptions, interviews, and HR communication workflows.
 
-It provides structured prompts and workflows for:
-
-* Candidate search
-* Job description creation
-* Interview preparation
-* Candidate assessment
-* HR communication
-* Internal people operations
-
-**Best for:** HR teams, recruiters, personnel managers, and people operations teams.
+**Best for:** HR teams, recruiters, and people operations teams.
 
 ---
 
@@ -110,24 +83,11 @@ It provides structured prompts and workflows for:
 
 ### **promptanatomy.ceo**
 
-**Operations center for leaders.**
+**CEO prompt generator and playbooks.**
 
-This is the management layer of the ecosystem.
+Generate copy-ready prompts from your business inputs; paid CEO Operations and Strategy PDF playbooks.
 
-It helps leaders structure strategic, tactical, and operational work using AI-powered workflows.
-
-It is designed for leaders who need clarity, speed, and better decision-making — not more random AI outputs.
-
-Includes workflows for:
-
-* Strategy
-* Operations
-* Management decisions
-* Team alignment
-* Business planning
-* Execution control
-
-**Best for:** CEOs, COOs, founders, and senior managers.
+**Best for:** CEOs, COOs, founders, and senior executives.
 
 ---
 
@@ -135,13 +95,11 @@ Includes workflows for:
 
 ### **promptanatomy.pro**
 
-**Professional tool for scaling business with AI.**
+**Executive prompt operating kit.**
 
-This is the advanced layer for organizations that want to move beyond basic AI usage and build scalable AI workflows.
+Static kit with Global Context, module prompts, a 35-prompt library, and a printable operating PDF.
 
-It focuses on business growth, decision-making, systems, and professional AI implementation.
-
-**Best for:** CEOs, COOs, business owners, consultants, and teams scaling AI across the organization.
+**Best for:** consultants, business owners, and growth leaders.
 
 ---
 
@@ -149,21 +107,11 @@ It focuses on business growth, decision-making, systems, and professional AI imp
 
 ### **promptanatomy.blog**
 
-**Knowledge hub for AI, automation, ML, and systems thinking.**
+**Knowledge and deep-dive hub.**
 
-This is the educational and expert content layer of the ecosystem.
+Articles, diagrams, and frameworks for AI practitioners and systems thinkers.
 
-It provides practical articles, diagrams, canvases, templates, and frameworks for people who want to go deeper into AI systems and automation.
-
-Includes:
-
-* AI automation articles
-* Workflow schemes
-* AI canvases
-* Practical templates
-* ML and AI implementation insights
-
-**Best for:** AI specialists, automation experts, consultants, trainers, and advanced users.
+**Best for:** AI specialists, trainers, and advanced users.
 
 ---
 
@@ -171,17 +119,11 @@ Includes:
 
 ### **promptanatomy.lol**
 
-**Structured playground for low-stakes prompt experiments.**
+**Corporate Ladder — satirical Telegram mini-game.**
 
-This is the hands-on practice layer — guided drills, challenges, and sandbox scenarios that turn frameworks into muscle memory without touching production systems.
+Low-stakes team warm-up; not a production prompt sandbox.
 
-Includes:
-
-* Guided prompt challenges and micro-scenarios
-* Safe sandbox environments for team warm-ups
-* Replayable exercises that reinforce structured habits
-
-**Best for:** teams, practitioners, and training facilitators who want deliberate practice before daily automation.
+**Best for:** teams who want a fun break between structured work sessions.
 
 ---
 
@@ -191,14 +133,14 @@ Includes:
 
 Each part of Prompt Anatomy has a clear role:
 
-* **Enter** — learn the basics
-* **Use** — apply AI in daily work
-* **Create** — improve marketing and communication
-* **Hire** — automate HR and recruitment
-* **Manage** — run operations with AI
-* **Decide** — scale business decisions
-* **Deepen** — go deeper into AI systems, frameworks, and automation
-* **Play** — practice in a structured sandbox before production workflows
+* **Enter** — first free lesson
+* **Use** — organization prompt kit
+* **Create** — marketing prompt kit
+* **Hire** — HR hiring prompt kit
+* **Manage** — CEO generator and playbooks
+* **Decide** — executive prompt operating kit
+* **Deepen** — knowledge hub
+* **Play** — Corporate Ladder game
 
 ---
 
@@ -206,7 +148,7 @@ Each part of Prompt Anatomy has a clear role:
 
 **Prompt Anatomy helps organizations turn AI from a random tool into a structured operating system.**
 
-It gives teams the templates, workflows, tools, and thinking structures needed to use AI consistently — across daily work, communication, HR, operations, and leadership.
+6-module training at the hub; focused prompt kits on each subdomain.
 
 The result:
 

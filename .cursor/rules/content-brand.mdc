@@ -25,6 +25,8 @@ Each domain entry must include:
 
 ## Anatomizer prompt anatomy
 
+**5-layer demo vs 6-block course:** The site Anatomizer uses **5 layers** (marketing demo). The paid training at `promptanatomy.app` teaches the complete **6-block system** — do not conflate them in copy.
+
 Structured prompts use five blocks in this order:
 
 1. `[SYSTEM ROLE]` — persona
@@ -47,4 +49,6 @@ End with: `### BEGIN RESPONSE ACCORDING TO SYSTEM RULES`
 
 - Write for executives and operational leaders
 - Prefer concrete outcomes (time saved, structure, alignment) over vague AI benefits
-- Stats in prototype (600+ templates, 30–50% routine reduction) are marketing references — keep consistent across pages
+- Stats (600+ templates, 60 tools, 100-term glossary, 30–50% routine) are **ecosystem-wide aggregates** — label as "across the ecosystem"; subdomain kits ship counted prompts, not the full library
+
+- Subdomain products are **prompt kits** or **playbooks** — avoid "Daily Automation Library", "Enterprise Scaling Engine", "prompt sandbox" unless the repo actually ships that

@@ -7,7 +7,7 @@ export const MATURITY_QUIZ: QuizQuestion[] = [
       { text: 'Ad-hoc basis: Random individuals write single-sentence conversational prompts.', score: 1 },
       { text: 'Scattered libraries: A few copy-paste prompt documents live locally in text files.', score: 2 },
       { text: 'Basic custom tools: Some departments share custom bots, but workflows are unstandardized.', score: 3 },
-      { text: 'Unified ecosystem: Standard system roles, templates, and API integrations guide operations.', score: 4 },
+      { text: 'Unified ecosystem: Standard roles, templates, and integrated workflows guide operations across teams.', score: 4 },
     ],
   },
   {
