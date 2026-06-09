@@ -47,9 +47,12 @@ No environment variables required for MVP.
 
 See `DEPLOY.md` §3 for DNS record table.
 
+**Primary domain must be apex (no www):** `promptanatomy.site` = Production; `www.promptanatomy.site` = redirect to apex (308). Inverted setup (www Production, apex → www) conflicts with repo canonical/OG/sitemap and triggers GSC “Page with redirect”. See `DEPLOY.md` §3 “Domain redirect” + `vercel.json`.
+
 ## Post-deploy verification
 
-- [ ] https://promptanatomy.site/ loads over HTTPS
+- [ ] https://promptanatomy.site/ returns **200** (not 307 to www)
+- [ ] https://www.promptanatomy.site/ returns **308** → apex
 - [ ] `/og-image.png` and `/creator-janitor.png` return 200
 - [ ] View-source: `canonical` = `.site`
 - [ ] All 3 tabs work on mobile

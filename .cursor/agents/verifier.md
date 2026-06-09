@@ -98,7 +98,9 @@ None (read-only QA). Reference: [DOCS_INDEX.md](../../DOCS_INDEX.md), [AGENTS.md
 
 - [ ] Canonical and OG URLs point to `promptanatomy.site`
 
+- [ ] `https://promptanatomy.site/` returns **200** (not 307 to www)
 
+- [ ] `https://www.promptanatomy.site/` returns **308** → `https://promptanatomy.site/`
 
 ## Output format
 

@@ -9,9 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `vercel.json`: permanent `www.promptanatomy.site` → `https://promptanatomy.site/` redirect (backup once Vercel primary domain is apex).
 - Ecosystem stage **8. Play** (`promptanatomy.lol`) in the Learn phase column — Experiment & Exploration Lab with guided sandbox copy; fills the second card in `SequencePath` Knowledge phase.
 
 ### Changed
+
+- `DEPLOY.md` §3: explicit apex-vs-www domain table, PowerShell redirect verification, and GSC troubleshooting for inverted Vercel primary domain.
+- `DEPLOY.md` §6: expanded GSC URL Inspection and sitemap steps after apex redirect fix.
+- `DOCS_INDEX.md`, `verifier.md`, `deploy-vercel.mdc`: register `vercel.json` and redirect verification checklist.
 
 - Landing copy tightened (~20 words): hero badge/sub, problem section lead, stats strip label/disclaimer, closing CTA — less repetition, same positioning.
 - Ecosystem marketing copy truth-aligned with GitHub products: hub repositioned as **6-module training**; subdomain entries rewritten as focused **prompt kits**; `.lol` framed as Corporate Ladder game; `.pro` stripped of false API/multi-agent claims; `.info` corrected to 8 org prompts.

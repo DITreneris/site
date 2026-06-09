@@ -2,7 +2,7 @@
 
 description: Vercel deploy rules for Prompt Anatomy ecosystem site
 
-globs: README.md, package.json, index.html, public/**/*
+globs: README.md, package.json, index.html, public/**/*, vercel.json
 
 alwaysApply: false
 
@@ -62,6 +62,8 @@ alwaysApply: false
 - Commit `.env` files with secrets
 
 - Point canonical/OG URLs at `promptanatomy.app` for this site
+
+- Set Vercel primary domain to `www.promptanatomy.site` — apex (`promptanatomy.site`) must be Production; www redirects to apex (see `vercel.json`, `DEPLOY.md` §3)
 
 - Skip `npm run build` verification before push
 

@@ -43,7 +43,36 @@ Step-by-step for connecting [github.com/DITreneris/site](https://github.com/DITr
 | CNAME | `www` | `cname.vercel-dns.com` |
 
 4. Wait for SSL (usually 1–15 minutes).
-5. Set **Primary Domain** to `promptanatomy.site` in Vercel.
+5. Set **Primary Domain** to `promptanatomy.site` in Vercel (apex, **no www**).
+
+### Domain redirect — required setup (fixes GSC “Page with redirect”)
+
+Repo canonical, OG, sitemap, and JSON-LD all point to `https://promptanatomy.site/` (apex). Vercel must match.
+
+| Domain | Correct | Wrong (causes GSC redirect errors) |
+|--------|---------|-------------------------------------|
+| `promptanatomy.site` | **Production** (serves the site) | Redirect → `www.promptanatomy.site` |
+| `www.promptanatomy.site` | Redirect → `promptanatomy.site` (308) | **Production** |
+
+**Fix in Vercel → Settings → Domains:**
+
+1. **Edit** `promptanatomy.site` → choose **Production** (not “Redirect to www”).
+2. **Edit** `www.promptanatomy.site` → **Redirect to** `promptanatomy.site` (permanent / 308).
+3. Confirm `site-*.vercel.app` stays Production (preview URL only; not indexed).
+
+**Verify redirect chain (PowerShell):**
+
+```powershell
+curl.exe -sI https://promptanatomy.site/
+# Expect: HTTP/1.1 200 (no Location header to www)
+
+curl.exe -sI https://www.promptanatomy.site/
+# Expect: 308 Location: https://promptanatomy.site/
+```
+
+If apex HTTPS still returns `307` → `www`, the dashboard primary domain is still inverted — fix step 1–2 before re-submitting the sitemap in Google Search Console.
+
+Repo also ships `vercel.json` with a permanent `www` → apex redirect as a deploy-time backup once the dashboard primary is correct.
 
 ## 4. Post-deploy verification
 
@@ -75,7 +104,16 @@ Re-upload after OG rebrand changes (when `.github/social-preview.png` changes).
 
 ## 6. Search indexing follow-up
 
+After apex is Production and redirects verify (see §3):
+
+1. **Google Search Console** → property `promptanatomy.site` (Domain) or `https://promptanatomy.site/` (URL prefix)
+2. **URL Inspection** → enter `https://promptanatomy.site/` → confirm canonical matches → **Request indexing**
+3. **Sitemaps** → submit `https://promptanatomy.site/sitemap.xml`
+4. **Pages** → monitor **Indexed** (not “Page with redirect” for old `http://` variants — those clear over time)
+5. Optional: [Rich Results Test](https://search.google.com/test/rich-results?url=https://promptanatomy.site/)
+
 - [ ] Submit `https://promptanatomy.site/sitemap.xml` in Google Search Console
+- [ ] Request indexing for `https://promptanatomy.site/` in URL Inspection
 - [ ] Submit sitemap in Bing Webmaster Tools
 
 ## 7. Optional follow-up

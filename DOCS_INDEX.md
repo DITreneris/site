@@ -58,6 +58,7 @@ Use this table to pick the right agent, skill, and documents.
 | `agents` | [AGENTS.md](AGENTS.md) | Agents + leads | Scope, domains, workflow, conventions |
 | `design-system` | [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) | Design + frontend + agents | v2.0 implementation; §14 = agent guardrails |
 | `deploy` | [DEPLOY.md](DEPLOY.md) | DevOps / release | Vercel + Porkbun checklist |
+| `vercel-config` | [vercel.json](vercel.json) | DevOps / release | Permanent www → apex redirect; apex must be Production in Vercel dashboard |
 | `changelog` | [CHANGELOG.md](CHANGELOG.md) | Everyone | Keep a Changelog format; `[Unreleased]` |
 | `docs-index` | DOCS_INDEX.md (this file) | Everyone | Document map; update when adding docs/agents/skills |
 
@@ -125,7 +126,7 @@ Rules live in [.cursor/rules/](.cursor/rules/). `alwaysApply: true` rules load e
 | [project-core.mdc](.cursor/rules/project-core.mdc) | Project identity, scope, non-negotiables | **Yes** |
 | [react-ui.mdc](.cursor/rules/react-ui.mdc) | `src/**/*.tsx`, `src/**/*.ts`, `snippet.txt` | No |
 | [content-brand.mdc](.cursor/rules/content-brand.mdc) | `src/data/**`, `primal_concept.txt`, `**/*.md` | No |
-| [deploy-vercel.mdc](.cursor/rules/deploy-vercel.mdc) | `README.md`, `package.json`, `index.html`, `public/**` | No |
+| [deploy-vercel.mdc](.cursor/rules/deploy-vercel.mdc) | `README.md`, `package.json`, `index.html`, `public/**`, `vercel.json` | No |
 
 ---
 
