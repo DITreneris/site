@@ -1,5 +1,10 @@
 # Prompt Anatomy ecosystem site — promptanatomy.site
 # Marketing/demo SPA; single public indexable URL
+#
+# AI crawler policy (open for discovery):
+# - OAI-SearchBot = ChatGPT Search index (citations)
+# - GPTBot = OpenAI training corpus (allowed by policy)
+# - ChatGPT-User = live user-initiated fetch
 
 User-agent: *
 Allow: /
@@ -20,6 +25,9 @@ User-agent: Applebot
 Allow: /
 
 # AI crawlers and answer engines
+User-agent: OAI-SearchBot
+Allow: /
+
 User-agent: GPTBot
 Allow: /
 

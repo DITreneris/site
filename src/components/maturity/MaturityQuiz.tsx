@@ -9,7 +9,11 @@ import {
 } from 'lucide-react';
 import { MATURITY_QUIZ, calculateQuizResult } from '../../data/maturityQuiz';
 import { DOMAINS } from '../../data/domains';
+import { PLATFORM_URL } from '../../data/siteContact';
+import { trackEvent } from '../../utils/trackEvent';
 import type { QuizResult } from '../../types';
+
+const platformHref = PLATFORM_URL.replace(/\/$/, '');
 
 interface MaturityQuizProps {
   onPivot: (domainId: string) => void;
@@ -27,7 +31,13 @@ export default function MaturityQuiz({ onPivot }: MaturityQuizProps) {
       setStep((s) => s + 1);
     } else {
       const total = Object.values(updated).reduce((acc, cur) => acc + cur, 0);
-      setResult(calculateQuizResult(total));
+      const next = calculateQuizResult(total, updated);
+      setResult(next);
+      trackEvent('quiz_complete', {
+        tier: next.title,
+        score: next.score,
+        recommended: next.recommendedId,
+      });
     }
   };
 
@@ -45,18 +55,18 @@ export default function MaturityQuiz({ onPivot }: MaturityQuizProps) {
     <section className="section-default">
       <div className="container-narrow space-y-6">
         <div className="text-center">
-          <span className="text-label-upper text-amber-700">Team assessment</span>
-          <h2 className="section-heading mt-2">AI operational maturity diagnostic</h2>
-          <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-slate-600">
-            Evaluate how consistently your organization manages prompts, instructions, and
-            workflows. Get your readiness tier in three questions.
+          <span className="text-eyebrow-light">Team assessment</span>
+          <h2 className="section-heading mt-2">60-second team assessment</h2>
+          <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-body">
+            Three questions on how your team manages prompts and workflows. Get a readiness tier
+            and a starting stage.
           </p>
         </div>
 
         {!result ? (
           <div className="card-light-lg space-y-6">
             <div className="flex items-center justify-between">
-              <span className="text-label-upper text-amber-700">
+              <span className="text-eyebrow-light">
                 Question {step + 1} of {MATURITY_QUIZ.length}
               </span>
               <div className="flex gap-1.5">
@@ -80,17 +90,22 @@ export default function MaturityQuiz({ onPivot }: MaturityQuizProps) {
                 {MATURITY_QUIZ[step].question}
               </h3>
 
-              <div className="space-y-2.5">
+              <div
+                role="group"
+                aria-label={MATURITY_QUIZ[step].question}
+                className="space-y-2.5"
+              >
                 {MATURITY_QUIZ[step].options.map((opt) => (
                   <button
                     key={opt.text}
+                    type="button"
                     onClick={() => handleOption(opt.score)}
                     className="quiz-option group"
                   >
-                    <span className="text-xs text-slate-600 group-hover:text-brand-dark">
+                    <span className="text-xs text-body group-hover:text-brand-dark">
                       {opt.text}
                     </span>
-                    <ChevronRight className="icon-sm flex-shrink-0 text-slate-400 group-hover:text-brand-accent" />
+                    <ChevronRight className="icon-sm flex-shrink-0 text-subtle group-hover:text-brand-accent" />
                   </button>
                 ))}
               </div>
@@ -103,59 +118,90 @@ export default function MaturityQuiz({ onPivot }: MaturityQuizProps) {
             aria-atomic="true"
           >
             <div className="space-y-2 text-center">
-              <span className="badge-accent mx-auto">Diagnostic outcome</span>
+              <span className="badge-accent mx-auto">Your tier</span>
               <h3 className="text-lg font-extrabold text-brand-dark">{result.title}</h3>
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-muted">
                 Maturity score:{' '}
                 <strong className="text-brand-dark">{result.score}</strong> / {result.maxScore}
               </p>
             </div>
 
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              <div className="space-y-1.5 rounded-xl border border-slate-200 bg-slate-50 p-4">
+              <div className="space-y-1.5 rounded-xl border border-subtle surface-muted p-4">
                 <div className="flex items-center gap-2 text-amber-600">
                   <AlertTriangle className="icon-sm" />
                   <h4 className="text-label-upper">Current state</h4>
                 </div>
-                <p className="text-xs leading-relaxed text-slate-600">{result.description}</p>
+                <p className="text-xs leading-relaxed text-body">{result.description}</p>
+                {result.diagnostics.length > 0 && (
+                  <div className="mt-3 border-t border-subtle pt-3">
+                    <h5 className="text-label-upper text-muted">What this means</h5>
+                    <ul className="mt-2 space-y-2">
+                      {result.diagnostics.map((line) => (
+                        <li key={line} className="text-xs leading-relaxed text-body">
+                          {line}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
 
-              <div className="flex flex-col justify-between rounded-xl border border-accent-muted-border bg-accent-muted-bg p-4">
+              <div className="callout-accent flex flex-col justify-between">
                 <div>
                   <div className="flex items-center gap-2 text-brand-accent">
                     <Award className="icon-sm" />
-                    <h4 className="text-label-upper text-amber-700">Recommended next stage</h4>
+                    <h4 className="text-eyebrow-light">Recommended next stage</h4>
                   </div>
-                  <p className="mt-1 text-xs leading-relaxed text-slate-600">
+                  <p className="mt-1 text-xs leading-relaxed text-body">
                     {recommended
                       ? `Start with ${recommended.title} (${recommended.domain}).`
                       : 'Explore the recommended stage.'}
                   </p>
                 </div>
                 <div className="mt-3 space-y-2">
+                  <a
+                    href={platformHref}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn-primary-md w-full"
+                    onClick={() =>
+                      trackEvent('platform_outbound', { source: 'quiz_result' })
+                    }
+                  >
+                    Open the platform
+                    <ExternalLink className="icon-sm" />
+                  </a>
                   {recommended && (
                     <a
                       href={`https://${recommended.domain}`}
                       target="_blank"
                       rel="noreferrer"
-                      className="btn-primary-md w-full"
+                      className="btn-secondary-md w-full"
+                      onClick={() =>
+                        trackEvent('kit_outbound', {
+                          domain: recommended.id,
+                          source: 'quiz_result',
+                        })
+                      }
                     >
                       Open {recommended.domain}
                       <ExternalLink className="icon-sm" />
                     </a>
                   )}
                   <button
+                    type="button"
                     onClick={() => onPivot(result.recommendedId)}
-                    className="btn-secondary-md w-full"
+                    className="link-inline mx-auto"
                   >
-                    See your recommended starting point
+                    View starting stage
                     <ArrowRight className="icon-sm" />
                   </button>
                 </div>
               </div>
             </div>
 
-            <div className="flex justify-center border-t border-slate-200 pt-4">
+            <div className="flex justify-center border-t border-subtle pt-4">
               <button onClick={reset} className="btn-secondary-md">
                 <RefreshCw className="icon-sm" />
                 Re-evaluate team

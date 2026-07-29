@@ -45,6 +45,26 @@ End with: `### BEGIN RESPONSE ACCORDING TO SYSTEM RULES`
 | 6–9 | Fragmented Adoption (Tier 2) | info (Use) |
 | ≥ 10 | Structured AI OS Ready (Tier 3) | pro (Decide) |
 
+Tier 3 result copy must stay honest: next step is the **executive prompt operating kit** on `.pro` — do not claim “fully scaled enterprise configurations.”
+
+## Phase UI label
+
+Internal phase id for blog/lol is `Knowledge`. Display label via `phaseLabelFor` is **Deepen** (not Learn). Stage titles stay `7. Deepen` / `8. Play`.
+
+## Cross-surface naming
+
+When editing kit roles or stage names, keep these aligned:
+
+- `src/data/domains.ts` roles
+- Footer product/network labels (e.g. `Use — organization kit`, `Decide — executive kit`)
+- `seoFaq.ts`, Product JSON-LD description in `generate-jsonld.mjs`, hand-maintained `llms.txt`
+- DomainDetail feature heading: **What's included**
+- StatsStrip aggregate eyebrow: **Across the ecosystem**
+
+Forbidden legacy nicknames unless the product ships them: “daily automation”, “scaling” as Decide label, Play as “sandbox”.
+
+See also: `.cursor/LESSONS.md`.
+
 ## Tone
 
 - Write for executives and operational leaders

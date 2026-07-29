@@ -7,16 +7,64 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-07-30
+
+### Added
+
+- Max-ROI conversion: quiz / Anatomizer / practice / DomainDetail CTAs to `promptanatomy.app`; dual kit+training CTAs on non-hub DomainDetail; latch-after-copy platform bridge.
+- `trackEvent` helper (`@vercel/analytics`) for `platform_outbound`, `kit_outbound`, `quiz_complete`, `anatomizer_copy`, `practice_complete`, `tab_open`.
+- Ecosystem role chips (Ops / Marketing / HR / Exec) and Anatomizer kit scenarios (Manage / Create / Hire).
+- On-page FAQ (`FaqSection` from `seoFaq.ts`) and FAQPage JSON-LD via `generate-jsonld.mjs`.
+- [ROADMAP.md](ROADMAP.md) — product plan through **2027-01-01**: north star (ecosystem clarity + traffic to `promptanatomy.app`), phased work (conversion → routing → demand capture), success measures, and parked backlog; registered in `DOCS_INDEX.md`.
+- [TODO.md](TODO.md) — max-ROI execution queue (quiz/Anatomizer/DomainDetail → `.app` CTAs, events, FAQ); explicit non-goals; registered in `DOCS_INDEX.md`.
+- Design system harden (**v2.2**): semantic text/surface utilities (`text-body`, `text-muted`, `text-subtle`, `text-on-dark*`, `surface-muted`, `border-subtle`); recipe utilities `btn-glass-sm`, `shell-terminal`, `callout-accent`, `surface-inset` / `surface-inset-soft`; Header `header-shell*` + `nav-tab*` dual-mode utilities.
+- CorrectPromptPractice micro-lab on `/#anatomizer`: fix a weak chat prompt by choosing a five-layer structured version, then copy.
+- Anatomizer pre-copy checklist gates **Copy prompt** until role, context, and format checks are confirmed.
+- Shared `ExclusiveChoiceGroup` (`radiogroup` + arrow keys) for LayerSelector and CorrectPromptPractice.
+- Maturity quiz result **What this means** diagnostics derived from each selected answer.
+- OAI-SearchBot Allow in `public/robots.txt` (ChatGPT Search) with training-vs-search comments; GPTBot remains Allow by policy.
+- WebPage JSON-LD with `dateModified` in `generate-jsonld.mjs`.
+- noscript entity capsule in `index.html` (brand, ecosystem order, hash links, `llms.txt`).
+- `public/.well-known/security.txt`.
+- `vercel.json` security headers (`X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`).
+- FAQ section in `llms-full.txt` from `seoFaq.ts` via `generate-llms.mjs`.
+
+### Changed
+
+- `DESIGN_SYSTEM.md` §1 live status; §2–§3 marked historical; §14.3 exceptions promoted to named utilities; Appendix D + §19 declare **v2.2**.
+- MVP components migrated to semantic text utilities (pixel-parity slate aliases); DomainDetail / Anatomizer / SequencePath / Header use new recipe utilities.
+- Maturity sprint: landing copy tightened (hero badge/sub, stats disclaimer, ecosystem/Anatomizer intros, SequencePath helper, ClosingCta progression line); Team Assessment shell renamed to **60-second team assessment** (retired “diagnostic”); tier 1–2 result descriptions simplified; `llms` maturity deep-link label aligned.
+- Agents/skills/rules updated from consistency audit: new [`.cursor/LESSONS.md`](.cursor/LESSONS.md); content-brand / ecosystem-content / seo-crawler / anatomizer-prompt / deploy-vercel; content-editor, seo-specialist, ui-builder, verifier, changelog-keeper; `AGENTS.md` phase UI Deepen + `PLATFORM_URL` convention; `DOCS_INDEX.md` lessons registry.
+- Consistency pass: footer Use/Decide labels use kit roles (**organization kit** / **executive kit**); Knowledge phase UI label is **Deepen** (was Learn); StatsStrip eyebrow restored to **Across the ecosystem**; DomainDetail feature heading is **What's included**.
+- Tier 3 maturity result copy softened (no “fully scaled enterprise”); Product JSON-LD and founder FAQ drop legacy “daily automation” / “scaling” phrasing; `generate-llms` Tier 3 mirror aligned.
+- Hero, ClosingCta, and Footer platform CTAs use `PLATFORM_URL` from `siteContact.ts`.
+- Agent/docs truth: `verifier`, `deploy-vercel` skill, and `seo-specialist` check `og_2.png`; `AGENTS.md` documents hand-maintained OG cache-bust (not Satori); `README.md` DESIGN_SYSTEM maturity **v2.2**.
+- robots meta: `index, follow, max-image-preview:large, max-snippet:-1`.
+- Docs/agents: `seo-crawler` skill, `seo-specialist`, `LESSONS.md`, `DOCS_INDEX`, `DEPLOY` checklist synced to on-page FAQ + FAQPage.
+- Max-ROI docs: `TODO.md` progress 1–10 marked done; `ROADMAP` C1 completed early; FAQ agent guidance no longer says “capsules only.”
+- Pre-launch truth pass: ecosystem H2 uses **eight ecosystem stages** (not “eight focused kits”); FAQ/Product copy separates six role kits from Deepen + Play; SequencePath “Select a stage”; hub transition “every stage connects back”; DomainDetail Anatomizer CTA is stage-specific only for Manage/Create/Hire; domain feature bullets trimmed; free Offer JSON-LD `url` points at `.site`.
+
+### Removed
+
+- Unused `phaseFor` export from `ecosystemTheme.ts` and unused `public/noise.svg`.
+- Contradictory Unreleased notes that still described Play as a sandbox lab and dual Satori `og-image.png` generation (superseded by Corporate Ladder + hand-maintained `og_2.png`).
+
+### Fixed
+
+- Regenerated `llms-full.txt`, `sitemap.xml` lastmod, and JSON-LD `@graph` after copy/schema source updates.
+- Google Search Console **Page with redirect** and apex sitemap **Could not fetch** when Vercel primary was `www.promptanatomy.site` (apex HTTPS 307 → www) while repo canonical, OG, sitemap, and JSON-LD pointed to `https://promptanatomy.site/`; production policy is now apex Production + www → apex (308).
+- Stale Unreleased **Removed** note that claimed FAQPage was dropped (FAQ is on-page + in JSON-LD again).
+
 ### Added
 
 - `vercel.json`: permanent `www.promptanatomy.site` → `https://promptanatomy.site/` redirect (backup once Vercel primary domain is apex).
-- Ecosystem stage **8. Play** (`promptanatomy.lol`) in the Learn phase column — Experiment & Exploration Lab with guided sandbox copy; fills the second card in `SequencePath` Knowledge phase.
+- Ecosystem stage **8. Play** (`promptanatomy.lol`) in the Deepen/Knowledge phase column — Corporate Ladder game; fills the second card in `SequencePath`.
 
 ### Changed
 
 - `DEPLOY.md` §3: explicit apex-vs-www domain table, PowerShell redirect verification, and GSC troubleshooting for inverted Vercel primary domain.
-- `DEPLOY.md` §6: expanded GSC URL Inspection and sitemap steps after apex redirect fix.
-- `DOCS_INDEX.md`, `verifier.md`, `deploy-vercel.mdc`: register `vercel.json` and redirect verification checklist.
+- `DEPLOY.md` §6: expanded GSC URL Inspection and sitemap steps; submit only `https://promptanatomy.site/sitemap.xml` and remove legacy `www` sitemap entry after redirect fix.
+- `DOCS_INDEX.md`, `verifier.md`, `deploy-vercel.mdc`, `deploy-vercel` skill: register `vercel.json` and redirect verification checklist (apex 200, www 308).
 
 - Landing copy tightened (~20 words): hero badge/sub, problem section lead, stats strip label/disclaimer, closing CTA — less repetition, same positioning.
 - Ecosystem marketing copy truth-aligned with GitHub products: hub repositioned as **6-module training**; subdomain entries rewritten as focused **prompt kits**; `.lol` framed as Corporate Ladder game; `.pro` stripped of false API/multi-agent claims; `.info` corrected to 8 org prompts.
@@ -28,15 +76,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Stage **7** renamed **Learn → Deepen** on `promptanatomy.blog` (domain ID unchanged); pipeline string `Enter → … → Deepen → Play`; footer, FAQ, `llms.txt`, `primal_concept.txt`, and agent docs updated to nine-domain wording.
 
-- SEO entity graph: `scripts/generate-jsonld.mjs` builds JSON-LD `@graph` at prebuild from `domains.ts`, `siteContact.ts`, and `seoFaq.ts` — Person (founder), Organization with `founder` link, ItemList (8 ecosystem modules), Product `category: AI Operating System`, FAQPage (7 entries including founder).
+- SEO entity graph: `scripts/generate-jsonld.mjs` builds JSON-LD `@graph` at prebuild from `domains.ts` and `siteContact.ts` — Person (founder), Organization with `founder` link, ItemList (8 ecosystem modules), Product `category: AI Operating System`, WebPage with `dateModified` (FAQPage omitted until Q&A is visible on-page; capsules live in `llms-full.txt` via `seoFaq.ts`).
 - Founder social profiles in `siteContact.ts` and footer: LinkedIn, X, Medium, Facebook; `ORG_SAME_AS` split from personal profiles.
 - Founder credentials for SEO/GEO only: `AUTHOR_PUBLICATIONS` (Amazon books → Book JSON-LD) and `AUTHOR_MEDIA` (YouTube → Person.sameAs); not shown in footer or hero. OpenSea omitted from SEO to keep B2B entity focus.
 - FAQ JSON-LD entry: "Who founded Prompt Anatomy?" `quiz-option` utility for maturity quiz options; §14.3 documented allowed inline exceptions (Anatomizer terminal, accent callout, DomainDetail glass link).
 - Hero "Explore the ecosystem" jump link — navigates to ecosystem tab with existing scroll-into-view behavior.
 - Design system v2.0 audit pipeline: refined repo-grounded prompt in `second.txt` (delta-only, MVP-scoped, read-only); output artifact `DS_V2_RELEASE_AUDIT.md` with proposed v2.0 definition and P0–P2 roadmap; registered in `DOCS_INDEX.md` Tier 4 and task router; `ui-builder` agent references updated.
 - Footer design tokens and utilities in `src/index.css`: `--color-surface-footer`, `--color-border-footer`; `footer-shell`, `footer-accent-band`, and `link-footer-meta` for legal/meta inline links.
-- Dual OG export: `scripts/og-constants.mjs` and refactored `scripts/generate-og.mjs` now write `public/og-image.png` (1200×630) and `.github/social-preview.png` (1280×640) via Satori + resvg, with PNG size guard (warn >300 KB, fail >1 MB).
-- Build-time cache bust: `generate-og.mjs` patches `og-image.png?v=<hash>` in `index.html` for `og:image`, `twitter:image`, and JSON-LD `Product`/`SoftwareApplication` image fields.
 - `MOBILE_UX_AUDIT.md` — mobile UX audit findings and fix status; prompt template in `mobile.txt`; indexed in `DOCS_INDEX.md`.
 - Vercel Web Analytics: `@vercel/analytics` dependency and `<Analytics />` in `src/main.tsx`; enable Web Analytics in the Vercel project dashboard after deploy — data appears once production traffic hits the site.
 - `DOCS_INDEX.md` — central document map with task router, tiered file registry, agent roster, and skills catalog for humans and coding agents.
@@ -171,7 +217,8 @@ First public production deploy at [promptanatomy.site](https://promptanatomy.sit
 
 - Applied KISS-Marry-Kill cuts from the prototype: the duplicate System Directory grid, the right-hand sidebar, per-domain stats blocks, fake footer trust links, the duplicate "Diagnose Maturity" header button, dead imports, and the partial 2-domain Anatomizer prefill.
 
-[Unreleased]: https://github.com/DITreneris/site/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/DITreneris/site/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/DITreneris/site/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/DITreneris/site/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/DITreneris/site/releases/tag/v1.0.0
 [0.1.0]: https://github.com/DITreneris/site/releases/tag/v0.1.0

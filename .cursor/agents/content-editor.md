@@ -26,12 +26,16 @@ Document map: [DOCS_INDEX.md](../../DOCS_INDEX.md)
 - Keep domain IDs stable: app, cloud, info, space, help, ceo, pro, blog, lol
 - Anatomizer blocks must follow the 5-part anatomy (Role, Context, Variables, Instructions, Constraints)
 - Match professional, systems-oriented tone — no hype filler
+- Before finishing, skim [`.cursor/LESSONS.md`](../LESSONS.md) (kit labels, Deepen phase UI, Tier 3 honesty, aggregate stats eyebrow)
 
 ## When editing data files
 
 - Update `src/data/` constants, not hardcoded JSX strings
 - Keep feature bullets parallel in structure (verb-led, outcome-focused)
 - Preserve stats consistency (600+ templates, 60 tools, 100 glossary terms, etc.)
+- Cross-surface: if you change a role/stage name, also update footer labels, FAQ, and ask `seo-specialist` to regen JSON-LD / llms when schema copy is affected
+- Footer kit labels must match `domains.ts` roles (e.g. organization kit / executive kit)
+- DomainDetail heading: **What's included**; StatsStrip: **Across the ecosystem**
 
 ## Deliverable
 

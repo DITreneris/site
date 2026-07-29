@@ -8,9 +8,15 @@ import {
 
   ORGANIZATION,
 
+  PLATFORM_URL,
+
   SOCIAL_LINKS,
 
 } from '../../data/siteContact';
+
+import { trackEvent } from '../../utils/trackEvent';
+
+const platformHref = PLATFORM_URL.replace(/\/$/, '');
 
 
 
@@ -28,11 +34,11 @@ interface FooterLink {
 
 const PRODUCT_LINKS: FooterLink[] = [
 
-  { label: 'Main platform', href: 'https://promptanatomy.app', external: true },
+  { label: 'Main platform', href: platformHref, external: true },
 
   { label: 'Enter — onboarding', href: 'https://promptanatomy.cloud', external: true },
 
-  { label: 'Use — daily automation', href: 'https://promptanatomy.info', external: true },
+  { label: 'Use — organization kit', href: 'https://promptanatomy.info', external: true },
 
   { label: 'Create — marketing', href: 'https://promptanatomy.space', external: true },
 
@@ -46,7 +52,7 @@ const NETWORK_LINKS: FooterLink[] = [
 
   { label: 'Manage — leadership', href: 'https://promptanatomy.ceo', external: true },
 
-  { label: 'Decide — scaling', href: 'https://promptanatomy.pro', external: true },
+  { label: 'Decide — executive kit', href: 'https://promptanatomy.pro', external: true },
 
   { label: 'Deepen — knowledge hub', href: 'https://promptanatomy.blog', external: true },
 
@@ -124,7 +130,7 @@ function FooterColumn({
 
     <nav aria-label={ariaLabel ?? title}>
 
-      <h3 className="text-label-upper text-slate-500">{title}</h3>
+      <h3 className="text-label-upper text-muted">{title}</h3>
 
       <ul className="mt-3 space-y-0">
 
@@ -170,7 +176,7 @@ function FooterLegalPrimary({ year }: { year: number }) {
 
     <nav
 
-      className="flex flex-wrap items-center gap-x-1 gap-y-1 text-xs text-slate-500"
+      className="flex flex-wrap items-center gap-x-1 gap-y-1 text-xs text-muted"
 
       aria-label="Legal"
 
@@ -234,7 +240,7 @@ function FooterLegalMeta() {
 
   return (
 
-    <p className="text-caption text-slate-400">
+    <p className="text-caption text-subtle">
 
       <a
 
@@ -244,7 +250,7 @@ function FooterLegalMeta() {
 
         rel="noreferrer"
 
-        className="link-footer-meta text-slate-400 hover:text-brand-accent"
+        className="link-footer-meta text-subtle hover:text-brand-accent"
 
       >
 
@@ -304,7 +310,7 @@ export default function Footer() {
 
             </div>
 
-            <div className="mt-4 max-w-xs space-y-1 text-sm leading-snug text-slate-600">
+            <div className="mt-4 max-w-xs space-y-1 text-sm leading-snug text-body">
 
               <p className="font-semibold text-brand-dark">Less random prompting.</p>
 
@@ -316,13 +322,15 @@ export default function Footer() {
 
             <a
 
-              href="https://promptanatomy.app"
+              href={platformHref}
 
               target="_blank"
 
               rel="noreferrer"
 
               className="btn-primary-md mt-6"
+
+              onClick={() => trackEvent('platform_outbound', { source: 'footer' })}
 
             >
 

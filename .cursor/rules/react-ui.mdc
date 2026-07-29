@@ -13,8 +13,9 @@ src/
   components/
     layout/       # Header, Hero, Footer
     ecosystem/    # EcosystemMap, SequencePath, DomainDetail
-    anatomizer/   # AnatomizerBuilder, LayerSelector
+    anatomizer/   # AnatomizerBuilder, LayerSelector, CorrectPromptPractice
     maturity/     # MaturityQuiz
+    shared/       # ExclusiveChoiceGroup
   data/           # DOMAINS, ANATOMY_BUILDER_ITEMS, MATURITY_QUIZ, ecosystemTheme
   types/          # Shared TypeScript interfaces
   App.tsx         # Tab routing + shared state only — keep thin
@@ -24,7 +25,7 @@ src/
 
 ## Design system doc
 
-Canonical roadmap and inventory: [DESIGN_SYSTEM.md](../../DESIGN_SYSTEM.md) (current maturity **v2.0**). Coding-agent guardrails: DESIGN_SYSTEM.md §14.
+Canonical roadmap and inventory: [DESIGN_SYSTEM.md](../../DESIGN_SYSTEM.md) (implementation maturity **v2.2**; live status §1 / §19 — do not treat historical §2–§3 gaps as open work). Coding-agent guardrails: DESIGN_SYSTEM.md §14.
 
 ## Agent guardrails (summary)
 
@@ -41,17 +42,20 @@ All colors, type sizes, gradients, and shadows live in the `@theme` block of
 
 - Brand: `bg-brand-dark` (`#0b1320`), `text-brand-accent` (`#cfa73a`), gold CTA via `btn-primary`
 - Ecosystem accents: `ecosystem-1..4` mapped per domain in `src/data/ecosystemTheme.ts` (8 domains → 4 colors); do NOT reintroduce 8 unique rainbow gradients
-- Surfaces: light page (`bg-white`, `bg-slate-50`, `bg-hero-bg`) with a dark ecosystem band (`section-dark` + `card-glass`)
-- Eyebrows: light sections → `text-eyebrow-light` or `text-label-upper text-amber-700`; dark sections → `text-label-upper text-brand-accent`
-- Utilities: `btn-primary`/`btn-secondary`/`btn-secondary-dark` (+ `-md` variants), `btn-tertiary-sm`, `quiz-option`, `section-default`/`section-dark`, `section-heading`, `card-glass`, `card-light`, `card-light-lg`, `badge-accent`, `focus-ring`, `text-label-upper`, `text-nav-link`, `text-micro`, `text-caption`, `link-footer`, `link-footer-meta`, `footer-shell`, `footer-accent-band`, `link-inline`, `container-hero`/`container-narrow`/`container-default`/`container-promo`/`container-wide`, `icon-sm/md/lg`, `shadow-tier-1/2/3`
+- Surfaces: light page (`bg-white`, `surface-muted`, `bg-hero-bg`) with a dark ecosystem band (`section-dark` + `card-glass`)
+- Eyebrows: light sections → `text-eyebrow-light`; dark sections → `text-label-upper text-brand-accent`
+- Semantic text: `text-body` / `text-body-strong` / `text-muted` / `text-subtle` / `text-on-dark` / `text-on-dark-strong` (prefer over raw `slate-*`)
+- Utilities: `btn-primary`/`btn-secondary`/`btn-secondary-dark` (+ `-md` variants), `btn-tertiary-sm`, `btn-glass-sm`, `quiz-option`, `shell-terminal`, `callout-accent`, `surface-inset`/`surface-inset-soft`, `header-shell`/`header-shell-dark`, `nav-tab`/`nav-tab-active`/`nav-tab-dark`/`nav-tab-dark-active`/`nav-tab-mobile`/`nav-tab-mobile-active`, `section-default`/`section-dark`, `section-heading`, `card-glass`, `card-light`, `card-light-lg`, `badge-accent`, `focus-ring`, `text-label-upper`, `text-nav-link`, `text-micro`, `text-caption`, `link-footer`, `link-footer-meta`, `footer-shell`, `footer-accent-band`, `link-inline`, `container-hero`/`container-narrow`/`container-default`/`container-promo`/`container-wide`, `icon-sm/md/lg`, `shadow-tier-1/2/3`
 - Icons: `lucide-react` only, sized with `icon-sm/md/lg`
 
 ## Patterns to preserve
 
 - Sticky header with 3-tab nav (UI labels): Ecosystem | Prompt Builder | Team Assessment (with mobile menu); internal tab ids stay `ecosystem` | `anatomizer` | `maturity`
 - Domain selection drives the detail panel; quiz result pivots to the recommended domain
-- Anatomizer assembles the prompt from 5 layer selectors via one reusable `LayerSelector`; the preview equals the copy string
+- Anatomizer: `ExclusiveChoiceGroup` layer selectors, pre-copy checklist gates Copy, preview equals the copy string; CorrectPromptPractice sits above the builder on `/#anatomizer`
 - Footer: `footer-shell` + navy/gold accent band, wordmark, 8-domain link columns, two-row legal strip from `src/data/siteContact.ts` (`link-footer` nav / `link-footer-meta` legal); no fake trust chrome
+- Platform CTAs in Hero / ClosingCta / Footer: `PLATFORM_URL` from `siteContact.ts` (strip trailing `/` for href) — do not hardcode the hub URL
+- Knowledge phase display label: `phaseLabelFor` → **Deepen** (internal phase id remains `Knowledge`)
 
 ## Accessibility
 
@@ -66,3 +70,4 @@ All colors, type sizes, gradients, and shadows live in the `@theme` block of
 - Introduce CSS-in-JS or component libraries (MUI, Chakra) for MVP
 - Split one domain card into over-abstracted primitives
 - Change icon set away from lucide-react
+- Restore `phaseFor` or `public/noise.svg` without a real consumer (see `.cursor/LESSONS.md`)

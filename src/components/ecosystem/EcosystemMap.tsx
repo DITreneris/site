@@ -3,6 +3,13 @@ import SequencePath from './SequencePath';
 import DomainDetail from './DomainDetail';
 import { DOMAINS } from '../../data/domains';
 
+const ROLE_CHIPS: { label: string; domainId: string }[] = [
+  { label: 'Ops', domainId: 'info' },
+  { label: 'Marketing', domainId: 'space' },
+  { label: 'HR', domainId: 'help' },
+  { label: 'Exec', domainId: 'pro' },
+];
+
 interface EcosystemMapProps {
   selectedDomain: string;
   onSelectDomain: (id: string) => void;
@@ -30,12 +37,30 @@ export default function EcosystemMap({
         <div className="max-w-2xl">
           <span className="text-label-upper text-brand-accent">The ecosystem</span>
           <h2 className="mt-2 text-3xl font-black leading-tight tracking-[-0.02em] text-white md:text-4xl">
-            Six-module training. Eight focused kits. One core hub.
+            Six-module training. Eight ecosystem stages. One core hub.
           </h2>
-          <p className="mt-3 text-sm leading-relaxed text-slate-300">
-            Interactive 6-block training at the hub; role-specific prompt kits on each subdomain
-            &mdash; from first lesson to executive playbooks.
+          <p className="mt-3 text-sm leading-relaxed text-on-dark">
+            6-block training at the hub; role kits from first lesson to executive playbooks,
+            plus knowledge depth and Play.
           </p>
+        </div>
+
+        <div className="flex flex-wrap gap-2" role="group" aria-label="Jump to role">
+          {ROLE_CHIPS.map((chip) => (
+            <button
+              key={chip.domainId}
+              type="button"
+              onClick={() => onSelectDomain(chip.domainId)}
+              className={
+                selectedDomain === chip.domainId
+                  ? 'btn-secondary-dark border-brand-accent'
+                  : 'btn-secondary-dark'
+              }
+              aria-pressed={selectedDomain === chip.domainId}
+            >
+              {chip.label}
+            </button>
+          ))}
         </div>
 
         <SequencePath selectedDomain={selectedDomain} onSelectDomain={onSelectDomain} />

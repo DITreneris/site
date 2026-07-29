@@ -10,12 +10,13 @@
 | Audience | Read first | Then |
 |----------|------------|------|
 | **Human developer** | [README.md](README.md) | [AGENTS.md](AGENTS.md) → task row below |
-| **Coding agent** | [AGENTS.md](AGENTS.md) | Matching **agent** + **skill** + **rules** for the task |
+| **Coding agent** | [AGENTS.md](AGENTS.md) | Matching **agent** + **skill** + **rules**; skim [.cursor/LESSONS.md](.cursor/LESSONS.md) for known drifts |
 | **Design / UI work** | [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) §14 | [src/index.css](src/index.css), `.cursor/rules/react-ui.mdc`; DS v2 audit → [second.txt](second.txt) |
-| **Copy / domains** | [primal_concept.txt](primal_concept.txt) | `.cursor/skills/ecosystem-content/SKILL.md` |
+| **Copy / domains** | [primal_concept.txt](primal_concept.txt) | `.cursor/skills/ecosystem-content/SKILL.md`, `.cursor/LESSONS.md` |
 | **Deploy / release** | [DEPLOY.md](DEPLOY.md) | `.cursor/skills/deploy-vercel/SKILL.md` |
 | **SEO / crawlers** | [public/llms.txt](public/llms.txt) | `.cursor/skills/seo-crawler/SKILL.md`, [seo.txt](seo.txt) |
 | **Mobile UX audit / fixes** | [MOBILE_UX_AUDIT.md](MOBILE_UX_AUDIT.md) | [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) §13, [mobile.txt](mobile.txt) |
+| **Product roadmap / priorities** | [ROADMAP.md](ROADMAP.md) | [TODO.md](TODO.md) max-ROI queue; [AGENTS.md](AGENTS.md) scope |
 
 ---
 
@@ -56,10 +57,13 @@ Use this table to pick the right agent, skill, and documents.
 |----|------|----------|-------|
 | `readme` | [README.md](README.md) | Developers | Onboarding, scripts, folder map |
 | `agents` | [AGENTS.md](AGENTS.md) | Agents + leads | Scope, domains, workflow, conventions |
-| `design-system` | [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) | Design + frontend + agents | v2.0 implementation; §14 = agent guardrails |
+| `lessons` | [.cursor/LESSONS.md](.cursor/LESSONS.md) | Agents | Durable corrections from audits (naming, OG, URLs, CHANGELOG) |
+| `design-system` | [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) | Design + frontend + agents | v2.2 implementation; §14 = agent guardrails |
 | `deploy` | [DEPLOY.md](DEPLOY.md) | DevOps / release | Vercel + Porkbun checklist |
 | `vercel-config` | [vercel.json](vercel.json) | DevOps / release | Permanent www → apex redirect; apex must be Production in Vercel dashboard |
 | `changelog` | [CHANGELOG.md](CHANGELOG.md) | Everyone | Keep a Changelog format; `[Unreleased]` |
+| `roadmap` | [ROADMAP.md](ROADMAP.md) | Product + agents | Horizon to 2027-01-01; ecosystem gateway + `.app` conversion |
+| `todo` | [TODO.md](TODO.md) | Product + agents | Max-ROI execution queue (Phase A–B first) |
 | `docs-index` | DOCS_INDEX.md (this file) | Everyone | Document map; update when adding docs/agents/skills |
 
 ### Tier 3 — Generated or public web assets
@@ -72,7 +76,7 @@ Use this table to pick the right agent, skill, and documents.
 | `llms-full` | [public/llms-full.txt](public/llms-full.txt) | Yes — `npm run generate:llms` | Extended reference from data files |
 | `sitemap` | [public/sitemap.xml](public/sitemap.xml) | Yes — `generate-llms.mjs` | Canonical `.site` URLs |
 | `robots` | [public/robots.txt](public/robots.txt) | Hand-maintained | Crawler allow/disallow policy |
-| `seo-faq-data` | [src/data/seoFaq.ts](src/data/seoFaq.ts) | No | FAQ JSON-LD source; not visible UI |
+| `seo-faq-data` | [src/data/seoFaq.ts](src/data/seoFaq.ts) | No | FAQ capsules for on-page FaqSection, FAQPage JSON-LD, and llms-full |
 | `html-head` | [index.html](index.html) | Partial — JSON-LD generated at prebuild | Meta, OG, canonical; `@graph` from `generate-jsonld.mjs` |
 
 ### Tier 4 — Agent prompt templates (not runtime source of truth)
@@ -134,17 +138,17 @@ Rules live in [.cursor/rules/](.cursor/rules/). `alwaysApply: true` rules load e
 
 ```
 src/
-  components/layout/     Hero, Header, Footer, marketing shell
+  components/layout/     Hero, Header, Footer, FaqSection, marketing shell
   components/ecosystem/  SequencePath, DomainDetail, EcosystemMap
-  components/anatomizer/ AnatomizerBuilder, LayerSelector
+  components/anatomizer/ AnatomizerBuilder, LayerSelector, CorrectPromptPractice
   components/maturity/   MaturityQuiz
   data/                  domains, quiz, anatomyBuilder, ecosystemTheme, seoFaq, siteContact
-  utils/                 tabNavigation (hash deep links)
+  utils/                 tabNavigation (hash deep links), trackEvent (Vercel Analytics)
   index.css              token + utility source of truth
 scripts/
   generate-og.mjs        OG cache bust + GitHub copy from public/og_2.png
   generate-llms.mjs      llms-full.txt + sitemap lastmod
-  generate-jsonld.mjs    index.html JSON-LD @graph (Person, ItemList, FAQ)
+  generate-jsonld.mjs    index.html JSON-LD @graph (Person, WebPage, ItemList, Product)
   viewport-qa.mjs        Playwright overflow check
 ```
 
@@ -166,6 +170,7 @@ Update **DOCS_INDEX.md** when you add or rename:
 
 - Root-level docs (`*.md`, `*.txt` prompts)
 - `.cursor/agents/` or `.cursor/skills/` entries
+- `.cursor/LESSONS.md` (when adding a new durable lesson category)
 - Generated public assets or build scripts that affect SEO/deploy
 - Source-of-truth data files under `src/data/`
 

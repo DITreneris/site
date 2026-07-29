@@ -56,11 +56,13 @@ A production marketing and demo site for **Prompt Anatomy**, an AI Operating Sys
 
 | `src/index.css` | Token implementation (`@theme` + `@utility`) |
 
-| `DESIGN_SYSTEM.md` | Design system maturity (**v2.0**), tokens, QA/a11y (§13), agent guardrails (§14) |
+| `DESIGN_SYSTEM.md` | Design system maturity (**v2.2**), tokens, QA/a11y (§13), agent guardrails (§14) |
 
 | `snippet.txt` | Legacy prototype — do not reintroduce slate-950/indigo/rainbow palette |
 
 | `CHANGELOG.md` | Running log of notable changes (Keep a Changelog format) |
+| `ROADMAP.md` | Product priorities through 2027-01-01 (ecosystem gateway + `.app` traffic) |
+| `.cursor/LESSONS.md` | Durable agent corrections (naming, OG, URLs, CHANGELOG hygiene) |
 
 
 
@@ -147,7 +149,7 @@ Agent files: `.cursor/agents/`. Skills: `.cursor/skills/`. See [DOCS_INDEX.md](D
 
 - Light marketing shell + dark ecosystem band (`section-dark`, phase accents via `ecosystemTheme.ts`)
 
-- `SequencePath` four-phase journey (Adopt, Apply, Scale, Learn) + `DomainDetail` panel
+- `SequencePath` four-phase journey (Adopt, Apply, Scale, Knowledge — UI label **Deepen**) + `DomainDetail` panel
 
 - Anatomizer: 5-part prompt assembly via reusable `LayerSelector`
 
@@ -155,7 +157,7 @@ Agent files: `.cursor/agents/`. Skills: `.cursor/skills/`. See [DOCS_INDEX.md](D
 
 - SEO: canonical/OG/sitemap on `promptanatomy.site`; Organization on `promptanatomy.app`
 
-- Build-time OG image via `scripts/generate-og.mjs` (Satori + resvg)
+- Build-time OG cache-bust via `scripts/generate-og.mjs` (hand-maintained `public/og_2.png` → `.github/social-preview.png`)
 
 
 
@@ -200,6 +202,10 @@ Agent files: `.cursor/agents/`. Skills: `.cursor/skills/`. See [DOCS_INDEX.md](D
 - Match existing visual language: light page surfaces, navy/gold brand, dark ecosystem band
 
 - Copy changes must align with `primal_concept.txt` tone — professional, structured, no hype filler
+
+- Platform CTAs: import `PLATFORM_URL` from `src/data/siteContact.ts` (strip trailing `/` for hrefs)
+
+- Before finishing content/SEO/docs work, skim [`.cursor/LESSONS.md`](.cursor/LESSONS.md) so known drifts are not reintroduced
 
 
 

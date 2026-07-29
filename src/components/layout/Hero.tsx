@@ -1,4 +1,8 @@
 import { ArrowRight, ClipboardCheck } from 'lucide-react';
+import { PLATFORM_URL } from '../../data/siteContact';
+import { trackEvent } from '../../utils/trackEvent';
+
+const platformHref = PLATFORM_URL.replace(/\/$/, '');
 
 interface HeroProps {
   onStartAssessment: () => void;
@@ -9,9 +13,7 @@ export default function Hero({ onStartAssessment, onExploreEcosystem }: HeroProp
   return (
     <section className="relative overflow-hidden bg-hero-bg">
       <div className="container-hero px-4 pb-10 pt-14 text-center sm:px-6 lg:px-8">
-        <span className="badge-accent mx-auto">
-          Prompt Anatomy &middot; AI Operating System
-        </span>
+        <span className="badge-accent mx-auto">AI Operating System</span>
 
         <h1 className="mt-6 text-3xl font-black leading-[1.08] tracking-[-0.02em] text-brand-dark sm:text-4xl lg:text-5xl">
           Turn AI from a chat tool into a{' '}
@@ -20,17 +22,17 @@ export default function Hero({ onStartAssessment, onExploreEcosystem }: HeroProp
           </span>
         </h1>
 
-        <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-600">
-          Build AI workflows, templates, and standards &mdash; repeatable execution, not one-off
-          chats.
+        <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-body">
+          Workflows, templates, and standards &mdash; not one-off chats.
         </p>
 
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a
-            href="https://promptanatomy.app"
+            href={platformHref}
             target="_blank"
             rel="noreferrer"
             className="btn-primary-md w-full sm:w-auto"
+            onClick={() => trackEvent('platform_outbound', { source: 'hero' })}
           >
             Open the platform
             <ArrowRight className="icon-sm" />

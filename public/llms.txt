@@ -12,7 +12,8 @@
 ## Site sections (hash deep links)
 - https://promptanatomy.site/#ecosystem — ecosystem map and domain detail panel (nine domains)
 - https://promptanatomy.site/#anatomizer — 5-layer structured prompt builder (Anatomizer)
-- https://promptanatomy.site/#maturity — team AI maturity diagnostic (3 questions, 3 tiers)
+- https://promptanatomy.site/#maturity — 60-second team assessment (3 questions, 3 tiers)
+- https://promptanatomy.site/#faq — on-page FAQ (mirrors FAQPage JSON-LD)
 
 ## Platform hub (product CTAs)
 - https://promptanatomy.app/ — 6-Module Training Hub; 6-block methodology; aggregate ecosystem counts (600+ templates, 60 tools, 100-term glossary) span training + subdomain kits

@@ -37,6 +37,7 @@ export interface AnatomyLayerMeta {
 export interface QuizOption {
   text: string;
   score: number;
+  diagnostic: string;
 }
 
 export interface QuizQuestion {
@@ -50,4 +51,5 @@ export interface QuizResult {
   title: string;
   description: string;
   recommendedId: string;
+  diagnostics: string[];
 }

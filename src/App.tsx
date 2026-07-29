@@ -16,11 +16,17 @@ import EcosystemMap from './components/ecosystem/EcosystemMap';
 
 import AnatomizerBuilder from './components/anatomizer/AnatomizerBuilder';
 
+import CorrectPromptPractice from './components/anatomizer/CorrectPromptPractice';
+
 import MaturityQuiz from './components/maturity/MaturityQuiz';
 
 import type { TabId } from './types';
 
 import { hashForTab, tabFromHash } from './utils/tabNavigation';
+
+import { trackEvent } from './utils/trackEvent';
+
+import FaqSection from './components/layout/FaqSection';
 
 
 
@@ -37,6 +43,8 @@ export default function App() {
   const navigateToTab = useCallback((tab: TabId) => {
 
     setActiveTab(tab);
+
+    trackEvent('tab_open', { tab });
 
     const target = hashForTab(tab);
 
@@ -189,6 +197,8 @@ export default function App() {
 
         >
 
+          <CorrectPromptPractice />
+
           <AnatomizerBuilder />
 
         </div>
@@ -218,6 +228,8 @@ export default function App() {
 
 
       <ClosingCta onStartAssessment={() => navigateToTab('maturity')} />
+
+      <FaqSection />
 
       <Footer />
 

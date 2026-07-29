@@ -31,10 +31,6 @@ export const DOMAIN_ACCENT: Record<string, EcosystemAccent> = Object.fromEntries
   Object.entries(DOMAIN_PHASE).map(([id, phase]) => [id, PHASE_ACCENT[phase]]),
 );
 
-export function phaseFor(domainId: string): EcosystemPhase {
-  return DOMAIN_PHASE[domainId] ?? 'Hub';
-}
-
 interface AccentClasses {
   text: string;
   bg: string;
@@ -92,5 +88,5 @@ export function accentForPhase(phase: EcosystemPhase): AccentClasses {
 
 /** Short label shown above grouped pipeline stages. */
 export function phaseLabelFor(phase: EcosystemPhase): string {
-  return phase === 'Knowledge' ? 'Learn' : phase;
+  return phase === 'Knowledge' ? 'Deepen' : phase;
 }

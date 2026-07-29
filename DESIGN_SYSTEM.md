@@ -9,11 +9,22 @@
 
 ## 1. Executive summary
 
+### Live status (start here)
+
+| Item | Value |
+|------|-------|
+| **Implementation maturity** | **v2.2** — see §19 (harden pass 2026-07-30: semantic text/surfaces, absorbed exceptions, Header nav utilities). |
+| **Token + utility source** | [`src/index.css`](src/index.css) `@theme` + `@utility` — Appendix D catalog |
+| **Agent guardrails** | §14 + [`.cursor/rules/react-ui.mdc`](.cursor/rules/react-ui.mdc) |
+| **Do not** | Reintroduce `snippet.txt` palette; invent hex in TSX; redesign light shell / dark ecosystem band |
+
+§2–§3 below are a **historical pre-v1 audit** kept for roadmap context. Do not treat their “Gap” / score columns as live work items.
+
 ### Current design system status
 
-The site has **migrated from the `snippet.txt` prototype** (full-page `slate-950`, indigo accents, eight rainbow domain gradients) to a **mother-repo-aligned token layer** in `src/index.css` (Tailwind v4 `@theme` + `@utility`). The visual model is a **light marketing shell** (hero, problem/solution, tab panels) with a **dark ecosystem band** (`section-dark`, glass cards, phase accents). Agent guidance exists in `.cursor/rules/react-ui.mdc` and `AGENTS.md`, but until this file there was **no human-facing design-system documentation** and **no `components/ui/` primitive layer**—patterns are repeated as Tailwind class strings across ~15 TSX files.
+The site has **migrated from the `snippet.txt` prototype** (full-page `slate-950`, indigo accents, eight rainbow domain gradients) to a **mother-repo-aligned token layer** in `src/index.css` (Tailwind v4 `@theme` + `@utility`). The visual model is a **light marketing shell** (hero, problem/solution, tab panels) with a **dark ecosystem band** (`section-dark`, glass cards, phase accents). Human-facing design-system docs live in this file; agent rules in `.cursor/rules/react-ui.mdc` and `AGENTS.md`. Optional follow-up: `components/ui/` thin wrappers (product-approved only).
 
-### Current design system version: **v2.0**
+### Design system version milestones
 
 | Signal | Evidence |
 |--------|----------|
@@ -24,65 +35,67 @@ The site has **migrated from the `snippet.txt` prototype** (full-page `slate-950
 
 ### What v2.0 means here
 
-Not a visual redesign. **Implementation maturity** marking public marketing readiness: remaining utility drift in MVP components is closed, agent guardrails are updated with documented exceptions, and a formal verifier pass is recorded. Optional follow-up: `components/ui/` thin wrappers (product-approved only).
+Not a visual redesign. **Implementation maturity** marking public marketing readiness: remaining utility drift in MVP components is closed, agent guardrails are updated with documented exceptions, and a formal verifier pass is recorded.
 
 ---
 
-## 2. Design system maturity audit
+## 2. Historical maturity audit (pre-v1 — resolved)
+
+> **Archive.** Gaps below were addressed through v1.0–v2.0. Live inventory: §4, §7, Appendix D, §19.
 
 ### Brand foundations
 
 - **Works:** Navy `#0b1320`, gold `#cfa73a`, four phase accents; gold reserved for hub (`ecosystemTheme.ts`, `react-ui.mdc`). Narrative in `primal_concept.txt`.
-- **Gap:** No design-doc section tying colors to usage until this file.
+- **Resolved:** Color usage documented in this file + §14.
 
 ### Color system
 
 - **Works:** `@theme` in `src/index.css` — `brand-dark`, `brand-accent`, `ecosystem-1..4`, `accent-muted-*`, `surface-card`, `border-glass`, gradients, `shadow-glow-*`.
-- **Gap:** Light sections still use raw `slate-*`, `amber-700`; dark sections use `white/[0.04]` stacks not exposed as utilities.
+- **Resolved at v1.0+:** `text-eyebrow-light`; closed card/button utilities. **Post-v2.0 harden:** semantic `text-body` / `text-muted` / `surface-muted` / inset utilities (see Appendix D).
 
 ### Typography
 
-- **Works:** `--text-label`, `--text-stat`, `--text-nav-link`; utilities `text-label-upper`, `section-heading`, `text-nav-link`.
-- **Gap:** Hero `text-4xl sm:text-5xl` vs section `text-3xl md:text-4xl` duplicated; `text-[10px]` / `text-[11px]` in `DomainDetail`, `SequencePath`, `AnatomizerBuilder`, `LayerSelector`.
+- **Works:** `--text-label`, `--text-stat`, `--text-nav-link`; utilities `text-label-upper`, `section-heading`, `text-nav-link`, `text-micro`, `text-caption`.
+- **Resolved at v1.0:** Inter loaded; micro sizes tokenized (no ad-hoc `text-[10px]` / `text-[11px]`).
 
 ### Spacing system
 
-- **Works:** `section-default` (`py-16 md:py-24 px-4 sm:px-6 md:px-8`); `min-h-[44px]` on primary interactives.
-- **Gap:** No `--spacing-card-*` tokens; card padding varies (`p-4`, `p-5`, `p-6`, `sm:p-8`).
+- **Works:** `section-default` (`py-16 md:py-24 px-4 sm:px-6 md:px-8`); `min-h-[44px]` on primary interactives; `card-light` / `card-light-lg` padding.
+- **Acceptable residual:** Card padding still has intentional `p-4` / `p-6` / `sm:p-8` variants via utilities — not ad-hoc recipes.
 
 ### Layout grid
 
-- **Works:** Repeated `mx-auto max-w-*` + horizontal padding on header/footer.
-- **Gap:** Width ladder undocumented — see §6 and Appendix.
+- **Works:** Named containers — Appendix B (`container-hero` … `container-wide`).
+- **Resolved at v1.0:** Width ladder documented.
 
 ### Component consistency
 
-- **Works:** Clear folders: `layout/`, `ecosystem/`, `anatomizer/`, `maturity/`.
-- **Gap:** Same UX roles built with different class bundles (light card vs `card-glass` vs terminal chrome).
+- **Works:** Clear folders: `layout/`, `ecosystem/`, `anatomizer/`, `maturity/`, `shared/`.
+- **Resolved at v1.0–v2.0:** Closed `card-light` / `card-glass` / button set. Residual: composite Header / SequencePath / DomainDetail class strings (harden pass).
 
 ### Button system
 
-- **Works:** `btn-primary`, `btn-primary-md`, `btn-secondary`, `btn-secondary-md`, `focus-ring`.
-- **Gap:** `AnatomizerBuilder` terminal chrome and accent callout documented as allowed exceptions (§14.3); `DomainDetail` compact glass CTA documented as exception.
+- **Works:** `btn-primary`, `btn-primary-md`, `btn-secondary`, `btn-secondary-md`, `btn-secondary-dark`, `btn-tertiary-sm`, `quiz-option`, `focus-ring`.
+- **Resolved / hardening:** Dark secondary and tertiary closed at v1.0; glass CTA / terminal / callout promoted to utilities in post-v2.0 harden.
 
 ### Card system
 
-- **Works:** `card-glass` for dark ecosystem detail.
-- **Gap:** `ProblemSolution`, `MaturityQuiz`, `LayerSelector` each define their own light card shell.
+- **Works:** `card-glass` for dark ecosystem detail; `card-light` / `card-light-lg` for light interactive shells.
+- **Resolved at v1.0:** ProblemSolution, MaturityQuiz, LayerSelector use `card-light*`.
 
 ### Form elements
 
 - **Works:** Quiz and Anatomizer use `<button>` grids (per `react-ui.mdc`).
-- **Gap:** No native `input`/`textarea` tokens — acceptable for MVP; document as intentional.
+- **Intentional:** No native `input`/`textarea` tokens for MVP.
 
 ### Navigation
 
 - **Works:** Sticky `Header.tsx`, scroll state, mobile menu, `role="tablist"` / `aria-selected` / `aria-controls`; skip link in `App.tsx`.
+- **Hardening:** `header-shell` / `nav-tab*` utilities (post-v2.0).
 
 ### Footer
 
 - **Works:** Navy/gold accent band, tinted `footer-shell`, three link columns, two-row legal strip, `src/data/siteContact.ts`; `link-footer` (nav) + `link-footer-meta` (legal).
-- **Gap:** None critical — shell and link split utilities documented in appendix.
 
 ### Icon usage
 
@@ -94,57 +107,55 @@ Not a visual redesign. **Implementation maturity** marking public marketing read
 
 ### Borders and radius
 
-- **Works:** `rounded-xl` (buttons/chips), `rounded-2xl` (cards/sections), `rounded-lg` (nav, chips).
-- **Gap:** No radius token table; opacity borders not named as semantic tokens in JSX.
+- **Works:** `rounded-xl` (buttons/chips), `rounded-2xl` (cards/sections), `rounded-lg` (nav, chips); documented in §6.
 
 ### Responsive behavior
 
-- **Works:** Tab panels, `lg` ecosystem layout, mobile nav, stacked CTAs `w-full sm:w-auto`.
-- **Gap:** `SequencePath` dense on narrow viewports — needs checklist at v0.9.
+- **Works:** Tab panels, `lg` ecosystem layout, mobile nav, stacked CTAs `w-full sm:w-auto`; §13 checklist + `npm run qa:viewport`.
 
 ### Accessibility
 
-- **Works:** Skip link, tab pattern, buttons for interactives, `prefers-reduced-motion` in CSS and `App.tsx` scroll behavior, dark-section focus offset in `index.css`.
-- **Gap:** No documented WCAG contrast matrix for gold-on-light or `slate-400` on `brand-dark`.
+- **Works:** Skip link, tab pattern, buttons for interactives, `prefers-reduced-motion`, dark-section focus offset; WCAG contrast matrix in §13.4.
 
 ### Documentation quality
 
-- **Works:** `react-ui.mdc`, `AGENTS.md`, `CHANGELOG.md`.
-- **Gap:** No `DESIGN_SYSTEM.md` in repo before this file.
+- **Works:** This file, `react-ui.mdc`, `AGENTS.md`, `CHANGELOG.md`, `DOCS_INDEX.md`.
 
 ### Code reuse
 
-- **Works:** `ecosystemTheme.ts`, `domains.ts`, shared data patterns.
-- **Gap:** UI not extracted to `components/ui/` or additional `@utility` classes.
+- **Works:** `ecosystemTheme.ts`, `domains.ts`, shared data patterns, closed `@utility` set.
+- **Optional later:** `components/ui/` thin wrappers (product-approved only).
 
 ### Naming conventions
 
 - **Works:** PascalCase components, kebab utilities, semantic phase names.
-- **Gap:** Long inline `className` strings in TSX.
+- **Ongoing:** Prefer utilities over long inline `className` strings.
 
 ---
 
-## 3. Version diagnosis
+## 3. Historical version diagnosis (pre-v1 — resolved at v1.0+)
 
-| Area | Current state | Score 1–5 | Problem | Required for 1.0 |
+Scores and “Required for 1.0” below are **historical**. All listed requirements were met by design system **v1.0** (utilities) through **v2.0** (drift closure). Do not re-open as current gaps.
+
+| Area | State at audit | Score then | Problem then | Resolved by |
 | ---- | ------------- | --------: | ------- | ---------------- |
-| Brand foundations | Mother-repo colors + phase semantics | 4 | Usage rules only in agent rules | Document hub vs phase color rules |
-| Color system | `@theme` complete; JSX uses slate/amber ad hoc | 4 | Light semantic colors not tokenized | `text-eyebrow-light` / surface utilities |
-| Typography | Partial tokens; Inter fallback only | 3 | Micro sizes ad hoc; font not loaded | Load Inter; `text-caption` / `text-micro` |
-| Spacing system | `section-default` only | 3 | Card padding inconsistent | Card spacing utilities |
-| Layout grid | Per-section `max-w-*` | 3 | Five widths without names | `container-narrow/default/wide` |
+| Brand foundations | Mother-repo colors + phase semantics | 4 | Usage rules only in agent rules | This doc + §14 |
+| Color system | `@theme` complete; JSX slate/amber ad hoc | 4 | Light semantic colors not tokenized | `text-eyebrow-light` + post-v2.0 semantic text utils |
+| Typography | Partial tokens; Inter fallback only | 3 | Micro sizes ad hoc; font not loaded | Inter + `text-caption` / `text-micro` |
+| Spacing system | `section-default` only | 3 | Card padding inconsistent | `card-light` / `card-light-lg` |
+| Layout grid | Per-section `max-w-*` | 3 | Five widths without names | Named containers (Appendix B) |
 | Component consistency | ~15 TSX, no ui/ layer | 2 | Multiple card/button recipes | Closed utility set |
 | Button system | Primary/secondary on light | 3 | Dark secondary one-off | `btn-secondary-dark` |
 | Card system | `card-glass` + inline light | 3 | Three light variants | `card-light` |
-| Form elements | Button-only selectors | 4 | N/A for MVP | Document “no native inputs” |
-| Navigation | Header + tabs a11y | 4 | Tab classes duplicated | Optional `nav-tab` utility |
+| Form elements | Button-only selectors | 4 | N/A for MVP | Documented intentional |
+| Navigation | Header + tabs a11y | 4 | Tab classes duplicated | `nav-tab` utilities (harden) |
 | Footer | Complete trust block | 5 | — | `footer-shell`, `link-footer` / `link-footer-meta` |
 | Icon usage | lucide + size utilities | 5 | — | Keep as-is |
-| Shadows/elevation | Tiers + glows | 4 | Not mapped to card types in doc | Document tier → component map |
-| Borders/radius | Visually consistent | 4 | Implicit only | Radius map in doc |
-| Responsive | Patterns in components | 4 | SequencePath on 320px | Test checklist |
-| Accessibility | Basics present | 3 | No contrast audit | Spot-check + token tweaks |
-| Documentation | Agent rules only | 2 | No DS file | This document + cross-links (later) |
+| Shadows/elevation | Tiers + glows | 4 | Not mapped to card types in doc | Documented |
+| Borders/radius | Visually consistent | 4 | Implicit only | §6 radius map |
+| Responsive | Patterns in components | 4 | SequencePath on 320px | §13 + `qa:viewport` |
+| Accessibility | Basics present | 3 | No contrast audit | §13.4 matrix |
+| Documentation | Agent rules only | 2 | No DS file | This document |
 | Code reuse | Theme data centralized | 3 | UI strings duplicated | Utilities over copy-paste |
 | Naming conventions | Folders clear | 3 | Long className strings | Prefer utilities |
 
@@ -152,12 +163,12 @@ Not a visual redesign. **Implementation maturity** marking public marketing read
 
 ## 4. Current version declaration
 
-### Current Design System Version: **v2.0**
+### Current Design System Version: **v2.2**
 
 #### What already works
 
 - **Token source of truth:** `src/index.css` `@theme` (brand, ecosystem, surfaces, gradients, shadows, motion).
-- **Closed utility set:** `btn-primary` / `btn-secondary` / `btn-secondary-dark` (+ `-md`), `btn-tertiary-sm`, `card-light` / `card-light-lg`, `card-glass`, `footer-shell` / `footer-accent-band`, `link-footer` / `link-footer-meta`, `link-inline`, containers, `text-micro` / `text-caption`, section shells, focus/hover/motion utilities.
+- **Closed utility set:** `btn-primary` / `btn-secondary` / `btn-secondary-dark` (+ `-md`), `btn-tertiary-sm`, `btn-glass-sm`, `card-light` / `card-light-lg`, `card-glass`, `shell-terminal`, `callout-accent`, `surface-inset` / `surface-inset-soft`, `header-shell` / `nav-tab*`, semantic text (`text-body` … `text-on-dark-strong`), `footer-shell` / `footer-accent-band`, `link-footer` / `link-footer-meta`, `link-inline`, containers, `text-micro` / `text-caption`, section shells, focus/hover/motion utilities.
 - **Semantic color API:** `src/data/ecosystemTheme.ts` (`accentFor`, `PHASE_ACCENT`, gold hub-only).
 - **Layout shell:** `App.tsx` wires Header, Hero, ProblemSolution, StatsStrip, three tab panels, ClosingCta, Footer.
 - **A11y baseline:** skip link, tab roles, quiz `aria-live`, external links `rel="noreferrer"`, reduced motion, documented contrast matrix (§13).
@@ -337,7 +348,7 @@ All milestones below are **done** as of design system v1.0. Kept for history.
 | Button — primary | Yes | Yes | Yes | `btn-primary-md` | — |
 | Button — secondary (light) | Yes | Yes | Yes | `btn-secondary-md` | — |
 | Button — secondary (dark) | Yes | Yes | Yes | `btn-secondary-dark` / `-md` | — |
-| Button — ghost | Utility only | — | No | Defined in CSS, unused | P2 |
+| Button — ghost | No | — | — | Removed in v2.0 | — |
 | Button — copy (Anatomizer) | Yes | Yes | Yes | `btn-tertiary-sm` | — |
 | Card — glass | Yes | Yes | Yes | `card-glass`; ecosystem | — |
 | Card — light | Yes | Yes | Yes | `card-light`, `card-light-lg` | — |
@@ -350,10 +361,12 @@ All milestones below are **done** as of design system v1.0. Kept for history.
 | FAQ block | No | — | — | — | — |
 | Stats strip | Yes | Yes | No | `StatsStrip.tsx`; unique promo band | P2 |
 | Problem / solution | Yes | Yes | Yes | Uses `card-light` | — |
-| Layer selector | Yes | Yes | Yes | `card-light` shell | — |
+| Layer selector | Yes | Yes | Yes | `card-light` shell; uses `ExclusiveChoiceGroup` | — |
+| Exclusive choice group | Yes | Yes | Yes | `shared/ExclusiveChoiceGroup.tsx` — radiogroup + arrows | — |
+| Correct prompt practice | Yes | Yes | No | Anatomizer micro-lab; `CorrectPromptPractice.tsx` | P2 |
 | Domain detail | Yes | Yes | Partial | Large composite; `card-glass` | P2 |
 | Sequence path | Yes | Yes | No | Complex; document-only | P2 |
-| Anatomizer terminal | Yes | Mostly | Partial | `brand-dark` chrome + custom copy btn | P1 |
+| Anatomizer terminal | Yes | Mostly | Partial | `shell-terminal` + `btn-tertiary-sm` | — |
 | Maturity quiz | Yes | Yes | Yes | `card-light-lg`; result `aria-live` | — |
 
 ---
@@ -526,9 +539,9 @@ Documented tab order for keyboard users (single-page MVP):
 | Semantic HTML | `<header>`, `<main>`, `<footer>`, `<section>`, `<nav>` | Low | Preserve landmarks | One `<h1>` in Hero; section `<h2>`s |
 | Heading hierarchy | H1 Hero → H2 sections → H3/H4 in cards | Low | No skipped levels in new blocks | Logical outline in accessibility tree |
 | Button/link clarity | Buttons for in-app actions; `<a>` for external | Low | Do not use `<div onClick>` | External links have `rel="noreferrer"` |
-| Form labels | N/A — button-grid selectors | — | Document intentional pattern | Quiz/Anatomizer options are named buttons |
-| Error messages | Clipboard copy failure silent in Anatomizer | Low | Accept for MVP | No misleading success state |
-| ARIA | Tabs, `aria-live` on quiz result, `aria-pressed` on domain cards | Low | ARIA only where native HTML insufficient | No redundant `role` on buttons |
+| Form labels | N/A — button-grid selectors | — | Document intentional pattern | Exclusive choice = `ExclusiveChoiceGroup` (`radiogroup`); quiz = single-shot `quiz-option` |
+| Error messages | Clipboard copy failure shows "Copy failed" in Anatomizer / practice | Low | Keep failure state visible briefly | No misleading success state |
+| ARIA | Tabs, `aria-live` on quiz result / practice feedback, `aria-pressed` on domain cards; LayerSelector radiogroup | Low | ARIA only where native HTML insufficient | No redundant `role` on plain buttons |
 | Reduced motion | CSS + scroll behavior in `App.tsx` | Low | Preserve on new animations | `prefers-reduced-motion` disables entrance |
 | Image alt text | `ProblemSolution` emotional figure has descriptive alt | Low | Alt required on new images | Non-decorative images have alt |
 | Screen reader | Tab labels match UI; sr-only footer heading | Low | Keep `aria-label` on tab panels | Panel switch announced via focus move |
@@ -656,31 +669,46 @@ const accent = accentFor(domain.id);
 <button className="hover-lift rounded-xl border border-slate-200 bg-white p-4 …">…</button>
 ```
 
-#### Anatomizer terminal preview (allowed exception)
+#### Exclusive choice (LayerSelector / CorrectPromptPractice)
 
-Dark terminal chrome in `AnatomizerBuilder.tsx` may use inline `brand-dark` border stack — **do not copy to light sections**.
+Sticky exclusive selection uses `src/components/shared/ExclusiveChoiceGroup.tsx` (`role="radiogroup"`, arrow keys, brand selected chrome). Do **not** reuse it for MaturityQuiz (click-to-advance). Do not invent a parallel chip radio stack in TSX.
+
+#### Anatomizer terminal preview
 
 ```tsx
-// ✅ Allowed — dark preview shell only (AnatomizerBuilder)
+// ✅ Allowed
+<div className="shell-terminal">…</div>
+
+// ❌ Forbidden — duplicate terminal chrome
 <div className="overflow-hidden rounded-2xl border border-slate-800 bg-brand-dark shadow-tier-2">…</div>
 ```
 
-#### Accent callout box (allowed exception)
-
-Light informational callout in AnatomizerBuilder may use accent-muted border/bg inline — acceptable for single-instance informational panels.
+#### Accent callout box
 
 ```tsx
-// ✅ Allowed — AnatomizerBuilder info callout
+// ✅ Allowed
+<div className="callout-accent">…</div>
+
+// ❌ Forbidden — duplicate accent-muted panel
 <div className="rounded-xl border border-accent-muted-border bg-accent-muted-bg p-4">…</div>
 ```
 
-#### Domain card external link (allowed exception)
-
-Compact glass CTA on dark `DomainDetail` card differs from `btn-secondary-dark-md` sizing intentionally — do not force-align unless product requests.
+#### Domain card external link (dark glass CTA)
 
 ```tsx
-// ✅ Allowed — DomainDetail external link
-<a className="inline-flex min-h-[44px] … border border-border-glass bg-white/5 …">Open {domain}</a>
+// ✅ Allowed — DomainDetail compact glass CTA
+<a className="btn-glass-sm">Open {domain}</a>
+
+// ❌ Forbidden — inline glass CTA stack
+<a className="inline-flex min-h-[44px] … border border-border-glass bg-white/5 …">…</a>
+```
+
+#### Dark inset surfaces
+
+```tsx
+// ✅ Allowed
+<span className="surface-inset …">…</span>
+<div className="surface-inset-soft …">…</div>
 ```
 
 #### Removed utilities
@@ -795,7 +823,9 @@ Complete before declaring **Design System v1.5 pre-release** (documentation and 
 
 ---
 
-## 19. Implementation v2.0 — declaration criteria
+## 19. Implementation maturity — declaration
+
+### v2.0 (2026-05-31)
 
 Declare **Design System implementation v2.0** when all of the following are true:
 
@@ -807,12 +837,21 @@ Declare **Design System implementation v2.0** when all of the following are true
 
 **Declared:** Design System **implementation v2.0** — 2026-05-31.
 
+### v2.1 / v2.2 harden pass (2026-07-30)
+
+Pixel-parity harden — no visual redesign:
+
+1. **v2.1** — Doc truth (§1 live status; §2–§3 historical); semantic text/surface utilities (`text-body` … `text-on-dark-strong`, `surface-muted`, `border-subtle`); absorbed §14.3 exceptions into `btn-glass-sm`, `shell-terminal`, `callout-accent`, `surface-inset` / `surface-inset-soft`
+2. **v2.2** — Header dual-mode utilities (`header-shell` / `header-shell-dark`, `nav-tab*`)
+
+**Declared:** Design System **implementation v2.2** — 2026-07-30 (this harden pass).
+
 | Item | Status |
 |------|--------|
-| **Current implementation version** | **v2.0** (declared 2026-05-31) |
-| **Previous milestones** | v1.0 (utilities stable), v1.2 (QA + a11y docs), v1.5 pre-release (governance gate) |
-| **Document version** | 2.0 (roadmap doc structure) — distinct from implementation v2.0 |
-| **Optional next work** | `components/ui/` thin wrappers; sticky tab discovery A/B |
+| **Current implementation version** | **v2.2** (declared 2026-07-30) |
+| **Previous milestones** | v1.0 → v1.2 → v1.5 pre-release → v2.0 → v2.1/v2.2 harden |
+| **Document version** | 2.2 (roadmap doc + live status) |
+| **Optional next work** | `components/ui/` thin wrappers (product-approved only) |
 | **Biggest risk** | Agents bypassing §14 guardrails and copying nearest TSX file |
 | **Safe extension path** | New block → §14.3 FAQ example → utilities only → `qa:viewport` → changelog |
 
@@ -861,10 +900,20 @@ Inner `max-w-2xl` / `max-w-3xl` sub-constraints remain for intros and figures.
 | `btn-secondary`, `btn-secondary-md` | White bordered CTA (light surfaces) |
 | `btn-secondary-dark`, `btn-secondary-dark-md` | Glass bordered CTA (dark surfaces) |
 | `btn-tertiary-sm` | Small accent action (e.g. copy prompt) |
+| `btn-glass-sm` | Compact glass CTA on dark cards (DomainDetail) |
 | `quiz-option` | Maturity quiz option button (hover-lift + border) |
+| `shell-terminal` | Anatomizer dark preview chrome |
+| `callout-accent` | Accent-muted informational panel |
+| `surface-inset`, `surface-inset-soft` | Dark-band inset fills (`white/4%`, `white/2%`) |
+| `header-shell`, `header-shell-dark` | Sticky header light / scrolled glass |
+| `nav-tab`, `nav-tab-active`, `nav-tab-dark`, `nav-tab-dark-active` | Desktop tab states |
+| `nav-tab-mobile`, `nav-tab-mobile-active` | Mobile menu tab states |
 | `card-light`, `card-light-lg` | Light section cards |
 | `link-footer`, `link-footer-meta`, `link-inline` | Footer nav links, legal/meta links, text-style links |
 | `footer-shell`, `footer-accent-band` | Footer tinted shell and navy/gold top accent |
+| `text-body`, `text-body-strong`, `text-muted`, `text-subtle` | Light-section semantic text |
+| `text-on-dark`, `text-on-dark-strong` | Dark-band semantic text |
+| `surface-muted`, `border-subtle` | Light muted fill / subtle border |
 | `text-micro`, `text-caption`, `text-eyebrow-light` | Micro typography |
 | `container-hero` … `container-wide` | Section max-width |
 | `section-default`, `section-dark` | Section padding + dark bg |
@@ -880,4 +929,4 @@ Inner `max-w-2xl` / `max-w-3xl` sub-constraints remain for intros and figures.
 
 ---
 
-*Document version: 2.0 (roadmap doc). Design system implementation maturity: **v2.0** (declared 2026-05-31).*
+*Document version: 2.2 (roadmap doc). Design system implementation maturity: **v2.2** (declared 2026-07-30).*

@@ -80,15 +80,17 @@ Repo also ships `vercel.json` with a permanent `www` → apex redirect as a depl
 - [ ] View source: `<link rel="canonical" href="https://promptanatomy.site/" />`
 - [ ] https://promptanatomy.site/og_2.png returns 200
 - [ ] https://promptanatomy.site/creator-janitor.png returns 200
-- [ ] https://promptanatomy.site/robots.txt references `.site` sitemap and AI crawler Allow rules
+- [ ] https://promptanatomy.site/robots.txt references `.site` sitemap, **OAI-SearchBot** Allow, and AI crawler Allow rules
 - [ ] https://promptanatomy.site/llms.txt returns 200
-- [ ] https://promptanatomy.site/llms-full.txt returns 200
+- [ ] https://promptanatomy.site/llms-full.txt returns 200 (includes FAQ section from `seoFaq.ts`)
+- [ ] https://promptanatomy.site/.well-known/security.txt returns 200
 - [ ] Deep links work: `/#anatomizer`, `/#maturity`, `/#ecosystem`
 - [ ] Platform CTAs still open https://promptanatomy.app
 - [ ] Test social preview: https://www.opengraph.xyz/url/https://promptanatomy.site
 - [ ] LinkedIn cache check: [Post Inspector](https://www.linkedin.com/post-inspector/) with `https://promptanatomy.site/`
-- [ ] Validate structured data: [Google Rich Results Test](https://search.google.com/test/rich-results?url=https://promptanatomy.site/)
+- [ ] Validate structured data: [Google Rich Results Test](https://search.google.com/test/rich-results?url=https://promptanatomy.site/) — expect Product / SoftwareApplication / WebPage / FAQPage
 - [ ] View source: `og:image` and JSON-LD `Product.image` include `og_2.png?v=<hash>` (patched by `generate-og.mjs` at prebuild)
+- [ ] View source: `robots` meta includes `max-image-preview:large`; noscript entity capsule present; JSON-LD has `WebPage` with `dateModified`
 
 ## 5. GitHub repo social preview (manual)
 
@@ -108,13 +110,14 @@ After apex is Production and redirects verify (see §3):
 
 1. **Google Search Console** → property `promptanatomy.site` (Domain) or `https://promptanatomy.site/` (URL prefix)
 2. **URL Inspection** → enter `https://promptanatomy.site/` → confirm canonical matches → **Request indexing**
-3. **Sitemaps** → submit `https://promptanatomy.site/sitemap.xml`
+3. **Sitemaps** → submit `https://promptanatomy.site/sitemap.xml` only; **remove** legacy `https://www.promptanatomy.site/sitemap.xml` if present (www now redirects to apex)
 4. **Pages** → monitor **Indexed** (not “Page with redirect” for old `http://` variants — those clear over time)
 5. Optional: [Rich Results Test](https://search.google.com/test/rich-results?url=https://promptanatomy.site/)
 
 - [ ] Submit `https://promptanatomy.site/sitemap.xml` in Google Search Console
 - [ ] Request indexing for `https://promptanatomy.site/` in URL Inspection
 - [ ] Submit sitemap in Bing Webmaster Tools
+- [ ] Baseline [GSC Generative AI performance](https://support.google.com/webmasters/answer/16022908) after deploy (manual)
 
 ## 7. Optional follow-up
 

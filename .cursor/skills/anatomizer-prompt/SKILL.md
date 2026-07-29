@@ -52,11 +52,27 @@ Each category needs 3+ preset options in `ANATOMY_BUILDER_ITEMS`:
 
 ## UI behavior
 
-- Five independent selectors (index state per category)
+- Five independent selectors (index state per category) via `ExclusiveChoiceGroup` (`radiogroup` + arrow keys)
 - `useMemo` assembles final prompt text
-- Copy button writes full assembled string to clipboard
-- Show 2-second "copied" feedback
+- Pre-copy checklist (`PRE_COPY_CHECKS`) gates **Copy prompt** until all three checks are confirmed; checks reset when a layer selection changes
+- One Copy control only; show 2-second "copied" / "Copy failed" feedback
+- CorrectPromptPractice sits above the builder on `/#anatomizer`: weak prompt → pick structured fix → copy correct 5-layer prompt
+
+## Exclusive choice vs quiz
+
+- Sticky exclusive choice (LayerSelector, CorrectPromptPractice) → `src/components/shared/ExclusiveChoiceGroup.tsx`
+- Maturity quiz options stay single-shot `quiz-option` buttons (click advances); wrap in `role="group"` only
 
 ## Reference implementation
 
-See `snippet.txt` lines 172–198 (data) and 265–289 (assembly logic).
+Live data: `src/data/anatomyBuilder.ts`, `src/data/correctPromptPractice.ts`. UI: `CorrectPromptPractice.tsx`, `AnatomizerBuilder.tsx`, `LayerSelector.tsx`.
+
+`snippet.txt` is **legacy only** — use it for historical format reference, not live product claims or palette.
+
+## 5-layer demo vs 6-block course
+
+Site Anatomizer and CorrectPromptPractice are **5-layer marketing demos**. Full **6-block** methodology is taught at `promptanatomy.app`. Keep that distinction in any intro/disclaimer copy.
+
+## Lessons
+
+See [`.cursor/LESSONS.md`](../LESSONS.md) for naming and brand corrections that apply when adding presets.

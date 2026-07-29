@@ -23,7 +23,7 @@ export const DOMAINS: Domain[] = [
     icon: Layers,
     isCore: true,
     phase: 'Hub',
-    transition: 'Start here for the full 6-module course — every kit plugs into this hub.',
+    transition: 'Start here for the full 6-module course — every stage connects back to this hub.',
     features: [
       '6-module interactive training (6-block methodology)',
       '15 quick-copy prompts in the training app',
@@ -37,7 +37,7 @@ export const DOMAINS: Domain[] = [
     title: '1. Enter',
     role: 'First Lesson & Onboarding',
     description:
-      'The free entry point: a single interactive lesson and prompt library that introduces structured prompting before the full training course.',
+      'The free entry point: a single interactive lesson that introduces structured prompting before the full training course.',
     audience: 'All Staff, AI Beginners & Onboarding Cohorts',
     icon: Zap,
     isCore: false,
@@ -83,7 +83,7 @@ export const DOMAINS: Domain[] = [
     transition: 'Next, systematize hiring and people ops with Hire.',
     features: [
       '10 high-impact marketing prompts',
-      '30-day content plan & multi-format templates',
+      'Content calendar and LinkedIn post structures',
       'PR, LinkedIn, and lead-gen copy structures',
     ],
   },
@@ -129,7 +129,7 @@ export const DOMAINS: Domain[] = [
     title: '6. Decide',
     role: 'Executive Prompt Operating Kit',
     description:
-      'A static executive prompt kit with Global Context, six fixed modules, a 35-prompt library, clarity demos, and a printable operating PDF.',
+      'A static executive prompt kit with Global Context, six fixed modules, a 35-prompt library, and a printable operating PDF.',
     audience: 'Consultants, Business Owners & Growth Leaders',
     icon: Cpu,
     isCore: false,
@@ -166,7 +166,7 @@ export const DOMAINS: Domain[] = [
     title: '8. Play',
     role: 'Corporate Ladder (Play)',
     description:
-      'Corporate Ladder — a satirical Telegram mini-game about climbing the career ladder. Low-stakes team warm-up, not a production prompt sandbox.',
+      'Corporate Ladder — a satirical Telegram mini-game about climbing the career ladder. Low-stakes team warm-up, not a production prompt kit.',
     audience: 'Teams, Practitioners & Training Facilitators',
     icon: Gamepad2,
     isCore: false,
@@ -174,8 +174,8 @@ export const DOMAINS: Domain[] = [
     transition: 'Back to daily prompts at Use — or the full course at the core hub.',
     features: [
       'Telegram mini-app (Corporate Ladder)',
-      'Daily and weekly leaderboards',
       'Low-stakes satirical team warm-up',
+      'Light break between Deepen and daily kits',
     ],
   },
 ];

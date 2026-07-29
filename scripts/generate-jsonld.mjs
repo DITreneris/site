@@ -2,6 +2,9 @@
  * Build-time JSON-LD entity graph patch for index.html.
  * Sources: domains.ts, siteContact.ts, seoFaq.ts
  * Run: npm run generate:jsonld  (also runs as prebuild)
+ *
+ * FAQPage is included when Q&A matches on-page FaqSection (seoFaq.ts).
+ * Capsules also feed generate-llms.mjs (llms-full.txt).
  */
 import { readFile, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
@@ -19,15 +22,17 @@ const SITE_URL = 'https://promptanatomy.site';
 const ORG_ID = `${PLATFORM_URL}/#organization`;
 const FOUNDER_ID = `${PLATFORM_URL}/#founder`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
+const WEBPAGE_ID = `${SITE_URL}/#webpage`;
 const PRODUCT_ID = `${PLATFORM_URL}/#product`;
 const ECOSYSTEM_ID = `${SITE_URL}/#ecosystem`;
+const FAQ_ID = `${SITE_URL}/#faq`;
 
 const FREE_DEMO_OFFER = {
   '@type': 'Offer',
   price: '0',
   priceCurrency: 'USD',
   availability: 'https://schema.org/InStock',
-  url: `${PLATFORM_URL}/`,
+  url: `${SITE_URL}/`,
   description: 'Free ecosystem demo and team assessment at promptanatomy.site',
 };
 
@@ -62,6 +67,23 @@ function parseDomains(source) {
     throw new Error('[generate-jsonld] Failed to parse domains from domains.ts');
   }
   return domains;
+}
+
+function parseSeoFaq(source) {
+  const faqs = [];
+  const blockRe =
+    /question:\s*'((?:\\'|[^'])*)'[\s\S]*?answer:\s*\n\s*'((?:\\'|[^'])*)'/g;
+  let m;
+  while ((m = blockRe.exec(source)) !== null) {
+    faqs.push({
+      question: m[1].replace(/\\'/g, "'"),
+      answer: m[2].replace(/\\'/g, "'"),
+    });
+  }
+  if (faqs.length === 0) {
+    throw new Error('[generate-jsonld] Failed to parse SEO_FAQ from seoFaq.ts');
+  }
+  return faqs;
 }
 
 function parseLabeledUrls(source, exportName) {
@@ -135,22 +157,6 @@ function parseSiteContact(source) {
   };
 }
 
-function parseSeoFaq(source) {
-  const faqs = [];
-  const faqRe = /question:\s*'((?:\\'|[^'])*)',\s*\n\s*answer:\s*\n\s*'((?:\\'|[^'])*)'/g;
-  let m;
-  while ((m = faqRe.exec(source)) !== null) {
-    faqs.push({
-      question: m[1].replace(/\\'/g, "'"),
-      answer: m[2].replace(/\\'/g, "'"),
-    });
-  }
-  if (faqs.length === 0) {
-    throw new Error('[generate-jsonld] Failed to parse seoFaq.ts');
-  }
-  return faqs;
-}
-
 function stageName(title) {
   return title.replace(/^\d+\.\s*/, '');
 }
@@ -173,13 +179,22 @@ function buildBookNodes(publications) {
   }));
 }
 
-function buildGraph({ domains, contact, faqs, ogImageUrl }) {
+function buildGraph({ domains, contact, faqs, ogImageUrl, dateModified }) {
   const itemListElement = domains.map((d, index) => ({
     '@type': 'ListItem',
     position: index + 1,
     name: d.isCore ? d.title : stageName(d.title),
     url: `https://${d.domain}/`,
     description: d.role,
+  }));
+
+  const faqMainEntity = faqs.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
   }));
 
   return {
@@ -218,6 +233,19 @@ function buildGraph({ domains, contact, faqs, ogImageUrl }) {
         publisher: { '@id': ORG_ID },
       },
       {
+        '@type': 'WebPage',
+        '@id': WEBPAGE_ID,
+        url: `${SITE_URL}/`,
+        name: 'Prompt Anatomy — AI Operating System for Teams',
+        description:
+          'Prompt Anatomy is an AI Operating System for modern teams. Explore the nine-domain ecosystem, build structured prompts, and assess your team\'s AI maturity.',
+        isPartOf: { '@id': WEBSITE_ID },
+        about: { '@id': ORG_ID },
+        publisher: { '@id': ORG_ID },
+        dateModified,
+        primaryImageOfPage: ogImageUrl,
+      },
+      {
         '@type': 'ItemList',
         '@id': ECOSYSTEM_ID,
         name: 'Prompt Anatomy Ecosystem Modules',
@@ -232,7 +260,7 @@ function buildGraph({ domains, contact, faqs, ogImageUrl }) {
         image: ogImageUrl,
         brand: { '@id': ORG_ID },
         description:
-          'A nine-domain ecosystem covering onboarding, daily automation, content creation, HR, leadership, scaling, knowledge depth, and structured play — built around a central AI operating system for teams.',
+          'A nine-domain ecosystem — onboarding, organization kits, marketing, HR, leadership, executive decision kits, knowledge depth, and Corporate Ladder (Play) — around a central AI operating system for teams.',
         category: 'AI Operating System',
         hasPart: { '@id': ECOSYSTEM_ID },
         offers: FREE_DEMO_OFFER,
@@ -251,14 +279,10 @@ function buildGraph({ domains, contact, faqs, ogImageUrl }) {
       },
       {
         '@type': 'FAQPage',
-        mainEntity: faqs.map((faq) => ({
-          '@type': 'Question',
-          name: faq.question,
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: faq.answer,
-          },
-        })),
+        '@id': FAQ_ID,
+        url: `${SITE_URL}/#faq`,
+        isPartOf: { '@id': WEBPAGE_ID },
+        mainEntity: faqMainEntity,
       },
     ],
   };
@@ -281,7 +305,8 @@ async function main() {
   const contact = parseSiteContact(contactSrc);
   const faqs = parseSeoFaq(faqSrc);
   const ogImageUrl = extractOgImageUrl(html);
-  const graph = buildGraph({ domains, contact, faqs, ogImageUrl });
+  const dateModified = new Date().toISOString().slice(0, 10);
+  const graph = buildGraph({ domains, contact, faqs, ogImageUrl, dateModified });
   const block = buildScriptBlock(graph);
 
   const markerPattern = new RegExp(`${START_MARKER}[\\s\\S]*?${END_MARKER}`);

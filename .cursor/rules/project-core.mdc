@@ -26,6 +26,8 @@ Building the **Prompt Anatomy ecosystem site** — a static React MVP deployed a
 
 - **Document map:** `DOCS_INDEX.md` — task router, agent roster, skills catalog, file registry. Update it when adding docs, agents, or skills.
 
+- **Agent lessons:** `.cursor/LESSONS.md` — durable naming/URL/OG/CHANGELOG corrections from audits. Do not reintroduce fixed drifts.
+
 - **Content source:** `primal_concept.txt` defines domain names, roles, audiences, and messaging. Do not rename domains or invent new ecosystem stages.
 
 - **UI source of truth:** `src/index.css` (`@theme` + `@utility`) and `DESIGN_SYSTEM.md` §14. `snippet.txt` is legacy only — do not reintroduce its slate-950/indigo/rainbow palette.

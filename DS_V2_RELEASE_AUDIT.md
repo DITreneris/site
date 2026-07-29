@@ -295,7 +295,7 @@ Formal checklist per `.cursor/agents/verifier.md` + v2.0 delta checks.
 | Prompt Builder tab | **Pass** | 5 selectors, copy success/error feedback, 5-block format |
 | Team Assessment tab | **Pass** | `card-light-lg` question shell; `quiz-option` buttons; tier scoring; pivot + reset |
 | Global | **Pass** | Tab nav, mobile layout, external URLs, skip link + ARIA tabs |
-| Deploy assets | **Pass** (waived doc drift) | Live asset is `public/og_2.png`; canonical/OG on `promptanatomy.site`. Verifier agent still references legacy `og-image.png` — update verifier.md separately (non-blocking) |
+| Deploy assets | **Pass** | Live asset is `public/og_2.png`; canonical/OG on `promptanatomy.site`. Verifier + deploy skill updated 2026-07-29 to require `og_2.png` (legacy `og-image.png` checklist retired). |
 | Build / viewport | **Pass** | `npm run build` and `npm run qa:viewport` green (six widths) |
 
 **Overall: Pass** — implementation v2.0 declared.

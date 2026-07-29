@@ -38,6 +38,8 @@ None (read-only QA). Reference: [DOCS_INDEX.md](../../DOCS_INDEX.md), [AGENTS.md
 
 - [ ] StatsStrip count-up animation respects `prefers-reduced-motion`
 
+- [ ] StatsStrip eyebrow reads **Across the ecosystem**
+
 
 
 ### Ecosystem tab
@@ -46,7 +48,9 @@ None (read-only QA). Reference: [DOCS_INDEX.md](../../DOCS_INDEX.md), [AGENTS.md
 
 - [ ] `SequencePath` selects domains; core hub (app) accessible
 
-- [ ] Detail panel shows phase badge, features, audience, transition line, external link
+- [ ] Knowledge phase badge / column label shows **Deepen** (not Learn)
+
+- [ ] Detail panel shows phase badge, **What's included** features, audience, transition line, external link
 
 - [ ] Anatomizer cross-link in DomainDetail works
 
@@ -68,6 +72,8 @@ None (read-only QA). Reference: [DOCS_INDEX.md](../../DOCS_INDEX.md), [AGENTS.md
 
 - [ ] Scoring produces correct tier (≤5, 6–9, ≥10)
 
+- [ ] Tier 3 copy does not claim “fully scaled enterprise configurations”
+
 - [ ] "See your recommended starting point" pivots to recommended domain on Ecosystem tab
 
 - [ ] Quiz result external CTA opens recommended live domain
@@ -82,7 +88,9 @@ None (read-only QA). Reference: [DOCS_INDEX.md](../../DOCS_INDEX.md), [AGENTS.md
 
 - [ ] Mobile layout usable (hamburger nav, grids collapse, no horizontal overflow)
 
-- [ ] Platform CTAs link to `promptanatomy.app`; module links to correct subdomains
+- [ ] Platform CTAs link to `promptanatomy.app` (via `PLATFORM_URL`); module links to correct subdomains
+
+- [ ] Footer Use/Decide labels use kit roles (organization kit / executive kit) — not daily automation / scaling
 
 - [ ] Skip link, tab roles, `aria-selected`/`aria-controls` intact
 
@@ -94,7 +102,7 @@ None (read-only QA). Reference: [DOCS_INDEX.md](../../DOCS_INDEX.md), [AGENTS.md
 
 ### Deploy assets (before release)
 
-- [ ] `public/og-image.png` exists (1200×630)
+- [ ] `public/og_2.png` exists (1600×900)
 
 - [ ] Canonical and OG URLs point to `promptanatomy.site`
 
@@ -107,4 +115,6 @@ None (read-only QA). Reference: [DOCS_INDEX.md](../../DOCS_INDEX.md), [AGENTS.md
 
 
 Report: **Pass / Fail** per section, list specific issues with file paths, suggest minimal fixes. Do not implement fixes unless asked.
+
+Reference corrections: [`.cursor/LESSONS.md`](../LESSONS.md).
 

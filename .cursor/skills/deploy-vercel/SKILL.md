@@ -17,7 +17,7 @@ description: Cold deploy and Vercel DNS checklist for the Prompt Anatomy ecosyst
 
 1. `git rev-parse --show-toplevel` → must be the project folder (not user home)
 2. `npm install && npm run build` → exit 0
-3. `public/og-image.png` exists (from `npm run generate:og`)
+3. `public/og_2.png` exists (hand-maintained; cache-bust via `npm run generate:og`)
 4. `public/creator-janitor.png` exists
 5. `index.html` canonical + OG → `https://promptanatomy.site`
 6. `public/robots.txt` + `sitemap.xml` → `.site` domain
@@ -53,7 +53,7 @@ See `DEPLOY.md` §3 for DNS record table.
 
 - [ ] https://promptanatomy.site/ returns **200** (not 307 to www)
 - [ ] https://www.promptanatomy.site/ returns **308** → apex
-- [ ] `/og-image.png` and `/creator-janitor.png` return 200
+- [ ] `/og_2.png` and `/creator-janitor.png` return 200
 - [ ] View-source: `canonical` = `.site`
 - [ ] All 3 tabs work on mobile
 - [ ] Platform CTAs still link to `promptanatomy.app`
@@ -61,5 +61,10 @@ See `DEPLOY.md` §3 for DNS record table.
 ## Do not
 
 - Deploy from a git root outside this project folder
-- Use runtime OG API routes for MVP — static PNG only
+- Use runtime OG API routes for MVP — static `public/og_2.png` only
 - Change platform hub URL in CTAs to `.site`
+- Require or check for legacy `og-image.png` / Satori-generated OG (removed)
+
+## Lessons
+
+See [`.cursor/LESSONS.md`](../LESSONS.md) for OG and URL corrections.

@@ -67,5 +67,7 @@ alwaysApply: false
 
 - Skip `npm run build` verification before push
 
-- Add server-side OG routes — static PNG in `public/` only for MVP
+- Add server-side OG routes — static PNG in `public/` only for MVP (`og_2.png`, not legacy `og-image.png`)
+
+- Reintroduce agent checklist references to Satori-generated `og-image.png` (see `.cursor/LESSONS.md`)
 

@@ -115,6 +115,8 @@ Domain objects in `src/data/domains.ts` match `src/types/index.ts`:
 
 Phase accent colors come from `src/data/ecosystemTheme.ts` — do not add per-domain rainbow gradients.
 
+**Phase UI label:** `phaseLabelFor('Knowledge')` → **Deepen** (internal id stays `Knowledge`). Never show “Learn” as the phase badge.
+
 
 
 ## Copy rules
@@ -133,7 +135,15 @@ Phase accent colors come from `src/data/ecosystemTheme.ts` — do not add per-do
 
 - External URLs: `https://{domain}` for each subdomain
 
-- Platform hub CTAs → `promptanatomy.app`; this marketing site → `promptanatomy.site`
+- Platform hub CTAs → `promptanatomy.app` via `PLATFORM_URL` in `siteContact.ts` (strip trailing `/`); this marketing site → `promptanatomy.site`
+
+- Footer labels follow kit roles (e.g. `Use — organization kit`, `Decide — executive kit`) — not “daily automation” / “scaling”
+
+- DomainDetail feature list heading: **What's included**
+
+- After domain/FAQ/quiz-source edits that feed generators, run `npm run generate:llms` and/or `npm run generate:jsonld`
+
+- Read [`.cursor/LESSONS.md`](../LESSONS.md) before large copy passes
 
 ### Product truth anchors (GitHub)
 

@@ -11,6 +11,7 @@ const ROOT = join(__dirname, '..');
 const DOMAINS_PATH = join(ROOT, 'src', 'data', 'domains.ts');
 const ANATOMY_PATH = join(ROOT, 'src', 'data', 'anatomyBuilder.ts');
 const SITE_CONTACT_PATH = join(ROOT, 'src', 'data', 'siteContact.ts');
+const SEO_FAQ_PATH = join(ROOT, 'src', 'data', 'seoFaq.ts');
 const LLMS_FULL_OUT = join(ROOT, 'public', 'llms-full.txt');
 const SITEMAP_OUT = join(ROOT, 'public', 'sitemap.xml');
 
@@ -89,6 +90,23 @@ function parseAuthorContact(source) {
   return { name, aboutUrl, sameAs, media, publications };
 }
 
+/** Parse SEO_FAQ capsules from seoFaq.ts (Q&A for llms-full; not FAQPage schema). */
+function parseSeoFaq(source) {
+  const faqs = [];
+  const faqRe = /question:\s*'((?:\\'|[^'])*)',\s*\n\s*answer:\s*\n\s*'((?:\\'|[^'])*)'/g;
+  let m;
+  while ((m = faqRe.exec(source)) !== null) {
+    faqs.push({
+      question: m[1].replace(/\\'/g, "'"),
+      answer: m[2].replace(/\\'/g, "'"),
+    });
+  }
+  if (faqs.length === 0) {
+    throw new Error('[generate-llms] Failed to parse seoFaq.ts');
+  }
+  return faqs;
+}
+
 function formatFounderLines(contact) {
   const labels = {
     'linkedin.com': 'LinkedIn',
@@ -127,31 +145,31 @@ const QUIZ_TIERS = [
     scoreRange: '3–5',
     recommended: 'promptanatomy.cloud (Enter)',
     description:
-      'AI is used as an isolated conversational playground — high cognitive variance, security hazards, and zero repeatable leverage.',
+      'Ad-hoc chat with no shared standard — start at Enter for a free first lesson before the full course.',
   },
   {
     title: 'Fragmented Adoption (Tier 2)',
     scoreRange: '6–9',
     recommended: 'promptanatomy.info (Use)',
     description:
-      'Standardized prompt concepts exist but templates are localized and uncentralized; some speed gains but workflows remain disconnected.',
+      'Some templates exist but stay local and workflows stay disconnected — start at Use for organization-focused prompts.',
   },
   {
     title: 'Structured AI OS Ready (Tier 3)',
     scoreRange: '10–12',
     recommended: 'promptanatomy.pro (Decide)',
     description:
-      'Strict parameters beat casual chat; prepared for fully scaled enterprise configurations and strategic frameworks.',
+      'Strict parameters over casual chat; next step is the executive prompt operating kit (structured modules, not ad-hoc threads).',
   },
 ];
 
 const SECTION_HASHES = [
   { hash: 'ecosystem', label: 'ecosystem map and domain detail panel (nine domains)' },
-  { hash: 'anatomizer', label: '5-layer structured prompt builder (Anatomizer)' },
-  { hash: 'maturity', label: 'Team AI maturity diagnostic (3 questions, 3 tiers)' },
+  { hash: 'anatomizer', label: '5-layer prompt builder + fix-a-weak-prompt practice (Anatomizer)' },
+  { hash: 'maturity', label: '60-second team assessment (3 questions, 3 tiers)' },
 ];
 
-function buildLlmsFull(domains, layers, authorContact) {
+function buildLlmsFull(domains, layers, authorContact, faqs) {
   const today = new Date().toISOString().slice(0, 10);
   const lines = [
     '# Prompt Anatomy — Extended LLM Reference',
@@ -172,9 +190,18 @@ function buildLlmsFull(domains, layers, authorContact) {
     ),
     `- ${PLATFORM_URL}/ — central platform hub`,
     '',
-    '## Ecosystem domains',
+    '## FAQ',
     '',
   ];
+
+  for (const faq of faqs) {
+    lines.push(`### ${faq.question}`);
+    lines.push(faq.answer);
+    lines.push('');
+  }
+
+  lines.push('## Ecosystem domains');
+  lines.push('');
 
   for (const d of domains) {
     lines.push(`### ${d.title} — ${d.domain}`);
@@ -187,7 +214,7 @@ function buildLlmsFull(domains, layers, authorContact) {
   lines.push('## Structured prompting (Anatomizer)');
   lines.push('');
   lines.push(
-    'The Anatomizer assembles prompts from five layers in order. End assembled prompts with: ### BEGIN RESPONSE ACCORDING TO SYSTEM RULES',
+    'The Anatomizer includes a fix-a-weak-prompt practice, then assembles prompts from five layers in order. End assembled prompts with: ### BEGIN RESPONSE ACCORDING TO SYSTEM RULES',
   );
   lines.push('');
 
@@ -236,18 +263,20 @@ function buildSitemap(lastmod) {
 }
 
 async function main() {
-  const [domainsSrc, anatomySrc, contactSrc] = await Promise.all([
+  const [domainsSrc, anatomySrc, contactSrc, faqSrc] = await Promise.all([
     readFile(DOMAINS_PATH, 'utf8'),
     readFile(ANATOMY_PATH, 'utf8'),
     readFile(SITE_CONTACT_PATH, 'utf8'),
+    readFile(SEO_FAQ_PATH, 'utf8'),
   ]);
 
   const domains = parseDomains(domainsSrc);
   const layers = parseAnatomyLayers(anatomySrc);
   const authorContact = parseAuthorContact(contactSrc);
+  const faqs = parseSeoFaq(faqSrc);
   const lastmod = new Date().toISOString().slice(0, 10);
 
-  const llmsFull = buildLlmsFull(domains, layers, authorContact);
+  const llmsFull = buildLlmsFull(domains, layers, authorContact, faqs);
   const sitemap = buildSitemap(lastmod);
 
   await Promise.all([

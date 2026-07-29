@@ -1,5 +1,5 @@
 # Prompt Anatomy — Extended LLM Reference
-# Generated: 2026-06-07
+# Generated: 2026-07-29
 # Canonical site: https://promptanatomy.site/
 
 ## Summary
@@ -12,9 +12,32 @@ Less random prompting. More structured execution.
 
 - https://promptanatomy.site/
 - https://promptanatomy.site/#ecosystem — ecosystem map and domain detail panel (nine domains)
-- https://promptanatomy.site/#anatomizer — 5-layer structured prompt builder (Anatomizer)
-- https://promptanatomy.site/#maturity — Team AI maturity diagnostic (3 questions, 3 tiers)
+- https://promptanatomy.site/#anatomizer — 5-layer prompt builder + fix-a-weak-prompt practice (Anatomizer)
+- https://promptanatomy.site/#maturity — 60-second team assessment (3 questions, 3 tiers)
 - https://promptanatomy.app/ — central platform hub
+
+## FAQ
+
+### What is Prompt Anatomy?
+Prompt Anatomy is an AI Operating System for modern teams — 6-module interactive training on the 6-block methodology, plus an ecosystem of focused prompt kits for onboarding, operations, marketing, HR, leadership, and executive workflows.
+
+### Who is Prompt Anatomy for?
+Prompt Anatomy is built for CEOs, COOs, IT leaders, managers, and operational teams who want structured AI workflows — from a free first lesson through the full training course and role-specific prompt kits.
+
+### What is the Prompt Anatomy ecosystem?
+Nine interconnected domains: one core hub at promptanatomy.app (6-module training); six role kits — Enter (promptanatomy.cloud, first lesson), Use (promptanatomy.info, 8 org prompts), Create (promptanatomy.space, 10 marketing prompts), Hire (promptanatomy.help, 10 HR prompts), Manage (promptanatomy.ceo, CEO generator + playbooks), Decide (promptanatomy.pro, executive prompt kit); plus Deepen (promptanatomy.blog, knowledge hub) and Play (promptanatomy.lol, Corporate Ladder game).
+
+### Who founded Prompt Anatomy?
+Prompt Anatomy was founded by Tomas Staniulis, a published author on organizational systems and structured workflows. He builds AI operating systems for modern teams — connecting Enter, Use, Create, Hire, Manage, Decide, Deepen, and Play across the Prompt Anatomy ecosystem. Full founder bio: https://www.promptanatomy.blog/about/
+
+### What is structured prompting and the Anatomizer?
+Structured prompting uses five layers in the site demo: System Role, Business Context, Dynamic Variables, Instructions, and Output Constraints. The Anatomizer on promptanatomy.site includes a fix-a-weak-prompt practice plus layer-by-layer assembly. The full course at promptanatomy.app teaches the complete 6-block system.
+
+### What does the Team Assessment measure?
+The 60-second Team Assessment scores AI operational maturity across three tiers: Unstructured Ad-Hoc (Tier 1), Fragmented Adoption (Tier 2), and Structured AI OS Ready (Tier 3), with a recommended ecosystem domain for your next step.
+
+### Where is the main platform?
+The 6-module training hub lives at https://promptanatomy.app/ (6-block methodology, certificates, tool catalog). Aggregate template and tool counts span training plus subdomain kits — not one library on a single URL. The marketing site at https://promptanatomy.site/ showcases the ecosystem, Anatomizer, and maturity assessment.
 
 ## Ecosystem domains
 
@@ -26,7 +49,7 @@ The core hub for 6-module interactive training on the 6-block prompt methodology
 ### 1. Enter — promptanatomy.cloud
 Role: First Lesson & Onboarding
 URL: https://promptanatomy.cloud/
-The free entry point: a single interactive lesson and prompt library that introduces structured prompting before the full training course.
+The free entry point: a single interactive lesson that introduces structured prompting before the full training course.
 
 ### 2. Use — promptanatomy.info
 Role: Organization Prompt Kit
@@ -51,7 +74,7 @@ A prompt generator built from your business inputs, plus paid CEO Operations and
 ### 6. Decide — promptanatomy.pro
 Role: Executive Prompt Operating Kit
 URL: https://promptanatomy.pro/
-A static executive prompt kit with Global Context, six fixed modules, a 35-prompt library, clarity demos, and a printable operating PDF.
+A static executive prompt kit with Global Context, six fixed modules, a 35-prompt library, and a printable operating PDF.
 
 ### 7. Deepen — promptanatomy.blog
 Role: Knowledge & Deep-Dive Hub
@@ -61,11 +84,11 @@ Articles, logic diagrams, and frameworks for AI practitioners who want to go dee
 ### 8. Play — promptanatomy.lol
 Role: Corporate Ladder (Play)
 URL: https://promptanatomy.lol/
-Corporate Ladder — a satirical Telegram mini-game about climbing the career ladder. Low-stakes team warm-up, not a production prompt sandbox.
+Corporate Ladder — a satirical Telegram mini-game about climbing the career ladder. Low-stakes team warm-up, not a production prompt kit.
 
 ## Structured prompting (Anatomizer)
 
-The Anatomizer assembles prompts from five layers in order. End assembled prompts with: ### BEGIN RESPONSE ACCORDING TO SYSTEM RULES
+The Anatomizer includes a fix-a-weak-prompt practice, then assembles prompts from five layers in order. End assembled prompts with: ### BEGIN RESPONSE ACCORDING TO SYSTEM RULES
 
 - Layer A: System Role / Persona → [SYSTEM ROLE]
 - Layer B: Business Context → [BUSINESS CONTEXT]
@@ -79,15 +102,15 @@ Three questions; max score 12. Tiers and recommended domains:
 
 ### Unstructured Ad-Hoc (Tier 1) (score 3–5)
 Recommended: promptanatomy.cloud (Enter)
-AI is used as an isolated conversational playground — high cognitive variance, security hazards, and zero repeatable leverage.
+Ad-hoc chat with no shared standard — start at Enter for a free first lesson before the full course.
 
 ### Fragmented Adoption (Tier 2) (score 6–9)
 Recommended: promptanatomy.info (Use)
-Standardized prompt concepts exist but templates are localized and uncentralized; some speed gains but workflows remain disconnected.
+Some templates exist but stay local and workflows stay disconnected — start at Use for organization-focused prompts.
 
 ### Structured AI OS Ready (Tier 3) (score 10–12)
 Recommended: promptanatomy.pro (Decide)
-Strict parameters beat casual chat; prepared for fully scaled enterprise configurations and strategic frameworks.
+Strict parameters over casual chat; next step is the executive prompt operating kit (structured modules, not ad-hoc threads).
 
 ## Contact and trust
 

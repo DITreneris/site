@@ -35,3 +35,4 @@ None. Document map: [DOCS_INDEX.md](../../DOCS_INDEX.md)
 - Only edit `CHANGELOG.md` (and bump `package.json` version when explicitly cutting a release).
 - Do not restate the entire changelog back to the user; report only what you added.
 - Keep entries accurate to what actually shipped this session.
+- Do not leave contradictory `[Unreleased]` bullets that misstate the *current* product (e.g. superseded sandbox Play, Satori `og-image.png` generation). Correct or remove obsolete Unreleased notes when recording superseding work. See [`.cursor/LESSONS.md`](../LESSONS.md).

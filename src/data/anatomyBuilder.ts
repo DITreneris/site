@@ -95,3 +95,61 @@ export const ANATOMY_LAYERS: AnatomyLayerMeta[] = [
   { key: 'instruction', label: 'Layer D: Instructions & Goals', blockTag: 'INSTRUCTIONS' },
   { key: 'constraint', label: 'Layer E: Output Constraints', blockTag: 'OUTPUT CONSTRAINTS' },
 ];
+
+export const PRE_COPY_CHECKS = [
+  { id: 'role', label: 'System role is explicit' },
+  { id: 'context', label: 'Business context is set' },
+  { id: 'format', label: 'Output constraints / format are set' },
+] as const;
+
+export type PreCopyCheckId = (typeof PRE_COPY_CHECKS)[number]['id'];
+
+/** Coherent five-layer index sets mapped to kit stages (Create / Hire / Manage). */
+export const ANATOMY_SCENARIOS: {
+  id: string;
+  label: string;
+  kitStage: string;
+  selection: Record<AnatomyLayerKey, number>;
+}[] = [
+  {
+    id: 'manage',
+    label: 'Manage — ops',
+    kitStage: 'Manage',
+    selection: {
+      persona: 0,
+      context: 0,
+      variable: 0,
+      instruction: 0,
+      constraint: 0,
+    },
+  },
+  {
+    id: 'create',
+    label: 'Create — marketing',
+    kitStage: 'Create',
+    selection: {
+      persona: 1,
+      context: 1,
+      variable: 1,
+      instruction: 1,
+      constraint: 1,
+    },
+  },
+  {
+    id: 'hire',
+    label: 'Hire — HR',
+    kitStage: 'Hire',
+    selection: {
+      persona: 2,
+      context: 2,
+      variable: 2,
+      instruction: 2,
+      constraint: 2,
+    },
+  },
+];
+
+/** Domain ids that have a mapped Anatomizer scenario (Manage / Create / Hire). */
+export const ANATOMY_SCENARIO_DOMAIN_IDS = new Set(
+  ANATOMY_SCENARIOS.map((s) => s.id),
+);

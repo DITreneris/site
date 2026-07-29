@@ -91,7 +91,7 @@ export default function StatsStrip() {
         <div className="flex flex-col items-center justify-center gap-1 text-brand-accent">
           <div className="flex items-center gap-2">
             <Zap className="icon-sm" />
-            <span className="text-label-upper">Prompt Anatomy</span>
+            <span className="text-label-upper">Across the ecosystem</span>
           </div>
         </div>
 
@@ -101,17 +101,16 @@ export default function StatsStrip() {
               <div className="bg-accent-gradient bg-clip-text text-5xl font-black leading-[var(--text-stat--line-height)] tracking-[-0.02em] text-transparent sm:text-[length:var(--text-stat)]">
                 <Counter {...stat} start={inView} />
               </div>
-              <div className="mx-auto mt-3 max-w-[14rem] text-xs leading-relaxed text-slate-400">
+              <div className="mx-auto mt-3 max-w-[14rem] text-xs leading-relaxed text-subtle">
                 {stat.label}
               </div>
             </div>
           ))}
         </div>
 
-        <p className="mx-auto mt-10 max-w-2xl text-center text-xs leading-relaxed text-slate-500">
-          Templates, tool references, and glossary terms span training and subdomain kits &mdash;
-          not one downloadable library on one URL. The 30&ndash;50% target reflects workflow
-          standardization, not full automation.
+        <p className="mx-auto mt-10 max-w-2xl text-center text-xs leading-relaxed text-muted">
+          Counts span training and kits &mdash; not one library. 30&ndash;50% is standardization,
+          not full automation.
         </p>
       </div>
     </section>

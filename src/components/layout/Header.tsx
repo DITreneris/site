@@ -37,7 +37,7 @@ export default function Header({ activeTab, onTabChange, onLogoClick }: HeaderPr
   return (
     <header
       className={`sticky top-0 z-40 border-b backdrop-blur transition-colors duration-300 ${
-        dark ? 'border-white/10 bg-brand-dark/80 shadow-soft' : 'border-slate-200 bg-white/85'
+        dark ? 'header-shell-dark' : 'header-shell'
       }`}
     >
       <div className="container-wide flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -63,7 +63,7 @@ export default function Header({ activeTab, onTabChange, onLogoClick }: HeaderPr
             </span>
             <span
               className={`hidden min-[360px]:block text-label-upper transition-colors duration-300 ${
-                dark ? 'text-slate-400' : 'text-slate-500'
+                dark ? 'text-subtle' : 'text-muted'
               }`}
             >
               Structured Work Systems
@@ -74,6 +74,13 @@ export default function Header({ activeTab, onTabChange, onLogoClick }: HeaderPr
         <nav className="hidden items-center gap-1 md:flex" role="tablist" aria-label="Site sections">
           {TABS.map((tab) => {
             const active = activeTab === tab.id;
+            const tabClass = scrolled
+              ? active
+                ? 'nav-tab-dark-active'
+                : 'nav-tab-dark'
+              : active
+                ? 'nav-tab-active'
+                : 'nav-tab';
             return (
               <button
                 key={tab.id}
@@ -81,15 +88,7 @@ export default function Header({ activeTab, onTabChange, onLogoClick }: HeaderPr
                 aria-selected={active}
                 aria-controls={`panel-${tab.id}`}
                 onClick={() => handleTab(tab.id)}
-                className={`inline-flex min-h-[44px] items-center text-nav-link rounded-lg px-4 py-2 transition-colors duration-300 focus-ring ${
-                  active
-                    ? scrolled
-                      ? 'bg-white/10 text-white'
-                      : 'bg-slate-100 text-brand-dark'
-                    : scrolled
-                      ? 'text-slate-300 hover:text-white'
-                      : 'text-slate-500 hover:text-brand-dark'
-                }`}
+                className={tabClass}
               >
                 {tab.label}
               </button>
@@ -100,7 +99,7 @@ export default function Header({ activeTab, onTabChange, onLogoClick }: HeaderPr
         <button
           onClick={() => setMobileOpen((v) => !v)}
           className={`inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg px-2 font-semibold transition-colors duration-300 focus-ring md:hidden ${
-            dark ? 'text-slate-200 hover:bg-white/10' : 'text-slate-600 hover:bg-slate-100'
+            dark ? 'text-on-dark-strong hover:bg-white/10' : 'text-body hover:bg-slate-100'
           }`}
           aria-label="Toggle navigation"
           aria-expanded={mobileOpen}
@@ -122,11 +121,9 @@ export default function Header({ activeTab, onTabChange, onLogoClick }: HeaderPr
               aria-selected={activeTab === tab.id}
               aria-controls={`panel-${tab.id}`}
               onClick={() => handleTab(tab.id)}
-              className={`block w-full rounded-lg px-4 py-3 text-left text-sm font-bold transition-colors focus-ring ${
-                activeTab === tab.id
-                  ? 'bg-white/10 text-white'
-                  : 'text-slate-300 hover:text-white'
-              }`}
+              className={
+                activeTab === tab.id ? 'nav-tab-mobile-active' : 'nav-tab-mobile'
+              }
             >
               {tab.label}
             </button>
