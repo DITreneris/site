@@ -66,5 +66,4 @@ See `DEPLOY.md` §3 for DNS record table.
 - Require or check for legacy `og-image.png` / Satori-generated OG (removed)
 
 ## Lessons
-
 See [`.cursor/LESSONS.md`](../LESSONS.md) for OG and URL corrections.

@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Footer entity line (hub QW1b): `Part of Prompt Anatomy · Training & checkout → promptanatomy.app` with `ENTITY_FOOTER_URL` (www + `utm_source=site`) and `entity_footer_click` analytics.
+
 ## [1.2.0] - 2026-07-30
 
 ### Added

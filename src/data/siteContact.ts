@@ -9,6 +9,9 @@
 
 export const SITE_URL = 'https://promptanatomy.site/' as const;
 export const PLATFORM_URL = 'https://promptanatomy.app/' as const;
+/** Hub QW1b sibling entity footer — www + UTM; do not use for conversion CTAs (use PLATFORM_URL). */
+export const ENTITY_FOOTER_URL =
+  'https://www.promptanatomy.app/?utm_source=site&utm_medium=entity_footer&utm_campaign=ecosystem' as const;
 
 export const ORGANIZATION = {
   name: 'Prompt Anatomy',

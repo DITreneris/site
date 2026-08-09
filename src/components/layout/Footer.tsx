@@ -8,6 +8,8 @@ import {
 
   ORGANIZATION,
 
+  ENTITY_FOOTER_URL,
+
   PLATFORM_URL,
 
   SOCIAL_LINKS,
@@ -363,6 +365,30 @@ export default function Footer() {
 
 
         <div className="mt-10 space-y-2 border-t border-border-footer pt-5">
+
+          <p className="text-caption text-muted">
+
+            Part of Prompt Anatomy · Training &amp; checkout →{' '}
+
+            <a
+
+              href={ENTITY_FOOTER_URL}
+
+              target="_blank"
+
+              rel="noreferrer"
+
+              className="link-footer-meta"
+
+              onClick={() => trackEvent('entity_footer_click')}
+
+            >
+
+              promptanatomy.app
+
+            </a>
+
+          </p>
 
           <FooterLegalPrimary year={year} />
 
