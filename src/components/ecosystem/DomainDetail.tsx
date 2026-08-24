@@ -3,10 +3,8 @@ import { Users, Check, ExternalLink, ArrowRight, Terminal } from 'lucide-react';
 import type { Domain } from '../../types';
 import { accentFor, phaseLabelFor } from '../../data/ecosystemTheme';
 import { ANATOMY_SCENARIO_DOMAIN_IDS } from '../../data/anatomyBuilder';
-import { PLATFORM_URL } from '../../data/siteContact';
+import { platformHref } from '../../data/siteContact';
 import { trackEvent } from '../../utils/trackEvent';
-
-const platformHref = PLATFORM_URL.replace(/\/$/, '');
 
 interface DomainDetailProps {
   domain: Domain;
@@ -20,14 +18,14 @@ export default function DomainDetail({ domain, onOpenAnatomizer }: DomainDetailP
   return (
     <div className={`card-glass animate-panel-in overflow-hidden p-6 sm:p-8 ${accent.glow}`}>
       <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-start">
-        <div className="flex items-center gap-3.5">
+        <div className="flex min-w-0 items-center gap-3.5">
           <span className="flex h-12 w-12 items-center justify-center rounded-xl surface-inset">
             {createElement(domain.icon, { className: `icon-md ${accent.text}` })}
           </span>
-          <div>
-            <div className="flex items-center gap-2">
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-center gap-2">
               <h2 className="text-xl font-black text-white">{domain.title}</h2>
-              <span className="rounded border border-border-glass bg-black/20 px-2 py-0.5 font-mono text-micro text-subtle">
+              <span className="break-all rounded border border-border-glass bg-black/20 px-2 py-0.5 font-mono text-micro text-subtle">
                 {domain.domain}
               </span>
             </div>
@@ -49,7 +47,7 @@ export default function DomainDetail({ domain, onOpenAnatomizer }: DomainDetailP
         </div>
         <div className="flex flex-col gap-2 sm:items-end">
           <a
-            href={`https://${domain.domain}`}
+            href={domain.isCore ? platformHref('domain_detail') : `https://${domain.domain}`}
             target="_blank"
             rel="noreferrer"
             className="btn-glass-sm"
@@ -69,7 +67,7 @@ export default function DomainDetail({ domain, onOpenAnatomizer }: DomainDetailP
           </a>
           {!domain.isCore && (
             <a
-              href={platformHref}
+              href={platformHref('domain_detail')}
               target="_blank"
               rel="noreferrer"
               className="btn-secondary-dark self-stretch sm:self-end"
@@ -97,7 +95,7 @@ export default function DomainDetail({ domain, onOpenAnatomizer }: DomainDetailP
       <div className="mt-5 flex items-center gap-2.5 rounded-xl border border-border-glass bg-black/20 p-3.5">
         <Users className={`icon-sm flex-shrink-0 ${accent.text}`} />
         <div>
-          <span className="block text-label-upper text-muted">Best for</span>
+          <span className="block text-label-upper text-subtle">Best for</span>
           <span className="text-xs font-semibold text-on-dark-strong">{domain.audience}</span>
         </div>
       </div>

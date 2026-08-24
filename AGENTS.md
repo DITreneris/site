@@ -50,7 +50,7 @@ A production marketing and demo site for **Prompt Anatomy**, an AI Operating Sys
 
 | `DOCS_INDEX.md` | Document map for humans and agents (start here for file discovery) |
 
-| `README.md` | Human onboarding, local dev, deploy steps |
+| `README.md` | Human onboarding, local dev |
 
 | `primal_concept.txt` | Brand narrative, domain roles, audience, ecosystem logic |
 
@@ -61,8 +61,13 @@ A production marketing and demo site for **Prompt Anatomy**, an AI Operating Sys
 | `snippet.txt` | Legacy prototype — do not reintroduce slate-950/indigo/rainbow palette |
 
 | `CHANGELOG.md` | Running log of notable changes (Keep a Changelog format) |
-| `ROADMAP.md` | Product priorities through 2027-01-01 (ecosystem gateway + `.app` traffic) |
 | `.cursor/LESSONS.md` | Durable agent corrections (naming, OG, URLs, CHANGELOG hygiene) |
+
+
+
+## Private planning (local)
+
+**Local / private — do not commit.** Roadmap, max-ROI queue, and the full deploy runbook live in [`docs/private/`](docs/private/) when present (`ROADMAP.md`, `TODO.md`, `DEPLOY.md`). Do not recreate those files at the repo root. If they are missing (other machine, Cloud agent), use the public `deploy-vercel` skill checklist and skip roadmap/todo work.
 
 
 
@@ -203,7 +208,7 @@ Agent files: `.cursor/agents/`. Skills: `.cursor/skills/`. See [DOCS_INDEX.md](D
 
 - Copy changes must align with `primal_concept.txt` tone — professional, structured, no hype filler
 
-- Platform CTAs: import `PLATFORM_URL` from `src/data/siteContact.ts` (strip trailing `/` for hrefs)
+- Platform CTAs: import `platformHref(medium)` from `src/data/siteContact.ts` (gateway UTM). Lesson / exec kit: `lessonHref` / `execKitHref`. Do not publish EUR amounts on `.site`.
 
 - Before finishing content/SEO/docs work, skim [`.cursor/LESSONS.md`](.cursor/LESSONS.md) so known drifts are not reintroduced
 

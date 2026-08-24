@@ -1,5 +1,5 @@
 # Prompt Anatomy — Extended LLM Reference
-# Generated: 2026-08-09
+# Generated: 2026-08-23
 # Canonical site: https://promptanatomy.site/
 
 ## Summary
@@ -14,6 +14,8 @@ Less random prompting. More structured execution.
 - https://promptanatomy.site/#ecosystem — ecosystem map and domain detail panel (nine domains)
 - https://promptanatomy.site/#anatomizer — 5-layer prompt builder + fix-a-weak-prompt practice (Anatomizer)
 - https://promptanatomy.site/#maturity — 60-second team assessment (3 questions, 3 tiers)
+- https://promptanatomy.site/#method — lesson, demo, and 6-block course map
+- https://promptanatomy.site/#faq — on-page FAQ (mirrors FAQPage JSON-LD)
 - https://promptanatomy.app/ — central platform hub
 
 ## FAQ
@@ -31,25 +33,34 @@ Nine interconnected domains: one core hub at promptanatomy.app (6-module trainin
 Prompt Anatomy was founded by Tomas Staniulis, a published author on organizational systems and structured workflows. He builds AI operating systems for modern teams — connecting Enter, Use, Create, Hire, Manage, Decide, Deepen, and Play across the Prompt Anatomy ecosystem. Full founder bio: https://www.promptanatomy.blog/about/
 
 ### What is structured prompting and the Anatomizer?
-Structured prompting uses five layers in the site demo: System Role, Business Context, Dynamic Variables, Instructions, and Output Constraints. The Anatomizer on promptanatomy.site includes a fix-a-weak-prompt practice plus layer-by-layer assembly. The full course at promptanatomy.app teaches the complete 6-block system.
+Three models, one brand. The free lesson on promptanatomy.cloud uses a five-part enter frame: Role, Context, Reasoning, Output, Quality control. The Anatomizer on promptanatomy.site is a five-layer demo: System Role, Business Context, Dynamic Variables, Instructions, and Output Constraints. The course at promptanatomy.app teaches the complete 6-block system: META, INPUT, OUTPUT, REASONING, QUALITY, ADVANCED.
+
+### What is the 6-block system?
+The 6-block system is the course methodology on promptanatomy.app: META, INPUT, OUTPUT, REASONING, QUALITY, and ADVANCED. The site demo uses five layers so visitors can assemble a prompt; the free lesson on promptanatomy.cloud teaches a five-part enter frame. The comparison lives at https://promptanatomy.site/#method.
+
+### What is the difference between the lesson, a kit, and the course?
+The lesson at promptanatomy.cloud is the free first step (15-slide enter frame, no account). Role kits on the subdomain stages are copy-ready workflows for a job (operations, marketing, HR, leadership, executive). The course at promptanatomy.app is Starter (modules 1–3) or Core (full 1–6), plus Team Pilot for cohorts. Plans and checkout live on the hub; this marketing site does not list prices.
 
 ### What does the Team Assessment measure?
-The 60-second Team Assessment scores AI operational maturity across three tiers: Unstructured Ad-Hoc (Tier 1), Fragmented Adoption (Tier 2), and Structured AI OS Ready (Tier 3), with a recommended ecosystem domain for your next step.
+The 60-second Team Assessment scores AI operational maturity across three tiers: Unstructured Ad-Hoc (Tier 1), Fragmented Adoption (Tier 2), and Structured AI OS Ready (Tier 3), with a recommended ecosystem domain. The next step is training or the recommended kit — not a prompt vault.
+
+### Is Prompt Anatomy a prompt management platform?
+No. Prompt Anatomy is methodology training plus role kits — not a prompt-ops vault with versioning and approval workflows. The hub teaches the 6-block system; the ecosystem routes teams to a first lesson, a kit, or the course.
 
 ### Where is the main platform?
-The 6-module training hub lives at https://promptanatomy.app/ (6-block methodology, certificates, tool catalog). Aggregate template and tool counts span training plus subdomain kits — not one library on a single URL. The marketing site at https://promptanatomy.site/ showcases the ecosystem, Anatomizer, and maturity assessment.
+The 6-module training hub lives at https://promptanatomy.app/ (6-block methodology, Starter or Core plans, Team Pilot, 500+ prompt library, certificate on passing score). Aggregate template and tool counts span training plus subdomain kits — not one library on a single URL. The marketing site at https://promptanatomy.site/ showcases the ecosystem, Anatomizer, method map, and maturity assessment.
 
 ## Ecosystem domains
 
 ### Main Platform — promptanatomy.app
 Role: 6-Module Training Hub
 URL: https://promptanatomy.app/
-The core hub for 6-module interactive training on the 6-block prompt methodology — plus checkout and lifetime access to the full course, tool catalog, and certificates.
+The core hub for 6-module interactive training on the 6-block prompt methodology — Starter or Core plans, the interactive app at /anatomy/, and checkout on this URL.
 
 ### 1. Enter — promptanatomy.cloud
 Role: First Lesson & Onboarding
 URL: https://promptanatomy.cloud/
-The free entry point: a single interactive lesson that introduces structured prompting before the full training course.
+The free entry point: a 15-slide interactive lesson (EN and LT) that teaches the five-part enter frame and Quick Send Check before the full course.
 
 ### 2. Use — promptanatomy.info
 Role: Organization Prompt Kit
@@ -74,7 +85,7 @@ A prompt generator built from your business inputs, plus paid CEO Operations and
 ### 6. Decide — promptanatomy.pro
 Role: Executive Prompt Operating Kit
 URL: https://promptanatomy.pro/
-A static executive prompt kit with Global Context, six fixed modules, a 35-prompt library, and a printable operating PDF.
+A static executive prompt kit and lead magnet into the course: Global Context, six modules, a 35-prompt library, and a printable operating PDF.
 
 ### 7. Deepen — promptanatomy.blog
 Role: Knowledge & Deep-Dive Hub
@@ -88,7 +99,7 @@ Corporate Ladder — a satirical Telegram mini-game about climbing the career la
 
 ## Structured prompting (Anatomizer)
 
-The Anatomizer includes a fix-a-weak-prompt practice, then assembles prompts from five layers in order. End assembled prompts with: ### BEGIN RESPONSE ACCORDING TO SYSTEM RULES
+The Anatomizer includes a fix-a-weak-prompt practice, then assembles prompts from five layers in order. End assembled prompts with: ### BEGIN RESPONSE ACCORDING TO SYSTEM RULES. Do not conflate models: enter-5 on promptanatomy.cloud (Role, Context, Reasoning, Output, Quality control); demo-5 on this site; course-6 on promptanatomy.app (META, INPUT, OUTPUT, REASONING, QUALITY, ADVANCED). See /#method.
 
 - Layer A: System Role / Persona → [SYSTEM ROLE]
 - Layer B: Business Context → [BUSINESS CONTEXT]

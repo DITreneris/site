@@ -8,14 +8,12 @@ import {
   PRE_COPY_CHECKS,
   type PreCopyCheckId,
 } from '../../data/anatomyBuilder';
-import { PLATFORM_URL } from '../../data/siteContact';
+import { platformHref } from '../../data/siteContact';
 import { trackEvent } from '../../utils/trackEvent';
 import type { AnatomyLayerKey } from '../../types';
 
 type SelectionState = Record<AnatomyLayerKey, number>;
 type CheckState = Record<PreCopyCheckId, boolean>;
-
-const platformHref = PLATFORM_URL.replace(/\/$/, '');
 
 const INITIAL: SelectionState = {
   persona: 0,
@@ -91,8 +89,11 @@ export default function AnatomizerBuilder() {
           <span className="text-eyebrow-light">The Anatomizer</span>
           <h2 className="section-heading mt-2">Build a structured prompt, layer by layer</h2>
           <p className="mt-3 text-sm leading-relaxed text-body">
-            Assemble five layers into a live prompt. Demo is 5 layers; the course teaches the full
-            6-block system.
+            Assemble five layers into a live prompt. The course drills the full 6-block system:
+            META, INPUT, OUTPUT, REASONING, QUALITY, ADVANCED.{' '}
+            <a href="#method" className="link-footer-meta">
+              How lesson, demo, and course relate
+            </a>
           </p>
         </div>
 
@@ -129,7 +130,7 @@ export default function AnatomizerBuilder() {
 
           <div className="space-y-4 lg:col-span-6">
             <div className="shell-terminal">
-              <div className="flex items-center justify-between border-b border-slate-800 px-5 py-3">
+              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 px-5 py-3">
                 <span className="flex items-center gap-2 font-mono text-caption font-bold text-on-dark">
                   <Terminal className="icon-sm text-brand-accent" />
                   anatomy_template.md
@@ -197,11 +198,11 @@ export default function AnatomizerBuilder() {
             {showPlatformBridge && (
               <div className="callout-accent space-y-3">
                 <p className="text-caption leading-relaxed text-body">
-                  This demo uses five layers. The full 6-block system is taught in the training
-                  hub.
+                  This demo uses five layers. The course teaches META → INPUT → OUTPUT →
+                  REASONING → QUALITY → ADVANCED.
                 </p>
                 <a
-                  href={platformHref}
+                  href={platformHref('anatomizer')}
                   target="_blank"
                   rel="noreferrer"
                   className="btn-primary-md"

@@ -66,7 +66,7 @@ export default function SequencePath({ selectedDomain, onSelectDomain }: Sequenc
                   <span className={`h-2 w-2 rounded-full ${phaseAccent.dot}`} />
                   <span className="text-label-upper text-on-dark">{phaseLabelFor(phase)}</span>
                 </div>
-                <div className="grid grid-cols-2 gap-2 lg:grid-cols-1">
+                <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-1">
                   {stages.map((item) => {
                     const isSelected = selectedDomain === item.id;
                     const accent = accentFor(item.id);
@@ -88,7 +88,7 @@ export default function SequencePath({ selectedDomain, onSelectDomain }: Sequenc
                         <span className="mt-1 block text-caption leading-snug text-subtle">
                           {item.role}
                         </span>
-                        <span className="mt-1.5 block break-all font-mono text-micro tracking-tight text-muted">
+                        <span className="mt-1.5 block break-all font-mono text-micro tracking-tight text-subtle">
                           {item.domain}
                         </span>
                       </button>

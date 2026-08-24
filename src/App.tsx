@@ -26,6 +26,7 @@ import { hashForTab, tabFromHash } from './utils/tabNavigation';
 
 import { trackEvent } from './utils/trackEvent';
 
+import MethodSection from './components/layout/MethodSection';
 import FaqSection from './components/layout/FaqSection';
 
 
@@ -60,7 +61,15 @@ export default function App() {
 
   useEffect(() => {
 
-    const onHashChange = () => setActiveTab(tabFromHash(window.location.hash));
+    const onHashChange = () => {
+      const hash = window.location.hash.replace(/^#/, '');
+      setActiveTab(tabFromHash(window.location.hash));
+      if (hash !== 'method' && hash !== 'faq') return;
+      const el = document.getElementById(hash);
+      if (!el) return;
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    };
 
     window.addEventListener('hashchange', onHashChange);
 
@@ -69,6 +78,17 @@ export default function App() {
   }, []);
 
 
+
+  // Page anchors (#method, #faq) are always mounted; scroll on first paint too
+  // because native hash jump runs before React renders those nodes.
+
+  useEffect(() => {
+    const hash = window.location.hash.replace(/^#/, '');
+    if (hash !== 'method' && hash !== 'faq') return;
+    const el = document.getElementById(hash);
+    if (!el) return;
+    el.scrollIntoView({ behavior: 'auto', block: 'start' });
+  }, []);
 
   // Bring the active panel into view on tab change (skip first render).
 
@@ -82,13 +102,12 @@ export default function App() {
 
     }
 
-    const main = document.getElementById('main-content');
-
-    if (!main) return;
-
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    main.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    const hash = window.location.hash.replace(/^#/, '');
+    const pageAnchor = hash === 'method' || hash === 'faq' ? document.getElementById(hash) : null;
+    const target = pageAnchor ?? document.getElementById('main-content');
+    if (!target) return;
+    target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
 
   }, [activeTab]);
 
@@ -226,6 +245,8 @@ export default function App() {
       </main>
 
 
+
+      <MethodSection onOpenAnatomizer={() => navigateToTab('anatomizer')} />
 
       <ClosingCta onStartAssessment={() => navigateToTab('maturity')} />
 

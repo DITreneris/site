@@ -1,8 +1,6 @@
 import { ArrowRight, ClipboardCheck } from 'lucide-react';
-import { PLATFORM_URL } from '../../data/siteContact';
+import { platformHref } from '../../data/siteContact';
 import { trackEvent } from '../../utils/trackEvent';
-
-const platformHref = PLATFORM_URL.replace(/\/$/, '');
 
 interface ClosingCtaProps {
   onStartAssessment: () => void;
@@ -20,7 +18,7 @@ export default function ClosingCta({ onStartAssessment }: ClosingCtaProps) {
         </p>
         <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a
-            href={platformHref}
+            href={platformHref('closing')}
             target="_blank"
             rel="noreferrer"
             className="btn-primary-md w-full sm:w-auto"

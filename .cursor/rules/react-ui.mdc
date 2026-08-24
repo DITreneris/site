@@ -54,7 +54,7 @@ All colors, type sizes, gradients, and shadows live in the `@theme` block of
 - Domain selection drives the detail panel; quiz result pivots to the recommended domain
 - Anatomizer: `ExclusiveChoiceGroup` layer selectors, pre-copy checklist gates Copy, preview equals the copy string; CorrectPromptPractice sits above the builder on `/#anatomizer`
 - Footer: `footer-shell` + navy/gold accent band, wordmark, 8-domain link columns, two-row legal strip from `src/data/siteContact.ts` (`link-footer` nav / `link-footer-meta` legal); no fake trust chrome
-- Platform CTAs in Hero / ClosingCta / Footer: `PLATFORM_URL` from `siteContact.ts` (strip trailing `/` for href) — do not hardcode the hub URL
+- Platform CTAs in Hero / ClosingCta / Footer: `platformHref(medium)` from `siteContact.ts` — do not hardcode the hub URL
 - Knowledge phase display label: `phaseLabelFor` → **Deepen** (internal phase id remains `Knowledge`)
 
 ## Accessibility

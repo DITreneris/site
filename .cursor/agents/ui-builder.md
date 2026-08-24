@@ -100,7 +100,7 @@ Vite, React 19, TypeScript, Tailwind CSS v4, lucide-react.
 
 - Minimize scope — implement only what was requested
 
-- Platform CTA `href`s: use `PLATFORM_URL` from `src/data/siteContact.ts` (strip trailing `/`) — do not hardcode the hub URL in Hero / ClosingCta / Footer
+- Platform CTA `href`s: use `platformHref(medium)` from `src/data/siteContact.ts` — do not hardcode the hub URL in Hero / ClosingCta / Footer
 
 - Knowledge phase UI label is **Deepen** via `phaseLabelFor` — do not change it back to Learn
 

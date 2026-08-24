@@ -21,11 +21,21 @@ Each domain entry must include:
 - `role` — one-line functional role
 - `description` — 1–2 sentences, audience-aware
 - `audience` — target roles
-- `features` — 3–4 bullet capabilities (reference stats from concept doc)
+- `features` — 3–5 bullet capabilities (reference facts from concept doc)
 
 ## Anatomizer prompt anatomy
 
-**5-layer demo vs 6-block course:** The site Anatomizer uses **5 layers** (marketing demo). The paid training at `promptanatomy.app` teaches the complete **6-block system** — do not conflate them in copy.
+**Three models — do not conflate:**
+
+1. **Enter-5** (`.cloud` lesson): Role, Context, Reasoning, Output, Quality control
+2. **Demo-5** (this site Anatomizer): System Role, Business Context, Dynamic Variables, Instructions, Output Constraints
+3. **Course-6** (`.app`): META, INPUT, OUTPUT, REASONING, QUALITY, ADVANCED
+
+The paid training at `promptanatomy.app` teaches the complete **6-block system**. Name plans as Starter (modules 1–3), Core (full 1–6), and Team Pilot. **Do not publish EUR amounts on `.site`.**
+
+## Platform URLs
+
+Conversion CTAs use `platformHref(medium)` (and `lessonHref` / `execKitHref`) from `siteContact.ts`. Do not hardcode hub URLs or strip `PLATFORM_URL` without gateway UTM.
 
 Structured prompts use five blocks in this order:
 

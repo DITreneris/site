@@ -63,7 +63,7 @@ alwaysApply: false
 
 - Point canonical/OG URLs at `promptanatomy.app` for this site
 
-- Set Vercel primary domain to `www.promptanatomy.site` — apex (`promptanatomy.site`) must be Production; www redirects to apex (see `vercel.json`, `DEPLOY.md` §3)
+- Set Vercel primary domain to `www.promptanatomy.site` — apex (`promptanatomy.site`) must be Production; www redirects to apex (see `vercel.json`). Optional DNS/GSC detail: `docs/private/DEPLOY.md` if present (local / private — do not commit).
 
 - Skip `npm run build` verification before push
 

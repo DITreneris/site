@@ -16,14 +16,15 @@ The ecosystem is built around one simple idea:
 
 **6-module training hub for teams and leaders.**
 
-The core hub ships interactive training on the 6-block prompt methodology, plus checkout and lifetime access to the full course, tool catalog, and certificates.
+The core hub ships interactive training on the 6-block prompt methodology (META → INPUT → OUTPUT → REASONING → QUALITY → ADVANCED), plus checkout and lifetime access. Plans are Starter (modules 1–3) and Core (full 1–6); Team Pilot is for cohort rollout. The interactive app lives at /anatomy/. Do not publish EUR amounts on the marketing site.
 
 It includes:
 
-* **6-module interactive training (6-block methodology)**
-* **15 quick-copy prompts in the training app**
-* **31 evaluated AI tools (training catalog)**
-* **Certificates after modules 3 and 6**
+* **Starter (modules 1–3) and Core (full 1–6)**
+* **6-block methodology: META → INPUT → OUTPUT → REASONING → QUALITY → ADVANCED**
+* **500+ prompt library in the training app**
+* **Certificate on passing score; lifetime access**
+* **Team Pilot for cohort rollout**
 
 Aggregate ecosystem counts (600+ templates, 60 tools, 100-term glossary) span training plus subdomain kits — not one library on a single URL.
 
@@ -37,7 +38,7 @@ Aggregate ecosystem counts (600+ templates, 60 tools, 100-term glossary) span tr
 
 **Start with the first free lesson.**
 
-A single interactive lesson and prompt library — the entry point before the full 6-module course.
+A 15-slide interactive lesson (EN and LT): five-part enter frame (Role, Context, Reasoning, Output, Quality control), Quick Send Check, copy-ready library, and PDF summary. No account and no paid tier on this URL.
 
 **Best for:** all staff, beginners, and teams that need a simple first step into AI.
 
@@ -97,7 +98,7 @@ Generate copy-ready prompts from your business inputs; paid CEO Operations and S
 
 **Executive prompt operating kit.**
 
-Static kit with Global Context, module prompts, a 35-prompt library, and a printable operating PDF.
+Static kit and lead magnet into the course: Global Context, six modules, a 35-prompt library, and a printable operating PDF. Path: context → demo → kit → promptanatomy.app.
 
 **Best for:** consultants, business owners, and growth leaders.
 

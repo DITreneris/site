@@ -9,9 +9,34 @@
 
 export const SITE_URL = 'https://promptanatomy.site/' as const;
 export const PLATFORM_URL = 'https://promptanatomy.app/' as const;
-/** Hub QW1b sibling entity footer — www + UTM; do not use for conversion CTAs (use PLATFORM_URL). */
+export const LESSON_URL = 'https://promptanatomy.cloud/' as const;
+export const EXEC_KIT_URL = 'https://promptanatomy.pro/' as const;
+/** Hub QW1b sibling entity footer — www + UTM; do not use for conversion CTAs (use platformHref). */
 export const ENTITY_FOOTER_URL =
   'https://www.promptanatomy.app/?utm_source=site&utm_medium=entity_footer&utm_campaign=ecosystem' as const;
+
+/** Gateway UTM on conversion outbounds. Do not use for ENTITY_FOOTER_URL. */
+export function withGatewayUtm(baseUrl: string, medium: string): string {
+  const trimmed = baseUrl.replace(/\/$/, '');
+  const params = new URLSearchParams({
+    utm_source: 'site',
+    utm_medium: medium,
+    utm_campaign: 'gateway',
+  });
+  return `${trimmed}/?${params.toString()}`;
+}
+
+export function platformHref(medium: string): string {
+  return withGatewayUtm(PLATFORM_URL, medium);
+}
+
+export function lessonHref(medium: string): string {
+  return withGatewayUtm(LESSON_URL, medium);
+}
+
+export function execKitHref(medium: string): string {
+  return withGatewayUtm(EXEC_KIT_URL, medium);
+}
 
 export const ORGANIZATION = {
   name: 'Prompt Anatomy',

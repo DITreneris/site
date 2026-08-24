@@ -9,3 +9,5 @@ dist-ssr
 !.env.example
 seo.txt
 upgrade.txt
+docs/private/**
+!docs/private/README.md

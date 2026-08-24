@@ -5,10 +5,8 @@ import {
   CORRECT_PROMPT_PRACTICE,
   CORRECT_SOLUTION_COPYABLE,
 } from '../../data/correctPromptPractice';
-import { PLATFORM_URL } from '../../data/siteContact';
+import { platformHref } from '../../data/siteContact';
 import { trackEvent } from '../../utils/trackEvent';
-
-const platformHref = PLATFORM_URL.replace(/\/$/, '');
 
 export default function CorrectPromptPractice() {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -120,7 +118,7 @@ export default function CorrectPromptPractice() {
                       )}
                     </button>
                     <a
-                      href={platformHref}
+                      href={platformHref('practice')}
                       target="_blank"
                       rel="noreferrer"
                       className="btn-primary-md"

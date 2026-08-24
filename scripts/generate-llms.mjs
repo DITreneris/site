@@ -167,6 +167,8 @@ const SECTION_HASHES = [
   { hash: 'ecosystem', label: 'ecosystem map and domain detail panel (nine domains)' },
   { hash: 'anatomizer', label: '5-layer prompt builder + fix-a-weak-prompt practice (Anatomizer)' },
   { hash: 'maturity', label: '60-second team assessment (3 questions, 3 tiers)' },
+  { hash: 'method', label: 'lesson, demo, and 6-block course map' },
+  { hash: 'faq', label: 'on-page FAQ (mirrors FAQPage JSON-LD)' },
 ];
 
 function buildLlmsFull(domains, layers, authorContact, faqs) {
@@ -214,7 +216,7 @@ function buildLlmsFull(domains, layers, authorContact, faqs) {
   lines.push('## Structured prompting (Anatomizer)');
   lines.push('');
   lines.push(
-    'The Anatomizer includes a fix-a-weak-prompt practice, then assembles prompts from five layers in order. End assembled prompts with: ### BEGIN RESPONSE ACCORDING TO SYSTEM RULES',
+    'The Anatomizer includes a fix-a-weak-prompt practice, then assembles prompts from five layers in order. End assembled prompts with: ### BEGIN RESPONSE ACCORDING TO SYSTEM RULES. Do not conflate models: enter-5 on promptanatomy.cloud (Role, Context, Reasoning, Output, Quality control); demo-5 on this site; course-6 on promptanatomy.app (META, INPUT, OUTPUT, REASONING, QUALITY, ADVANCED). See /#method.',
   );
   lines.push('');
 

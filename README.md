@@ -7,7 +7,7 @@ Official marketing and demo site for the **Prompt Anatomy** AI Operating System.
 | **Live site** | [promptanatomy.site](https://promptanatomy.site) |
 | **Platform hub** | [promptanatomy.app](https://promptanatomy.app) |
 | **Repository** | [github.com/DITreneris/site](https://github.com/DITreneris/site) |
-| **Deploy** | Vercel (primary) |
+| **Host** | Vercel |
 
 **Core message:** Less random prompting. More structured execution.
 
@@ -30,53 +30,13 @@ Official marketing and demo site for the **Prompt Anatomy** AI Operating System.
 ```bash
 npm install
 npm run dev          # http://localhost:5173
-npm run build        # runs generate:og prebuild, then tsc + vite
+npm run build        # prebuild generators, then tsc + vite
 npm run preview      # serve dist locally
-npm run generate:og  # patch og_2.png cache bust + GitHub social copy
 npm run qa:viewport  # Playwright overflow check (preview must be running)
 ```
 
-## Project structure
-
-```
-src/
-  components/
-    layout/       Header, Hero, ProblemSolution, StatsStrip, ClosingCta, Footer
-    ecosystem/    EcosystemMap, SequencePath, DomainDetail
-    anatomizer/   AnatomizerBuilder, LayerSelector
-    maturity/     MaturityQuiz
-  data/           domains, quiz, anatomy presets, ecosystemTheme, siteContact
-  index.css       design tokens (@theme + @utility) — token source of truth
-public/           favicon, robots.txt, sitemap.xml, og_2.png, creator-janitor.png
-scripts/          generate-og.mjs, viewport-qa.mjs
-```
-
-## Source of truth
-
-| File | Purpose |
-|------|---------|
-| `DOCS_INDEX.md` | **Document map** — task router, agents, skills, file registry |
-| `primal_concept.txt` | Brand narrative, domain roles, audience |
-| `DESIGN_SYSTEM.md` | Design system v2.2, tokens, QA, agent guardrails |
-| `AGENTS.md` | Cursor agent guide and workflow |
-| `CHANGELOG.md` | Release history (Keep a Changelog) |
-| `snippet.txt` | Legacy prototype — palette regression guard only |
-
-## SEO model
-
-- **This site** (`promptanatomy.site`) — canonical URL, Open Graph, sitemap, WebSite schema
-- **Brand HQ** (`promptanatomy.app`) — Organization schema, platform CTAs, email
-
-## Deploy to Vercel
-
-1. Push to `main` on [DITreneris/site](https://github.com/DITreneris/site)
-2. Import repo in [Vercel](https://vercel.com) → Framework: **Vite**
-3. Build command: `npm run build` · Output directory: `dist`
-4. Add custom domain `promptanatomy.site` in Vercel → apply DNS records at Porkbun
-5. Verify: HTTPS, `/og_2.png`, `/creator-janitor.png`, canonical tag
-
-See [DEPLOY.md](DEPLOY.md) for the full cold-deploy checklist (Vercel import + Porkbun DNS).
+Cursor contributors: start with [AGENTS.md](AGENTS.md).
 
 ## Contact
 
-info@promptanatomy.app · Founder: Tomas Staniulis
+info@promptanatomy.app

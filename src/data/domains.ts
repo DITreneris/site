@@ -18,17 +18,18 @@ export const DOMAINS: Domain[] = [
     title: 'Main Platform',
     role: '6-Module Training Hub',
     description:
-      'The core hub for 6-module interactive training on the 6-block prompt methodology — plus checkout and lifetime access to the full course, tool catalog, and certificates.',
+      'The core hub for 6-module interactive training on the 6-block prompt methodology — Starter or Core plans, the interactive app at /anatomy/, and checkout on this URL.',
     audience: 'CEOs, COOs, IT Leaders, Managers & Teams',
     icon: Layers,
     isCore: true,
     phase: 'Hub',
     transition: 'Start here for the full 6-module course — every stage connects back to this hub.',
     features: [
-      '6-module interactive training (6-block methodology)',
-      '15 quick-copy prompts in the training app',
-      '31 evaluated AI tools (training catalog)',
-      'Certificates after modules 3 and 6',
+      'Starter (modules 1–3) and Core (full 1–6)',
+      '6-block methodology: META → INPUT → OUTPUT → REASONING → QUALITY → ADVANCED',
+      '500+ prompt library in the training app',
+      'Certificate on passing score; lifetime access',
+      'Team Pilot for cohort rollout',
     ],
   },
   {
@@ -37,7 +38,7 @@ export const DOMAINS: Domain[] = [
     title: '1. Enter',
     role: 'First Lesson & Onboarding',
     description:
-      'The free entry point: a single interactive lesson that introduces structured prompting before the full training course.',
+      'The free entry point: a 15-slide interactive lesson (EN and LT) that teaches the five-part enter frame and Quick Send Check before the full course.',
     audience: 'All Staff, AI Beginners & Onboarding Cohorts',
     icon: Zap,
     isCore: false,
@@ -45,9 +46,10 @@ export const DOMAINS: Domain[] = [
     transition: 'Once the basics click, move to Use for organization-focused prompts.',
     maturityTier: 'Maps to Tier 1: Unstructured Ad-Hoc',
     features: [
-      'Interactive first lesson at zero cost',
-      'Foundation concepts for non-technical staff',
-      'Copy-ready onboarding prompt templates',
+      '15-slide interactive lesson (EN + LT)',
+      'Five-part enter frame + Quick Send Check',
+      'Copy-ready library and PDF summary',
+      'No account, no paid tier on this URL',
     ],
   },
   {
@@ -129,7 +131,7 @@ export const DOMAINS: Domain[] = [
     title: '6. Decide',
     role: 'Executive Prompt Operating Kit',
     description:
-      'A static executive prompt kit with Global Context, six fixed modules, a 35-prompt library, and a printable operating PDF.',
+      'A static executive prompt kit and lead magnet into the course: Global Context, six modules, a 35-prompt library, and a printable operating PDF.',
     audience: 'Consultants, Business Owners & Growth Leaders',
     icon: Cpu,
     isCore: false,
@@ -140,6 +142,7 @@ export const DOMAINS: Domain[] = [
       '35-prompt executive library',
       'Global Context + compiled module prompts',
       'Printable Max Value Kit PDF',
+      'Lead magnet into the course (context → demo → kit → .app)',
     ],
   },
   {

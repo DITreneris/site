@@ -9,11 +9,9 @@ import {
 } from 'lucide-react';
 import { MATURITY_QUIZ, calculateQuizResult } from '../../data/maturityQuiz';
 import { DOMAINS } from '../../data/domains';
-import { PLATFORM_URL } from '../../data/siteContact';
+import { execKitHref, lessonHref, platformHref, withGatewayUtm } from '../../data/siteContact';
 import { trackEvent } from '../../utils/trackEvent';
 import type { QuizResult } from '../../types';
-
-const platformHref = PLATFORM_URL.replace(/\/$/, '');
 
 interface MaturityQuizProps {
   onPivot: (domainId: string) => void;
@@ -161,7 +159,7 @@ export default function MaturityQuiz({ onPivot }: MaturityQuizProps) {
                 </div>
                 <div className="mt-3 space-y-2">
                   <a
-                    href={platformHref}
+                    href={platformHref('quiz_result')}
                     target="_blank"
                     rel="noreferrer"
                     className="btn-primary-md w-full"
@@ -172,9 +170,32 @@ export default function MaturityQuiz({ onPivot }: MaturityQuizProps) {
                     Open the platform
                     <ExternalLink className="icon-sm" />
                   </a>
-                  {recommended && (
+                  {recommended && result.recommendedId === 'cloud' && (
                     <a
-                      href={`https://${recommended.domain}`}
+                      href={lessonHref('quiz_result')}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn-secondary-md w-full"
+                      onClick={() =>
+                        trackEvent('kit_outbound', {
+                          domain: 'cloud',
+                          source: 'quiz_result',
+                        })
+                      }
+                    >
+                      Start the free lesson
+                      <ExternalLink className="icon-sm" />
+                    </a>
+                  )}
+                  {recommended && result.recommendedId !== 'cloud' && (
+                    <a
+                      href={
+                        recommended.id === 'pro'
+                          ? execKitHref('quiz_result')
+                          : recommended.id === 'app'
+                            ? platformHref('quiz_result')
+                            : withGatewayUtm(`https://${recommended.domain}`, 'quiz_result')
+                      }
                       target="_blank"
                       rel="noreferrer"
                       className="btn-secondary-md w-full"

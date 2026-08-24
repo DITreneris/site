@@ -2,7 +2,7 @@
 
 **Purpose:** Durable corrections from audits and shipped work. Agents and skills must follow these; do not reintroduce fixed drifts.
 
-**Last updated:** 2026-08-09 (entity footer QW1b)
+**Last updated:** 2026-08-23 (private planning docs)
 
 ---
 
@@ -16,7 +16,7 @@
 
 ## URLs & assets
 
-6. **Platform CTAs** — Use `PLATFORM_URL` from `src/data/siteContact.ts` (strip trailing slash for `href`). Do not hardcode `https://promptanatomy.app` in Hero / ClosingCta / Footer.
+6. **Platform CTAs** — Use `platformHref(medium)` from `src/data/siteContact.ts` (adds `utm_source=site&utm_medium={medium}&utm_campaign=gateway`). Do not hardcode `https://promptanatomy.app` or use a raw stripped `PLATFORM_URL` in Hero / ClosingCta / Footer / quiz / Anatomizer. Leave `ENTITY_FOOTER_URL` as the affiliation line. Do not conflate enter-5 (Role → Quality control on `.cloud`), demo-5 (Anatomizer layers), and course-6 (META → ADVANCED on `.app`).
 7. **Entity footer (QW1b)** — Quiet affiliation line uses `ENTITY_FOOTER_URL` (www + entity UTM). Do not replace conversion CTAs with it, and do not put the founder name in that line.
 8. **OG asset** — Live file is `public/og_2.png` (1600×900). Agent/deploy checklists must not require `og-image.png`. `generate-og.mjs` cache-busts and copies to `.github/social-preview.png` — it does **not** run Satori.
 9. **Canonical split** — `.site` for this marketing site; `.app` for Organization / platform CTAs only.
@@ -34,7 +34,8 @@
 15. **CHANGELOG `[Unreleased]`** — Must match live product. Remove or correct bullets that contradict later superseding work (e.g. sandbox Play, Satori dual OG) instead of leaving them as pending truth.
 16. **DS version** — Implementation maturity is **v2.2**. Do not document the live site as “v1.5 pre-release” or “v2.0 only” in README / AGENTS when §19 declares v2.2 (historical prompts like `second.txt` may still say v1.5 as their baseline).
 17. **Cross-surface edits** — When renaming a stage or kit role, update together: `domains.ts`, footer labels, FAQ capsules, `llms.txt`, JSON-LD Product description, agent skills, and phase UI label if applicable.
+18. **Private planning** — Do not recreate `ROADMAP.md`, `TODO.md`, or `DEPLOY.md` at the repo root. Those files live in `docs/private/` (local / private — do not commit). If missing, use the public `deploy-vercel` skill and skip roadmap/todo work.
 
 ## Dead code
 
-18. Do not reintroduce unused `phaseFor` or `public/noise.svg` without a real consumer.
+19. Do not reintroduce unused `phaseFor` or `public/noise.svg` without a real consumer.

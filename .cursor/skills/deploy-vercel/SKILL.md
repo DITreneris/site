@@ -5,7 +5,7 @@ description: Cold deploy and Vercel DNS checklist for the Prompt Anatomy ecosyst
 
 # Deploy Vercel Skill
 
-**Full manual guide:** `DEPLOY.md` at repo root. **Document map:** [DOCS_INDEX.md](../../DOCS_INDEX.md).
+**Public checklist:** this skill. **Full runbook (optional):** `docs/private/DEPLOY.md` if present — local / private, do not commit. **Document map:** [DOCS_INDEX.md](../../DOCS_INDEX.md).
 
 ## When to use
 
@@ -43,11 +43,9 @@ git tag v1.0.0 && git push origin v1.0.0
 
 No environment variables required for MVP.
 
-## Custom domain (Porkbun → Vercel)
+## Custom domain
 
-See `DEPLOY.md` §3 for DNS record table.
-
-**Primary domain must be apex (no www):** `promptanatomy.site` = Production; `www.promptanatomy.site` = redirect to apex (308). Inverted setup (www Production, apex → www) conflicts with repo canonical/OG/sitemap and triggers GSC “Page with redirect”. See `DEPLOY.md` §3 “Domain redirect” + `vercel.json`.
+**Primary domain must be apex (no www):** `promptanatomy.site` = Production; `www.promptanatomy.site` = redirect to apex (308). Inverted setup (www Production, apex → www) conflicts with repo canonical/OG/sitemap and triggers GSC “Page with redirect”. See `vercel.json`. DNS registrar steps and GSC follow-up live in `docs/private/DEPLOY.md` when that file is present — skip if missing.
 
 ## Post-deploy verification
 

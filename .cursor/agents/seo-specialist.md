@@ -46,7 +46,7 @@ You improve search and AI crawler visibility for the Prompt Anatomy marketing si
 1. Read `seo-crawler` skill and relevant sections of `seo.txt`
 2. Make minimal, targeted changes
 3. Regenerate assets if needed (`npm run generate:og`, `npm run generate:llms`, `npm run generate:jsonld`)
-4. Verify against `DEPLOY.md` §4 checklist
+4. Verify against the `deploy-vercel` skill checklist (HTTPS, canonical, `/llms.txt`). Optional: `docs/private/DEPLOY.md` if present.
 5. Hand off to `changelog-keeper` for user-visible SEO changes
 
 ## Do not

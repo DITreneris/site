@@ -13,10 +13,10 @@
 | **Coding agent** | [AGENTS.md](AGENTS.md) | Matching **agent** + **skill** + **rules**; skim [.cursor/LESSONS.md](.cursor/LESSONS.md) for known drifts |
 | **Design / UI work** | [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) §14 | [src/index.css](src/index.css), `.cursor/rules/react-ui.mdc`; DS v2 audit → [second.txt](second.txt) |
 | **Copy / domains** | [primal_concept.txt](primal_concept.txt) | `.cursor/skills/ecosystem-content/SKILL.md`, `.cursor/LESSONS.md` |
-| **Deploy / release** | [DEPLOY.md](DEPLOY.md) | `.cursor/skills/deploy-vercel/SKILL.md` |
+| **Deploy / release** | `.cursor/skills/deploy-vercel/SKILL.md` | `docs/private/DEPLOY.md` if present (local / private — do not commit) |
 | **SEO / crawlers** | [public/llms.txt](public/llms.txt) | `.cursor/skills/seo-crawler/SKILL.md`, [seo.txt](seo.txt) |
 | **Mobile UX audit / fixes** | [MOBILE_UX_AUDIT.md](MOBILE_UX_AUDIT.md) | [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) §13, [mobile.txt](mobile.txt) |
-| **Product roadmap / priorities** | [ROADMAP.md](ROADMAP.md) | [TODO.md](TODO.md) max-ROI queue; [AGENTS.md](AGENTS.md) scope |
+| **Product roadmap / priorities** | `docs/private/ROADMAP.md` if present | `docs/private/TODO.md` if present; [AGENTS.md](AGENTS.md) scope |
 
 ---
 
@@ -30,7 +30,7 @@ Use this table to pick the right agent, skill, and documents.
 | Domain copy, quiz, messaging | `content-editor` | `ecosystem-content`, `anatomizer-prompt` | `content-brand.mdc` | `primal_concept.txt`, `src/data/` |
 | Anatomizer presets only | `content-editor` | `anatomizer-prompt` | `content-brand.mdc` | `src/data/anatomyBuilder.ts` |
 | SEO, robots, schema, llms.txt | `seo-specialist` | `seo-crawler` | `deploy-vercel.mdc` | `index.html`, `public/`, `src/data/seoFaq.ts`, `seo.txt` |
-| Vercel deploy, DNS, release check | — (use skill) | `deploy-vercel` | `deploy-vercel.mdc` | `DEPLOY.md`, `CHANGELOG.md` |
+| Vercel deploy, DNS, release check | — (use skill) | `deploy-vercel` | `deploy-vercel.mdc` | skill checklist; `docs/private/DEPLOY.md` if present; `CHANGELOG.md` |
 | Post-task QA | `verifier` | — | `project-core.mdc` | `AGENTS.md` workflow, agent checklist |
 | Record shipped changes | `changelog-keeper` | — | — | `CHANGELOG.md` |
 | DS v2 release audit | `ui-builder` (read-only) or main session | — | `react-ui.mdc`, `project-core.mdc` | `second.txt`, `DESIGN_SYSTEM.md` §13–§18, `MOBILE_UX_AUDIT.md` |
@@ -48,23 +48,32 @@ Use this table to pick the right agent, skill, and documents.
 | `concept` | [primal_concept.txt](primal_concept.txt) | Brand narrative, 8 domains, audiences, ecosystem logic | Product messaging changes |
 | `tokens` | [src/index.css](src/index.css) | Design tokens (`@theme`) and utilities (`@utility`) | New colors, spacing, component utilities |
 | `domains-data` | [src/data/domains.ts](src/data/domains.ts) | Live domain cards and detail panel content | Domain copy or phase metadata |
-| `site-urls` | [src/data/siteContact.ts](src/data/siteContact.ts) | `.site` vs `.app` URL constants | Canonical or platform URL policy |
+| `site-urls` | [src/data/siteContact.ts](src/data/siteContact.ts) | `.site` vs `.app` URL constants + `platformHref(medium)` | Canonical or platform URL policy |
+| `prompt-ladder` | [src/data/promptLadder.ts](src/data/promptLadder.ts) | Lesson / demo / course models for `#method` | Prompt-model or start-path copy |
 | `types` | [src/types/index.ts](src/types/index.ts) | Shared TypeScript shapes | Data model changes |
 
 ### Tier 2 — Human guides
 
 | ID | Path | Audience | Notes |
 |----|------|----------|-------|
-| `readme` | [README.md](README.md) | Developers | Onboarding, scripts, folder map |
+| `readme` | [README.md](README.md) | Developers | Public onboarding, local dev |
 | `agents` | [AGENTS.md](AGENTS.md) | Agents + leads | Scope, domains, workflow, conventions |
 | `lessons` | [.cursor/LESSONS.md](.cursor/LESSONS.md) | Agents | Durable corrections from audits (naming, OG, URLs, CHANGELOG) |
 | `design-system` | [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) | Design + frontend + agents | v2.2 implementation; §14 = agent guardrails |
-| `deploy` | [DEPLOY.md](DEPLOY.md) | DevOps / release | Vercel + Porkbun checklist |
 | `vercel-config` | [vercel.json](vercel.json) | DevOps / release | Permanent www → apex redirect; apex must be Production in Vercel dashboard |
 | `changelog` | [CHANGELOG.md](CHANGELOG.md) | Everyone | Keep a Changelog format; `[Unreleased]` |
-| `roadmap` | [ROADMAP.md](ROADMAP.md) | Product + agents | Horizon to 2027-01-01; ecosystem gateway + `.app` conversion |
-| `todo` | [TODO.md](TODO.md) | Product + agents | Max-ROI execution queue (Phase A–B first) |
 | `docs-index` | DOCS_INDEX.md (this file) | Everyone | Document map; update when adding docs/agents/skills |
+| `private-contract` | [docs/private/README.md](docs/private/README.md) | Agents + leads | Expected local filenames; do not commit planning/deploy content |
+
+### Private (local — do not commit)
+
+Planning and the full deploy runbook are machine-local. Do **not** add these files at the repo root. If missing, use the public `deploy-vercel` skill and skip roadmap/todo work.
+
+| ID | Path | Audience | Notes |
+|----|------|----------|-------|
+| `deploy` | `docs/private/DEPLOY.md` | DevOps / release | Full Vercel + DNS + GSC runbook — gitignored |
+| `roadmap` | `docs/private/ROADMAP.md` | Product + agents | Horizon plan — gitignored |
+| `todo` | `docs/private/TODO.md` | Product + agents | Max-ROI queue — gitignored |
 
 ### Tier 3 — Generated or public web assets
 
@@ -138,11 +147,11 @@ Rules live in [.cursor/rules/](.cursor/rules/). `alwaysApply: true` rules load e
 
 ```
 src/
-  components/layout/     Hero, Header, Footer, FaqSection, marketing shell
+  components/layout/     Hero, Header, Footer, MethodSection, FaqSection, marketing shell
   components/ecosystem/  SequencePath, DomainDetail, EcosystemMap
   components/anatomizer/ AnatomizerBuilder, LayerSelector, CorrectPromptPractice
   components/maturity/   MaturityQuiz
-  data/                  domains, quiz, anatomyBuilder, ecosystemTheme, seoFaq, siteContact
+  data/                  domains, quiz, anatomyBuilder, promptLadder, ecosystemTheme, seoFaq, siteContact
   utils/                 tabNavigation (hash deep links), trackEvent (Vercel Analytics)
   index.css              token + utility source of truth
 scripts/
@@ -173,5 +182,7 @@ Update **DOCS_INDEX.md** when you add or rename:
 - `.cursor/LESSONS.md` (when adding a new durable lesson category)
 - Generated public assets or build scripts that affect SEO/deploy
 - Source-of-truth data files under `src/data/`
+
+Do **not** recreate `ROADMAP.md`, `TODO.md`, or `DEPLOY.md` at the repo root. Private planning lives in `docs/private/` (local / private — do not commit).
 
 Then add a bullet under `CHANGELOG.md` → `[Unreleased]`.

@@ -29,11 +29,10 @@ const FAQ_ID = `${SITE_URL}/#faq`;
 
 const FREE_DEMO_OFFER = {
   '@type': 'Offer',
-  price: '0',
-  priceCurrency: 'USD',
   availability: 'https://schema.org/InStock',
   url: `${SITE_URL}/`,
-  description: 'Free ecosystem demo and team assessment at promptanatomy.site',
+  description:
+    'Free ecosystem demo, Anatomizer, and team assessment at promptanatomy.site. Training plans and checkout live on promptanatomy.app.',
 };
 
 const START_MARKER = '<!-- STRUCTURED_DATA:START -->';
@@ -244,6 +243,7 @@ function buildGraph({ domains, contact, faqs, ogImageUrl, dateModified }) {
         publisher: { '@id': ORG_ID },
         dateModified,
         primaryImageOfPage: ogImageUrl,
+        offers: FREE_DEMO_OFFER,
       },
       {
         '@type': 'ItemList',
@@ -260,7 +260,7 @@ function buildGraph({ domains, contact, faqs, ogImageUrl, dateModified }) {
         image: ogImageUrl,
         brand: { '@id': ORG_ID },
         description:
-          'A nine-domain ecosystem — onboarding, organization kits, marketing, HR, leadership, executive decision kits, knowledge depth, and Corporate Ladder (Play) — around a central AI operating system for teams.',
+          '6-block methodology training (META, INPUT, OUTPUT, REASONING, QUALITY, ADVANCED) plus six role kits (Enter, Use, Create, Hire, Manage, Decide), Deepen, and Play (Corporate Ladder), around one core hub — an AI operating system for teams.',
         category: 'AI Operating System',
         hasPart: { '@id': ECOSYSTEM_ID },
         offers: FREE_DEMO_OFFER,

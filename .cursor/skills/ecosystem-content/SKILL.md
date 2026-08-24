@@ -135,7 +135,8 @@ Phase accent colors come from `src/data/ecosystemTheme.ts` — do not add per-do
 
 - External URLs: `https://{domain}` for each subdomain
 
-- Platform hub CTAs → `promptanatomy.app` via `PLATFORM_URL` in `siteContact.ts` (strip trailing `/`); this marketing site → `promptanatomy.site`
+- Platform hub CTAs → `platformHref(medium)` in `siteContact.ts` (gateway UTM). Lesson → `lessonHref`; exec kit → `execKitHref`. This marketing site → `promptanatomy.site`. **No EUR amounts on `.site`.**
+- Three prompt models: enter-5 (`.cloud`) / demo-5 (Anatomizer) / course-6 (META → ADVANCED on `.app`). Comparison UI: `#method` (`promptLadder.ts`).
 
 - Footer labels follow kit roles (e.g. `Use — organization kit`, `Decide — executive kit`) — not “daily automation” / “scaling”
 
@@ -149,8 +150,8 @@ Phase accent colors come from `src/data/ecosystemTheme.ts` — do not add per-do
 
 | ID | Repo | Ships |
 |----|------|-------|
-| app | inzinerija | 6 modules, 6-block method, 15 prompts, 31 tools |
-| cloud | lead | First interactive lesson |
+| app | inzinerija | Starter (1–3) / Core (1–6) / Pilot; 6-block META→ADVANCED; 500+ library |
+| cloud | lead | 15-slide lesson (EN+LT), Quick Send Check, PDF |
 | info | automation | 8 org-analysis prompts |
 | space | cmo | 10 marketing prompts |
 | help | personalas | 10 HR prompts + PDFs |

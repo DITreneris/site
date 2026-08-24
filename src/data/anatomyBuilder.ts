@@ -107,12 +107,14 @@ export type PreCopyCheckId = (typeof PRE_COPY_CHECKS)[number]['id'];
 /** Coherent five-layer index sets mapped to kit stages (Create / Hire / Manage). */
 export const ANATOMY_SCENARIOS: {
   id: string;
+  domainId: string;
   label: string;
   kitStage: string;
   selection: Record<AnatomyLayerKey, number>;
 }[] = [
   {
     id: 'manage',
+    domainId: 'ceo',
     label: 'Manage — ops',
     kitStage: 'Manage',
     selection: {
@@ -125,6 +127,7 @@ export const ANATOMY_SCENARIOS: {
   },
   {
     id: 'create',
+    domainId: 'space',
     label: 'Create — marketing',
     kitStage: 'Create',
     selection: {
@@ -137,6 +140,7 @@ export const ANATOMY_SCENARIOS: {
   },
   {
     id: 'hire',
+    domainId: 'help',
     label: 'Hire — HR',
     kitStage: 'Hire',
     selection: {
@@ -151,5 +155,5 @@ export const ANATOMY_SCENARIOS: {
 
 /** Domain ids that have a mapped Anatomizer scenario (Manage / Create / Hire). */
 export const ANATOMY_SCENARIO_DOMAIN_IDS = new Set(
-  ANATOMY_SCENARIOS.map((s) => s.id),
+  ANATOMY_SCENARIOS.map((s) => s.domainId),
 );

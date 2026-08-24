@@ -71,7 +71,12 @@ Live data: `src/data/anatomyBuilder.ts`, `src/data/correctPromptPractice.ts`. UI
 
 ## 5-layer demo vs 6-block course
 
-Site Anatomizer and CorrectPromptPractice are **5-layer marketing demos**. Full **6-block** methodology is taught at `promptanatomy.app`. Keep that distinction in any intro/disclaimer copy.
+Site Anatomizer and CorrectPromptPractice are **5-layer marketing demos** (System Role → Output Constraints). Do not conflate with:
+
+- **Enter-5** on `.cloud`: Role, Context, Reasoning, Output, Quality control
+- **Course-6** on `.app`: META, INPUT, OUTPUT, REASONING, QUALITY, ADVANCED
+
+Point intro copy to `/#method` (`promptLadder.ts`). Do not publish EUR amounts on this site.
 
 ## Lessons
 

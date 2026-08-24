@@ -41,7 +41,7 @@ Do not point canonical/OG at `.app` for this site.
 | `public/.well-known/security.txt` | Security contact |
 | `src/data/seoFaq.ts` | FAQ source for FaqSection, FAQPage JSON-LD, and `llms-full.txt` |
 | `src/data/siteContact.ts` | Founder `AUTHOR.sameAs`, `ORG_SAME_AS`, footer social links |
-| `src/utils/tabNavigation.ts` | Hash deep links: `/#ecosystem`, `/#anatomizer`, `/#maturity` |
+| `src/utils/tabNavigation.ts` | Hash deep links: `/#ecosystem`, `/#anatomizer`, `/#maturity` (tabs); `/#method`, `/#faq` are always-visible page anchors |
 | `App.tsx` | All tab panels mounted (`hidden`) for crawler DOM access |
 
 ## Build commands
@@ -56,7 +56,7 @@ npm run build            # prebuild runs all three generators
 ## OG assets
 
 - **Site OG:** `public/og_2.png` at 1600×900 — referenced by `og:image`, `twitter:image`, JSON-LD.
-- **GitHub repo card:** `.github/social-preview.png` — copy of `og_2.png`; upload via GitHub Settings (see [DEPLOY.md](../../DEPLOY.md) §5).
+- **GitHub repo card:** `.github/social-preview.png` — copy of `og_2.png`; upload via GitHub Settings. Optional steps: `docs/private/DEPLOY.md` if present (local / private — do not commit).
 - **Cache bust:** `generate-og.mjs` patches `og_2.png?v=<sha256-prefix>` in `index.html` on each build when PNG bytes change.
 
 ## Crawler policy (MVP)
@@ -78,7 +78,7 @@ npm run build            # prebuild runs all three generators
 
 ## Post-change verification
 
-See [DEPLOY.md](../../DEPLOY.md) §4: HTTPS, canonical, `/llms.txt`, Rich Results Test, sitemap submission.
+Use the `deploy-vercel` skill post-deploy checklist: HTTPS, canonical, `/llms.txt`, Rich Results Test, sitemap. Optional extra steps: `docs/private/DEPLOY.md` if present.
 
 ## Delegate
 

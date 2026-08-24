@@ -10,15 +10,13 @@ import {
 
   ENTITY_FOOTER_URL,
 
-  PLATFORM_URL,
+  platformHref,
 
   SOCIAL_LINKS,
 
 } from '../../data/siteContact';
 
 import { trackEvent } from '../../utils/trackEvent';
-
-const platformHref = PLATFORM_URL.replace(/\/$/, '');
 
 
 
@@ -36,7 +34,7 @@ interface FooterLink {
 
 const PRODUCT_LINKS: FooterLink[] = [
 
-  { label: 'Main platform', href: platformHref, external: true },
+  { label: 'Main platform', href: platformHref('footer'), external: true },
 
   { label: 'Enter — onboarding', href: 'https://promptanatomy.cloud', external: true },
 
@@ -324,7 +322,7 @@ export default function Footer() {
 
             <a
 
-              href={platformHref}
+              href={platformHref('footer')}
 
               target="_blank"
 

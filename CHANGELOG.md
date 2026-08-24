@@ -9,7 +9,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Gateway method map at `/#method`: lesson (enter-5 on `.cloud`), demo (5-layer Anatomizer), and course (6-block META → ADVANCED on `.app`), plus where-to-start paths to `.cloud`, `.app` (Starter or Core), and `.pro`. No EUR prices.
+- `platformHref` / `lessonHref` / `execKitHref` gateway UTM on conversion CTAs (`utm_source=site`, `utm_campaign=gateway`). `ENTITY_FOOTER_URL` unchanged.
+- Tier 1 quiz result secondary CTA: Start the free lesson on `promptanatomy.cloud`.
+- FAQ capsules for the 6-block system, lesson-vs-kit-vs-course, and “not a prompt-ops vault.” `#method` in `llms.txt`, noscript, and JSON-LD.
 - Footer entity line (hub QW1b): `Part of Prompt Anatomy · Training & checkout → promptanatomy.app` with `ENTITY_FOOTER_URL` (www + `utm_source=site`) and `entity_footer_click` analytics.
+
+### Changed
+
+- Public README slimmed to onboarding. Roadmap, TODO, and the full deploy runbook moved to local `docs/private/` (gitignored; do not recreate at repo root).
+- Hub, Enter, and Decide copy aligned with live products (Starter/Core/Pilot names, no EUR; 15-slide EN/LT lesson; exec kit as course lead magnet).
+- Anatomizer intro names the six course blocks and links `#method`.
+- Product JSON-LD description splits six role kits from Deepen and Play; free Offer no longer lists a `$0` price on the paid hub URL (demo Offer stays on `.site`).
+- Compressed site OG (`public/og_2.png`, 1600×900, under 1 MB) and cache-bust `?v=`.
+
+### Fixed
+
+- SequencePath stage grid is one column below `sm` (320px no longer splits two cards).
+- Hub DomainDetail “Open” uses `platformHref`; quiz Tier 1 keeps a single Cloud CTA (`lessonHref`); other recommended kits use gateway UTM.
+- Anatomizer stage-example CTA maps to domain ids `ceo` / `space` / `help` (Manage / Create / Hire).
+- Method start-path row wraps; DomainDetail title/domain badge wrap; Anatomizer toolbar wraps; dark “Best for” / domain labels use `text-subtle`.
 
 ## [1.2.0] - 2026-07-30
 
