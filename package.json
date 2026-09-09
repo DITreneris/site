@@ -11,7 +11,8 @@
     "generate:og": "node scripts/generate-og.mjs",
     "generate:llms": "node scripts/generate-llms.mjs",
     "generate:jsonld": "node scripts/generate-jsonld.mjs",
-    "qa:viewport": "node scripts/viewport-qa.mjs"
+    "qa:viewport": "node scripts/viewport-qa.mjs",
+    "verify:hrefs": "node scripts/verify-kit-href.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

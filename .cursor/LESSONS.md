@@ -2,7 +2,7 @@
 
 **Purpose:** Durable corrections from audits and shipped work. Agents and skills must follow these; do not reintroduce fixed drifts.
 
-**Last updated:** 2026-08-23 (private planning docs)
+**Last updated:** 2026-09-09 (spoke 200 storefronts)
 
 ---
 
@@ -16,7 +16,7 @@
 
 ## URLs & assets
 
-6. **Platform CTAs** — Use `platformHref(medium)` from `src/data/siteContact.ts` (adds `utm_source=site&utm_medium={medium}&utm_campaign=gateway`). Do not hardcode `https://promptanatomy.app` or use a raw stripped `PLATFORM_URL` in Hero / ClosingCta / Footer / quiz / Anatomizer. Leave `ENTITY_FOOTER_URL` as the affiliation line. Do not conflate enter-5 (Role → Quality control on `.cloud`), demo-5 (Anatomizer layers), and course-6 (META → ADVANCED on `.app`).
+6. **Platform CTAs** — Use `platformHref(medium)` from `src/data/siteContact.ts` (adds `utm_source=site&utm_medium={medium}&utm_campaign=gateway`). Do not hardcode `https://promptanatomy.app` or use a raw stripped `PLATFORM_URL` in Hero / ClosingCta / Footer / quiz / Anatomizer. Leave `ENTITY_FOOTER_URL` as the affiliation line. Do not conflate enter-5 (Role → Quality control on `.cloud`), demo-5 (Anatomizer layers), and course-6 (META → ADVANCED on `.app`). Spoke Open (DomainDetail), footer Enter→Play, and quiz kit CTAs use `kitHref` / `lessonHref` / `execKitHref` with the same gateway query. `kitHref` resolves `src/data/spokeCanonical.json` (live 200: www and `/en/` where that is the storefront). A bare `https://promptanatomy.{spoke}` on those conversion CTAs is a regression. Schema, `llms.txt`, and legal/social URLs stay bare apex — do not reuse the 200 map there.
 7. **Entity footer (QW1b)** — Quiet affiliation line uses `ENTITY_FOOTER_URL` (www + entity UTM). Do not replace conversion CTAs with it, and do not put the founder name in that line.
 8. **OG asset** — Live file is `public/og_2.png` (1600×900). Agent/deploy checklists must not require `og-image.png`. `generate-og.mjs` cache-busts and copies to `.github/social-preview.png` — it does **not** run Satori.
 9. **Canonical split** — `.site` for this marketing site; `.app` for Organization / platform CTAs only.

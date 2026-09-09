@@ -3,7 +3,7 @@ import { Users, Check, ExternalLink, ArrowRight, Terminal } from 'lucide-react';
 import type { Domain } from '../../types';
 import { accentFor, phaseLabelFor } from '../../data/ecosystemTheme';
 import { ANATOMY_SCENARIO_DOMAIN_IDS } from '../../data/anatomyBuilder';
-import { platformHref } from '../../data/siteContact';
+import { kitHref, platformHref } from '../../data/siteContact';
 import { trackEvent } from '../../utils/trackEvent';
 
 interface DomainDetailProps {
@@ -47,7 +47,7 @@ export default function DomainDetail({ domain, onOpenAnatomizer }: DomainDetailP
         </div>
         <div className="flex flex-col gap-2 sm:items-end">
           <a
-            href={domain.isCore ? platformHref('domain_detail') : `https://${domain.domain}`}
+            href={domain.isCore ? platformHref('domain_detail') : kitHref(domain.domain, 'domain_detail')}
             target="_blank"
             rel="noreferrer"
             className="btn-glass-sm"

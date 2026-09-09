@@ -9,7 +9,7 @@ import {
 } from 'lucide-react';
 import { MATURITY_QUIZ, calculateQuizResult } from '../../data/maturityQuiz';
 import { DOMAINS } from '../../data/domains';
-import { execKitHref, lessonHref, platformHref, withGatewayUtm } from '../../data/siteContact';
+import { execKitHref, kitHref, lessonHref, platformHref } from '../../data/siteContact';
 import { trackEvent } from '../../utils/trackEvent';
 import type { QuizResult } from '../../types';
 
@@ -194,7 +194,7 @@ export default function MaturityQuiz({ onPivot }: MaturityQuizProps) {
                           ? execKitHref('quiz_result')
                           : recommended.id === 'app'
                             ? platformHref('quiz_result')
-                            : withGatewayUtm(`https://${recommended.domain}`, 'quiz_result')
+                            : kitHref(recommended.domain, 'quiz_result')
                       }
                       target="_blank"
                       rel="noreferrer"

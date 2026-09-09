@@ -27,6 +27,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - SequencePath stage grid is one column below `sm` (320px no longer splits two cards).
 - Hub DomainDetail “Open” uses `platformHref`; quiz Tier 1 keeps a single Cloud CTA (`lessonHref`); other recommended kits use gateway UTM.
+- DomainDetail spoke “Open” and footer Enter→Play now use gateway UTM (`kitHref` / `lessonHref` / `execKitHref`). Spoke footer links emit `kit_outbound`. Entity footer, schema, and legal/social URLs unchanged.
+- DomainDetail spoke Open, footer Enter→Play, and quiz kit CTAs now land on each spoke’s live 200 storefront (`spokeCanonical.json`: www where that is Production; `/en/` on `.help`, `.ceo`, `.space`) with gateway UTM unchanged. Entity footer, schema, `llms.txt`, and legal/social stay bare apex.
 - Anatomizer stage-example CTA maps to domain ids `ceo` / `space` / `help` (Manage / Create / Hire).
 - Method start-path row wraps; DomainDetail title/domain badge wrap; Anatomizer toolbar wraps; dark “Best for” / domain labels use `text-subtle`.
 

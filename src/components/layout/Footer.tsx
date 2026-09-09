@@ -10,6 +10,12 @@ import {
 
   ENTITY_FOOTER_URL,
 
+  execKitHref,
+
+  kitHref,
+
+  lessonHref,
+
   platformHref,
 
   SOCIAL_LINKS,
@@ -28,19 +34,23 @@ interface FooterLink {
 
   external?: boolean;
 
+  domainId?: string;
+
+  track?: 'platform' | 'kit';
+
 }
 
 
 
 const PRODUCT_LINKS: FooterLink[] = [
 
-  { label: 'Main platform', href: platformHref('footer'), external: true },
+  { label: 'Main platform', href: platformHref('footer'), external: true, track: 'platform' },
 
-  { label: 'Enter — onboarding', href: 'https://promptanatomy.cloud', external: true },
+  { label: 'Enter — onboarding', href: lessonHref('footer'), external: true, domainId: 'cloud', track: 'kit' },
 
-  { label: 'Use — organization kit', href: 'https://promptanatomy.info', external: true },
+  { label: 'Use — organization kit', href: kitHref('promptanatomy.info', 'footer'), external: true, domainId: 'info', track: 'kit' },
 
-  { label: 'Create — marketing', href: 'https://promptanatomy.space', external: true },
+  { label: 'Create — marketing', href: kitHref('promptanatomy.space', 'footer'), external: true, domainId: 'space', track: 'kit' },
 
 ];
 
@@ -48,15 +58,15 @@ const PRODUCT_LINKS: FooterLink[] = [
 
 const NETWORK_LINKS: FooterLink[] = [
 
-  { label: 'Hire — HR', href: 'https://promptanatomy.help', external: true },
+  { label: 'Hire — HR', href: kitHref('promptanatomy.help', 'footer'), external: true, domainId: 'help', track: 'kit' },
 
-  { label: 'Manage — leadership', href: 'https://promptanatomy.ceo', external: true },
+  { label: 'Manage — leadership', href: kitHref('promptanatomy.ceo', 'footer'), external: true, domainId: 'ceo', track: 'kit' },
 
-  { label: 'Decide — executive kit', href: 'https://promptanatomy.pro', external: true },
+  { label: 'Decide — executive kit', href: execKitHref('footer'), external: true, domainId: 'pro', track: 'kit' },
 
-  { label: 'Deepen — knowledge hub', href: 'https://promptanatomy.blog', external: true },
+  { label: 'Deepen — knowledge hub', href: kitHref('promptanatomy.blog', 'footer'), external: true, domainId: 'blog', track: 'kit' },
 
-  { label: 'Play — Corporate Ladder', href: 'https://promptanatomy.lol', external: true },
+  { label: 'Play — Corporate Ladder', href: kitHref('promptanatomy.lol', 'footer'), external: true, domainId: 'lol', track: 'kit' },
 
 ];
 
@@ -95,6 +105,20 @@ function FooterLinkItem({ link }: { link: FooterLink }) {
         : {})}
 
       className="link-footer"
+
+      onClick={() => {
+
+        if (link.track === 'kit' && link.domainId) {
+
+          trackEvent('kit_outbound', { domain: link.domainId, source: 'footer' });
+
+        } else if (link.track === 'platform') {
+
+          trackEvent('platform_outbound', { source: 'footer' });
+
+        }
+
+      }}
 
     >
 
