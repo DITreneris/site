@@ -14,6 +14,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tier 1 quiz result secondary CTA: Start the free lesson on `promptanatomy.cloud`.
 - FAQ capsules for the 6-block system, lesson-vs-kit-vs-course, and “not a prompt-ops vault.” `#method` in `llms.txt`, noscript, and JSON-LD.
 - Footer entity line (hub QW1b): `Part of Prompt Anatomy · Training & checkout → promptanatomy.app` with `ENTITY_FOOTER_URL` (www + `utm_source=site`) and `entity_footer_click` analytics.
+- Header **Open the platform** CTA (desktop `lg+` and mobile menu) to the hub with gateway UTM (`utm_medium=header`).
+- Hero proof line under the subhead (600+ templates · 60 tools · eight stages — across the ecosystem); H1 unchanged.
+- Mid-page gateway band after the stats strip repeating the hub CTA (`utm_medium=mid`).
+- Sticky **Open the platform** bar on viewports below `lg` (`utm_medium=sticky`), with page bottom padding so footer content is not covered.
 
 ### Changed
 

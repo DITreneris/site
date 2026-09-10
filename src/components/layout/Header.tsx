@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Zap, Menu, X } from 'lucide-react';
+import { ArrowRight, Zap, Menu, X } from 'lucide-react';
 import type { TabId } from '../../types';
+import { platformHref } from '../../data/siteContact';
+import { trackEvent } from '../../utils/trackEvent';
 
 const TABS: { id: TabId; label: string }[] = [
   { id: 'ecosystem', label: 'Ecosystem' },
@@ -71,30 +73,42 @@ export default function Header({ activeTab, onTabChange, onLogoClick }: HeaderPr
           </span>
         </button>
 
-        <nav className="hidden items-center gap-1 md:flex" role="tablist" aria-label="Site sections">
-          {TABS.map((tab) => {
-            const active = activeTab === tab.id;
-            const tabClass = scrolled
-              ? active
-                ? 'nav-tab-dark-active'
-                : 'nav-tab-dark'
-              : active
-                ? 'nav-tab-active'
-                : 'nav-tab';
-            return (
-              <button
-                key={tab.id}
-                role="tab"
-                aria-selected={active}
-                aria-controls={`panel-${tab.id}`}
-                onClick={() => handleTab(tab.id)}
-                className={tabClass}
-              >
-                {tab.label}
-              </button>
-            );
-          })}
-        </nav>
+        <div className="hidden min-w-0 flex-1 items-center justify-end gap-3 md:flex">
+          <nav className="flex items-center gap-1" role="tablist" aria-label="Site sections">
+            {TABS.map((tab) => {
+              const active = activeTab === tab.id;
+              const tabClass = scrolled
+                ? active
+                  ? 'nav-tab-dark-active'
+                  : 'nav-tab-dark'
+                : active
+                  ? 'nav-tab-active'
+                  : 'nav-tab';
+              return (
+                <button
+                  key={tab.id}
+                  role="tab"
+                  aria-selected={active}
+                  aria-controls={`panel-${tab.id}`}
+                  onClick={() => handleTab(tab.id)}
+                  className={tabClass}
+                >
+                  {tab.label}
+                </button>
+              );
+            })}
+          </nav>
+          <a
+            href={platformHref('header')}
+            target="_blank"
+            rel="noreferrer"
+            className="btn-primary-md hidden shrink-0 lg:inline-flex"
+            onClick={() => trackEvent('platform_outbound', { source: 'header' })}
+          >
+            Open the platform
+            <ArrowRight className="icon-sm" />
+          </a>
+        </div>
 
         <button
           onClick={() => setMobileOpen((v) => !v)}
@@ -109,26 +123,37 @@ export default function Header({ activeTab, onTabChange, onLogoClick }: HeaderPr
       </div>
 
       {mobileOpen && (
-        <nav
-          className="border-t border-white/10 bg-brand-dark px-4 py-3 md:hidden"
-          role="tablist"
-          aria-label="Site sections"
-        >
-          {TABS.map((tab) => (
-            <button
-              key={tab.id}
-              role="tab"
-              aria-selected={activeTab === tab.id}
-              aria-controls={`panel-${tab.id}`}
-              onClick={() => handleTab(tab.id)}
-              className={
-                activeTab === tab.id ? 'nav-tab-mobile-active' : 'nav-tab-mobile'
-              }
-            >
-              {tab.label}
-            </button>
-          ))}
-        </nav>
+        <div className="border-t border-white/10 bg-brand-dark px-4 py-3 md:hidden">
+          <nav role="tablist" aria-label="Site sections">
+            {TABS.map((tab) => (
+              <button
+                key={tab.id}
+                role="tab"
+                aria-selected={activeTab === tab.id}
+                aria-controls={`panel-${tab.id}`}
+                onClick={() => handleTab(tab.id)}
+                className={
+                  activeTab === tab.id ? 'nav-tab-mobile-active' : 'nav-tab-mobile'
+                }
+              >
+                {tab.label}
+              </button>
+            ))}
+          </nav>
+          <a
+            href={platformHref('header')}
+            target="_blank"
+            rel="noreferrer"
+            className="btn-primary-md mt-2 w-full"
+            onClick={() => {
+              trackEvent('platform_outbound', { source: 'header' });
+              setMobileOpen(false);
+            }}
+          >
+            Open the platform
+            <ArrowRight className="icon-sm" />
+          </a>
+        </div>
       )}
     </header>
   );

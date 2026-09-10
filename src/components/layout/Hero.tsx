@@ -23,6 +23,9 @@ export default function Hero({ onStartAssessment, onExploreEcosystem }: HeroProp
         <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-body">
           Workflows, templates, and standards &mdash; not one-off chats.
         </p>
+        <p className="mx-auto mt-3 max-w-xl text-caption leading-relaxed text-muted">
+          600+ templates · 60 tools · eight stages — across the ecosystem
+        </p>
 
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a

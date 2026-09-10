@@ -10,6 +10,10 @@ import StatsStrip from './components/layout/StatsStrip';
 
 import ClosingCta from './components/layout/ClosingCta';
 
+import GatewayBand from './components/layout/GatewayBand';
+
+import StickyHubCta from './components/layout/StickyHubCta';
+
 import Footer from './components/layout/Footer';
 
 import EcosystemMap from './components/ecosystem/EcosystemMap';
@@ -125,7 +129,7 @@ export default function App() {
 
   return (
 
-    <div className="min-h-screen bg-white text-brand-dark antialiased">
+    <div className="min-h-screen bg-white pb-[4.5rem] text-brand-dark antialiased lg:pb-0">
 
       <a
 
@@ -167,6 +171,8 @@ export default function App() {
       <ProblemSolution />
 
       <StatsStrip />
+
+      <GatewayBand />
 
 
 
@@ -253,6 +259,8 @@ export default function App() {
       <FaqSection />
 
       <Footer />
+
+      <StickyHubCta />
 
     </div>
 
