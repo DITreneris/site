@@ -121,7 +121,7 @@ export default function CorrectPromptPractice() {
                       href={platformHref('practice')}
                       target="_blank"
                       rel="noreferrer"
-                      className="btn-primary-md"
+                      className="link-inline text-brand-dark hover:text-brand-accent"
                       onClick={() =>
                         trackEvent('platform_outbound', { source: 'practice' })
                       }

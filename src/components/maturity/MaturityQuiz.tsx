@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import {
+  ChevronLeft,
   ChevronRight,
   AlertTriangle,
   Award,
@@ -23,10 +24,11 @@ export default function MaturityQuiz({ onPivot }: MaturityQuizProps) {
   const [result, setResult] = useState<QuizResult | null>(null);
 
   const handleOption = (score: number) => {
-    const updated = { ...answers, [step]: score };
+    const current = step;
+    const updated = { ...answers, [current]: score };
     setAnswers(updated);
-    if (step < MATURITY_QUIZ.length - 1) {
-      setStep((s) => s + 1);
+    if (current < MATURITY_QUIZ.length - 1) {
+      setStep(current + 1);
     } else {
       const total = Object.values(updated).reduce((acc, cur) => acc + cur, 0);
       const next = calculateQuizResult(total, updated);
@@ -43,6 +45,11 @@ export default function MaturityQuiz({ onPivot }: MaturityQuizProps) {
     setStep(0);
     setAnswers({});
     setResult(null);
+  };
+
+  const goBack = () => {
+    if (step <= 0) return;
+    setStep((s) => s - 1);
   };
 
   const recommended = result
@@ -63,23 +70,31 @@ export default function MaturityQuiz({ onPivot }: MaturityQuizProps) {
 
         {!result ? (
           <div className="card-light-lg space-y-6">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between gap-3">
               <span className="text-eyebrow-light">
                 Question {step + 1} of {MATURITY_QUIZ.length}
               </span>
-              <div className="flex gap-1.5">
-                {MATURITY_QUIZ.map((_, i) => (
-                  <span
-                    key={i}
-                    className={`h-1 w-6 rounded ${
-                      i === step
-                        ? 'bg-brand-accent'
-                        : i < step
-                          ? 'bg-brand-accent/40'
-                          : 'bg-slate-200'
-                    }`}
-                  />
-                ))}
+              <div className="flex items-center gap-3">
+                {step > 0 && (
+                  <button type="button" onClick={goBack} className="link-inline">
+                    <ChevronLeft className="icon-sm" />
+                    Back
+                  </button>
+                )}
+                <div className="flex gap-1.5">
+                  {MATURITY_QUIZ.map((_, i) => (
+                    <span
+                      key={i}
+                      className={`h-1 w-6 rounded ${
+                        i === step
+                          ? 'bg-brand-accent'
+                          : i < step
+                            ? 'bg-brand-accent/40'
+                            : 'bg-slate-200'
+                      }`}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -158,24 +173,12 @@ export default function MaturityQuiz({ onPivot }: MaturityQuizProps) {
                   </p>
                 </div>
                 <div className="mt-3 space-y-2">
-                  <a
-                    href={platformHref('quiz_result')}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="btn-primary-md w-full"
-                    onClick={() =>
-                      trackEvent('platform_outbound', { source: 'quiz_result' })
-                    }
-                  >
-                    Open the platform
-                    <ExternalLink className="icon-sm" />
-                  </a>
                   {recommended && result.recommendedId === 'cloud' && (
                     <a
                       href={lessonHref('quiz_result')}
                       target="_blank"
                       rel="noreferrer"
-                      className="btn-secondary-md w-full"
+                      className="btn-primary-md w-full"
                       onClick={() =>
                         trackEvent('kit_outbound', {
                           domain: 'cloud',
@@ -192,13 +195,11 @@ export default function MaturityQuiz({ onPivot }: MaturityQuizProps) {
                       href={
                         recommended.id === 'pro'
                           ? execKitHref('quiz_result')
-                          : recommended.id === 'app'
-                            ? platformHref('quiz_result')
-                            : kitHref(recommended.domain, 'quiz_result')
+                          : kitHref(recommended.domain, 'quiz_result')
                       }
                       target="_blank"
                       rel="noreferrer"
-                      className="btn-secondary-md w-full"
+                      className="btn-primary-md w-full"
                       onClick={() =>
                         trackEvent('kit_outbound', {
                           domain: recommended.id,
@@ -210,6 +211,18 @@ export default function MaturityQuiz({ onPivot }: MaturityQuizProps) {
                       <ExternalLink className="icon-sm" />
                     </a>
                   )}
+                  <a
+                    href={platformHref('quiz_result')}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn-secondary-md w-full"
+                    onClick={() =>
+                      trackEvent('platform_outbound', { source: 'quiz_result' })
+                    }
+                  >
+                    Open the platform
+                    <ExternalLink className="icon-sm" />
+                  </a>
                   <button
                     type="button"
                     onClick={() => onPivot(result.recommendedId)}

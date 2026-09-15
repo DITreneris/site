@@ -13,7 +13,7 @@ const ROLE_CHIPS: { label: string; domainId: string }[] = [
 interface EcosystemMapProps {
   selectedDomain: string;
   onSelectDomain: (id: string) => void;
-  onOpenAnatomizer: () => void;
+  onOpenAnatomizer: (domainId: string) => void;
 }
 
 export default function EcosystemMap({

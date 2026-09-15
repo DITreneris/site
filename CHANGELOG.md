@@ -11,7 +11,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Gateway method map at `/#method`: lesson (enter-5 on `.cloud`), demo (5-layer Anatomizer), and course (6-block META → ADVANCED on `.app`), plus where-to-start paths to `.cloud`, `.app` (Starter or Core), and `.pro`. No EUR prices.
 - `platformHref` / `lessonHref` / `execKitHref` gateway UTM on conversion CTAs (`utm_source=site`, `utm_campaign=gateway`). `ENTITY_FOOTER_URL` unchanged.
-- Tier 1 quiz result secondary CTA: Start the free lesson on `promptanatomy.cloud`.
 - FAQ capsules for the 6-block system, lesson-vs-kit-vs-course, and “not a prompt-ops vault.” `#method` in `llms.txt`, noscript, and JSON-LD.
 - Footer entity line (hub QW1b): `Part of Prompt Anatomy · Training & checkout → promptanatomy.app` with `ENTITY_FOOTER_URL` (www + `utm_source=site`) and `entity_footer_click` analytics.
 - Header **Open the platform** CTA (desktop `lg+` and mobile menu) to the hub with gateway UTM (`utm_medium=header`).
@@ -26,15 +25,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Anatomizer intro names the six course blocks and links `#method`.
 - Product JSON-LD description splits six role kits from Deepen and Play; free Offer no longer lists a `$0` price on the paid hub URL (demo Offer stays on `.site`).
 - Compressed site OG (`public/og_2.png`, 1600×900, under 1 MB) and cache-bust `?v=`.
+- Quiz result primary CTA is the recommended path (Tier 1: Start the free lesson; Tier 2: kit; Tier 3: exec kit); hub **Open the platform** is secondary. **Back** on questions 2–3. Dead `recommended.id === 'app'` branch removed.
+- Practice **Open the platform** is a text link; **Copy** remains the primary action. Anatomizer layer/scenario changes no longer clear the three pre-copy checks.
+- Use-stage icon is distinct from Play (`Building2`). Inter 900 for `font-black` headings. Unused CSS tokens/utilities pruned (`shadow-tier-3`, `icon-lg`, `--text-price`, `--color-brand-accent-hover`, `--shadow-accent-ring`, related). `DOMAIN_PHASE` derived from `DOMAINS`.
 
 ### Fixed
 
 - SequencePath stage grid is one column below `sm` (320px no longer splits two cards).
-- Hub DomainDetail “Open” uses `platformHref`; quiz Tier 1 keeps a single Cloud CTA (`lessonHref`); other recommended kits use gateway UTM.
+- Hub DomainDetail “Open” uses `platformHref`; quiz Tier 1 Cloud CTA uses `lessonHref`; other recommended kits use gateway UTM.
 - DomainDetail spoke “Open” and footer Enter→Play now use gateway UTM (`kitHref` / `lessonHref` / `execKitHref`). Spoke footer links emit `kit_outbound`. Entity footer, schema, and legal/social URLs unchanged.
 - DomainDetail spoke Open, footer Enter→Play, and quiz kit CTAs now land on each spoke’s live 200 storefront (`spokeCanonical.json`: www where that is Production; `/en/` on `.help`, `.ceo`, `.space`) with gateway UTM unchanged. Entity footer, schema, `llms.txt`, and legal/social stay bare apex.
 - Anatomizer stage-example CTA maps to domain ids `ceo` / `space` / `help` (Manage / Create / Hire).
 - Method start-path row wraps; DomainDetail title/domain badge wrap; Anatomizer toolbar wraps; dark “Best for” / domain labels use `text-subtle`.
+- Hash routing: `#anatomizer-builder` no longer hijacks to Ecosystem; `#method` / `#faq` keep the current tab (fresh `/#method` lands on Ecosystem). Hero Explore and header logo force-scroll to the map even when already on Ecosystem (logo from FAQ no longer stuck on FAQ).
+- DomainDetail Create/Hire/Manage **See an example prompt** loads matching Anatomizer scenario chips and lands on `#anatomizer-builder`. Method **Try the prompt builder** also lands on the builder.
+- Quiz double-click / rapid option clicks no longer crash (`MATURITY_QUIZ[step]` undefined).
 
 ## [1.2.0] - 2026-07-30
 

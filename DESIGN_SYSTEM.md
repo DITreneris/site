@@ -99,11 +99,11 @@ Not a visual redesign. **Implementation maturity** marking public marketing read
 
 ### Icon usage
 
-- **Works:** `lucide-react` only; `icon-sm`, `icon-md`, `icon-lg` in `src/index.css`.
+- **Works:** `lucide-react` only; `icon-sm`, `icon-md` in `src/index.css`.
 
 ### Shadows and elevation
 
-- **Works:** `shadow-tier-1/2/3`, `shadow-soft`, phase `shadow-glow-*`, `hover-lift`, `shadow-ecosystem-card-rim` on `card-glass`.
+- **Works:** `shadow-tier-1/2`, `shadow-soft`, phase `shadow-glow-*`, `hover-lift`, `shadow-ecosystem-card-rim` on `card-glass`.
 
 ### Borders and radius
 
@@ -728,7 +728,7 @@ Sticky exclusive selection uses `src/components/shared/ExclusiveChoiceGroup.tsx`
 
 | Component | MVP status | v1.5 rule |
 | --------- | ---------- | --------- |
-| Pricing card | Not built | Build from `card-light` + `shadow-tier-3` if product requests |
+| Pricing card | Not built | Build from `card-light` + `shadow-tier-2` if product requests |
 | FAQ block | Not built | `section-default` + `card-light` accordion pattern TBD |
 | Blog card | Not built | Out of scope — external `promptanatomy.blog` |
 | Testimonial block | Not built | Out of scope for single-page MVP |
@@ -921,9 +921,9 @@ Inner `max-w-2xl` / `max-w-3xl` sub-constraints remain for intros and figures.
 | `card-glass` | Dark ecosystem card surface |
 | `badge-accent` | Gold pill eyebrow |
 | `bg-ecosystem-grid` | Grid background on dark band |
-| `shadow-tier-1/2/3` | Elevation shortcuts |
+| `shadow-tier-1/2` | Elevation shortcuts |
 | `text-label-upper`, `text-nav-link` | Typography |
-| `icon-sm`, `icon-md`, `icon-lg` | Icon sizing |
+| `icon-sm`, `icon-md` | Icon sizing |
 | `animate-panel-in` | Panel entrance |
 | `hover-lift` | Card hover on light surfaces |
 

@@ -1,4 +1,5 @@
 import type { EcosystemAccent, EcosystemPhase } from '../types';
+import { DOMAINS } from './domains';
 
 /**
  * Color encodes the ecosystem PHASE, not the individual stage (no rainbow).
@@ -14,18 +15,10 @@ export const PHASE_ACCENT: Record<EcosystemPhase, EcosystemAccent> = {
   Knowledge: 'ecosystem-4',
 };
 
-/** Domain id -> phase, kept in sync with src/data/domains.ts. */
-export const DOMAIN_PHASE: Record<string, EcosystemPhase> = {
-  app: 'Hub',
-  cloud: 'Adopt',
-  info: 'Adopt',
-  space: 'Apply',
-  help: 'Apply',
-  ceo: 'Scale',
-  pro: 'Scale',
-  blog: 'Knowledge',
-  lol: 'Knowledge',
-};
+/** Domain id -> phase, derived from `DOMAINS` so accent cannot drift. */
+export const DOMAIN_PHASE: Record<string, EcosystemPhase> = Object.fromEntries(
+  DOMAINS.map((d) => [d.id, d.phase]),
+);
 
 export const DOMAIN_ACCENT: Record<string, EcosystemAccent> = Object.fromEntries(
   Object.entries(DOMAIN_PHASE).map(([id, phase]) => [id, PHASE_ACCENT[phase]]),

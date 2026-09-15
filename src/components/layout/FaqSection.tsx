@@ -2,7 +2,7 @@ import { SEO_FAQ } from '../../data/seoFaq';
 
 export default function FaqSection() {
   return (
-    <section className="section-default" id="faq" aria-labelledby="faq-heading">
+    <section className="section-default scroll-mt-16" id="faq" aria-labelledby="faq-heading">
       <div className="container-narrow space-y-8">
         <div className="text-center">
           <span className="text-eyebrow-light">FAQ</span>

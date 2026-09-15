@@ -8,7 +8,7 @@ import { trackEvent } from '../../utils/trackEvent';
 
 interface DomainDetailProps {
   domain: Domain;
-  onOpenAnatomizer: () => void;
+  onOpenAnatomizer: (domainId: string) => void;
 }
 
 export default function DomainDetail({ domain, onOpenAnatomizer }: DomainDetailProps) {
@@ -115,7 +115,7 @@ export default function DomainDetail({ domain, onOpenAnatomizer }: DomainDetailP
         </ul>
       </div>
 
-      <button onClick={onOpenAnatomizer} className="link-inline mt-5">
+      <button onClick={() => onOpenAnatomizer(domain.id)} className="link-inline mt-5">
         <Terminal className="icon-sm" />
         {hasStageExample
           ? 'See an example prompt for this stage'

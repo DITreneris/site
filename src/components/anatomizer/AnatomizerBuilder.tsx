@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Terminal, Copy, Check, ShieldCheck, ExternalLink } from 'lucide-react';
 import LayerSelector from './LayerSelector';
 import {
@@ -29,7 +29,11 @@ const INITIAL_CHECKS: CheckState = {
   format: false,
 };
 
-export default function AnatomizerBuilder() {
+interface AnatomizerBuilderProps {
+  scenarioId?: string | null;
+}
+
+export default function AnatomizerBuilder({ scenarioId = null }: AnatomizerBuilderProps) {
   const [selection, setSelection] = useState<SelectionState>(INITIAL);
   const [checks, setChecks] = useState<CheckState>(INITIAL_CHECKS);
   const [copied, setCopied] = useState(false);
@@ -49,7 +53,8 @@ export default function AnatomizerBuilder() {
 
   const handleSelect = (key: AnatomyLayerKey, index: number) => {
     if (selection[key] === index) return;
-    setChecks(INITIAL_CHECKS);
+    setCopied(false);
+    setCopyError(false);
     setActiveScenario(null);
     setSelection((prev) => ({ ...prev, [key]: index }));
   };
@@ -58,9 +63,20 @@ export default function AnatomizerBuilder() {
     const scenario = ANATOMY_SCENARIOS.find((s) => s.id === id);
     if (!scenario) return;
     setSelection({ ...scenario.selection });
-    setChecks(INITIAL_CHECKS);
+    setCopied(false);
+    setCopyError(false);
     setActiveScenario(id);
   };
+
+  useEffect(() => {
+    if (!scenarioId) return;
+    const scenario = ANATOMY_SCENARIOS.find((s) => s.id === scenarioId);
+    if (!scenario) return;
+    setSelection({ ...scenario.selection });
+    setCopied(false);
+    setCopyError(false);
+    setActiveScenario(scenarioId);
+  }, [scenarioId]);
 
   const toggleCheck = (id: PreCopyCheckId) => {
     setChecks((prev) => ({ ...prev, [id]: !prev[id] }));
@@ -85,7 +101,7 @@ export default function AnatomizerBuilder() {
   return (
     <section className="section-default">
       <div className="container-wide space-y-6">
-        <div className="max-w-2xl" id="anatomizer-builder">
+        <div className="max-w-2xl scroll-mt-16" id="anatomizer-builder">
           <span className="text-eyebrow-light">The Anatomizer</span>
           <h2 className="section-heading mt-2">Build a structured prompt, layer by layer</h2>
           <p className="mt-3 text-sm leading-relaxed text-body">

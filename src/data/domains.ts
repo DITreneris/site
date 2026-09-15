@@ -1,7 +1,7 @@
 import {
   Layers,
   Zap,
-  Play,
+  Building2,
   Target,
   Users,
   LineChart,
@@ -60,7 +60,7 @@ export const DOMAINS: Domain[] = [
     description:
       'Eight copy-ready prompts for organizational analysis — company profile, role clarity, KPIs, processes, and daily workflow structure.',
     audience: 'Operational Teams, Project Managers & All Staff',
-    icon: Play,
+    icon: Building2,
     isCore: false,
     phase: 'Adopt',
     transition: 'With org context mapped, move to Create for marketing prompts.',
