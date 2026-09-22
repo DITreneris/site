@@ -1,5 +1,5 @@
 # Prompt Anatomy — Extended LLM Reference
-# Generated: 2026-09-15
+# Generated: 2026-09-22
 # Canonical site: https://promptanatomy.site/
 
 ## Summary

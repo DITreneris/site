@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Social `og:description` and `twitter:description` shortened to 109 characters so mobile previews keep the outcome line. Search `meta description` and WebPage JSON-LD stay at 155.
 - Public README slimmed to onboarding. Roadmap, TODO, and the full deploy runbook moved to local `docs/private/` (gitignored; do not recreate at repo root).
 - Hub, Enter, and Decide copy aligned with live products (Starter/Core/Pilot names, no EUR; 15-slide EN/LT lesson; exec kit as course lead magnet).
 - Anatomizer intro names the six course blocks and links `#method`.
