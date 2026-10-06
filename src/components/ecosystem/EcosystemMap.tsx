@@ -39,7 +39,7 @@ export default function EcosystemMap({
           <h2 className="mt-2 text-3xl font-black leading-tight tracking-[-0.02em] text-white md:text-4xl">
             Six-module training. Eight ecosystem stages. One core hub.
           </h2>
-          <p className="mt-3 text-sm leading-relaxed text-on-dark">
+          <p className="mt-5 text-base leading-relaxed text-on-dark">
             6-block training at the hub; role kits from first lesson to executive playbooks,
             plus knowledge depth and Play.
           </p>

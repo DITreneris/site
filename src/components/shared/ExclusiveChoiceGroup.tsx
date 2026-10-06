@@ -42,6 +42,24 @@ export default function ExclusiveChoiceGroup({
     queueMicrotask(() => buttonRefs.current[clamped]?.focus());
   };
 
+  const focusedIndex = () => {
+    const idx = buttonRefs.current.findIndex((el) => el === document.activeElement);
+    return idx >= 0 ? idx : 0;
+  };
+
+  /** Unselected group: step off the focused radio. Selected group: clamp, do not wrap. */
+  const move = (delta: number) => {
+    if (value === null) {
+      const from = focusedIndex();
+      const next = from + delta;
+      if (next < 0) focusAndSelect(options.length - 1);
+      else if (next >= options.length) focusAndSelect(0);
+      else focusAndSelect(next);
+      return;
+    }
+    focusAndSelect(value + delta);
+  };
+
   const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (options.length === 0) return;
 
@@ -51,20 +69,12 @@ export default function ExclusiveChoiceGroup({
       case 'ArrowRight':
       case 'ArrowDown':
         event.preventDefault();
-        if (fromNull) {
-          focusAndSelect(0);
-        } else {
-          focusAndSelect(value + 1);
-        }
+        move(1);
         break;
       case 'ArrowLeft':
       case 'ArrowUp':
         event.preventDefault();
-        if (fromNull) {
-          focusAndSelect(0);
-        } else {
-          focusAndSelect(value - 1);
-        }
+        move(-1);
         break;
       case 'Home':
         event.preventDefault();
@@ -97,7 +107,7 @@ export default function ExclusiveChoiceGroup({
     >
       <span
         id={legendId}
-        className={legendSrOnly ? 'sr-only' : 'text-label-upper text-muted'}
+        className={legendSrOnly ? 'sr-only' : 'text-eyebrow-light'}
       >
         {legend}
       </span>
@@ -121,24 +131,24 @@ export default function ExclusiveChoiceGroup({
                   ? `quiz-option group min-h-[44px] ${
                       selected ? 'border-brand-accent bg-accent-muted-bg' : ''
                     }`
-                  : `rounded-lg border min-h-[44px] px-2 py-2.5 text-center text-caption font-bold transition-all focus-ring active:scale-[0.98] ${
+                  : `rounded-lg border min-h-[44px] px-2 py-2.5 text-center text-sm font-bold transition-all focus-ring active:scale-[0.98] ${
                       selected
                         ? 'border-brand-accent bg-accent-muted-bg text-brand-dark'
-                        : 'border-subtle text-muted hover:border-slate-300 hover:text-brand-dark'
+                        : 'border-subtle text-body-strong hover:border-slate-300 hover:text-brand-dark'
                     }`
               }
             >
               {stacked ? (
                 <span className="flex w-full flex-col gap-1 text-left">
                   <span
-                    className={`text-xs font-bold ${
+                    className={`text-sm font-bold ${
                       selected ? 'text-brand-dark' : 'text-body group-hover:text-brand-dark'
                     }`}
                   >
                     {option.label}
                   </span>
                   {option.description ? (
-                    <span className="text-caption font-normal leading-relaxed text-muted">
+                    <span className="text-sm font-normal leading-relaxed text-muted">
                       {option.description}
                     </span>
                   ) : null}

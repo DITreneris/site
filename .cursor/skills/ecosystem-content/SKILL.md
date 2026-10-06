@@ -125,7 +125,7 @@ Phase accent colors come from `src/data/ecosystemTheme.ts` — do not add per-do
 
 - Align with `primal_concept.txt`; do not invent new product areas
 
-- **Kit, not OS** — static subdomain products are "prompt kit" or "playbook"; reserve "OS" for brand umbrella and hub training only
+- **Kit, not OS** — static subdomain products are "prompt kit" or "playbook". The hub product is an AI Training System. This discovery site’s title names the visit (ecosystem for teams). Do not put “operating system” in the `.site` title, badge, h1, or the founder FAQ answer. The Tier 3 label Structured AI OS Ready stays.
 
 - **Count what you ship** — feature bullets must map to a product README fact (no API, multi-agent, or enterprise automation unless the repo has it)
 

@@ -1,6 +1,6 @@
 # Prompt Anatomy Ecosystem
 
-**Prompt Anatomy is an AI Operating System for modern teams.**
+**Prompt Anatomy on this site is the ecosystem map for teams.**
 
 6-module interactive training (6-block methodology) plus an ecosystem of focused prompt kits — from a free first lesson through executive playbooks.
 
@@ -147,7 +147,7 @@ Each part of Prompt Anatomy has a clear role:
 
 # Core Message
 
-**Prompt Anatomy helps organizations turn AI from a random tool into a structured operating system.**
+**Less random prompting. More structured execution.**
 
 6-module training at the hub; focused prompt kits on each subdomain.
 

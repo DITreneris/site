@@ -8,8 +8,8 @@ alwaysApply: false
 
 ## Tagline hierarchy
 
-1. **Primary:** AI Operating System for modern teams
-2. **Secondary:** Turn AI from a chat tool into a structured operating system
+1. **Visit (this site):** Ecosystem for teams — map, prompt builder, team assessment. Title, badge, h1, and `og:title` use this visit. Do not put “AI Operating System” or “AI Training System” in those slots.
+2. **Hub product:** AI Training System lives on promptanatomy.app. Do not copy that category into the `.site` title.
 3. **Outcome:** Less random prompting. More structured execution.
 
 ## Domain copy checklist

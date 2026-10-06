@@ -11,19 +11,17 @@ export default function Hero({ onStartAssessment, onExploreEcosystem }: HeroProp
   return (
     <section className="relative overflow-hidden bg-hero-bg">
       <div className="container-hero px-4 pb-10 pt-14 text-center sm:px-6 lg:px-8">
-        <span className="badge-accent mx-auto">AI Operating System</span>
+        <span className="badge-accent mx-auto">Ecosystem</span>
 
         <h1 className="mt-6 text-3xl font-black leading-[1.08] tracking-[-0.02em] text-brand-dark sm:text-4xl lg:text-5xl">
-          Turn AI from a chat tool into a{' '}
-          <span className="bg-accent-gradient-strong bg-clip-text text-transparent">
-            structured operating system
-          </span>
+          Less random prompting.
+          <span className="mt-1 block">More structured execution.</span>
         </h1>
 
-        <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-body">
+        <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-body">
           Workflows, templates, and standards &mdash; not one-off chats.
         </p>
-        <p className="mx-auto mt-3 max-w-xl text-caption leading-relaxed text-muted">
+        <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-muted">
           600+ templates · 60 tools · eight stages — across the ecosystem
         </p>
 
@@ -47,7 +45,7 @@ export default function Hero({ onStartAssessment, onExploreEcosystem }: HeroProp
         <button
           type="button"
           onClick={onExploreEcosystem}
-          className="link-inline mt-4"
+          className="mt-6 inline-flex min-h-[44px] items-center gap-1.5 rounded-sm text-sm font-semibold text-body-strong focus-ring"
         >
           Explore the ecosystem
           <ArrowRight className="icon-sm" />

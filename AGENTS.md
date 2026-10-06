@@ -6,7 +6,7 @@
 
 
 
-A production marketing and demo site for **Prompt Anatomy**, an AI Operating System for modern teams. The site explains the nine-domain ecosystem, lets visitors explore modules, build structured prompts (Anatomizer), and run a team AI maturity assessment.
+A production marketing and demo site for **Prompt Anatomy**. The site is the ecosystem map for teams: nine domains, a prompt builder (Anatomizer), and a team assessment. Training lives at promptanatomy.app.
 
 
 

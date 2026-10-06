@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Founder FAQ no longer says he builds AI operating systems. He connects the nine domains into one ecosystem. The Tier 3 label stays **Structured AI OS Ready**.
+- Discovery title and hero name the visit: **Prompt Anatomy — Ecosystem for teams**, badge **Ecosystem**, h1 **Less random prompting. More structured execution.** The hub stays the training system.
+- Header and footer lockup: navy tile, filled gold bolt, **Prompt** / **Anatomy** split. The “Structured Work Systems” caption is gone. Favicon uses that bolt on a flat navy tile.
+- Primary button label is weight 900 with a navy shadow. Light-page focus rings are navy. The page uses the system sans stack.
+- Footer legal line no longer names the founder. Organization logo in schema points at the hub social image.
+
 ### Added
 
 - Gateway method map at `/#method`: lesson (enter-5 on `.cloud`), demo (5-layer Anatomizer), and course (6-block META → ADVANCED on `.app`), plus where-to-start paths to `.cloud`, `.app` (Starter or Core), and `.pro`. No EUR prices.
@@ -20,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Type and rhythm pass: larger hero support and proof lines, readable “Explore the ecosystem” link, larger ecosystem stage and domain-detail text (duplicate domain badge removed), Prompt Builder chips and prompt body at body size, one gold checklist instead of two, larger quiz answers and result copy, stats disclaimer and closing subtitle lifted on the dark bands.
 - Social `og:description` and `twitter:description` shortened to 109 characters so mobile previews keep the outcome line. Search `meta description` and WebPage JSON-LD stay at 155.
 - Public README slimmed to onboarding. Roadmap, TODO, and the full deploy runbook moved to local `docs/private/` (gitignored; do not recreate at repo root).
 - Hub, Enter, and Decide copy aligned with live products (Starter/Core/Pilot names, no EUR; 15-slide EN/LT lesson; exec kit as course lead magnet).
@@ -32,12 +41,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Repeating a stage’s **See an example prompt** reloads that preset. **Try the prompt builder** clears a leftover kit preset. Pre-copy checks stay.
+- Practice arrow keys move off the unselected first choice instead of marking it wrong. A selected group still clamps and does not wrap.
+- Focus rings on the dark header and ecosystem band stay gold.
+- Quiz **Back** and **View starting stage** use body-strong text on the light card.
+- Mobile page padding includes the home-indicator inset so the sticky hub bar does not cover the footer.
+- JSON-LD `dateModified` stays put when the structured-data graph is unchanged.
+- Sitemap `lastmod` stays put when `llms-full.txt` content is unchanged.
+- `verify:hrefs` calls the same `kitHref` as the site (`src/data/gatewayHref.mjs`).
 - SequencePath stage grid is one column below `sm` (320px no longer splits two cards).
 - Hub DomainDetail “Open” uses `platformHref`; quiz Tier 1 Cloud CTA uses `lessonHref`; other recommended kits use gateway UTM.
 - DomainDetail spoke “Open” and footer Enter→Play now use gateway UTM (`kitHref` / `lessonHref` / `execKitHref`). Spoke footer links emit `kit_outbound`. Entity footer, schema, and legal/social URLs unchanged.
 - DomainDetail spoke Open, footer Enter→Play, and quiz kit CTAs now land on each spoke’s live 200 storefront (`spokeCanonical.json`: www where that is Production; `/en/` on `.help`, `.ceo`, `.space`) with gateway UTM unchanged. Entity footer, schema, `llms.txt`, and legal/social stay bare apex.
 - Anatomizer stage-example CTA maps to domain ids `ceo` / `space` / `help` (Manage / Create / Hire).
-- Method start-path row wraps; DomainDetail title/domain badge wrap; Anatomizer toolbar wraps; dark “Best for” / domain labels use `text-subtle`.
+- Method start-path row wraps; DomainDetail title wraps; Anatomizer toolbar wraps.
 - Hash routing: `#anatomizer-builder` no longer hijacks to Ecosystem; `#method` / `#faq` keep the current tab (fresh `/#method` lands on Ecosystem). Hero Explore and header logo force-scroll to the map even when already on Ecosystem (logo from FAQ no longer stuck on FAQ).
 - DomainDetail Create/Hire/Manage **See an example prompt** loads matching Anatomizer scenario chips and lands on `#anatomizer-builder`. Method **Try the prompt builder** also lands on the builder.
 - Quiz double-click / rapid option clicks no longer crash (`MATURITY_QUIZ[step]` undefined).

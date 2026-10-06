@@ -31,6 +31,7 @@ export default function App() {
   const [activeTab, setActiveTab] = useState<TabId>(() => tabFromHash(window.location.hash));
   const [selectedDomain, setSelectedDomain] = useState('app');
   const [anatomizerScenarioId, setAnatomizerScenarioId] = useState<string | null>(null);
+  const [scenarioNonce, setScenarioNonce] = useState(0);
   const activeTabRef = useRef(activeTab);
   const pendingScrollRef = useRef<string | null>(null);
 
@@ -125,11 +126,12 @@ export default function App() {
       ? ANATOMY_SCENARIOS.find((s) => s.domainId === domainId)
       : undefined;
     setAnatomizerScenarioId(scenario?.id ?? null);
+    setScenarioNonce((n) => n + 1);
     navigateToTab('anatomizer', { anchor: 'anatomizer-builder' });
   };
 
   return (
-    <div className="min-h-screen bg-white pb-[4.5rem] text-brand-dark antialiased lg:pb-0">
+    <div className="pb-sticky-clearance min-h-screen bg-white text-brand-dark antialiased">
       <a
         href="#main-content"
         className="sr-only rounded-lg bg-brand-dark px-4 py-2 text-sm font-bold text-white focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus-ring"
@@ -178,7 +180,7 @@ export default function App() {
           className={activeTab === 'anatomizer' ? 'animate-panel-in' : undefined}
         >
           <CorrectPromptPractice />
-          <AnatomizerBuilder scenarioId={anatomizerScenarioId} />
+          <AnatomizerBuilder scenarioId={anatomizerScenarioId} scenarioNonce={scenarioNonce} />
         </div>
         <div
           role="tabpanel"

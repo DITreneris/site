@@ -31,9 +31,14 @@ const INITIAL_CHECKS: CheckState = {
 
 interface AnatomizerBuilderProps {
   scenarioId?: string | null;
+  /** Bumps on every example / builder open so the same scenario id reloads. */
+  scenarioNonce?: number;
 }
 
-export default function AnatomizerBuilder({ scenarioId = null }: AnatomizerBuilderProps) {
+export default function AnatomizerBuilder({
+  scenarioId = null,
+  scenarioNonce = 0,
+}: AnatomizerBuilderProps) {
   const [selection, setSelection] = useState<SelectionState>(INITIAL);
   const [checks, setChecks] = useState<CheckState>(INITIAL_CHECKS);
   const [copied, setCopied] = useState(false);
@@ -69,14 +74,21 @@ export default function AnatomizerBuilder({ scenarioId = null }: AnatomizerBuild
   };
 
   useEffect(() => {
-    if (!scenarioId) return;
+    if (scenarioNonce === 0) return;
+    if (!scenarioId) {
+      setSelection({ ...INITIAL });
+      setCopied(false);
+      setCopyError(false);
+      setActiveScenario(null);
+      return;
+    }
     const scenario = ANATOMY_SCENARIOS.find((s) => s.id === scenarioId);
     if (!scenario) return;
     setSelection({ ...scenario.selection });
     setCopied(false);
     setCopyError(false);
     setActiveScenario(scenarioId);
-  }, [scenarioId]);
+  }, [scenarioId, scenarioNonce]);
 
   const toggleCheck = (id: PreCopyCheckId) => {
     setChecks((prev) => ({ ...prev, [id]: !prev[id] }));
@@ -104,7 +116,7 @@ export default function AnatomizerBuilder({ scenarioId = null }: AnatomizerBuild
         <div className="max-w-2xl scroll-mt-16" id="anatomizer-builder">
           <span className="text-eyebrow-light">The Anatomizer</span>
           <h2 className="section-heading mt-2">Build a structured prompt, layer by layer</h2>
-          <p className="mt-3 text-sm leading-relaxed text-body">
+          <p className="mt-5 text-base leading-relaxed text-body">
             Assemble five layers into a live prompt. The course drills the full 6-block system:
             META, INPUT, OUTPUT, REASONING, QUALITY, ADVANCED.{' '}
             <a href="#method" className="link-footer-meta">
@@ -174,7 +186,7 @@ export default function AnatomizerBuilder({ scenarioId = null }: AnatomizerBuild
                   )}
                 </button>
               </div>
-              <pre className="scrollbar-thin-dark max-h-[480px] overflow-y-auto whitespace-pre-wrap break-words p-5 font-mono text-caption leading-relaxed text-on-dark">
+              <pre className="scrollbar-thin-dark max-h-[480px] overflow-y-auto whitespace-pre-wrap break-words p-5 font-mono text-sm leading-relaxed text-on-dark">
                 {assembledPrompt.split('\n').map((line, i) => {
                   const highlight = /^\[.*\]$/.test(line) || line.startsWith('###');
                   return (
@@ -191,7 +203,7 @@ export default function AnatomizerBuilder({ scenarioId = null }: AnatomizerBuild
               <p id="pre-copy-hint" className="text-eyebrow-light">
                 Before you copy
               </p>
-              <p className="mt-1 text-caption leading-relaxed text-body">
+              <p className="mt-1 text-sm leading-relaxed text-body">
                 Confirm the three checks before copying.
               </p>
               <ul className="mt-3 space-y-1">
@@ -204,7 +216,7 @@ export default function AnatomizerBuilder({ scenarioId = null }: AnatomizerBuild
                         onChange={() => toggleCheck(item.id)}
                         className="h-4 w-4 shrink-0 rounded border-slate-300 text-brand-accent focus-ring"
                       />
-                      <span className="text-caption text-body-strong">{item.label}</span>
+                      <span className="text-sm text-body-strong">{item.label}</span>
                     </label>
                   </li>
                 ))}
@@ -213,7 +225,7 @@ export default function AnatomizerBuilder({ scenarioId = null }: AnatomizerBuild
 
             {showPlatformBridge && (
               <div className="callout-accent space-y-3">
-                <p className="text-caption leading-relaxed text-body">
+                <p className="text-sm leading-relaxed text-body">
                   This demo uses five layers. The course teaches META → INPUT → OUTPUT →
                   REASONING → QUALITY → ADVANCED.
                 </p>
@@ -232,9 +244,9 @@ export default function AnatomizerBuilder({ scenarioId = null }: AnatomizerBuild
               </div>
             )}
 
-            <div className="callout-accent flex items-start gap-3">
+            <div className="flex items-start gap-3">
               <ShieldCheck className="icon-sm mt-0.5 flex-shrink-0 text-brand-accent" />
-              <p className="text-caption leading-relaxed text-body">
+              <p className="text-sm leading-relaxed text-body">
                 Explicit structural divisions stop models from generating conversational filler,
                 keeping instructions repeatable and cost-efficient across the team.
               </p>

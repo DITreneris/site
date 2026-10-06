@@ -13,7 +13,7 @@ export default function ClosingCta({ onStartAssessment }: ClosingCtaProps) {
         <h2 className="text-3xl font-black leading-tight tracking-[-0.02em] text-white md:text-4xl">
           Ready to make AI a repeatable system?
         </h2>
-        <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-subtle">
+        <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-on-dark">
           Know your stage in 60 seconds, then open the hub.
         </p>
         <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">

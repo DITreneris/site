@@ -213,9 +213,8 @@ function buildGraph({ domains, contact, faqs, ogImageUrl, dateModified }) {
         '@id': ORG_ID,
         name: 'Prompt Anatomy',
         url: `${PLATFORM_URL}/`,
-        logo: `${PLATFORM_URL}/favicon.svg`,
-        description:
-          'An AI Operating System for modern teams: structured templates, workflows, and frameworks that turn ad-hoc prompting into repeatable execution.',
+        logo: 'https://www.promptanatomy.app/og-image.png',
+        description: 'Turn random AI chats into repeatable business workflows.',
         email: contact.email,
         founder: { '@id': FOUNDER_ID },
         address: {
@@ -235,9 +234,9 @@ function buildGraph({ domains, contact, faqs, ogImageUrl, dateModified }) {
         '@type': 'WebPage',
         '@id': WEBPAGE_ID,
         url: `${SITE_URL}/`,
-        name: 'Prompt Anatomy — AI Operating System for Teams',
+        name: 'Prompt Anatomy — Ecosystem for teams',
         description:
-          'Prompt Anatomy is an AI Operating System for modern teams. Explore the nine-domain ecosystem, build structured prompts, and assess your team\'s AI maturity.',
+          'Explore the nine-domain ecosystem, build structured prompts, and assess your team\'s AI maturity.',
         isPartOf: { '@id': WEBSITE_ID },
         about: { '@id': ORG_ID },
         publisher: { '@id': ORG_ID },
@@ -255,13 +254,13 @@ function buildGraph({ domains, contact, faqs, ogImageUrl, dateModified }) {
       {
         '@type': 'Product',
         '@id': PRODUCT_ID,
-        name: 'Prompt Anatomy AI Operating System',
+        name: 'Prompt Anatomy AI Training System',
         url: `${PLATFORM_URL}/`,
         image: ogImageUrl,
         brand: { '@id': ORG_ID },
         description:
-          '6-block methodology training (META, INPUT, OUTPUT, REASONING, QUALITY, ADVANCED) plus six role kits (Enter, Use, Create, Hire, Manage, Decide), Deepen, and Play (Corporate Ladder), around one core hub — an AI operating system for teams.',
-        category: 'AI Operating System',
+          '6-block methodology training (META, INPUT, OUTPUT, REASONING, QUALITY, ADVANCED) plus six role kits (Enter, Use, Create, Hire, Manage, Decide), Deepen, and Play (Corporate Ladder), around one core hub — an AI training system for teams.',
+        category: 'AI Training System',
         hasPart: { '@id': ECOSYSTEM_ID },
         offers: FREE_DEMO_OFFER,
       },
@@ -272,7 +271,7 @@ function buildGraph({ domains, contact, faqs, ogImageUrl, dateModified }) {
         operatingSystem: 'Web',
         url: `${PLATFORM_URL}/`,
         description:
-          'AI Operating System for modern teams: structured templates, workflows, and frameworks that turn ad-hoc prompting into repeatable execution.',
+          'AI Training System for modern teams: structured templates, workflows, and frameworks that turn ad-hoc prompting into repeatable execution.',
         image: ogImageUrl,
         offers: FREE_DEMO_OFFER,
         publisher: { '@id': ORG_ID },
@@ -305,21 +304,51 @@ async function main() {
   const contact = parseSiteContact(contactSrc);
   const faqs = parseSeoFaq(faqSrc);
   const ogImageUrl = extractOgImageUrl(html);
-  const dateModified = new Date().toISOString().slice(0, 10);
-  const graph = buildGraph({ domains, contact, faqs, ogImageUrl, dateModified });
-  const block = buildScriptBlock(graph);
+  const today = new Date().toISOString().slice(0, 10);
+  const previous = html.match(/"dateModified":\s*"(\d{4}-\d{2}-\d{2})"/)?.[1] ?? null;
 
   const markerPattern = new RegExp(`${START_MARKER}[\\s\\S]*?${END_MARKER}`);
+  const currentBlock = html.match(markerPattern)?.[0]?.replace(/\r\n/g, '\n');
 
-  if (!markerPattern.test(html)) {
+  if (!currentBlock) {
     throw new Error(
       `[generate-jsonld] Markers not found in index.html — add ${START_MARKER} and ${END_MARKER}`,
     );
   }
 
+  const withoutDate = (graph) => {
+    const clone = structuredClone(graph);
+    for (const node of clone['@graph'] ?? []) {
+      if (node['@type'] === 'WebPage') delete node.dateModified;
+    }
+    return JSON.stringify(clone);
+  };
+
+  const currentJson = currentBlock.match(
+    /<script type="application\/ld\+json">\s*([\s\S]*?)\s*<\/script>/,
+  )?.[1];
+  const currentGraph = currentJson ? JSON.parse(currentJson) : null;
+  const probe = buildGraph({
+    domains,
+    contact,
+    faqs,
+    ogImageUrl,
+    dateModified: previous ?? today,
+  });
+  const sameContent = currentGraph && withoutDate(currentGraph) === withoutDate(probe);
+  const dateModified = sameContent && previous ? previous : today;
+  const block = buildScriptBlock(
+    buildGraph({ domains, contact, faqs, ogImageUrl, dateModified }),
+  );
+
+  if (currentBlock === block) {
+    console.log('[generate-jsonld] Structured data unchanged');
+    return;
+  }
+
   const updated = html.replace(markerPattern, block);
   await writeFile(INDEX_HTML, updated, 'utf8');
-  console.log('[generate-jsonld] Patched index.html structured data');
+  console.log(`[generate-jsonld] Patched index.html structured data (dateModified ${dateModified})`);
 }
 
 main().catch((err) => {

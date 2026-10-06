@@ -108,7 +108,7 @@ export default function StatsStrip() {
           ))}
         </div>
 
-        <p className="mx-auto mt-10 max-w-2xl text-center text-xs leading-relaxed text-muted">
+        <p className="mx-auto mt-10 max-w-2xl text-center text-xs leading-relaxed text-on-dark">
           Counts span training and kits &mdash; not one library. 30&ndash;50% is standardization,
           not full automation.
         </p>

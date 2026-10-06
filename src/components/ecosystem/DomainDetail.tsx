@@ -23,13 +23,8 @@ export default function DomainDetail({ domain, onOpenAnatomizer }: DomainDetailP
             {createElement(domain.icon, { className: `icon-md ${accent.text}` })}
           </span>
           <div className="min-w-0">
-            <div className="flex flex-wrap items-center gap-2">
-              <h2 className="text-xl font-black text-white">{domain.title}</h2>
-              <span className="break-all rounded border border-border-glass bg-black/20 px-2 py-0.5 font-mono text-micro text-subtle">
-                {domain.domain}
-              </span>
-            </div>
-            <p className={`mt-0.5 text-xs font-semibold ${accent.text}`}>{domain.role}</p>
+            <h2 className="text-xl font-black text-white">{domain.title}</h2>
+            <p className={`mt-2 text-xs font-semibold ${accent.text}`}>{domain.role}</p>
             <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
               <span
                 className={`inline-flex items-center gap-1.5 rounded-full border border-border-glass bg-black/20 px-2 py-0.5 text-label-upper ${accent.text}`}
@@ -84,7 +79,7 @@ export default function DomainDetail({ domain, onOpenAnatomizer }: DomainDetailP
 
       <p className="mt-5 text-sm leading-relaxed text-on-dark">{domain.description}</p>
 
-      <div className="mt-4 flex items-start gap-2 text-xs leading-relaxed text-subtle">
+      <div className="mt-4 flex items-start gap-2 text-sm leading-relaxed text-on-dark">
         <ArrowRight className={`icon-sm mt-0.5 flex-shrink-0 ${accent.text}`} />
         <span>
           <span className="font-semibold text-on-dark-strong">Next in the journey: </span>
@@ -96,7 +91,7 @@ export default function DomainDetail({ domain, onOpenAnatomizer }: DomainDetailP
         <Users className={`icon-sm flex-shrink-0 ${accent.text}`} />
         <div>
           <span className="block text-label-upper text-subtle">Best for</span>
-          <span className="text-xs font-semibold text-on-dark-strong">{domain.audience}</span>
+          <span className="text-sm font-semibold text-on-dark-strong">{domain.audience}</span>
         </div>
       </div>
 
@@ -109,7 +104,7 @@ export default function DomainDetail({ domain, onOpenAnatomizer }: DomainDetailP
               className="flex items-center gap-2.5 rounded-lg border border-border-glass surface-inset-soft p-3"
             >
               <Check className={`icon-sm flex-shrink-0 ${accent.text}`} />
-              <span className="text-xs text-on-dark">{feat}</span>
+              <span className="text-sm text-on-dark">{feat}</span>
             </li>
           ))}
         </ul>

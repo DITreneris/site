@@ -58,7 +58,7 @@ export default function CorrectPromptPractice() {
 
           <div className="rounded-xl border border-subtle surface-muted p-4">
             <p className="text-label-upper text-muted">Weak prompt</p>
-            <p className="mt-2 font-mono text-caption leading-relaxed text-body-strong">
+            <p className="mt-2 font-mono text-sm leading-relaxed text-body-strong">
               {CORRECT_PROMPT_PRACTICE.weakPrompt}
             </p>
           </div>
@@ -93,9 +93,11 @@ export default function CorrectPromptPractice() {
 
               {isCorrect && (
                 <div className="mt-4 space-y-3">
-                  <pre className="max-h-48 overflow-y-auto whitespace-pre-wrap break-words rounded-lg border border-slate-800 bg-brand-dark p-4 font-mono text-caption leading-relaxed text-on-dark">
-                    {CORRECT_SOLUTION_COPYABLE}
-                  </pre>
+                  <div className="shell-terminal">
+                    <pre className="max-h-48 overflow-y-auto whitespace-pre-wrap break-words p-4 font-mono text-sm leading-relaxed text-on-dark">
+                      {CORRECT_SOLUTION_COPYABLE}
+                    </pre>
+                  </div>
                   <div className="flex flex-wrap items-center gap-3">
                     <button
                       type="button"
@@ -121,7 +123,7 @@ export default function CorrectPromptPractice() {
                       href={platformHref('practice')}
                       target="_blank"
                       rel="noreferrer"
-                      className="link-inline text-brand-dark hover:text-brand-accent"
+                      className="link-inline text-brand-dark hover:text-brand-dark"
                       onClick={() =>
                         trackEvent('platform_outbound', { source: 'practice' })
                       }
@@ -131,7 +133,7 @@ export default function CorrectPromptPractice() {
                     </a>
                     <a
                       href="#anatomizer-builder"
-                      className="link-inline text-brand-dark hover:text-brand-accent"
+                      className="link-inline text-brand-dark hover:text-brand-dark"
                     >
                       {CORRECT_PROMPT_PRACTICE.buildOwnHint}
                       <ArrowDown className="icon-sm" />

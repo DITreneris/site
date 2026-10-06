@@ -62,7 +62,7 @@ export default function MaturityQuiz({ onPivot }: MaturityQuizProps) {
         <div className="text-center">
           <span className="text-eyebrow-light">Team assessment</span>
           <h2 className="section-heading mt-2">60-second team assessment</h2>
-          <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-body">
+          <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-body">
             Three questions on how your team manages prompts and workflows. Get a readiness tier
             and a starting stage.
           </p>
@@ -76,7 +76,11 @@ export default function MaturityQuiz({ onPivot }: MaturityQuizProps) {
               </span>
               <div className="flex items-center gap-3">
                 {step > 0 && (
-                  <button type="button" onClick={goBack} className="link-inline">
+                  <button
+                    type="button"
+                    onClick={goBack}
+                    className="inline-flex min-h-[44px] items-center gap-1.5 rounded-sm text-sm font-semibold text-body-strong focus-ring"
+                  >
                     <ChevronLeft className="icon-sm" />
                     Back
                   </button>
@@ -115,7 +119,7 @@ export default function MaturityQuiz({ onPivot }: MaturityQuizProps) {
                     onClick={() => handleOption(opt.score)}
                     className="quiz-option group"
                   >
-                    <span className="text-xs text-body group-hover:text-brand-dark">
+                    <span className="text-sm text-body group-hover:text-brand-dark">
                       {opt.text}
                     </span>
                     <ChevronRight className="icon-sm flex-shrink-0 text-subtle group-hover:text-brand-accent" />
@@ -133,7 +137,7 @@ export default function MaturityQuiz({ onPivot }: MaturityQuizProps) {
             <div className="space-y-2 text-center">
               <span className="badge-accent mx-auto">Your tier</span>
               <h3 className="text-lg font-extrabold text-brand-dark">{result.title}</h3>
-              <p className="text-xs text-muted">
+              <p className="text-caption text-muted">
                 Maturity score:{' '}
                 <strong className="text-brand-dark">{result.score}</strong> / {result.maxScore}
               </p>
@@ -145,13 +149,13 @@ export default function MaturityQuiz({ onPivot }: MaturityQuizProps) {
                   <AlertTriangle className="icon-sm" />
                   <h4 className="text-label-upper">Current state</h4>
                 </div>
-                <p className="text-xs leading-relaxed text-body">{result.description}</p>
+                <p className="text-sm leading-relaxed text-body">{result.description}</p>
                 {result.diagnostics.length > 0 && (
                   <div className="mt-3 border-t border-subtle pt-3">
                     <h5 className="text-label-upper text-muted">What this means</h5>
                     <ul className="mt-2 space-y-2">
                       {result.diagnostics.map((line) => (
-                        <li key={line} className="text-xs leading-relaxed text-body">
+                        <li key={line} className="text-sm leading-relaxed text-body">
                           {line}
                         </li>
                       ))}
@@ -166,7 +170,7 @@ export default function MaturityQuiz({ onPivot }: MaturityQuizProps) {
                     <Award className="icon-sm" />
                     <h4 className="text-eyebrow-light">Recommended next stage</h4>
                   </div>
-                  <p className="mt-1 text-xs leading-relaxed text-body">
+                  <p className="mt-1 text-sm leading-relaxed text-body">
                     {recommended
                       ? `Start with ${recommended.title} (${recommended.domain}).`
                       : 'Explore the recommended stage.'}
@@ -226,7 +230,7 @@ export default function MaturityQuiz({ onPivot }: MaturityQuizProps) {
                   <button
                     type="button"
                     onClick={() => onPivot(result.recommendedId)}
-                    className="link-inline mx-auto"
+                    className="mx-auto inline-flex min-h-[44px] items-center gap-1.5 rounded-sm text-sm font-semibold text-body-strong focus-ring"
                   >
                     View starting stage
                     <ArrowRight className="icon-sm" />

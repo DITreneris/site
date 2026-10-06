@@ -1,11 +1,11 @@
 # Prompt Anatomy — Extended LLM Reference
-# Generated: 2026-09-22
+# Generated: 2026-10-06
 # Canonical site: https://promptanatomy.site/
 
 ## Summary
 
-Prompt Anatomy is an AI Operating System for modern teams.
-It helps organizations move from random prompting to structured, repeatable AI workflows.
+Prompt Anatomy on this site is the ecosystem map for teams: nine domains, a prompt builder, and a team assessment.
+Training on the 6-block methodology lives at promptanatomy.app.
 Less random prompting. More structured execution.
 
 ## Primary cite URLs
@@ -21,7 +21,7 @@ Less random prompting. More structured execution.
 ## FAQ
 
 ### What is Prompt Anatomy?
-Prompt Anatomy is an AI Operating System for modern teams — 6-module interactive training on the 6-block methodology, plus an ecosystem of focused prompt kits for onboarding, operations, marketing, HR, leadership, and executive workflows.
+Prompt Anatomy on promptanatomy.site is the ecosystem map for teams: nine domains, a prompt builder, and a 60-second assessment. Training on the 6-block methodology lives at promptanatomy.app.
 
 ### Who is Prompt Anatomy for?
 Prompt Anatomy is built for CEOs, COOs, IT leaders, managers, and operational teams who want structured AI workflows — from a free first lesson through the full training course and role-specific prompt kits.
@@ -30,7 +30,7 @@ Prompt Anatomy is built for CEOs, COOs, IT leaders, managers, and operational te
 Nine interconnected domains: one core hub at promptanatomy.app (6-module training); six role kits — Enter (promptanatomy.cloud, first lesson), Use (promptanatomy.info, 8 org prompts), Create (promptanatomy.space, 10 marketing prompts), Hire (promptanatomy.help, 10 HR prompts), Manage (promptanatomy.ceo, CEO generator + playbooks), Decide (promptanatomy.pro, executive prompt kit); plus Deepen (promptanatomy.blog, knowledge hub) and Play (promptanatomy.lol, Corporate Ladder game).
 
 ### Who founded Prompt Anatomy?
-Prompt Anatomy was founded by Tomas Staniulis, a published author on organizational systems and structured workflows. He builds AI operating systems for modern teams — connecting Enter, Use, Create, Hire, Manage, Decide, Deepen, and Play across the Prompt Anatomy ecosystem. Full founder bio: https://www.promptanatomy.blog/about/
+Prompt Anatomy was founded by Tomas Staniulis, a published author on organizational systems and structured workflows. He connects Enter, Use, Create, Hire, Manage, Decide, Deepen, and Play into one ecosystem for teams. Full founder bio: https://www.promptanatomy.blog/about/
 
 ### What is structured prompting and the Anatomizer?
 Three models, one brand. The free lesson on promptanatomy.cloud uses a five-part enter frame: Role, Context, Reasoning, Output, Quality control. The Anatomizer on promptanatomy.site is a five-layer demo: System Role, Business Context, Dynamic Variables, Instructions, and Output Constraints. The course at promptanatomy.app teaches the complete 6-block system: META, INPUT, OUTPUT, REASONING, QUALITY, ADVANCED.

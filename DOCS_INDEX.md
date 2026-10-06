@@ -58,7 +58,7 @@ Use this table to pick the right agent, skill, and documents.
 |----|------|----------|-------|
 | `readme` | [README.md](README.md) | Developers | Public onboarding, local dev |
 | `agents` | [AGENTS.md](AGENTS.md) | Agents + leads | Scope, domains, workflow, conventions |
-| `lessons` | [.cursor/LESSONS.md](.cursor/LESSONS.md) | Agents | Durable corrections from audits (naming, OG, URLs, CHANGELOG) |
+| `lessons` | [.cursor/LESSONS.md](.cursor/LESSONS.md) | Agents | Durable corrections from audits (naming, OG, URLs, CHANGELOG, type) |
 | `design-system` | [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) | Design + frontend + agents | v2.2 implementation; §14 = agent guardrails |
 | `vercel-config` | [vercel.json](vercel.json) | DevOps / release | Permanent www → apex redirect; apex must be Production in Vercel dashboard |
 | `changelog` | [CHANGELOG.md](CHANGELOG.md) | Everyone | Keep a Changelog format; `[Unreleased]` |

@@ -1,6 +1,6 @@
 # Prompt Anatomy — Ecosystem Site
 
-Official marketing and demo site for the **Prompt Anatomy** AI Operating System.
+Official marketing and demo site for **Prompt Anatomy**. This page is the ecosystem map for teams: nine domains, a prompt builder, and a team assessment. Training lives at promptanatomy.app.
 
 | | |
 |---|---|

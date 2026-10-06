@@ -19,7 +19,7 @@ export default function SequencePath({ selectedDomain, onSelectDomain }: Sequenc
     <div className="rounded-2xl border border-border-glass bg-surface-card backdrop-blur-md p-5 sm:p-6">
       <div className="mb-5 border-b border-border-glass pb-4">
         <h3 className="text-label-upper text-on-dark-strong">Where to start</h3>
-        <p className="mt-1 text-xs text-on-dark">Select a stage for details.</p>
+        <p className="mt-1 text-sm text-on-dark">Select a stage for details.</p>
       </div>
 
       {/* Spine origin: the central hub everything connects to */}
@@ -35,8 +35,8 @@ export default function SequencePath({ selectedDomain, onSelectDomain }: Sequenc
           <Layers className="icon-md text-brand-accent" />
         </span>
         <span>
-          <span className="block text-xs font-bold text-white">Core hub</span>
-          <span className="block font-mono text-micro text-subtle">promptanatomy.app</span>
+          <span className="block text-sm font-bold text-white">Core hub</span>
+          <span className="block font-mono text-micro text-on-dark">promptanatomy.app</span>
         </span>
         <span className="ml-auto hidden items-center gap-1.5 pr-1 sm:flex" aria-hidden="true">
           {PHASE_ORDER.map((phase) => (
@@ -84,11 +84,11 @@ export default function SequencePath({ selectedDomain, onSelectDomain }: Sequenc
                         <span className="mb-2 flex h-8 w-8 items-center justify-center rounded-lg surface-inset">
                           {createElement(item.icon, { className: `icon-sm ${accent.text}` })}
                         </span>
-                        <h4 className="text-xs font-bold text-white">{item.title}</h4>
-                        <span className="mt-1 block text-caption leading-snug text-subtle">
+                        <h4 className="text-sm font-bold text-white">{item.title}</h4>
+                        <span className="mt-1 block text-sm leading-snug text-on-dark">
                           {item.role}
                         </span>
-                        <span className="mt-1.5 block break-all font-mono text-micro tracking-tight text-subtle">
+                        <span className="mt-1.5 block break-all font-mono text-micro tracking-tight text-on-dark">
                           {item.domain}
                         </span>
                       </button>

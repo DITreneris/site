@@ -180,8 +180,8 @@ function buildLlmsFull(domains, layers, authorContact, faqs) {
     '',
     '## Summary',
     '',
-    'Prompt Anatomy is an AI Operating System for modern teams.',
-    'It helps organizations move from random prompting to structured, repeatable AI workflows.',
+    'Prompt Anatomy on this site is the ecosystem map for teams: nine domains, a prompt builder, and a team assessment.',
+    'Training on the 6-block methodology lives at promptanatomy.app.',
     'Less random prompting. More structured execution.',
     '',
     '## Primary cite URLs',
@@ -251,6 +251,24 @@ function buildLlmsFull(domains, layers, authorContact, faqs) {
   return lines.join('\n') + '\n';
 }
 
+/** Drop the generated date so an unchanged body does not look new. */
+function stripGeneratedStamp(text) {
+  return text.replace(/\r\n/g, '\n').replace(/^# Generated: \d{4}-\d{2}-\d{2}$/m, '# Generated:');
+}
+
+function extractLastmod(xml) {
+  return xml.match(/<lastmod>(\d{4}-\d{2}-\d{2})<\/lastmod>/)?.[1] ?? null;
+}
+
+async function readOptional(path) {
+  try {
+    return await readFile(path, 'utf8');
+  } catch (err) {
+    if (err && err.code === 'ENOENT') return null;
+    throw err;
+  }
+}
+
 function buildSitemap(lastmod) {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -276,18 +294,35 @@ async function main() {
   const layers = parseAnatomyLayers(anatomySrc);
   const authorContact = parseAuthorContact(contactSrc);
   const faqs = parseSeoFaq(faqSrc);
-  const lastmod = new Date().toISOString().slice(0, 10);
-
+  const today = new Date().toISOString().slice(0, 10);
   const llmsFull = buildLlmsFull(domains, layers, authorContact, faqs);
-  const sitemap = buildSitemap(lastmod);
-
-  await Promise.all([
-    writeFile(LLMS_FULL_OUT, llmsFull, 'utf8'),
-    writeFile(SITEMAP_OUT, sitemap, 'utf8'),
+  const [previousLlms, previousSitemap] = await Promise.all([
+    readOptional(LLMS_FULL_OUT),
+    readOptional(SITEMAP_OUT),
   ]);
 
-  console.log(`[generate-llms] Wrote ${LLMS_FULL_OUT}`);
-  console.log(`[generate-llms] Updated ${SITEMAP_OUT} (lastmod=${lastmod})`);
+  const previousLastmod = previousSitemap ? extractLastmod(previousSitemap) : null;
+  const sameLlms =
+    previousLlms != null &&
+    stripGeneratedStamp(previousLlms) === stripGeneratedStamp(llmsFull);
+  const lastmod = sameLlms && previousLastmod ? previousLastmod : today;
+  const sitemap = buildSitemap(lastmod);
+  const previousSitemapNorm = previousSitemap?.replace(/\r\n/g, '\n') ?? null;
+
+  const writes = [];
+  if (!sameLlms) writes.push(writeFile(LLMS_FULL_OUT, llmsFull, 'utf8'));
+  if (previousSitemapNorm !== sitemap) writes.push(writeFile(SITEMAP_OUT, sitemap, 'utf8'));
+
+  if (writes.length === 0) {
+    console.log('[generate-llms] llms-full and sitemap unchanged');
+    return;
+  }
+
+  await Promise.all(writes);
+  if (!sameLlms) console.log(`[generate-llms] Wrote ${LLMS_FULL_OUT}`);
+  if (previousSitemapNorm !== sitemap) {
+    console.log(`[generate-llms] Updated ${SITEMAP_OUT} (lastmod=${lastmod})`);
+  }
 }
 
 main().catch((err) => {

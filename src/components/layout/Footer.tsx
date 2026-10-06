@@ -1,8 +1,6 @@
-import { Zap, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 import {
-
-  AUTHOR,
 
   LEGAL_LINKS,
 
@@ -23,6 +21,8 @@ import {
 } from '../../data/siteContact';
 
 import { trackEvent } from '../../utils/trackEvent';
+
+import BrandLockup from '../shared/BrandLockup';
 
 
 
@@ -266,24 +266,6 @@ function FooterLegalMeta() {
 
     <p className="text-caption text-subtle">
 
-      <a
-
-        href={AUTHOR.aboutUrl}
-
-        target="_blank"
-
-        rel="noreferrer"
-
-        className="link-footer-meta text-subtle hover:text-brand-accent"
-
-      >
-
-        Founded by {AUTHOR.name}
-
-      </a>
-
-      <LegalSeparator />
-
       <address className="inline not-italic">{addressLine}</address>
 
     </p>
@@ -318,21 +300,7 @@ export default function Footer() {
 
           <div className="md:col-span-4">
 
-            <div className="flex items-center gap-3">
-
-              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-dark">
-
-                <Zap className="icon-md text-brand-accent" />
-
-              </span>
-
-              <span className="text-base font-extrabold tracking-tight text-brand-dark">
-
-                Prompt Anatomy
-
-              </span>
-
-            </div>
+            <BrandLockup />
 
             <div className="mt-4 max-w-xs space-y-1 text-sm leading-snug text-body">
 

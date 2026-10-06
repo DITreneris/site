@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { ArrowRight, Zap, Menu, X } from 'lucide-react';
+import { ArrowRight, Menu, X } from 'lucide-react';
 import type { TabId } from '../../types';
 import { platformHref } from '../../data/siteContact';
 import { trackEvent } from '../../utils/trackEvent';
+import BrandLockup from '../shared/BrandLockup';
 
 const TABS: { id: TabId; label: string }[] = [
   { id: 'ecosystem', label: 'Ecosystem' },
@@ -45,32 +46,10 @@ export default function Header({ activeTab, onTabChange, onLogoClick }: HeaderPr
       <div className="container-wide flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         <button
           onClick={onLogoClick}
-          className="flex min-h-[44px] items-center gap-3 focus-ring rounded-lg"
+          className="flex min-h-[44px] items-center rounded-lg focus-ring"
           aria-label="Prompt Anatomy home"
         >
-          <span
-            className={`flex h-9 w-9 items-center justify-center rounded-lg transition-colors duration-300 ${
-              dark ? 'bg-white/10' : 'bg-brand-dark'
-            }`}
-          >
-            <Zap className="icon-md text-brand-accent" />
-          </span>
-          <span className="text-left">
-            <span
-              className={`block text-base font-extrabold tracking-tight transition-colors duration-300 ${
-                dark ? 'text-white' : 'text-brand-dark'
-              }`}
-            >
-              Prompt Anatomy
-            </span>
-            <span
-              className={`hidden min-[360px]:block text-label-upper transition-colors duration-300 ${
-                dark ? 'text-subtle' : 'text-muted'
-              }`}
-            >
-              Structured Work Systems
-            </span>
-          </span>
+          <BrandLockup tone={dark ? 'navy' : 'light'} />
         </button>
 
         <div className="hidden min-w-0 flex-1 items-center justify-end gap-3 md:flex">
