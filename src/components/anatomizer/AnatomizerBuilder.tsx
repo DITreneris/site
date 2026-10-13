@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Terminal, Copy, Check, ShieldCheck, ExternalLink } from 'lucide-react';
 import LayerSelector from './LayerSelector';
 import {
@@ -45,6 +45,13 @@ export default function AnatomizerBuilder({
   const [copyError, setCopyError] = useState(false);
   const [showPlatformBridge, setShowPlatformBridge] = useState(false);
   const [activeScenario, setActiveScenario] = useState<string | null>(null);
+  const copyTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (copyTimerRef.current !== null) clearTimeout(copyTimerRef.current);
+    };
+  }, []);
 
   const assembledPrompt = useMemo(() => {
     const blocks = ANATOMY_LAYERS.map((layer) => {
@@ -94,6 +101,14 @@ export default function AnatomizerBuilder({
     setChecks((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
+  const scheduleCopyReset = (clear: () => void) => {
+    if (copyTimerRef.current !== null) clearTimeout(copyTimerRef.current);
+    copyTimerRef.current = setTimeout(() => {
+      copyTimerRef.current = null;
+      clear();
+    }, 2000);
+  };
+
   const handleCopy = async () => {
     if (!allChecked) return;
     try {
@@ -102,11 +117,11 @@ export default function AnatomizerBuilder({
       setCopied(true);
       setShowPlatformBridge(true);
       trackEvent('anatomizer_copy');
-      setTimeout(() => setCopied(false), 2000);
+      scheduleCopyReset(() => setCopied(false));
     } catch {
       setCopied(false);
       setCopyError(true);
-      setTimeout(() => setCopyError(false), 2000);
+      scheduleCopyReset(() => setCopyError(false));
     }
   };
 

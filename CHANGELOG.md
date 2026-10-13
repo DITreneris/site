@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Method and practice text links use `link-inline` at body-strong size. The domain-panel builder link uses `link-inline-dark` so the label stays visible on the navy card.
+- Footer address and legal links use `text-sm text-body`. The quiz “Current state” label uses `text-body-strong`.
+- JSON-LD no longer marks this page as an in-stock product. Training plans and checkout stay on promptanatomy.app.
+- Method-map shares point at `https://promptanatomy.site/#method` and name lesson, demo, then the course. A post does not say the builder is “on this page.”
 - Founder FAQ no longer says he builds AI operating systems. He connects the nine domains into one ecosystem. The Tier 3 label stays **Structured AI OS Ready**.
 - Discovery title and hero name the visit: **Prompt Anatomy — Ecosystem for teams**, badge **Ecosystem**, h1 **Less random prompting. More structured execution.** The hub stays the training system.
 - Header and footer lockup: navy tile, filled gold bolt, **Prompt** / **Anatomy** split. The “Structured Work Systems” caption is gone. Favicon uses that bolt on a flat navy tile.
@@ -17,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Quiz tier and tab-hash checks (`npm test`). CI runs those checks, spoke href verification, and the production build.
 - Gateway method map at `/#method`: lesson (enter-5 on `.cloud`), demo (5-layer Anatomizer), and course (6-block META → ADVANCED on `.app`), plus where-to-start paths to `.cloud`, `.app` (Starter or Core), and `.pro`. No EUR prices.
 - `platformHref` / `lessonHref` / `execKitHref` gateway UTM on conversion CTAs (`utm_source=site`, `utm_campaign=gateway`). `ENTITY_FOOTER_URL` unchanged.
 - FAQ capsules for the 6-block system, lesson-vs-kit-vs-course, and “not a prompt-ops vault.” `#method` in `llms.txt`, noscript, and JSON-LD.

@@ -1,4 +1,4 @@
-import { useId, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { Copy, Check, ArrowDown, ExternalLink } from 'lucide-react';
 import ExclusiveChoiceGroup from '../shared/ExclusiveChoiceGroup';
 import {
@@ -14,6 +14,13 @@ export default function CorrectPromptPractice() {
   const [copyError, setCopyError] = useState(false);
   const feedbackId = useId();
   const practiceTracked = useRef(false);
+  const copyTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (copyTimerRef.current !== null) clearTimeout(copyTimerRef.current);
+    };
+  }, []);
 
   const selected =
     selectedIndex !== null ? CORRECT_PROMPT_PRACTICE.choices[selectedIndex] : null;
@@ -28,17 +35,25 @@ export default function CorrectPromptPractice() {
     }
   };
 
+  const scheduleCopyReset = (clear: () => void) => {
+    if (copyTimerRef.current !== null) clearTimeout(copyTimerRef.current);
+    copyTimerRef.current = setTimeout(() => {
+      copyTimerRef.current = null;
+      clear();
+    }, 2000);
+  };
+
   const handleCopy = async () => {
     if (!isCorrect) return;
     try {
       await navigator.clipboard.writeText(CORRECT_SOLUTION_COPYABLE);
       setCopyError(false);
       setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      scheduleCopyReset(() => setCopied(false));
     } catch {
       setCopied(false);
       setCopyError(true);
-      setTimeout(() => setCopyError(false), 2000);
+      scheduleCopyReset(() => setCopyError(false));
     }
   };
 
@@ -123,7 +138,7 @@ export default function CorrectPromptPractice() {
                       href={platformHref('practice')}
                       target="_blank"
                       rel="noreferrer"
-                      className="link-inline text-brand-dark hover:text-brand-dark"
+                      className="link-inline"
                       onClick={() =>
                         trackEvent('platform_outbound', { source: 'practice' })
                       }
@@ -133,7 +148,7 @@ export default function CorrectPromptPractice() {
                     </a>
                     <a
                       href="#anatomizer-builder"
-                      className="link-inline text-brand-dark hover:text-brand-dark"
+                      className="link-inline"
                     >
                       {CORRECT_PROMPT_PRACTICE.buildOwnHint}
                       <ArrowDown className="icon-sm" />

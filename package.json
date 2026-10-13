@@ -12,7 +12,8 @@
     "generate:llms": "node scripts/generate-llms.mjs",
     "generate:jsonld": "node scripts/generate-jsonld.mjs",
     "qa:viewport": "node scripts/viewport-qa.mjs",
-    "verify:hrefs": "node scripts/verify-kit-href.mjs"
+    "verify:hrefs": "node scripts/verify-kit-href.mjs",
+    "test": "vitest run"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
@@ -28,6 +29,7 @@
     "playwright": "^1.52.0",
     "tailwindcss": "^4.3.0",
     "typescript": "^6.0.3",
-    "vite": "^8.0.14"
+    "vite": "^8.0.14",
+    "vitest": "^5.0.4"
   }
 }

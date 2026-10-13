@@ -264,7 +264,7 @@ function FooterLegalMeta() {
 
   return (
 
-    <p className="text-caption text-subtle">
+    <p className="text-sm text-body">
 
       <address className="inline not-italic">{addressLine}</address>
 

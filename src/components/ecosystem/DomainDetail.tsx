@@ -110,7 +110,7 @@ export default function DomainDetail({ domain, onOpenAnatomizer }: DomainDetailP
         </ul>
       </div>
 
-      <button onClick={() => onOpenAnatomizer(domain.id)} className="link-inline mt-5">
+      <button type="button" onClick={() => onOpenAnatomizer(domain.id)} className="link-inline-dark mt-5">
         <Terminal className="icon-sm" />
         {hasStageExample
           ? 'See an example prompt for this stage'

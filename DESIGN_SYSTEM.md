@@ -168,7 +168,7 @@ Scores and “Required for 1.0” below are **historical**. All listed requireme
 #### What already works
 
 - **Token source of truth:** `src/index.css` `@theme` (brand, ecosystem, surfaces, gradients, shadows, motion).
-- **Closed utility set:** `btn-primary` / `btn-secondary` / `btn-secondary-dark` (+ `-md`), `btn-tertiary-sm`, `btn-glass-sm`, `card-light` / `card-light-lg`, `card-glass`, `shell-terminal`, `callout-accent`, `surface-inset` / `surface-inset-soft`, `header-shell` / `nav-tab*`, semantic text (`text-body` … `text-on-dark-strong`), `footer-shell` / `footer-accent-band`, `link-footer` / `link-footer-meta`, `link-inline`, containers, `text-micro` / `text-caption`, section shells, focus/hover/motion utilities.
+- **Closed utility set:** `btn-primary` / `btn-secondary` / `btn-secondary-dark` (+ `-md`), `btn-tertiary-sm`, `btn-glass-sm`, `card-light` / `card-light-lg`, `card-glass`, `shell-terminal`, `callout-accent`, `surface-inset` / `surface-inset-soft`, `header-shell` / `nav-tab*`, semantic text (`text-body` … `text-on-dark-strong`), `footer-shell` / `footer-accent-band`, `link-footer` / `link-footer-meta`, `link-inline` / `link-inline-dark`, containers, `text-micro` / `text-caption`, section shells, focus/hover/motion utilities.
 - **Semantic color API:** `src/data/ecosystemTheme.ts` (`accentFor`, `PHASE_ACCENT`, gold hub-only).
 - **Layout shell:** `App.tsx` wires Header, Hero, ProblemSolution, StatsStrip, three tab panels, ClosingCta, Footer.
 - **A11y baseline:** skip link, tab roles, quiz `aria-live`, external links `rel="noreferrer"`, reduced motion, documented contrast matrix (§13).
@@ -509,7 +509,7 @@ Spot-check method: DevTools color picker + [WebAIM Contrast Checker](https://web
 | `#8a610f→#b07d12` gradient | `#eef2f7` hero bg | Hero accent phrase | **Pass AA** | `accent-gradient-strong` token |
 | `#ffffff` | `#0b1320` (`brand-dark`) | Dark-band headings | **Pass AAA** | |
 | `#cbd5e1` (`slate-300`) | `#0b1320` | Dark-band body intros | **Pass AA** | Ecosystem intro bump |
-| `#94a3b8` (`slate-400`) | `#0b1320` | Muted labels, mono domains | **Pass AA** large / **AA** 11px+ | Use for secondary/micro only |
+| `#94a3b8` (`slate-400`) | `#0b1320` | Muted labels, mono domains | **Pass AA** large / **AA** 11px+ | Secondary/micro on navy only. Not a light-surface action color (`link-inline` is slate-700). |
 | `#cfa73a` (`brand-accent`) | `#0b1320` | Eyebrows, icons, phase accents | **Decorative / large** | Uppercase labels; not body copy |
 | Gold CTA gradient | `#0b1320` text on button | Primary buttons | **Pass AA** | Dark text on gold fill |
 
@@ -909,7 +909,7 @@ Inner `max-w-2xl` / `max-w-3xl` sub-constraints remain for intros and figures.
 | `nav-tab`, `nav-tab-active`, `nav-tab-dark`, `nav-tab-dark-active` | Desktop tab states |
 | `nav-tab-mobile`, `nav-tab-mobile-active` | Mobile menu tab states |
 | `card-light`, `card-light-lg` | Light section cards |
-| `link-footer`, `link-footer-meta`, `link-inline` | Footer nav links, legal/meta links, text-style links |
+| `link-footer`, `link-footer-meta`, `link-inline`, `link-inline-dark` | Footer nav links, legal/meta links, light text links, dark-card text links |
 | `footer-shell`, `footer-accent-band` | Footer tinted shell and navy/gold top accent |
 | `text-body`, `text-body-strong`, `text-muted`, `text-subtle` | Light-section semantic text |
 | `text-on-dark`, `text-on-dark-strong` | Dark-band semantic text |

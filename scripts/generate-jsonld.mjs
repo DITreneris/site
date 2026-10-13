@@ -27,14 +27,6 @@ const PRODUCT_ID = `${PLATFORM_URL}/#product`;
 const ECOSYSTEM_ID = `${SITE_URL}/#ecosystem`;
 const FAQ_ID = `${SITE_URL}/#faq`;
 
-const FREE_DEMO_OFFER = {
-  '@type': 'Offer',
-  availability: 'https://schema.org/InStock',
-  url: `${SITE_URL}/`,
-  description:
-    'Free ecosystem demo, Anatomizer, and team assessment at promptanatomy.site. Training plans and checkout live on promptanatomy.app.',
-};
-
 const START_MARKER = '<!-- STRUCTURED_DATA:START -->';
 const END_MARKER = '<!-- STRUCTURED_DATA:END -->';
 
@@ -236,13 +228,12 @@ function buildGraph({ domains, contact, faqs, ogImageUrl, dateModified }) {
         url: `${SITE_URL}/`,
         name: 'Prompt Anatomy — Ecosystem for teams',
         description:
-          'Explore the nine-domain ecosystem, build structured prompts, and assess your team\'s AI maturity.',
+          'Explore the nine-domain ecosystem, build structured prompts, and assess your team\'s AI maturity. This page is the free ecosystem demo. Training plans and checkout live on promptanatomy.app.',
         isPartOf: { '@id': WEBSITE_ID },
         about: { '@id': ORG_ID },
         publisher: { '@id': ORG_ID },
         dateModified,
         primaryImageOfPage: ogImageUrl,
-        offers: FREE_DEMO_OFFER,
       },
       {
         '@type': 'ItemList',
@@ -262,7 +253,6 @@ function buildGraph({ domains, contact, faqs, ogImageUrl, dateModified }) {
           '6-block methodology training (META, INPUT, OUTPUT, REASONING, QUALITY, ADVANCED) plus six role kits (Enter, Use, Create, Hire, Manage, Decide), Deepen, and Play (Corporate Ladder), around one core hub — an AI training system for teams.',
         category: 'AI Training System',
         hasPart: { '@id': ECOSYSTEM_ID },
-        offers: FREE_DEMO_OFFER,
       },
       {
         '@type': 'SoftwareApplication',
@@ -273,7 +263,6 @@ function buildGraph({ domains, contact, faqs, ogImageUrl, dateModified }) {
         description:
           'AI Training System for modern teams: structured templates, workflows, and frameworks that turn ad-hoc prompting into repeatable execution.',
         image: ogImageUrl,
-        offers: FREE_DEMO_OFFER,
         publisher: { '@id': ORG_ID },
       },
       {

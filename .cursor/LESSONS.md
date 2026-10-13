@@ -2,7 +2,7 @@
 
 **Purpose:** Durable corrections from audits and shipped work. Agents and skills must follow these; do not reintroduce fixed drifts.
 
-**Last updated:** 2026-10-06 (founder FAQ, sitemap lastmod)
+**Last updated:** 2026-10-13 (pre-launch contrast and schema)
 
 ---
 
@@ -43,7 +43,7 @@
 ## Type & surfaces
 
 20. **Semantic text utilities are color, not size** — `text-body`, `text-body-strong`, `text-muted`, `text-subtle`, `text-on-dark`, and `text-on-dark-strong` do not set font size. Pair reading text with `text-sm` or `text-base`. `text-caption` (11px) and `text-micro` (10px) are labels only. Do not use `text-caption` for the hero proof line, terminal body, checklist, quiz answers, or practice prompts.
-21. **Contrast** — “Explore the ecosystem”, quiz **Back**, and “View starting stage” are `text-sm font-semibold text-body-strong`, not `link-inline` (12px slate-400 fails on light cards). On navy, the stats disclaimer and closing subtitle use `text-on-dark`, not `text-muted` or `text-subtle`. SequencePath roles and domain labels use `text-on-dark`; stage titles are `text-sm font-bold text-white`. “Best for” and “What's included” stay `text-label-upper text-subtle` because they are labels. Dark header and ecosystem focus rings stay gold: that override is unlayered so it beats `focus-ring`.
+21. **Contrast** — `link-inline` is `text-sm font-semibold text-body-strong` for light surfaces (method cards, practice links, start paths). Do not restore 12px slate-400. The domain-panel builder link uses `link-inline-dark` (`text-on-dark`, hover white) — `hover:text-brand-dark` disappears on the navy card. Footer address is `text-sm text-body`. “Explore the ecosystem”, quiz **Back**, and “View starting stage” stay `text-sm font-semibold text-body-strong`. On navy, the stats disclaimer and closing subtitle use `text-on-dark`, not `text-muted` or `text-subtle`. SequencePath roles and domain labels use `text-on-dark`; stage titles are `text-sm font-bold text-white`. “Best for” and “What's included” stay `text-label-upper text-subtle` because they are labels. Dark header and ecosystem focus rings stay gold: that override is unlayered so it beats `focus-ring`.
 22. **Parked chrome** — SequencePath’s outer shell stays static glass. `card-glass` adds a hover rim on the whole map. DomainDetail has no mono domain badge beside the title (it repeated Open {domain}); the phase pill stays. “Start training” stays `btn-secondary-dark`. Repeated “Open the platform” buttons stay. The shield note is plain `text-sm text-body`; only the pre-copy checklist uses `callout-accent`.
 23. **Discovery title** — `.site` title, hero badge, h1, and `og:title` name the visit: **Prompt Anatomy — Ecosystem for teams**, badge **Ecosystem**, h1 **Less random prompting. More structured execution.** Do not restore “AI Operating System” or “AI Training System” in those slots. The hub title stays **AI Training System**. Do not lift the hub sentence “Turn random AI chats into repeatable business workflows.” into the `.site` h1.
 24. **Lockup** — Header and footer use `BrandLockup`: solid navy tile, filled gold bolt, **Prompt** navy or white and **Anatomy** gold, weight 900. No tagline in the logo row. Favicon copies the hub bolt path, painted `#cfa73a` on flat `#0b1320`. Organization `logo` is `https://www.promptanatomy.app/og-image.png`.
@@ -51,3 +51,5 @@
 26. **Unselected radios** — `ExclusiveChoiceGroup` with `value === null` steps off the focused radio and wraps. ArrowUp and ArrowDown must not both select index 0 (practice index 0 is the wrong answer). A selected group clamps and does not wrap. Space and Enter on an unselected group still activate the focused option.
 27. **Sticky clearance** — Page root is `pb-sticky-clearance`: `4.5rem` plus `env(safe-area-inset-bottom)`, zero from `64rem`. Do not restore a fixed `pb-[4.5rem] lg:pb-0`.
 28. **JSON-LD date** — `generate-jsonld.mjs` keeps `WebPage.dateModified` when the graph without that field matches the previous block. Do not stamp UTC today on an unchanged graph.
+29. **Method-hash share** — The public URL is `https://promptanatomy.site/#method`. Name the steps in order: lesson, demo, course. Do not post bare `https://promptanatomy.site/`. Do not paste the on-page line “Three surfaces, three prompt models.” Do not write “on this page” or “the builder is on this page” in a post: the link is the page. No euro amounts. Recorded caption: “Lesson, demo, then the course. Pick the step that matches your stage: the free lesson, the prompt builder, or the 6-block course.”
+30. **No in-stock offer** — Do not put `Offer` / `InStock` on this page. Checkout stays on promptanatomy.app. `generate-jsonld.mjs` must not restore `FREE_DEMO_OFFER`.

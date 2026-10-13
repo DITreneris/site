@@ -145,7 +145,7 @@ export default function MaturityQuiz({ onPivot }: MaturityQuizProps) {
 
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               <div className="space-y-1.5 rounded-xl border border-subtle surface-muted p-4">
-                <div className="flex items-center gap-2 text-amber-600">
+                <div className="flex items-center gap-2 text-body-strong">
                   <AlertTriangle className="icon-sm" />
                   <h4 className="text-label-upper">Current state</h4>
                 </div>
